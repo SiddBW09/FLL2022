@@ -18,7 +18,6 @@ Distance Goer
 #Goes to certain distance        
 def distance_to_object(tank, distance, direction):
  
-    
     distance_not_reached = True
 
     #Number of wheel rotations needed to get there
@@ -37,28 +36,20 @@ def distance_to_object(tank, distance, direction):
 
     while number_of_wheel_rotations > 0:
         
-        init.debug_print("Rotation: "+ str(number_of_wheel_rotations))
         if (rotation > number_of_wheel_rotations):
             rotation = number_of_wheel_rotations
 
         if direction == "Forward":
             tank.on_for_rotations(10, 10, rotation, brake=False, block=True)
         if direction == "Backward":
-            tank.on_for_rotations(-20, -20, rotation, brake=False, block=True)
+            tank.on_for_rotations(-10, -10, rotation, brake=False, block=True)
 
           
         #Add rotation number
         rotationnumber += rotation
         number_of_wheel_rotations -= rotation
 
-        
-
-        #Checks if robot has reached destination
-        ''''
-        if number_of_wheel_rotations < rotationnumber:
-            #Stops the line following program
-            distance_not_reached = False
-        '''
+        #See's if robot veered of track, if so fixes it
         degrees_off = inital_angle - tank.gyro.angle
 
         if tank.gyro.angle < inital_angle: 
