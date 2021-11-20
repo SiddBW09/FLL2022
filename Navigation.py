@@ -23,8 +23,6 @@ def distance_to_object(tank, distance, direction):
     #Number of wheel rotations needed to get there
     number_of_wheel_rotations = distance / 25.6353961
 
-    rotationnumber = 0
-
     rotation = number_of_wheel_rotations / 10
 
     if rotation < 0.3:
@@ -45,8 +43,7 @@ def distance_to_object(tank, distance, direction):
             tank.on_for_rotations(-10, -10, rotation, brake=False, block=True)
 
           
-        #Add rotation number
-        rotationnumber += rotation
+        #Minus current rotation from total rotations needed
         number_of_wheel_rotations -= rotation
 
         #See's if robot veered of track, if so fixes it
