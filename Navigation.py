@@ -25,6 +25,7 @@ def tank_init():
     tank.gyro = GyroSensor(INPUT_1)
     tank.gyro.mode='GYRO-ANG'
     tank.gyro.reset()
+    return my_tank
 
 '''
 Distance Goer
