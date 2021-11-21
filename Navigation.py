@@ -10,14 +10,28 @@ from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 from ev3dev2.button import Button
 from time import sleep
 from ev3dev2.sound import Sound
-import init 
+import init
+
+def tank_init():
+    my_tank = MoveTank(OUTPUT_A, OUTPUT_B)
+    lift = MediumMotor(OUTPUT_D)
+    claw = MediumMotor(OUTPUT_C)
+
+     # Init Color Sensors
+    colorRight = ColorSensor(INPUT_2)
+    colorLeft = ColorSensor(INPUT_3)
+
+    # init Gyro Sensor
+    tank.gyro = GyroSensor(INPUT_1)
+    tank.gyro.mode='GYRO-ANG'
+    tank.gyro.reset()
 
 '''
-Distance Goer 
+Distance Goer
 '''
-#Goes to certain distance        
+#Goes to certain distance
 def distance_to_object(tank, distance, direction):
- 
+
     distance_not_reached = True
 
     #Number of wheel rotations needed to get there
@@ -28,12 +42,12 @@ def distance_to_object(tank, distance, direction):
     if rotation < 0.3:
         rotation = 0.2
 
-    
+
     #The angle the robot started with
     inital_angle = tank.gyro.angle
 
     while number_of_wheel_rotations > 0:
-        
+
         if (rotation > number_of_wheel_rotations):
             rotation = number_of_wheel_rotations
 
@@ -42,16 +56,16 @@ def distance_to_object(tank, distance, direction):
         if direction == "Backward":
             tank.on_for_rotations(-10, -10, rotation, brake=False, block=True)
 
-          
+
         #Minus current rotation from total rotations needed
         number_of_wheel_rotations -= rotation
 
         #See's if robot veered of track, if so fixes it
         degrees_off = inital_angle - tank.gyro.angle
 
-        if tank.gyro.angle < inital_angle: 
+        if tank.gyro.angle < inital_angle:
             tank.turn_right(20, abs(degrees_off))
-        if tank.gyro.angle > inital_angle: 
+        if tank.gyro.angle > inital_angle:
             tank.turn_left(20, abs(degrees_off))
 
 '''
@@ -59,11 +73,11 @@ Line Following Program:
 '''
 def Line_Following(tank, colorLeft, colorRight, distance):
     #Saying to use the global variables, and not def variables
-    global speed 
-    
+    global speed
+
     distance_not_reached = True
 
-    #Current rotation 
+    #Current rotation
     rotationnumber = 0
 
     #Number of wheel rotations needed to get there
@@ -74,7 +88,7 @@ def Line_Following(tank, colorLeft, colorRight, distance):
 
         tank.on_for_rotations(20, 20, rotation)
 
-        if difference < 0: 
+        if difference < 0:
             #Left is closer to black, We have to turn left
             if difference > -4:
                 tank.turn_right(20, 1)
@@ -84,7 +98,7 @@ def Line_Following(tank, colorLeft, colorRight, distance):
                 tank.turn_right(20, 3)
             elif difference > - 10:
                 tank.turn_right(20, 2)
-                        
+
 
         if difference > 0:
             #Right is closer to black, we have to turn right
