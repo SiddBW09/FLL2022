@@ -3,6 +3,6 @@
 	"files.eol": "\n",
 	"debug.openDebug": "neverOpen",
 	"python.linting.enabled": false,
-    "python.envFile": "${workspaceFolder}/.env",
+    //"python.envFile": "${workspaceFolder}/.env",
     //"python.pythonPath": "\\AppData\\Local\\Programs\\Python\\Python36\\python.exe"
 }
