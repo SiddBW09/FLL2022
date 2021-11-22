@@ -13,25 +13,11 @@ from ev3dev2.motor import OUTPUT_B, MediumMotor
 import init
 
 def Sahana_And_Pranav_Code():
-    tank = MoveTank(OUTPUT_D, OUTPUT_A)
-   
-    claw = MediumMotor(OUTPUT_C)
+    tank = Navigation.tank_init()
 
-    lift = MediumMotor(OUTPUT_B)
-
-    # Init Color Sensors
-    colorRight = ColorSensor(INPUT_2)
-    colorLeft = ColorSensor(INPUT_3)
-
-
-    # init Gyro Sensor
-    tank.gyro = GyroSensor(INPUT_1)
-    tank.gyro.mode='GYRO-ANG'
-    tank.gyro.reset() 
-
-    tank.turn_left(20, 90)
-   
-    Navigation.Line_Following(tank, colorLeft, colorRight, 18)
+    init.debug_print("Inital Degrees: " + str(tank.gyro.angle))
+    Navigation.turn_degrees(tank, 90, "Left")
+    init.debug_print("After Degrees: " + str(tank.gyro.angle))
 
 
 #Execute Northide Missions

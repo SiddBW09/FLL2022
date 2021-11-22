@@ -8,6 +8,7 @@ from ev3dev2.motor import MoveTank, OUTPUT_B, OUTPUT_C, OUTPUT_D, OUTPUT_A, Spee
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 from ev3dev2.button import Button
+from ev3dev2.motor import MediumMotor
 from time import sleep
 from ev3dev2.sound import Sound
 import init
@@ -22,9 +23,9 @@ def tank_init():
     colorLeft = ColorSensor(INPUT_3)
 
     # init Gyro Sensor
-    tank.gyro = GyroSensor(INPUT_1)
-    tank.gyro.mode='GYRO-ANG'
-    tank.gyro.reset()
+    my_tank.gyro = GyroSensor(INPUT_1)
+    my_tank.gyro.mode='GYRO-ANG'
+    my_tank.gyro.reset()
     return my_tank
 
 '''
@@ -120,3 +121,31 @@ def Line_Following(tank, colorLeft, colorRight, distance):
         if number_of_wheel_rotations < rotationnumber:
             #Stops the line following program
             distance_not_reached == False
+
+def turn_degrees(tank, degrees, direction):
+    initial_ang = tank.gyro.angle
+
+
+    if direction == "Right":
+        target_ang = initial_ang + degrees
+        tank.turn_right(30, degrees)
+
+        if target_ang != tank.gyro.angle:
+            target_ang -= tank.gyro.angle
+
+            tank.turn_degrees(5, target_ang)
+
+    if direction == "Left":
+        target_ang = initial_ang - degrees
+
+        tank.turn_left(30, degrees)
+
+
+        if target_ang != tank.gyro.angle:
+            target_ang -= tank.gyro.angle
+
+            tank.turn_degrees(5, target_ang)
+
+
+
+
