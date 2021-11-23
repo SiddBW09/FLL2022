@@ -5,8 +5,12 @@ import Navigation
 from ev3dev2.motor import MediumMotor
 
 def code():
-  #Sample Code
-  
+    tank = MoveTank(OUTPUT_D, OUTPUT_A)
+    tank.gyro = GyroSensor(INPUT_1)
+    tank.gyro.mode='GYRO-ANG'
+    tank.gyro.calibrate()
+
+    tank.on_for_rotations(10, 10, 1)
 
 #Execute
 if __name__ == "__main__":
