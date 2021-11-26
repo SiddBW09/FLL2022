@@ -8,16 +8,20 @@ from ev3dev2.button import Button
 from time import sleep
 from ev3dev2.sound import Sound
 import init
-
+import claw
 
 my_tank = MoveTank(OUTPUT_A, OUTPUT_B)
 lift = MediumMotor(OUTPUT_D)
-claw = MediumMotor(OUTPUT_C)
+claw = claw.Claw()
  # Init Color Sensors
 
 colorRight = ColorSensor(INPUT_2)
 
 colorLeft = ColorSensor(INPUT_3)
+
+claw.claw_close(100)
+
+'''
 #Moving the Robot
 claw.on_for_rotations(49, 3)
 lift.on_for_rotations(49, 3)
@@ -42,3 +46,4 @@ my_tank.on_for_rotations(15, -15, 0.83)
 lift.on_for_rotations(49, 3)
 sleep(1)
 claw.on_for_rotations(49, 3)
+'''
