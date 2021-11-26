@@ -16,7 +16,6 @@ import init
 def tank_init():
     my_tank = MoveTank(OUTPUT_A, OUTPUT_B)
     lift = MediumMotor(OUTPUT_D)
-    claw = MediumMotor(OUTPUT_C)
 
      # Init Color Sensors
     colorRight = ColorSensor(INPUT_2)
@@ -32,7 +31,7 @@ def tank_init():
 Distance Goer
 '''
 #Goes to certain distance
-def distance_to_object(tank, distance, direction):
+def distance_to_object(tank, distance, direction, speed=10):
 
     distance_not_reached = True
 
@@ -44,7 +43,7 @@ def distance_to_object(tank, distance, direction):
     if rotation < 0.3:
         rotation = 0.2
 
-
+    sleep(0.5)
     #The angle the robot started with
     inital_angle = tank.gyro.angle
 
@@ -54,9 +53,9 @@ def distance_to_object(tank, distance, direction):
             rotation = number_of_wheel_rotations
 
         if direction == "Forward":
-            tank.on_for_rotations(10, 10, rotation, brake=False, block=True)
+            tank.on_for_rotations(speed, speed, rotation, brake=False, block=True)
         if direction == "Backward":
-            tank.on_for_rotations(-10, -10, rotation, brake=False, block=True)
+            tank.on_for_rotations(-speed, -speed, rotation, brake=False, block=True)
 
 
         #Minus current rotation from total rotations needed
@@ -66,9 +65,11 @@ def distance_to_object(tank, distance, direction):
         degrees_off = inital_angle - tank.gyro.angle
 
         if tank.gyro.angle < inital_angle:
-            tank.turn_right(20, abs(degrees_off))
+            tank.turn_right(10, abs(degrees_off))
+            sleep(0.5)
         if tank.gyro.angle > inital_angle:
-            tank.turn_left(20, abs(degrees_off))
+            tank.turn_left(10, abs(degrees_off))
+            sleep(0.5)
 
 '''
 Line Following Program:
@@ -130,21 +131,27 @@ def turn_degrees(tank, degrees, direction):
         target_ang = initial_ang + degrees
         tank.turn_right(30, degrees)
 
+        sleep(0.5)
+
         if target_ang != tank.gyro.angle:
             target_ang -= tank.gyro.angle
 
             tank.turn_degrees(5, target_ang)
+            sleep(0.5)
 
     if direction == "Left":
         target_ang = initial_ang - degrees
 
         tank.turn_left(30, degrees)
 
+        sleep(0.5)
 
         if target_ang != tank.gyro.angle:
             target_ang -= tank.gyro.angle
 
             tank.turn_degrees(5, target_ang)
+            sleep(0.5)
+
 
 
 
