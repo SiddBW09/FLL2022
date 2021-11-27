@@ -23,7 +23,6 @@ colorLeft = ColorSensor(INPUT_3)
 
 #Moving the Robot
 claw.claw_open(100)
-claw.claw_close(100)
 lift.on_for_rotations(49, 3)
 claw.claw_close(100)
 lift.on_for_rotations(49, -3)
