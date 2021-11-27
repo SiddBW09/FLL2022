@@ -64,13 +64,7 @@ def distance_to_object(tank, distance, direction, speed=10):
         #See's if robot veered of track, if so fixes it
         degrees_off = inital_angle - tank.gyro.angle
 
-        if tank.gyro.angle < inital_angle:
-            tank.turn_right(10, abs(degrees_off))
-            sleep(0.5)
-        if tank.gyro.angle > inital_angle:
-            tank.turn_left(10, abs(degrees_off))
-            sleep(0.5)
-
+        tank.turn_degrees(10, degrees_off)
 '''
 Line Following Program:
 '''
