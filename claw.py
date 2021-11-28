@@ -13,32 +13,12 @@ class Claw():
 
     def claw_open(self, percent):
         self.claw.reset()
-<<<<<<< HEAD
         self.claw.on_for_rotations(-30, 0.5)
-=======
-        self.claw.on_for_rotations(-30, 0.1)
->>>>>>> 437d5c20dd622ba57760125862cffd881926b2c5
 
     def claw_close(self, percent):
         i = 0
         self.claw.reset()
         while True:
-<<<<<<< HEAD
-=======
-
-            self.claw.on_for_rotations(10, 0.01, brake = False)
-
-            init.debug_print(self.claw.state)
-            if len(self.claw.state) > 1:
-                break
-            i += 1
-
-        if i >= 19:
-            return False
-        else:
-            return True
-
->>>>>>> 437d5c20dd622ba57760125862cffd881926b2c5
 
             self.claw.on_for_rotations(10, 0.01, brake = False)
 
