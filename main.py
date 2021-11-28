@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from FLL2021.init import debug_print
+from init import debug_print
 import init
-import message
+
 
 # Main program
 def main():
