@@ -24,12 +24,13 @@ class Claw():
 
             init.debug_print(self.claw.state)
             if len(self.claw.state) > 1:
-                init.debug_print("Stalled")
                 break
-            sleep(0.5)
             i += 1
-        init.debug_print(i)
-        return
+
+        if i >= 19:
+            return False
+        else:
+            return True
 
 
     # def claw_open(self, percent):
