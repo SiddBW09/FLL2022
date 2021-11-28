@@ -123,7 +123,7 @@ def turn_degrees(tank, degrees, direction):
 
     if direction == "Right":
         target_ang = initial_ang + degrees
-        tank.turn_right(30, degrees)
+        tank.turn_right(10, degrees)
 
         sleep(0.5)
 
@@ -136,7 +136,7 @@ def turn_degrees(tank, degrees, direction):
     if direction == "Left":
         target_ang = initial_ang - degrees
 
-        tank.turn_left(30, degrees)
+        tank.turn_left(10, degrees)
 
         sleep(0.5)
 
