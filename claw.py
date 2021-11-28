@@ -12,29 +12,28 @@ class Claw():
         self.claw = MediumMotor(OUTPUT_C)
 
     def claw_open(self, percent):
-
-        self.claw.on_for_rotations(80, 3)
-
-
+        self.claw.reset()
+        self.claw.on_for_rotations(-30, 0.5)
 
     def claw_close(self, percent):
         i = 0
+        self.claw.reset()
+        while True:
 
-        while i < 11:
-            self.claw.on_for_rotations(-80, 5, brake = False)
+            self.claw.on_for_rotations(10, 0.01, brake = False)
 
+            if 'stalled' in self.claw.state:
+                init.debug_print(self.claw.state)
+                break
 
-            if len(self.claw.state) > 1:
-                init.debug_print("Stalled")
-                i = 11
             i += 1
+        init.debug_print(i)
 
-    # def claw_open(self, percent):
-    #     rotations = 3 * (percent/100)
-    #     self.claw.on_for_rotations(50, rotations)
+        if i >= 19:
+            return False
+        else:
+            return True
 
-    # def claw_close(self, percent):
-    #     rotations = 2.9 * (percent/100)
-    #     self.claw.on_for_rotations(-50, rotations)
+        return
 
 
