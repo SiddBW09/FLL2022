@@ -37,10 +37,41 @@ def Sahana_And_Pranav_Code():
     # init.debug_print(rt_large)
     # init.debug_print(lt_large)
 
+def Coachie_Code():
+    tank = Navigation.tank_init()
+    lift = MediumMotor(OUTPUT_D)
+    Claw = claw.Claw()
+
+
+    #Blue thing mission
+    Navigation.distance_to_object(tank, 32, "Forward", 20)
+
+    #Complete blue cargo thing mission
+    tank.turn_degrees(50, -45)
+    degrees_to_turn = -1*tank.gyro.angle
+    init.debug_print(tank.gyro.angle)
+    tank.turn_degrees(20, degrees_to_turn, True, 1)
+    init.debug_print(tank.gyro.angle)
+
+    #Lift up
+    lift.on_for_rotations(50, -1)
+
+    #Go to airplane something mission
+    Navigation.distance_to_object(tank, 15, "Forward", 20)
+
+    init.debug_print(tank.gyro.angle)
+    degrees_to_turn = -5 - ( tank.gyro.angle)
+    tank.turn_degrees(20, degrees_to_turn, True, 1)
+    Claw.claw_open(100)
+    tank.on_for_rotations(10, 10, 0.35)
+    lift.on_for_rotations(80, -1)
+
+
 
 
 
 
 #Execute Northide Missions
 if __name__ == "__main__":
-    Sahana_And_Pranav_Code()
+    #Sahana_And_Pranav_Code()
+    Coachie_Code()
