@@ -12,7 +12,6 @@ import claw
 import Navigation
 
 
-
 def current_run():
 
     init.debug_print("In current run")
@@ -20,7 +19,26 @@ def current_run():
     lift = MediumMotor(OUTPUT_D)
     MyClaw = claw.Claw()
     MyClaw.claw.reset()
-    Have_brick(lift)
+    lift.on_for_rotations(30, -1)
+    lift.reset()
+    my_tank.on_for_rotations(10, 10, 0.7)
+    lift.on_for_rotations(10, 0.7)
+    my_tank.on_for_rotations(15, 15, -0.7)
+    sleep(0.5)
+    my_tank.turn_degrees(10, 90, True, 1)
+    MyClaw.claw_open(100)
+    my_tank.on_for_rotations(10, 10, -0.08)
+    lift.on_for_rotations(49, 0.5)
+    if MyClaw.claw_close(100):
+        lift.on_for_rotations(49, -3)
+        my_tank.turn_degrees(10, -180, True, 1)
+        Navigation.distance_to_object(my_tank, 40, "Forward", 10 )
+        my_tank.turn_degrees(10, -10, True, 1)
+        lift.on_for_rotations(49, 3)
+        sleep(0.5)
+        MyClaw.claw_open(100)
+        init.debug_print("Turned degrees" + str(tank.gyro.angle))
+
 
 
 
@@ -70,8 +88,12 @@ def Have_brick(lift):
      return False
     return True
 
-
-
+def second_check():
+    my_tank.on_for_rotations(15, 15, 0.4)
+    MyClaw.claw_open(100)
+    lift.on_for_rotations(49, 3)
+    MyClaw.claw_close(100)
+    lift.on_for_rotations(49, -3)
 
 
 #
@@ -102,6 +124,5 @@ sleep(0.5)
 lift.on_for_rotations(49, -3)'''
 
 
+
 current_run()
-
-

@@ -13,7 +13,7 @@ class Claw():
 
     def claw_open(self, percent):
         self.claw.reset()
-        self.claw.on_for_rotations(-30, 0.5)
+        self.claw.on_for_rotations(-30, 0.1)
 
     def claw_close(self, percent):
         i = 0
@@ -29,8 +29,10 @@ class Claw():
             i += 1
         init.debug_print(i)
 
-        if i >= 19:
+        if i >= 10:
+            print("Did not catch brick")
             return False
+
         else:
             return True
 
