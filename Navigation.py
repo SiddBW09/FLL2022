@@ -117,13 +117,13 @@ def Line_Following(tank, colorLeft, colorRight, distance):
             #Stops the line following program
             distance_not_reached == False
 
-def turn_degrees(tank, degrees, direction):
+def turn_degrees(tank, degrees, direction, speed):
     initial_ang = tank.gyro.angle
 
 
     if direction == "Right":
         target_ang = initial_ang + degrees
-        tank.turn_right(10, degrees)
+        tank.turn_right(speed, degrees)
 
         sleep(0.5)
 
@@ -136,7 +136,7 @@ def turn_degrees(tank, degrees, direction):
     if direction == "Left":
         target_ang = initial_ang - degrees
 
-        tank.turn_left(10, degrees)
+        tank.turn_left(speed, degrees)
 
         sleep(0.5)
 
