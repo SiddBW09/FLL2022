@@ -48,10 +48,12 @@ def current_run():
         lift.on_for_rotations(49, 1)
         my_tank.on_for_rotations(15, 15, 0.8)
         my_tank.on_for_rotations(15, 15, 0.15)
-        my_tank.turn_degrees(15, 130, True, 1)
+        init.debug_print("Turned degrees" + str(my_tank.gyro.angle))
+        my_tank.turn_degrees(15, 23, True, 1)
 
         init.debug_print("Turned degrees" + str(my_tank.gyro.angle))
-
+    else:
+        print("No Brick")
 
 
 
