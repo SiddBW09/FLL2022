@@ -177,7 +177,6 @@ def truck_to_bridge (tank, lift):
     tank.on_for_rotations(10, 10, 0.4)
     tank.turn_degrees(20, 60, True, 1)
     #tank.turn_degrees(20, -35, True, 1)
-
     init.debug_print(tank.gyro.angle)
 
     tank.turn_degrees(20, )
