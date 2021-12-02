@@ -18,26 +18,24 @@ def Coachie_Code():
     lift = MediumMotor(OUTPUT_D)
     Claw = claw.Claw()
 
+
     #Blue thing mission
-    Navigation.distance_to_object(tank, 32, "Forward", 20)
+    Navigation.distance_to_object(tank, 30, "Forward", 20)
 
     #Complete blue cargo thing mission
     tank.turn_degrees(50, -45)
-    degrees_to_turn = -1*tank.gyro.angle
+    degrees_to_turn = 0-tank.gyro.angle
     init.debug_print(tank.gyro.angle)
-    tank.turn_degrees(20, degrees_to_turn, True, 1)
-    sleep(0.5)
-    degrees_to_turn = -1*tank.gyro.angle
-    tank.turn_degrees(5, degrees_to_turn)
+    tank.turn_degrees(10, degrees_to_turn, True, 1)
     init.debug_print(tank.gyro.angle)
 
 
     Navigation.distance_to_object(tank, 25, "Forward", 10)
 
-    tank.turn_degrees(10, 40, True, 1)
+    tank.turn_degrees(10, 45, True, 1)
 
     #Number of degrees need to turn to SwitchE
-    degrees_to_turn = 40- tank.gyro.angle
+    degrees_to_turn = 45- tank.gyro.angle
     tank.turn_degrees(10, degrees_to_turn, True, 1)
 
     init.debug_print(tank.gyro.angle)
@@ -47,10 +45,14 @@ def Coachie_Code():
 
     #Turn right
     Claw.claw_open(100)
+    init.debug_print(tank.gyro.angle)
+    sleep(1)
+    tank.turn_degrees(10, 10, True, 1)
+    init.debug_print(tank.gyro.angle)
+
     Navigation.distance_to_object(tank, 11, "Forward", 10)
-    init.debug_print(tank.gyro.angle)
-    tank.turn_degrees(10, 6, True, 1)
-    init.debug_print(tank.gyro.angle)
+
+    tank.turn_degrees(10, 5, True, 1)
 
     Claw.claw_close(100)
 
@@ -59,6 +61,27 @@ def Coachie_Code():
     #Do SwitchE mission
     lift.on_for_rotations(10, -1)
 
+    #Go back from SwitchE
+    tank.turn_degrees(10, -5, True, 1)
+    tank.turn_degrees(10, -10, True, 1)
+    Navigation.distance_to_object(tank, 25, "Backward", 10)
+
+    #Turn right to Airplane
+    tank.turn_degrees(10, 50, True, 1)
+
+    return
+
+    #Code to get to green mission from SwitchE starts HERE
+    tank.turn_degrees(10, -5, True, 1)
+    tank.turn_degrees(10, -10, True, 1)
+    Navigation.distance_to_object(tank, 25, "Backward", 10)
+    tank.turn_degrees(10, -83, True, 1)
+
+    #Green mission thingy
+    lift.on_for_rotations(100, -0.5)
+    Navigation.distance_to_object(tank, 3, "Forward", 5)
+
+    lift.on_for_rotations(40, 2)
     return
 
     init.debug_print(tank.gyro.angle)
