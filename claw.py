@@ -29,7 +29,7 @@ class Claw():
             i += 1
         init.debug_print(i)
 
-        if i >= 10:
+        if i > 11:
             print("Did not catch brick")
             return False
 
