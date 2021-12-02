@@ -77,7 +77,7 @@ def turn_left(tank, angle): #Functions which accurately turns the robot 90 degre
 def truck_2():
     #Initializing tank
     tank = Navigation.tank_init()
-    lift = MediumMotor(OUTPUT_C)
+    lift = MediumMotor(OUTPUT_D)
     # Init Color Sensors
 
     truck_to_bridge(tank, lift)
@@ -162,13 +162,27 @@ def truck_2():
     #Navigation.distance_to_object(tank, 20, "Backward")
 
 def truck_to_bridge (tank, lift):
-    #lift.on_for_rotations(-20, 0.9)
+    tank.gyro.reset()
+    lift.on_for_rotations(-20, 0.48)
 
-    Navigation.distance_to_object(tank, 65, "Backward")
+    Navigation.distance_to_object(tank, 40, "Backward")
+    tank.turn_degrees(20, -190, True, 1)
+    tank.on_for_rotations(10, 10, 0.55)
+    tank.turn_degrees(20, -35, True, 1)
+
+    init.debug_print(tank.gyro.angle)
+    return
+
+
+    Navigation.distance_to_object(tank, 30, "Forward")
+    Navigation.turn_degrees(tank, 180, "Right")
+    init.debug_print(tank.gyro.angle)
+    """Navigation.distance_to_object(tank, 65, "Backward")
     lift.on_for_rotations(-30, 0.5)
     Navigation.distance_to_object(tank, 9, "Backward")
     lift.on_for_rotations(30, 0.6)
     Navigation.distance_to_object(tank, 13, "Forward")
+    Navigation.distance_to_object(tank, 40, "Backward")"""
 
 if __name__ == "__main__":
     truck_2()
