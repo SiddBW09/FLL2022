@@ -89,18 +89,21 @@ def truck_2():
     start_time = time.time()
 
     #turn_right(tank, 45)
-    tank.turn_degrees(10, 45, True, 2)
+    #tank.turn_degrees(10, 45, True, 2)
     init.debug_print("First 45 degrees turned:" + str(tank.gyro.angle))
     Navigation.distance_to_object(tank, 41.595, "Backward")
     """tank.turn_degrees(10, 40, True, 2)
     #init.debug_print(str(tank.gyro.angle))
+    Navigation.distance_to_object(tank, 29, "Backward")
+    tank.turn_degrees(10, 90, True, 2)
+
     angle_now = tank.gyro.angle
     init.debug_print("90 angle: " + str(angle_now))
     #return
     if angle_now > 90:
         #Turn angle-90 to the left
         offset1 = int(angle_now-90)
-        tank.turn_degrees(10, -int(offset1), True, 1)
+        tank.turn_degrees(10, -1*(offset1), True, 1)
         init.debug_print("Final angle turned: " + str(angle_now - offset1))
     elif angle_now < 90:
         #Turn 90-angle to the right
@@ -256,7 +259,6 @@ if __name__ == "__main__":
 Navigation.distance_to_object(tank, 50, "Backward") #Going forward from home. [This and the code below is all of the old code:]
     turn_left(20)
     turn_right(20)
-
     turn_left(tank, 20)
     turn_right(tank,0)
     Navigation.distance_to_object(tank, 18.5, "Forward")
