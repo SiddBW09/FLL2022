@@ -89,26 +89,38 @@ def truck_2():
     start_time = time.time()
 
     #turn_right(tank, 45)
-    tank.turn_degrees(10, 45, True, 2)
+    #tank.turn_degrees(10, 45, True, 2)
     init.debug_print("First 45 degrees turned:" + str(tank.gyro.angle))
-    Navigation.distance_to_object(tank, 41.595, "Backward")
-    tank.turn_degrees(10, 40, True, 2)
+    #Navigation.distance_to_object(tank, 41.595, "Backward")
+    #tank.turn_degrees(10, 40, True, 2)
     #init.debug_print(str(tank.gyro.angle))
+    Navigation.distance_to_object(tank, 29, "Backward")
+    tank.turn_degrees(10, 90, True, 2)
+
     angle_now = tank.gyro.angle
     init.debug_print("90 angle: " + str(angle_now))
     #return
     if angle_now > 90:
         #Turn angle-90 to the left
         offset1 = int(angle_now-90)
-        tank.turn_degrees(10, -int(offset1), True, 1)
+        tank.turn_degrees(10, -1*(offset1), True, 1)
         init.debug_print("Final angle turned: " + str(angle_now - offset1))
     elif angle_now < 90:
         #Turn 90-angle to the right
         offset2 = int(90-angle_now)
-        tank.turn_degrees(10, int(offset2), True, 1)
+        tank.turn_degrees(10, offset2, True, 1)
         init.debug_print("Final angle turned: " + str(angle_now - offset2))
-    Navigation.distance_to_object(tank, 22, "Backward") #Push trucks together.
-    Navigation.distance_to_object(tank, 17, "Forward") #Back up from trucks.
+
+    #Navigation.distance_to_object(tank, 32, "Backward") #Push trucks together.
+    #Navigation.distance_to_object(tank, 16, "Backward") #Push trucks together.
+    Navigation.distance_to_object(tank, 37, "Backward")
+    #TODO: we will need to correct the angle here
+    return
+    number_of_wheel_rotations = 15 / 25.13
+    tank.on_for_rotations(-10,-10,number_of_wheel_rotations)
+    tank.on_for_rotations(10,10,number_of_wheel_rotations)
+    #Navigation.distance_to_object(tank, 17, "Forward") #Back up from trucks.
+    return
     tank.turn_degrees(10, -45, True, 1)
     angle_now = tank.gyro.angle
     init.debug_print("Angle (after 1 offset check): " + str(angle_now))
@@ -200,7 +212,6 @@ if __name__ == "__main__":
 Navigation.distance_to_object(tank, 50, "Backward") #Going forward from home. [This and the code below is all of the old code:]
     turn_left(20)
     turn_right(20)
-
     turn_left(tank, 20)
     turn_right(tank,0)
     Navigation.distance_to_object(tank, 18.5, "Forward")
