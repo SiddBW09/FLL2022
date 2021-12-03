@@ -5,7 +5,7 @@ from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_D, OUTPUT_B, OUTPUT_C, MoveTank, SpeedPercent, follow_for_ms, MoveSteering
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 import Navigation
-import time
+from time import sleep
 from ev3dev2.motor import OUTPUT_B, MediumMotor
 import init
 import claw
@@ -78,50 +78,58 @@ def truck_2():
     #Initializing tank
     tank = Navigation.tank_init()
     lift = MediumMotor(OUTPUT_D)
+    tank.gyro.reset()
     # Init Color Sensors
 
-    truck_to_bridge(tank, lift)
-    return
+    #truck_to_bridge(tank, lift)
+    #return
 
     colorRight = ColorSensor(INPUT_2)
     colorLeft = ColorSensor(INPUT_3)
     start_time = time.time()
 
     #turn_right(tank, 45)
-    Navigation.turn_degrees(tank, 45, "Right")
+    #tank.turn_degrees(10, 45, True, 2)
+    init.debug_print("First 45 degrees turned:" + str(tank.gyro.angle))
     Navigation.distance_to_object(tank, 41.595, "Backward")
-    Navigation.turn_degrees(tank, 45, "Right")
+    """tank.turn_degrees(10, 40, True, 2)
+    #init.debug_print(str(tank.gyro.angle))
+    Navigation.distance_to_object(tank, 29, "Backward")
+    tank.turn_degrees(10, 90, True, 2)
+
     angle_now = tank.gyro.angle
-    init.debug_print("Angle (after 1 offset check): " + str(angle_now))
+    init.debug_print("90 angle: " + str(angle_now))
+    #return
     if angle_now > 90:
         #Turn angle-90 to the left
         offset1 = int(angle_now-90)
-        Navigation.turn_degrees(tank, int(offset1), "Left")
+        tank.turn_degrees(10, -1*(offset1), True, 1)
         init.debug_print("Final angle turned: " + str(angle_now - offset1))
     elif angle_now < 90:
         #Turn 90-angle to the right
         offset2 = int(90-angle_now)
-        Navigation.turn_degrees(tank, int(offset2), "Right")
-        init.debug_print("Final angle turned: " + str(angle_now - offset2))
+        tank.turn_degrees(10, int(offset2), True, 1)
+        init.debug_print("Final angle turned: " + str(angle_now - offset2))"""
+    turn_right(tank, 90)
     Navigation.distance_to_object(tank, 22, "Backward") #Push trucks together.
     Navigation.distance_to_object(tank, 17, "Forward") #Back up from trucks.
-    Navigation.turn_degrees(tank, 45, "Left")
+    tank.turn_degrees(10, -45, True, 1)
     angle_now = tank.gyro.angle
     init.debug_print("Angle (after 1 offset check): " + str(angle_now))
     if angle_now < 45:
         #Turn angle-90 to the left
         offset1 = int(angle_now-45)
-        Navigation.turn_degrees(tank, int(offset1), "Left")
+        tank.turn_degrees(10, -int(offset1), True, 1)
         init.debug_print("Final angle turned: " + str(angle_now - offset1))
     elif angle_now > 45:
         #Turn 90-angle to the right
         offset2 = int(45-angle_now)
-        Navigation.turn_degrees(tank, int(offset2), "Right")
+        tank.turn_degrees(10, int(offset2), True, 1)
         init.debug_print("Final angle turned: " + str(angle_now - offset2))
-    Navigation.distance_to_object(tank, 20, "Backward")
-    lift.on_for_rotations(-20, 1)
+    Navigation.distance_to_object(tank, 27, "Backward")
+    #lift.on_for_rotations(-20, 1)
 
-    Navigation.turn_degrees(tank, 45, "Right") #Parallel to trucks.
+    tank.turn_degrees(10, 45, True, 1) #Parallel to trucks.
     """angle_now = tank.gyro.angle
     init.debug_print("Angle (after 1 offset check): " + str(angle_now))
     if angle_now < 45:
@@ -134,6 +142,7 @@ def truck_2():
         offset2 = int(45-angle_now)
         Navigation.turn_degrees(tank, int(offset2), "Right")
         init.debug_print("Final angle turned: " + str(angle_now - offset2))"""
+    truck_to_bridge(tank, lift)
     return
     Navigation.distance_to_object(tank, 8, "Backward")
     Navigation.turn_degrees(tank, 85, "Left")
@@ -168,9 +177,13 @@ def truck_to_bridge (tank, lift):
     Navigation.distance_to_object(tank, 40, "Backward")
     tank.turn_degrees(20, -190, True, 1)
     tank.on_for_rotations(10, 10, 0.55)
-    tank.turn_degrees(20, -35, True, 1)
-
+    turn_right(tank, 0)
+    tank.on_for_rotations(10, 10, 0.4)
+    tank.turn_degrees(20, 60, True, 1)
+    #tank.turn_degrees(20, -35, True, 1)
     init.debug_print(tank.gyro.angle)
+
+    tank.turn_degrees(20, )
     return
 
 
@@ -184,14 +197,68 @@ def truck_to_bridge (tank, lift):
     Navigation.distance_to_object(tank, 13, "Forward")
     Navigation.distance_to_object(tank, 40, "Backward")"""
 
+def gyro_check (tank, angle):
+    angle_now = tank.gyro.angle
+    if angle_now > 90:
+        #Turn angle-90 to the left
+        offset1 = int(angle_now-90)
+        tank.turn_degrees(10, -1*(offset1), True, 1)
+        init.debug_print("Final angle turned: " + str(tank.gyro.angle))
+    elif angle_now < 90:
+        #Turn 90-angle to the right
+        offset2 = int(90-angle_now)
+        tank.turn_degrees(10, int(offset2), True, 1)
+        init.debug_print("Final angle turned: " + str(tank.gyro.angle))
+
+def truck_3 ():
+    #Initializing tank
+    tank = Navigation.tank_init()
+    lift = MediumMotor(OUTPUT_D)
+    #tank.gyro.reset()
+
+    '''init.debug_print(tank.gyro.angle)
+    tank.on_for_rotations(-10, -10, 0.5)
+    init.debug_print(tank.gyro.angle)
+    tank.on_for_rotations(-10, -10, 1)
+    sleep(1)
+    init.debug_print(tank.gyro.angle)
+    return'''
+
+    forward_distance = 29/25.6353961
+    tank.on_for_rotations(-10, -10, forward_distance)
+    init.debug_print("Angle after going forward from home: " + str(tank.gyro.angle))
+
+    tank.turn_degrees(10, 90, True, 1)
+    init.debug_print("Original turn is: " + str(tank.gyro.angle))
+    angle_now = tank.gyro.angle
+    if angle_now > 90:
+        #Turn angle-90 to the left
+        offset1 = int(angle_now-90)
+        tank.turn_degrees(10, -1*(offset1), True, 1)
+        init.debug_print("Final angle turned: " + str(tank.gyro.angle))
+    elif angle_now < 90:
+        #Turn 90-angle to the right
+        offset2 = int(90-angle_now)
+        tank.turn_degrees(10, int(offset2), True, 1)
+        init.debug_print("Final angle turned: " + str(tank.gyro.angle))
+
+    sleep(2)
+
+    #Navigation.distance_to_object(tank, 11, "Backward")
+    forward_distance = 25/25.6353961
+    tank.on_for_rotations(-10, -10, forward_distance)
+    init.debug_print("The gyro angle is: " + str(tank.gyro.angle))
+    gyro_check(tank, 90)
+    tank.on_for_rotations(-10, -10, forward_distance)
+
+
 if __name__ == "__main__":
-    truck_2()
+    truck_3()
 
 '''The code below is our old code, in case we need it:
 Navigation.distance_to_object(tank, 50, "Backward") #Going forward from home. [This and the code below is all of the old code:]
     turn_left(20)
     turn_right(20)
-
     turn_left(tank, 20)
     turn_right(tank,0)
     Navigation.distance_to_object(tank, 18.5, "Forward")
