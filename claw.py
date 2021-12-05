@@ -20,7 +20,7 @@ class Claw():
         self.claw.reset()
         while True:
 
-            self.claw.on_for_rotations(10, 0.01, brake = False)
+            self.claw.on_for_rotations(10, 0.02, brake = False)
 
             if 'stalled' in self.claw.state:
                 init.debug_print(self.claw.state)
