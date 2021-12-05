@@ -21,11 +21,6 @@ def Coachie_Code():
     tank.gyro.reset()
     sleep(5)
 
-    #Forkytestytest (Keep this code please)
-    lift.on_for_rotations(100, 2)
-    tank.on_for_rotations(25, 25, 0.2)
-    tank.turn_degrees(25, -25, True, 1)
-    return
 
     #Blue thing mission
     Navigation.distance_to_object(tank, 30, "Forward", 20)
@@ -34,18 +29,13 @@ def Coachie_Code():
     tank.turn_degrees(50, -45, True, 1)
     sleep(2)
     degrees_to_turn = 0 - tank.gyro.angle
-<<<<<<< HEAD
     tank.turn_degrees(5, degrees_to_turn, True, 1)
-=======
-    tank.turn_degrees(10, degrees_to_turn, True, 1)
->>>>>>> cd50abb95831c923b14cabeff875e9d22336bc87
     sleep(0.5)
 
 
 
     Navigation.distance_to_object(tank, 30, "Forward", 10)
 
-<<<<<<< HEAD
     tank.turn_degrees(10, 35, True, 1)
 
 
@@ -53,13 +43,6 @@ def Coachie_Code():
     degrees_to_turn = 35- tank.gyro.angle
     tank.turn_degrees(5, degrees_to_turn, True, 1)
 
-=======
-    tank.turn_degrees(10, 40, True, 1)
-
-    #Number of degrees need to turn to SwitchE
-    degrees_to_turn = 45- tank.gyro.angle
-    tank.turn_degrees(5, degrees_to_turn, True, 1)
->>>>>>> cd50abb95831c923b14cabeff875e9d22336bc87
 
 
     #Go to SwitchE
@@ -83,6 +66,42 @@ def Coachie_Code():
     #Do SwitchE mission
     lift.on_for_rotations(10, -1)
 
+
+     #try again to please Coach Hari
+    Claw.claw_open(100)
+    tank.turn_degrees(10, 4, True, 1)
+    lift.on_for_rotations(10, 1)
+    Claw.claw_close(100)
+    lift.on_for_rotations(10, -1)
+
+
+    #Go back to orange planey
+    tank.turn_degrees(25, -5, True, 1)
+    Navigation.distance_to_object(tank, 12, "Backward", 10)
+    tank.turn_degrees(25, -15, True, 1)
+    Navigation.distance_to_object(tank, 20, "Backward", 10)
+    lift.on_for_rotations(35, -1)
+
+    #Turn to Green thing
+    tank.turn_degrees(20, -45, True, 1)
+
+    #Complete Green mission
+    Navigation.distance_to_object(tank, 7, "Forward", 10)
+    lift.on_for_rotations(35, 3)
+    Claw.claw_close(100)
+    lift.on_for_rotations(35, 0.3)
+    tank.turn_degrees(25, -5, True, 1)
+    Navigation.distance_to_object(tank, 20, "Forward", 10)
+
+    #Go back
+    Navigation.distance_to_object(tank, 10, "Backward", 10)
+    return
+
+    tank.turn_degrees(15, 55, True, 1)
+    Navigation.distance_to_object(tank, 9, "Forward", 10)
+    lift.on_for_rotations(10, 1)
+
+
     return
 
     #Go back from SwitchE
@@ -90,19 +109,8 @@ def Coachie_Code():
     tank.turn_degrees(10, -10, True, 1)
     Navigation.distance_to_object(tank, 25, "Backward", 10)
 
-    #Turn right to Airplane
-    tank.turn_degrees(10, 45, True, 1)
 
-    tank.turn_degrees(10, -3, True, 1)
-    Navigation.distance_to_object(tank, 5, "Forward", 5)
-    Claw.claw_open(100)
-    sleep(0.5)
-    lift.on_for_rotations(10, 1)
-    Claw.claw_close(100)
-    tank.turn_degrees(5, -10, True, 1)
-    Claw.claw_open(100)
 
-    return
 
     return
 
