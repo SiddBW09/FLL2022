@@ -12,6 +12,7 @@ import claw
 import Navigation
 
 
+
 def current_run(tank, Lift, claw):
     x = 0
     init.debug_print("In current run")
@@ -30,40 +31,41 @@ def current_run(tank, Lift, claw):
     sleep(0.5)
     MyClaw.claw_open(100)
     my_tank.turn_degrees(10, 90, True, 1)
-    init.debug_print("Turned degrees to pick up brick" + my_tank.)
+    Navigation.gyro_check(my_tank, 10, 90)
+    init.debug_print("Turned degrees to pick up brick" + str(my_tank.gyro.angle))
     my_tank.on_for_rotations(10, 10, -0.1)
     lift.on_for_rotations(49, 0.63)
     MyClaw.claw.reset()
     if MyClaw.claw_close(100):
+        init.debug_print("Found blue brick")
         sleep(0.5)
         lift.on_for_rotations(49, -3)
-        my_tank.turn_degrees(10, -180, True, 1)
+        my_tank.turn_degrees(10, -90, True, 1)
+        Navigation.gyro_check(my_tank, 10, -90)
         Navigation.distance_to_object(my_tank, 40, "Forward", 10 )
-        degrees_turn = -93 - my_tank.gyro.angle
-        my_tank.turn_degrees(10, degrees_turn, True, 1 )
         lift.on_for_rotations(49, 3)
         sleep(1)
         MyClaw.claw_open(100)
         sleep(0.5)
         lift.on_for_rotations(35, -0.8)
-        my_tank.turn_degrees(10, -70, True, 1)
-        init.debug_print("Turned degrees" + my_tank.gyro.angle)
-        my_tank.on_for_rotations(15, 15, -0.4)
-        my_tank.on_for_rotations(15, 15, 0.4)
-        my_tank.turn_degrees(10, -150, True, 1)
-        init.debug_print("Turned degrees" + my_tank.gyro.angle)
-        my_tank.on_for_rotations(20,20,0.27)
-        MyClaw.claw_close(100)
-        lift.on_for_rotations(49, -2)
+        my_tank.turn_degrees(10, -95, True, 1)
+        #Navigation.gyro_check(my_tank, 10, -95)
+        init.debug_print("Turned degrees" + str(my_tank.gyro.angle))
+        #Navigation.gyro_check(my_tank, 10, -120)
 
+        my_tank.on_for_rotations(15, 15, -0.5)
+        my_tank.on_for_rotations(15, 15, 0.15)
+        #target angle is -275
+        my_tank.turn_degrees(10, -80, True, 1)
+        my_tank.on_for_rotations(15, 15, 0.5)
+        #Last left of
+        my_tank.turn_degreed(10, 5, True, 1)
+        init.debug_print("Turned degrees" + str(my_tank.gyro.angle))
+        return
 
-    else:
-        print("No Brick")
-
-
-Navigation.tank_init()
-MediumMotor(OUTPUT_D)
-claw.Claw()
+#Navigation.tank_init()
+#MediumMotor(OUTPUT_D)
+#claw.Claw()
 
 def train(tank, Lift, claw):
     #init stuff
@@ -192,9 +194,9 @@ claw.claw_close(100)
 sleep(0.5)
 lift.on_for_rotations(49, -3)'''
 
-'''if __name__ == "__main__":
+if __name__ == "__main__":
     #train()
-    current_run()
+    current_run(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 #train()'''
-current_run(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-train(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+
+#train(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
