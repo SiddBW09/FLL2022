@@ -19,96 +19,66 @@ def Coachie_Code():
     lift = MediumMotor(OUTPUT_D)
     Claw = claw.Claw()
     tank.gyro.reset()
-    sleep(5)
 
 
-    #Blue thing mission
-    Navigation.distance_to_object(tank, 30, "Forward", 20)
+    # Blue thing mission
+    Navigation.distance_to_object(tank, 28, "Forward", 20)
 
-    #Complete blue cargo thing mission
-    tank.turn_degrees(50, -45, True, 1)
-    sleep(2)
-    degrees_to_turn = 0 - tank.gyro.angle
-    tank.turn_degrees(5, degrees_to_turn, True, 1)
-    sleep(0.5)
+    tank.on_for_rotations(0, 10, 0.8)
+    tank.on_for_rotations(0, -10, 0.8)
+    Navigation.gyro_check(tank, 5, 0)
+    init.debug_print(tank.gyro.angle)
 
-
-
-    Navigation.distance_to_object(tank, 30, "Forward", 10)
+    Navigation.distance_to_object(tank, 25, "Forward", 10)
 
     tank.turn_degrees(10, 35, True, 1)
 
 
-    #Number of degrees need to turn to SwitchE
-    degrees_to_turn = 35- tank.gyro.angle
-    tank.turn_degrees(5, degrees_to_turn, True, 1)
-
+    Navigation.gyro_check(tank, 5, 35)
 
 
     #Go to SwitchE
-    Navigation.distance_to_object(tank, 25, "Forward", 10)
+    Navigation.distance_to_object(tank, 35, "Forward", 10)
 
-    #Turn right
     Claw.claw_open(100)
-    sleep(1)
-    tank.turn_degrees(10, 15, True, 1)
-    init.debug_print(tank.gyro.angle)
 
-    Navigation.distance_to_object(tank, 11, "Forward", 10)
+    sleep(2)
+    tank.turn_degrees(10, 15, True, 1)
+    Navigation.distance_to_object(tank, 8, "Forward", 10)
 
     #OG value 5
-    tank.turn_degrees(10, 5, True, 1)
-    #Navigation.gyro_check(tank, 35, 45)
+    tank.turn_degrees(10, 8, True, 1)
     Claw.claw_close(100)
 
 
 
     #Do SwitchE mission
-    lift.on_for_rotations(10, -1)
+    lift.on_for_rotations(-30, 2)
 
+    return
 
-     #try again to please Coach Hari
-    Claw.claw_open(100)
-    tank.turn_degrees(10, 4, True, 1)
-    lift.on_for_rotations(10, 1)
     Claw.claw_close(100)
-    lift.on_for_rotations(10, -1)
-
 
     #Go back to orange planey
-    tank.turn_degrees(25, -5, True, 1)
-    Navigation.distance_to_object(tank, 12, "Backward", 10)
-    tank.turn_degrees(25, -15, True, 1)
-    Navigation.distance_to_object(tank, 20, "Backward", 10)
-    lift.on_for_rotations(35, -1)
-
-    #Turn to Green thing
-    tank.turn_degrees(20, -45, True, 1)
-
-    #Complete Green mission
-    Navigation.distance_to_object(tank, 7, "Forward", 10)
-    lift.on_for_rotations(35, 3)
-    Claw.claw_close(100)
-    lift.on_for_rotations(35, 0.3)
-    tank.turn_degrees(25, -5, True, 1)
-    Navigation.distance_to_object(tank, 20, "Forward", 10)
-
-    #Go back
-    Navigation.distance_to_object(tank, 10, "Backward", 10)
-    return
-
-    tank.turn_degrees(15, 55, True, 1)
-    Navigation.distance_to_object(tank, 9, "Forward", 10)
-    lift.on_for_rotations(10, 1)
-
-
-    return
-
-    #Go back from SwitchE
-    tank.turn_degrees(10, -5, True, 1)
-    tank.turn_degrees(10, -10, True, 1)
+    tank.turn_degrees(5, -5, True, 1)
+    Navigation.distance_to_object(tank, 8, "Backward", 10)
+    tank.turn_degrees(5, -15, True, 1)
     Navigation.distance_to_object(tank, 25, "Backward", 10)
 
+
+    #Turn to Green thing
+    tank.turn_degrees(20, -60, True, 1)
+    Navigation.gyro_check(tank, 5, -25)
+
+    #Complete Green mission
+    Navigation.distance_to_object(tank, 9, "Forward", 10)
+    Claw.claw_close(100)
+    lift.on_for_rotations(35, 1)
+    return
+
+
+
+    return
 
 
 
