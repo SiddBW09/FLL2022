@@ -18,8 +18,8 @@ def tank_init():
     lift = MediumMotor(OUTPUT_D)
 
      # Init Color Sensors
-    colorRight = ColorSensor(INPUT_2)
-    colorLeft = ColorSensor(INPUT_3)
+    #colorRight = ColorSensor(INPUT_2)
+    #colorLeft = ColorSensor(INPUT_3)
 
     # init Gyro Sensor
     my_tank.gyro = GyroSensor(INPUT_1)

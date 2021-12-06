@@ -42,7 +42,7 @@ def init_and_create_movetank():
 
     # init all other ports
     #colorRight = ColorSensor(INPUT_2)
-    colorLeft = ColorSensor(INPUT_3)
+    #colorLeft = ColorSensor(INPUT_3)
 
     tank = MoveTank(OUTPUT_D, OUTPUT_A)
     tank.gyro = GyroSensor(INPUT_1)

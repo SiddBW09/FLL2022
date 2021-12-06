@@ -14,7 +14,6 @@ import Navigation
 
 
 
-
 def BlueInTheCenterRun(tank, Lift, claw):
     x = 0
     init.debug_print("In current run")
@@ -35,9 +34,8 @@ def BlueInTheCenterRun(tank, Lift, claw):
     sleep(0.5)
     MyClaw.claw_open(100)
     my_tank.turn_degrees(10, 90, True, 1)
-    Navigation.gyro_check(my_tank, 10, 90)
     init.debug_print("Turned degrees to pick up brick" + str(my_tank.gyro.angle))
-    my_tank.on_for_rotations(10, 10, -0.1)
+    my_tank.on_for_rotations(15, 15, -0.1)
     #Goes down to pick up blue container
     lift.on_for_rotations(49, 0.7)
     MyClaw.claw.reset()
@@ -47,6 +45,7 @@ def BlueInTheCenterRun(tank, Lift, claw):
         lift.on_for_rotations(49, -3)
         my_tank.turn_degrees(10, -90, True, 1)
         Navigation.gyro_check(my_tank, 10, -90)
+        init.debug_print("Turned degrees to turn to circle" + str(my_tank.gyro.angle))
         Navigation.distance_to_object(my_tank, 43, "Forward", 10 )
         lift.on_for_rotations(49, 3)
         sleep(1)
@@ -73,7 +72,7 @@ def BlueInTheCenterRun(tank, Lift, claw):
 
         init.debug_print("Turned degrees" + str(my_tank.gyro.angle))
         my_tank.gyro.reset()
-        lift.on_for_rotations(30, 0.4)
+        lift.on_for_rotations(30, 0.38)
         Navigation.distance_to_object(my_tank, 43, "Forward", 10)
         return
 
@@ -169,3 +168,4 @@ if __name__ == "__main__":
     #GreenInFirstSlot(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 
     #train(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+
