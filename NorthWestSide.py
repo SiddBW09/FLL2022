@@ -23,6 +23,7 @@ def Coachie_Code():
     start_time = time.time()
 
     lift.on_for_rotations(-10, 0.1)
+    #Lift up at start
 
     # Blue thing mission
     Claw.claw_open(70)
