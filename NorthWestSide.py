@@ -22,11 +22,20 @@ def Coachie_Code():
     tank.gyro.reset()
     start_time = time.time()
 
+    '''
+    Testy Test test
+    for x in range(0, 4):
+        tank.turn_degrees(10, -90, True, 1)
+        Navigation.gyro_check(tank, 10, -90)
+        init.debug_print(tank.gyro.angle)
+    '''
+
+
     lift.on_for_rotations(-10, 0.1)
     #Lift up at start
 
     # Blue thing mission
-    Claw.claw_open(70)
+    Claw.claw_open(100)
 
     #Go to blue mission thing
     Navigation.distance_to_object(tank, 28, "Forward", 20)
@@ -53,8 +62,8 @@ def Coachie_Code():
     Navigation.distance_to_object(tank, 8, "Forward", 10)
 
     #OG value 5
-    tank.turn_degrees(10, 7, True, 1)
-    Claw.claw.on_for_rotations(10, 0.2)
+    tank.turn_degrees(5, 13, True, 1)
+    Claw.claw.on_for_rotations(50, 1)
 
 
     #Do SwitchE mission
@@ -66,15 +75,21 @@ def Coachie_Code():
     tank.turn_degrees(5, -5, True, 1)
     Navigation.distance_to_object(tank, 8, "Backward", 10)
     tank.turn_degrees(5, -15, True, 1)
-    Navigation.distance_to_object(tank, 35, "Backward", 15)
+    Navigation.distance_to_object(tank, 45, "Backward", 10)
 
     #Turn to Cargo Plane
+    lift.on_for_rotations(-20, 3)
     turn_degrees = 0 - tank.gyro.angle
     tank.turn_degrees(5, turn_degrees, True, 1)
     Navigation.gyro_check(tank, 5, 0)
-    Navigation.distance_to_object(tank, 10, "Forward", 15)
+    Navigation.distance_to_object(tank, 10, "Forward", 10)
+    tank.turn_degrees(5, 20, True, 1)
+    sleep(1)
+    sleep(0.5)
+    lift.on_for_rotations(-20, 3)
 
-    return
+    #We need to approach at an angle perpendicular to the handle on the Cargo Plane.
+
     sleep(1)
 
     #Do Mission
