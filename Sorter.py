@@ -29,23 +29,25 @@ def BlueInTheCenterRun(tank, Lift, claw):
     lift.on_for_rotations(30, -1.4)
     lift.reset()
     my_tank.on_for_rotations(10, 10, 0.7)
-    lift.on_for_rotations(10, 0.6)
+    lift.on_for_rotations(10, 0.8)
     my_tank.on_for_rotations(15, 15, -0.7)
     sleep(0.5)
-    MyClaw.claw_open(100)
+    lift.on_for_rotations(10, -0.3)
+    MyClaw.claw_open(150)
     my_tank.turn_degrees(10, 90, True, 1)
     init.debug_print("Turned degrees to pick up brick" + str(my_tank.gyro.angle))
-    my_tank.on_for_rotations(15, 15, -0.1)
+    my_tank.on_for_rotations(15, 15, -0.075 )
     #Goes down to pick up blue container
-    lift.on_for_rotations(49, 0.7)
+    lift.on_for_rotations(10, 0.6)
     MyClaw.claw.reset()
     if MyClaw.claw_close(100):
         init.debug_print("Found blue brick")
-        sleep(0.5)
+        sleep(1)
         lift.on_for_rotations(49, -3)
-        my_tank.turn_degrees(10, -90, True, 1)
-        Navigation.gyro_check(my_tank, 10, -90)
-        init.debug_print("Turned degrees to turn to circle" + str(my_tank.gyro.angle))
+        my_tank.turn_degrees(10, -180, True, 1)
+        Navigation.gyro_check(my_tank, 10, -180)
+
+        init.debug_print("Turned degrees to turn to drop blue" + str(my_tank.gyro.angle))
         Navigation.distance_to_object(my_tank, 43, "Forward", 10 )
         lift.on_for_rotations(49, 3)
         sleep(1)
@@ -55,26 +57,22 @@ def BlueInTheCenterRun(tank, Lift, claw):
         lift.on_for_rotations(35, -0.8)
         #Turn to hit the helicopter
         my_tank.turn_degrees(10, -90, True, 1)
-        #Navigation.gyro_check(my_tank, 10, -95)
-        init.debug_print("Turned degrees" + str(my_tank.gyro.angle))
+        Navigation.gyro_check(my_tank, 10, -90)
+        init.debug_print("Turn to chopper" + str(my_tank.gyro.angle))
         #Navigation.gyro_check(my_tank, 10, -120)
 
-        my_tank.on_for_rotations(15, 15, -0.5)
+        my_tank.on_for_rotations(15, 15, -0.3)
 
-        my_tank.on_for_rotations(15, 15, 0.32)
+        my_tank.on_for_rotations(15, 15, 0.35)
+        return
         #target angle is -275
+
         my_tank.turn_degrees(10, -120, True, 1)
         my_tank.on_for_rotations(15, 15, 0.5)
+        sleep(1)
         turn_angle = -1* (270 + (my_tank.gyro.angle))
         init.debug_print("Turned degrees" + str(turn_angle))
         my_tank.turn_degrees(10, turn_angle, True, 1)
-        #Last left of
-
-        init.debug_print("Turned degrees" + str(my_tank.gyro.angle))
-        my_tank.gyro.reset()
-        lift.on_for_rotations(30, 0.38)
-        Navigation.distance_to_object(my_tank, 43, "Forward", 10)
-        return
 
 def GreenInFirstSlot(tank, lift, claw):
         #init.debug_print("nothing for now")
