@@ -22,31 +22,27 @@ def current_run(tank, Lift, claw):
     lift.reset()
     my_tank.reset()
     #start of code
-    lift.on_for_rotations(30, -1)
-    lift.reset()
+    lift.on_for_rotations(30, -1.5)
     my_tank.on_for_rotations(10, 10, 0.7)
-<<<<<<< HEAD
-    lift.on_for_rotations(10, 0.8)
-=======
-    lift.on_for_rotations(10, 0.65)
->>>>>>> 85e6908f187f39c54de9dfc485b57c649e9dcf7a
+    sleep(0.5)
+    lift.on_for_rotations(10, 0.6)
     my_tank.on_for_rotations(15, 15, -0.7)
     sleep(0.5)
     lift.on_for_rotations(10, -0.3)
     MyClaw.claw_open(150)
     my_tank.turn_degrees(10, 90, True, 1)
     init.debug_print("Turned degrees to pick up brick" + str(my_tank.gyro.angle))
-    my_tank.on_for_rotations(15, 15, -0.075 )
+    my_tank.on_for_rotations(15, 15, -0.07 )
     #Goes down to pick up blue container
-    lift.on_for_rotations(10, 0.6)
+    lift.on_for_rotations(10, 1)
     MyClaw.claw.reset()
     if MyClaw.claw_close(100):
         init.debug_print("Found blue brick")
         sleep(1)
         lift.on_for_rotations(49, -3)
         my_tank.turn_degrees(10, -180, True, 1)
-        Navigation.gyro_check(my_tank, 10, -180)
 
+        Navigation.gyro_check(my_tank, 10, -90)
         init.debug_print("Turned degrees to turn to drop blue" + str(my_tank.gyro.angle))
         Navigation.distance_to_object(my_tank, 43, "Forward", 10 )
         lift.on_for_rotations(49, 3)
@@ -56,19 +52,100 @@ def current_run(tank, Lift, claw):
         lift.on_for_rotations(35, -0.8)
         #Turn to hit the helicopter
         my_tank.turn_degrees(10, -90, True, 1)
-        Navigation.gyro_check(my_tank, 10, -90)
         init.debug_print("Turn to chopper" + str(my_tank.gyro.angle))
         #Navigation.gyro_check(my_tank, 10, -120)
 
-        my_tank.on_for_rotations(15, 15, -0.3)
+        my_tank.on_for_rotations(15, 15, -0.195)
+
 
         my_tank.on_for_rotations(15, 15, 0.35)
-        return
         #target angle is -275
 
-        my_tank.turn_degrees(10, -120, True, 1)
+        my_tank.turn_degrees(10, -90, True, 1)
+        return
         my_tank.on_for_rotations(15, 15, 0.5)
+
+        turn_angle = -1* (270 + (my_tank.gyro.angle))
+        init.debug_print("Turned degrees" + str(turn_angle))
+        my_tank.turn_degrees(10, turn_angle, True, 1)
+
+
+def blue_two_slot_one(tank, Lift, claw):
+    x = 0
+    init.debug_print("In current run")
+    my_tank = tank
+    lift = Lift
+    MyClaw = claw
+    MyClaw.claw.reset()
+    lift.reset()
+    my_tank.reset()
+    #start of code
+    lift.on_for_rotations(30, -1.5)
+    my_tank.on_for_rotations(10, 10, 0.7)
+    sleep(0.5)
+    lift.on_for_rotations(10, 0.6)
+    my_tank.on_for_rotations(15, 15, -0.7)
+    sleep(0.5)
+    lift.on_for_rotations(10, -0.3)
+    MyClaw.claw_open(150)
+    my_tank.turn_degrees(10, 90, True, 1)
+    init.debug_print("Turned degrees to pick up brick" + str(my_tank.gyro.angle))
+    my_tank.on_for_rotations(15, 15, -0.07 )
+    #Goes down to pick up blue container
+    lift.on_for_rotations(10, 1)
+    MyClaw.claw.reset()
+    if MyClaw.claw_close(100):
+        init.debug_print("Found blue brick")
         sleep(1)
+        lift.on_for_rotations(49, -3)
+
+        Navigation.gyro_check(my_tank, 10, 90)
+        init.debug_print("Turned degrees to turn to drop blue" + str(my_tank.gyro.angle))
+        Navigation.distance_to_object(my_tank, 35, "Backward", 10)
+
+        #Turn to Helicopter
+        tank.turn_degrees(10, 50)
+        Navigation.distance_to_object(tank, 7.5, "Backward")
+        Navigation.distance_to_object(tank, 7.5, "Forward")
+
+        #Turn to Blue Circle
+        tank.turn_degrees(10, 90)
+        Navigation.distance_to_object(tank, 3, "Forward")
+        sleep(0.5)
+        lift.reset()
+        lift.on_for_rotations(49, 1.7)
+        sleep(0.5)
+        MyClaw.claw_open(100)
+        sleep(0.5)
+        lift.on_for_rotations(49, -1.7)
+        tank.turn_degrees(10, -90)
+        init.debug_print("After blue dropped" + str(my_tank.gyro.angle))
+        Navigation.distance_to_object(tank, 12.5, "Forward")
+        tank.turn_degrees(10, -50)
+        Navigation.gyro_check(tank, 19, 90)
+        init.debug_print("Turned" + str(my_tank.gyro.angle))
+
+
+        return
+        lift.on_for_rotations(49, 3)
+        sleep(1)
+        MyClaw.claw_open(100)
+        sleep(0.5)
+        lift.on_for_rotations(35, -0.8)
+        #Turn to hit the helicopter
+        my_tank.turn_degrees(10, -90, True, 1)
+        init.debug_print("Turn to chopper" + str(my_tank.gyro.angle))
+        #Navigation.gyro_check(my_tank, 10, -120)
+
+        my_tank.on_for_rotations(15, 15, -0.195)
+
+
+        my_tank.on_for_rotations(15, 15, 0.35)
+        #target angle is -275
+
+        my_tank.turn_degrees(10, 40, True, 1)
+        my_tank.on_for_rotations(15, 15, 0.5)
+
         turn_angle = -1* (270 + (my_tank.gyro.angle))
         init.debug_print("Turned degrees" + str(turn_angle))
         my_tank.turn_degrees(10, turn_angle, True, 1)
@@ -82,6 +159,16 @@ Navigation.tank_init()
 MediumMotor(OUTPUT_D)
 claw.Claw()
 
+def green_brick_slotthree_one(tank, lift, claw):
+     #init stuff
+    init.debug_print("In train")
+    my_tank = tank
+    lift = Lift
+    MyClaw = claw
+    MyClaw.claw.reset()
+    #start of code
+    Navigation.distance_to_object(my_tank, 50, "Forward", 10)
+
 def train(tank, Lift, claw):
     #init stuff
     init.debug_print("In train")
@@ -90,18 +177,19 @@ def train(tank, Lift, claw):
     MyClaw = claw
     MyClaw.claw.reset()
     #lift.on_for_rotations(49, -3)
-    '''my_tank.turn_degrees(10, 45, True, 1)
+    my_tank.turn_degrees(10, 45, True, 1)
+    return
     my_tank.on_for_rotations(20,20,0.2)
     my_tank.turn_degrees(10, -55, True, 1)
     sleep(1)
-    """my_tank.turn_degrees(10, 45, True, 1)
+    my_tank.turn_degrees(10, 45, True, 1)
     my_tank.on_for_rotations(20, 20, 0.4)
     my_tank.turn_degrees(10, -45, True, 1)
     my_tank.on_for_rotations(20,20,-0.02)
-    sleep(1)"""
+    sleep(1)
     my_tank.on_for_rotations(20, 20, 0.07)
     my_tank.turn_degrees(10, 90, True, 1)
-    init.debug_print("Turned degrees" + str(my_tank.gyro.angle))'''
+    init.debug_print("Turned degrees" + str(my_tank.gyro.angle))
     #init gyro var
     angle = my_tank.gyro.angle
     #compensate code
@@ -128,7 +216,7 @@ def train(tank, Lift, claw):
     sleep(1)
     MyClaw.claw_open(100)
     lift.on_for_rotations(10, -1)
-    return
+
 
 
 def SlotToCircle(x):
@@ -209,9 +297,10 @@ claw.claw_close(100)
 sleep(0.5)
 lift.on_for_rotations(49, -3)'''
 
-'''if __name__ == "__main__":
+if __name__ == "__main__":
     #train()
-    current_run()
-#train()'''
-current_run(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-train(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+
+
+
+
