@@ -213,7 +213,7 @@ def gyro_check (tank, angle):
         tank.turn_degrees(10, offset2, True, 1)
         init.debug_print("Final angle turned: " + str(tank.gyro.angle))
 
-def truck_3 ():
+def truck_3 (): #Working, final version.
     #Initializing tank
     tank = Navigation.tank_init()
     lift = MediumMotor(OUTPUT_D)
@@ -244,7 +244,7 @@ def truck_3 ():
     #Navigation.distance_to_object(tank, 11, "Backward")
     forward_distance = 26/25.6353961
     tank.on_for_rotations(-10, -10, forward_distance)
-    init.debug_print("The gyro angle is: " + str(tank.gyro.angle))
+    init.debug_print("The gyro angle after forward part 1: " + str(tank.gyro.angle))
     gyro_check(tank, 90)
     tank.on_for_rotations(-10, -10, 27.35/25.6353961)
     tank.on_for_rotations(10, 10, 19/25.6353961)
