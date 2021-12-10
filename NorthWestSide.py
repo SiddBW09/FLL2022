@@ -22,16 +22,9 @@ def Coachie_Code():
     tank.gyro.reset()
     start_time = time.time()
 
-    '''
-    Testy Test test
-    for x in range(0, 4):
-        tank.turn_degrees(10, -90, True, 1)
-        Navigation.gyro_check(tank, 10, -90)
-        init.debug_print(tank.gyro.angle)
-    '''
 
-    lift.on_for_rotations(-10, 0.1)
     #Lift up at start
+    lift.on_for_rotations(-10, 0.1)
 
     # Blue thing mission
     Claw.claw_open(100)
@@ -42,63 +35,68 @@ def Coachie_Code():
     tank.on_for_rotations(0, 10, 0.8)
     tank.on_for_rotations(0, -10, 0.8)
     Navigation.gyro_check(tank, 5, 0)
-    init.debug_print(tank.gyro.angle)
 
+
+    Navigation.distance_to_object(tank, 27, "Forward", 10)
+
+    #Turn and Go to SwitchE
+    tank.turn_degrees(10, 40, True, 1)
+    Navigation.gyro_check(tank, 5, 40)
     Navigation.distance_to_object(tank, 25, "Forward", 10)
+    Claw.claw_open(100)
 
-    #Do the blue mission thing
-    tank.turn_degrees(10, 35, True, 1)
-
-
-    Navigation.gyro_check(tank, 5, 35)
-
-    #Go to SwitchE
-    Navigation.distance_to_object(tank, 35, "Forward", 10)
-
-    Claw.claw_open(30)
-
-    tank.turn_degrees(10, 15, True, 1)
-    Navigation.distance_to_object(tank, 8, "Forward", 10)
-
-    #OG value 5
-    Navigation.gyro_check(tank, 5, 65)
-    Claw.claw.on_for_rotations(50, 1)
-
-
-    #Do SwitchE mission
-    lift.on_for_rotations(-50, 3)
+    #Lift and Do SwitchE
+    lift.on_for_rotations(-100, 1)
+    tank.turn_degrees(10, 5, True, 1)
+    Navigation.distance_to_object(tank, 10, "Forward", 10)
+    Navigation.gyro_check(tank, 5, 49)
+    lift.on_for_rotations(100, 1)
     Claw.claw_close(100)
+    lift.on_for_rotations(-30, 6)
+    Claw.claw_close(100)
+
+
+
 
 
     #Go back to home
-    tank.turn_degrees(5, -5, True, 1)
-    Navigation.distance_to_object(tank, 8, "Backward", 10)
-    tank.turn_degrees(5, -15, True, 1)
-    Navigation.distance_to_object(tank, 60, "Backward", 10)
-    Navigation.gyro_check(tank, 5, 35)
+    Navigation.distance_to_object(tank, 50, "Backward", 10)
+    Navigation.gyro_check(tank, 5, 40)
 
-    #Turn to 0
+    #Turn and go at 0
     tank.turn_degrees(10, -35, True, 1)
     Navigation.gyro_check(tank, 5, 0)
 
-    #Go at 0
-    Navigation.distance_to_object(tank, 26, "Forward", 10)
 
-    #Turn to perpendicular and approach
-    tank.turn_degrees(10, 47, True, 1)
-    #Navigation.distance_to_object(tank, 10, "Forward", 10)
+    #GO at 0
+    Navigation.distance_to_object(tank, 22, "Forward", 10)
 
-    #Go to Cargo Plane and do mission
-    Navigation.distance_to_object(tank, 6, "Forward", 10)
-    Claw.claw_open(100)
+    return
+
+
+
+    #Turn perpendicular to Cargo Plane
+    tank.turn_degrees(10, 36, True, 1)
+    Navigation.gyro_check(tank, 5, 36)
+
+
+    lift.on_for_rotations(100, 2)
+    sleep(1)
+    lift.on_for_rotations(100, 4)
+
+    return
+
+    lift.on_for_rotations(-100, 6)
+    tank.turn_degrees(10, 25, True, 1)
+    Navigation.distance_to_object(tank, 10, "Forward")
     lift.on_for_rotations(100, 6)
-    Claw.claw_close(100)
-    tank.turn_degrees(10, 27)
-    Navigation.gyro_check(tank, 10, 27)
-    lift.on_for_rotations(-30, 6)
-    Claw.claw_open(100)
-    Navigation.distance_to_object(tank, 5, "Forward", 10)
-    lift.on_for_rotations(30, 6)
+    Navigation.distance_to_object(tank, 12, "Backward")
+    lift.on_for_rotations(100, 6)
+
+
+    return
+
+
 
 
 #Execute Northide Missions
