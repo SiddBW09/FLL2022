@@ -70,7 +70,6 @@ def current_run(tank, Lift, claw):
         init.debug_print("Turned degrees" + str(turn_angle))
         my_tank.turn_degrees(10, turn_angle, True, 1)
 
-
 def blue_two_slot_one(tank, Lift, claw):
     x = 0
     init.debug_print("In current run")
@@ -80,6 +79,7 @@ def blue_two_slot_one(tank, Lift, claw):
     MyClaw.claw.reset()
     lift.reset()
     my_tank.reset()
+    start_time = time.time()
     #start of code
     lift.on_for_rotations(30, -1.5)
     my_tank.on_for_rotations(10, 10, 0.7)
@@ -108,8 +108,7 @@ def blue_two_slot_one(tank, Lift, claw):
         tank.turn_degrees(10, 50, True, 1)
         Navigation.gyro_check(my_tank, 10, 140)
         init.debug_print("Chopper turn" + str(my_tank.gyro.angle))
-        Navigation.distance_to_object(tank, 8, "Backward")
-        Navigation.distance_to_object(tank, 9, "Forward")
+        Navigation.distance_to_object(tank, 1, "Forward")
         init.debug_print("Chopper turn_two" + str(my_tank.gyro.angle))
 
 
@@ -128,12 +127,10 @@ def blue_two_slot_one(tank, Lift, claw):
         lift.on_for_rotations(49, -1.7)
         Navigation.distance_to_object(tank, 15, "Backward")
         Navigation.gyro_check(tank, 10, 270)
+        init.debug_print("Final turn " + str(my_tank.gyro.angle))
         tank.gyro.reset()
-        return
-        tank.turn_degrees(10, -180, True, 1)
-        Navigation.gyro_check(tank, 10, 90)
-        init.debug_print("Alligning turn" + str(my_tank.gyro.angle))
-        tank.gyro.reset()
+        init.debug_print("TIME: "+str(time.time()-start_time))
+
 
         return
 
@@ -168,6 +165,7 @@ claw.Claw()
 
 def going_to_green(tank, lift, claw, slot=3, row=1):
     #start of code
+    start_time2 = time.time()
     lift.on_for_rotations(49, 2)
     lift.reset()
     if slot == 3:
@@ -176,12 +174,12 @@ def going_to_green(tank, lift, claw, slot=3, row=1):
         init.debug_print("Going to green" + str(tank.gyro.angle))
         Navigation.distance_to_object(tank, 10, "Forward")
         tank.turn_degrees(10, -45, True, 1)
-        Navigation.gyro_check(tank, 10, -180)
+
         init.debug_print("Going to forward to green" + str(tank.gyro.angle))
         claw.claw_open(100)
         lift.on_for_rotations(49, -2)
         Navigation.distance_to_object(tank, 25, "Forward")
-        Navigation.gyro_check(tank, 10, -180)
+
         lift.reset()
         lift.on_for_rotations(49, 1.8)
         sleep(1)
@@ -204,6 +202,7 @@ def going_to_green(tank, lift, claw, slot=3, row=1):
         lift.on_for_rotations(49, -2)
         Navigation.distance_to_object(tank, 5, "Backward")
         Navigation.gyro_check(tank, 10, -90)
+        init.debug_print("TIME: "+str(time.time()-start_time2))
         tank.gyro.reset()
 
 
@@ -378,11 +377,11 @@ sleep(0.5)
 lift.on_for_rotations(49, -3)'''
 
 if __name__ == "__main__":
-    #train()
-    '''blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())'''
-    '''going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())'''
+    blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    sleep(10)
+    going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     '''test_claw(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())'''
-    end_game(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    '''end_game(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())'''
 
 
 

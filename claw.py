@@ -31,7 +31,7 @@ class Claw():
         init.debug_print(i)
         self.claw.on_for_rotations(10, 0.02, brake = True)
 
-        if i > 5:
+        if i > 6:
             print("Did not catch brick")
             return False
 
