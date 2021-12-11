@@ -23,6 +23,7 @@ def Coachie_Code():
     start_time = time.time()
 
 
+
     #Lift up at start
     lift.on_for_rotations(-10, 0.1)
 
@@ -42,52 +43,49 @@ def Coachie_Code():
     #Turn and Go to SwitchE
     tank.turn_degrees(10, 40, True, 1)
     Navigation.gyro_check(tank, 5, 40)
-    Navigation.distance_to_object(tank, 25, "Forward", 10)
+    Navigation.distance_to_object(tank, 27, "Forward", 10)
     Claw.claw_open(100)
 
-    #Lift and Do SwitchE
+    return
+
+    #Lift
     lift.on_for_rotations(-100, 1)
-    tank.turn_degrees(10, 5, True, 1)
+    tank.turn_degrees(10, 9, True, 1)
+
     Navigation.distance_to_object(tank, 10, "Forward", 10)
-    Navigation.gyro_check(tank, 5, 49)
+    Navigation.gyro_check(tank, 10, 60)
+
     lift.on_for_rotations(100, 1)
     Claw.claw_close(100)
     lift.on_for_rotations(-30, 6)
     Claw.claw_close(100)
-
-
-
-
-
-    #Go back to home
-    Navigation.distance_to_object(tank, 50, "Backward", 10)
     Navigation.gyro_check(tank, 5, 40)
 
-    #Turn and go at 0
+
+    #Go back to home (OG val 50)
+    Navigation.distance_to_object(tank, 60, "Backward", 10)
+    Navigation.gyro_check(tank, 5, 40)
+
+    #Turn to 0
     tank.turn_degrees(10, -35, True, 1)
     Navigation.gyro_check(tank, 5, 0)
 
 
     #GO at 0
-    Navigation.distance_to_object(tank, 22, "Forward", 10)
-
-    return
-
-
+    Navigation.distance_to_object(tank, 29, "Forward", 10)
 
     #Turn perpendicular to Cargo Plane
-    tank.turn_degrees(10, 36, True, 1)
+    tank.turn_degrees(10, 34, True, 1)
     Navigation.gyro_check(tank, 5, 36)
-
 
     lift.on_for_rotations(100, 2)
     sleep(1)
-    lift.on_for_rotations(100, 4)
+    lift.on_for_rotations(100, 4, brake = True)
+    sleep(1)
 
-    return
 
     lift.on_for_rotations(-100, 6)
-    tank.turn_degrees(10, 25, True, 1)
+    tank.turn_degrees(10, 20, True, 1)
     Navigation.distance_to_object(tank, 10, "Forward")
     lift.on_for_rotations(100, 6)
     Navigation.distance_to_object(tank, 12, "Backward")
