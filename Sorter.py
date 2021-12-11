@@ -6,6 +6,7 @@ from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 from ev3dev2.button import Button
 from time import sleep
+import time
 from ev3dev2.sound import Sound
 import init
 import claw
@@ -167,6 +168,8 @@ claw.Claw()
 
 def going_to_green(tank, lift, claw, slot=3, row=1):
     #start of code
+    lift.on_for_rotations(49, 2)
+    lift.reset()
     if slot == 3:
         x = 0
         tank.turn_degrees(10, -135, True, 1)
@@ -179,17 +182,45 @@ def going_to_green(tank, lift, claw, slot=3, row=1):
         lift.on_for_rotations(49, -2)
         Navigation.distance_to_object(tank, 25, "Forward")
         Navigation.gyro_check(tank, 10, -180)
+        lift.reset()
         lift.on_for_rotations(49, 1.8)
         sleep(1)
         claw.claw_close(100)
         sleep(1)
         lift.on_for_rotations(49, -2)
-        sleep(5)
+        sleep(0.5)
+        Navigation.distance_to_object(tank, 10, "Backward")
+        init.debug_print("Angle check" + str(tank.gyro.angle))
+        tank.turn_degrees(10, 90, True, 1)
+        lift.on_for_rotations(49, 1.1)
+        sleep(0.5)
+        Navigation.distance_to_object(tank, 15, "Forward")
+        sleep(0.5)
+        Navigation.distance_to_object(tank, 13, "Backward")
+        sleep(0.5)
+        lift.on_for_rotations(49, 1)
+        sleep(0.5)
+        claw.claw_open(100)
+        lift.on_for_rotations(49, -2)
+        Navigation.distance_to_object(tank, 5, "Backward")
+        Navigation.gyro_check(tank, 10, -90)
+        tank.gyro.reset()
 
 
 
 
 
+
+def test_claw(tank, lift, claw):
+    lift.on_for_rotations(49, 2)
+    sleep(1)
+    lift.reset()
+    sleep(1)
+    lift.on_for_rotations(49, -0.25)
+    sleep(1)
+    claw.claw_close(100)
+    sleep(1)
+    lift.on_for_rotations(49, -1.5)
 
 
 
@@ -295,7 +326,30 @@ def second_check():
     MyClaw.claw_close(100)
     lift.on_for_rotations(49, -3)
 
+def end_game(tank, Lift, claw):
+    init.debug_print("we are in the endgame now")
+    my_tank = tank
+    lift = Lift
+    MyClaw = claw
+    start_time = time.time()
+    speed1 = 30
+    tank.turn_degrees(10,90,True,1)
+    Navigation.gyro_check(my_tank, 10, 90)
+    tank.on_for_rotations(speed1,speed1,20 / 25.13)
+    #Navigation.distance_to_object(my_tank, 20, "Forward",speed=10)
+    tank.turn_degrees(10,-90,True,1)
+    Navigation.gyro_check(my_tank, 10, 0)
+    tank.on_for_rotations(speed1,speed1,70 / 25.13)
+    #Navigation.distance_to_object(my_tank, 70, "Forward",speed=50)
+    tank.turn_degrees(10,90,True,1)
+    Navigation.gyro_check(my_tank, 10, 90)
+    tank.on_for_rotations(speed1,speed1,40 / 25.13)
+    #Navigation.distance_to_object(my_tank, 31, "Forward",speed=50)
+    tank.turn_degrees(10,-90,True,1)
+    Navigation.gyro_check(my_tank, 10, 0)
+    Navigation.distance_to_object(my_tank, 18, "Forward", speed=5)
 
+    init.debug_print("TIME: "+str(time.time()-start_time))
 #
 '''claw.claw_open(100)
 lift.on_for_rotations(49, 2.5)
@@ -325,8 +379,10 @@ lift.on_for_rotations(49, -3)'''
 
 if __name__ == "__main__":
     #train()
-    #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    '''blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())'''
+    '''going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())'''
+    '''test_claw(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())'''
+    end_game(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 
 
 

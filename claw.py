@@ -15,6 +15,7 @@ class Claw():
         self.claw.reset()
         self.claw.on_for_rotations(-30, 0.1)
 
+
     def claw_close(self, percent):
         i = 0
         self.claw.reset()
@@ -28,8 +29,9 @@ class Claw():
 
             i += 1
         init.debug_print(i)
+        self.claw.on_for_rotations(10, 0.02, brake = True)
 
-        if i > 10:
+        if i > 5:
             print("Did not catch brick")
             return False
 
