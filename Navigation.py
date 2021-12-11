@@ -161,6 +161,11 @@ def gyro_check (tank, speed, angle):
             tank.turn_degrees(speed, offset1, True, 1)
             init.debug_print("Final angle turned: " + str(tank.gyro.angle))
 
+def new_move_incm(tank, speed, distance):
+
+    #Number of wheel rotations needed to get there
+    number_of_wheel_rotations = distance / 25.6353961
+    tank.on_for_rotations(speed, speed, distance / 25.6353961)
 
 
 

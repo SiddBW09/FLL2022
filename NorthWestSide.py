@@ -15,14 +15,15 @@ import Navigation
 import init
 import claw
 
+
+
+
 def Coachie_Code():
     tank = Navigation.tank_init()
     lift = MediumMotor(OUTPUT_D)
     Claw = claw.Claw()
     tank.gyro.reset()
     start_time = time.time()
-
-
 
     #Lift up at start
     lift.on_for_rotations(-10, 0.1)
