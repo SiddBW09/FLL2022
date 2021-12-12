@@ -41,27 +41,59 @@ def main():
         if state:
             pass
         else:
-            NorthWestSide.Coachie_Code()
+            NorthWestSide.Coachie_Code(tank,lift,Claw)
 
     def down(state):
         if state:
             pass
         else:
-            pass
+            tank.turn_degrees(10,90)
+            print(tank.gyro.angle)
+            sleep(2)
+            tank.turn_degrees(10,90)
+            print(tank.gyro.angle)
+            sleep(2)
+            tank.turn_degrees(10,90)
+            print(tank.gyro.angle)
+            sleep(2)
+            tank.turn_degrees(10,90)
+            print(tank.gyro.angle)
+            sleep(2)
 
     def enter(state):
         if state:
             pass
         else:
-            pass
-
+            for i in range(3):
+                tank.on_for_rotations(15, 15, 1)
+                tank.on_for_rotations(15, 15, -1)
+            for i in range(3):
+                lift.on_for_rotations(-20,4)
+                lift.on_for_rotations(20,4)
+            for i in range(3):
+                Claw.claw_close(100)
+                Claw.claw_open(100)
+            tank.reset()
+            lift.reset()
+            Claw.claw.reset()
 
     # Menu items
     #list = init.main_menu
 
     # Load the main menu on the console
     #message.display_menu(list)
-    init.debug_print("main nothing to do")
+    btn.on_left = left
+    btn.on_right = right
+    btn.on_up = up
+    btn.on_down = down
+    btn.on_enter = enter
+
+    # This loop checks button states continuously (every 0.01s).
+    # If the new state differs from the old state then the appropriate
+    # button event handlers are called.
+    while True:
+        btn.process()
+        sleep(0.01)
 
 if __name__ == "__main__":
     main()
