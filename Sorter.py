@@ -11,6 +11,7 @@ from ev3dev2.sound import Sound
 import init
 import claw
 import Navigation
+import truck
 
 
 def current_run(tank, Lift, claw):
@@ -395,13 +396,20 @@ def end_game(tank, lift, claw):
 
     init.debug_print("TIME: "+str(time.time()-start_time))
 
+def completeRun (tank, lift, claw):
+    truck.Innovate1(tank, lift, claw)
+    blue_two_slot_one(tank, lift, claw)
+    going_to_green(tank, lift, claw)
+    end_game(tank, lift, claw)
+
+
 
 if __name__ == "__main__":
 
-
-    blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    end_game(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #end_game(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #test_claw(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #SlotToCircle(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 

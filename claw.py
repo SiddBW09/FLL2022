@@ -13,7 +13,7 @@ class Claw():
 
     def claw_open(self, percent):
         self.claw.reset()
-        self.claw.on_for_rotations(-30, 0.2)
+        self.claw.on_for_rotations(-30, 0.15)
         self.claw.reset()
 
 
