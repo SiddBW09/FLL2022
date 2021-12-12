@@ -64,10 +64,15 @@ def Coachie_Code(tank, lift, Claw):
     #Turn to 0
     tank.turn_degrees(10, -20, True, 1)
     sleep(1)
-    Navigation.gyro_check(tank, 5, 7)
+    #Navigation.gyro_check(tank, 5, 7)
 
 
     lift.reset()
+    lift.on_for_rotations(60, 8)
+    lift.reset()
+    lift.on_for_rotations(-60, 0.6)
+    lift.reset()
+
     lift.on_for_rotations(60, 8)
     lift.reset()
     lift.on_for_rotations(60, -8)
@@ -93,30 +98,8 @@ def Coachie_Code(tank, lift, Claw):
     #init.debug_print(int(time.time()-start_time))
     endtime = time.time()-start_time
     init.debug_print("TIME: "+str(endtime))
-    return
-
-
-    #GO at 0
-    Navigation.distance_to_object(tank, 29, "Forward", 10)
-    lift.on_for_rotations(10, 0.2)
-
-    #Turn perpendicular to Cargo Plane
-    tank.turn_degrees(10, 35, True, 1)
-    Navigation.gyro_check(tank, 5, 35)
-
-    lift.on_for_rotations(100, 6, brake = True)
-    lift.on_for_rotations(100, 6, brake = True)
-    sleep(1)
-
-
-    lift.on_for_rotations(-100, 6)
-    tank.turn_degrees(10, 20, True, 1)
-    Navigation.distance_to_object(tank, 10, "Forward")
-    lift.on_for_rotations(100, 6)
-    Navigation.distance_to_object(tank, 10, "Backward")
-    lift.on_for_rotations(80, -6)
-
-
+    lift.reset()
+    Claw.claw.reset()
     return
 
 

@@ -46,6 +46,7 @@ def main():
         if state:
             pass
         else:
+            tank.gyro.reset()
             tank.turn_degrees(10,90)
             print(tank.gyro.angle)
             sleep(2)
