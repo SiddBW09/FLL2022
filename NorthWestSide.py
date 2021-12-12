@@ -26,62 +26,86 @@ def Coachie_Code():
     start_time = time.time()
 
     #Lift up at start
-    lift.on_for_rotations(-10, 0.1)
+    lift.on_for_rotations(10, 3)
+    lift.reset()
 
-    # Blue thing mission
-    Claw.claw_open(100)
 
     #Go to blue mission thing
-    Navigation.distance_to_object(tank, 30, "Forward", 20)
-
-    tank.on_for_rotations(0, 10, 0.8)
-    tank.on_for_rotations(0, -10, 0.8)
+    Navigation.new_move_incm(tank, 32, 30)
+    tank.on_for_rotations(0, 30, 0.8)
+    tank.on_for_rotations(0, -30, 0.8)
     Navigation.gyro_check(tank, 5, 0)
 
 
-    Navigation.distance_to_object(tank, 27, "Forward", 10)
+    #Go forward more
+    Navigation.new_move_incm(tank, 34, 28)
+
 
     #Turn and Go to SwitchE
     tank.turn_degrees(10, 40, True, 1)
     Navigation.gyro_check(tank, 5, 40)
-    Navigation.distance_to_object(tank, 27, "Forward", 10)
-    Claw.claw_open(100)
 
-    return
-
-    #Lift
-    lift.on_for_rotations(-100, 1)
-    tank.turn_degrees(10, 9, True, 1)
-
-    Navigation.distance_to_object(tank, 10, "Forward", 10)
-    Navigation.gyro_check(tank, 10, 60)
-
-    lift.on_for_rotations(100, 1)
-    Claw.claw_close(100)
-    lift.on_for_rotations(-30, 6)
-    Claw.claw_close(100)
+    Navigation.new_move_incm(tank, 30, 15)
     Navigation.gyro_check(tank, 5, 40)
+    Navigation.distance_to_object(tank, 12, "Forward")
 
 
-    #Go back to home (OG val 50)
-    Navigation.distance_to_object(tank, 60, "Backward", 10)
+    Navigation.distance_to_object(tank, 6.5, "Forward", 10)
+    Navigation.gyro_check(tank, 10, 50)
+
+    lift.on_for_rotations(-70, 5)
+
+
+
+    #Go back to home
+    Navigation.new_move_incm(tank, -30, 37)
     Navigation.gyro_check(tank, 5, 40)
 
     #Turn to 0
-    tank.turn_degrees(10, -35, True, 1)
-    Navigation.gyro_check(tank, 5, 0)
+    tank.turn_degrees(10, -20, True, 1)
+    sleep(1)
+    Navigation.gyro_check(tank, 5, 7)
+
+
+    lift.reset()
+    lift.on_for_rotations(60, 8)
+    lift.reset()
+    lift.on_for_rotations(60, -8)
+
+    #Do green cargo mission
+    #OG val 3
+    Navigation.distance_to_object(tank, 2, "Forward")
+    tank.on_for_rotations(10, 0, .35)
+
+    #Go forward and grab grey cargo
+    Navigation.distance_to_object(tank, 10, "Forward")
+    lift.on_for_rotations(60, 8)
+
+    #Go back to put grey cargo in grey circle
+
+    Navigation.distance_to_object(tank, 10, "Backward")
+    #Navigation.new_move_incm(tank, -25, 10)
+    lift.on_for_rotations(60, -8)
+    #Navigation.distance_to_object(tank, 10, "Backward")
+    Navigation.new_move_incm(tank, -100, 40)
+    tank.turn_degrees(10, -45, True, 1)
+
+    #init.debug_print(int(time.time()-start_time))
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
+    return
 
 
     #GO at 0
     Navigation.distance_to_object(tank, 29, "Forward", 10)
+    lift.on_for_rotations(10, 0.2)
 
     #Turn perpendicular to Cargo Plane
-    tank.turn_degrees(10, 34, True, 1)
-    Navigation.gyro_check(tank, 5, 36)
+    tank.turn_degrees(10, 35, True, 1)
+    Navigation.gyro_check(tank, 5, 35)
 
-    lift.on_for_rotations(100, 2)
-    sleep(1)
-    lift.on_for_rotations(100, 4, brake = True)
+    lift.on_for_rotations(100, 6, brake = True)
+    lift.on_for_rotations(100, 6, brake = True)
     sleep(1)
 
 
@@ -89,8 +113,8 @@ def Coachie_Code():
     tank.turn_degrees(10, 20, True, 1)
     Navigation.distance_to_object(tank, 10, "Forward")
     lift.on_for_rotations(100, 6)
-    Navigation.distance_to_object(tank, 12, "Backward")
-    lift.on_for_rotations(100, 6)
+    Navigation.distance_to_object(tank, 10, "Backward")
+    lift.on_for_rotations(80, -6)
 
 
     return
@@ -100,5 +124,4 @@ def Coachie_Code():
 
 #Execute Northide Missions
 if __name__ == "__main__":
-    #Sahana_And_Pranav_Code()
     Coachie_Code()

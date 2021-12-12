@@ -138,10 +138,6 @@ def Innovate1(tank, lift, claw):
     Navigation.gyro_check(tank, 5, 180)
     Navigation.distance_to_object(tank, 21.5, "Forward")
 
-    return
-
-    #Go to logo
-    #Navigation.distance_to_object(tank, 45, "Backward", 10)
 
     endtime = time.time()-start_time
     init.debug_print("TIME: "+str(endtime))
@@ -360,10 +356,9 @@ def gyro_check (tank, angle):
         tank.turn_degrees(10, offset2, True, 1)
         init.debug_print("Final angle turned: " + str(tank.gyro.angle))
 
-def truck_3 (): #Working, final version.
+def truck_3(tank): #Working, final version.
     #Initializing tank
-    tank = Navigation.tank_init()
-    lift = MediumMotor(OUTPUT_D)
+    #tank = Navigation.tank_init()
     tank.gyro.reset()
     Claw = claw.Claw()
     start_time = time.time()
@@ -419,7 +414,8 @@ def truck_3 (): #Working, final version.
     gyro_check(tank, 90)
 
 if __name__ == "__main__":
-    Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    truck_3(Navigation.tank_init())
 
 '''The code below is our old code, in case we need it:
 Navigation.distance_to_object(tank, 50, "Backward") #Going forward from home. [This and the code below is all of the old code:]
