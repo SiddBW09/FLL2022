@@ -357,11 +357,11 @@ def gyro_check (tank, angle):
         tank.turn_degrees(10, offset2, True, 1)
         init.debug_print("Final angle turned: " + str(tank.gyro.angle))
 
-def truck_3(tank): #Working, final version.
+def truck_3(tank, Claw): #Working, final version.
     #Initializing tank
     #tank = Navigation.tank_init()
     tank.gyro.reset()
-    Claw = claw.Claw()
+    #Claw = claw.Claw()
     start_time = time.time()
 
     #Gyro Testing Sequence
@@ -415,8 +415,8 @@ def truck_3(tank): #Working, final version.
     gyro_check(tank, 90)
 
 if __name__ == "__main__":
-    Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    #truck_3(Navigation.tank_init())
+    #Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    truck_3(Navigation.tank_init(), claw.Claw())
 
 '''The code below is our old code, in case we need it:
 Navigation.distance_to_object(tank, 50, "Backward") #Going forward from home. [This and the code below is all of the old code:]

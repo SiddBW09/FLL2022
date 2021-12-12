@@ -18,10 +18,10 @@ import claw
 
 
 
-def Coachie_Code():
-    tank = Navigation.tank_init()
-    lift = MediumMotor(OUTPUT_D)
-    Claw = claw.Claw()
+def Coachie_Code(tank, lift, Claw):
+    #tank = Navigation.tank_init()
+    #lift = MediumMotor(OUTPUT_D)
+    #Claw = claw.Claw()
     tank.gyro.reset()
     start_time = time.time()
 
@@ -124,4 +124,4 @@ def Coachie_Code():
 
 #Execute Northide Missions
 if __name__ == "__main__":
-    Coachie_Code()
+    Coachie_Code(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
