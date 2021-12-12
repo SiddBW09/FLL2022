@@ -81,6 +81,7 @@ def blue_two_slot_one(tank, lift, claw):
     claw.claw.reset()
     lift.reset()
     tank.reset()
+    tank.gyro.reset()
     claw.claw_close(100)
     start_time = time.time()
     #start of code

@@ -389,7 +389,7 @@ def truck_3(tank, lift, Claw): #Working, final version.
     tank.on_for_rotations(-10, -10, forward_distance)
     init.debug_print("The gyro angle after forward part 1: " + str(tank.gyro.angle))
     gyro_check(tank, 90)
-    tank.on_for_rotations(-10, -10, 26.35/25.6353961)
+    tank.on_for_rotations(-10, -10, 27.35/25.6353961)
     tank.on_for_rotations(10, 10, 20/25.6353961)
 
     #GO HOME! DONE WITH MISSION!

@@ -30,7 +30,8 @@ def main():
             pass
         else:
             NorthWestSide.Coachie_Code(tank,lift,Claw)
-
+            tank.gyro.reset()
+            lift.reset()
     def right(state):
         if state:
             pass
