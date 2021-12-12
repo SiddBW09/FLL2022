@@ -29,7 +29,7 @@ def main():
         if state:
             pass
         else:
-            truck.truck_3(tank,Claw)
+            NorthWestSide.Coachie_Code(tank,lift,Claw)
 
     def right(state):
         if state:
@@ -41,8 +41,7 @@ def main():
         if state:
             pass
         else:
-            NorthWestSide.Coachie_Code(tank,lift,Claw)
-
+            truck.truck_3(tank, lift, Claw)
     def down(state):
         if state:
             pass
