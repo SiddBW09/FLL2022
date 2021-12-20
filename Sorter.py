@@ -71,7 +71,8 @@ def current_run(tank, Lift, claw):
         init.debug_print("Turned degrees" + str(turn_angle))
         tank.turn_degrees(10, turn_angle, True, 1)
 
-def blue_two_slot_one(tank, lift, claw):
+
+def blue_two_slot_one2(tank, lift, claw):
     x = 0
     init.debug_print("In blue two slot 1")
     #my_tank = tank
@@ -144,7 +145,7 @@ def blue_two_slot_one(tank, lift, claw):
 
 
 
-def going_to_green(tank, lift, claw, slot=3, row=1):
+def going_to_green2(tank, lift, claw, slot=3, row=1):
     #start of code
     start_time2 = time.time()
     lift.on_for_rotations(49, 2)
@@ -202,6 +203,147 @@ def going_to_green(tank, lift, claw, slot=3, row=1):
         lift.on_for_rotations(49, -1)
         #Navigation.distance_to_object(tank, 5, "Backward")
         Navigation.gyro_check(tank, 10, -90)
+        init.debug_print("TIME: "+str(time.time()-start_time2))
+        tank.gyro.reset()
+
+def blue_two_slot_one(tank, lift, claw):
+    x = 0
+    init.debug_print("In blue two slot 1")
+    #my_tank = tank
+    #MyClaw = claw
+    els = False
+
+    claw.claw.reset()
+    lift.reset()
+    tank.reset()
+    tank.gyro.reset()
+    claw.claw_close(100)
+    start_time = time.time()
+    #start of code
+    lift.on_for_rotations(30, -1.5)
+    tank.on_for_rotations(10, 10, 0.7)
+    sleep(0.5)
+    lift.on_for_rotations(10, 0.6)
+    tank.on_for_rotations(15, 15, -0.7)
+    sleep(0.5)
+    lift.on_for_rotations(10, -0.3)
+    claw.claw_open(100)
+    sleep(2)
+    #claw.claw.reset()
+    tank.turn_degrees(10, 90, True, 1)
+    init.debug_print("Turned degrees to pick up brick" + str(tank.gyro.angle))
+    tank.on_for_rotations(15, 15, -0.07 )
+    #Goes down to pick up blue container
+    lift.on_for_rotations(10, 1)
+    #MyClaw.claw.reset()
+    if claw.claw_close(100):
+        init.debug_print("Found blue brick")
+        lift.on_for_rotations(49, -0.5)
+    else:
+        claw.claw.reset()
+        sleep(1)
+        claw.claw_open(100)
+        lift.on_for_rotations(49, -1)
+        Navigation.distance_to_object(tank, 7.5, "Forward")
+        lift.on_for_rotations(30, 1)
+        claw.claw_close(100)
+        lift.on_for_rotations(49, -0.5)
+        Navigation.distance_to_object(tank, 7.5, "Backward")
+    sleep(1)
+    lift.on_for_rotations(49, -2)
+    init.debug_print("After picking up blue" + str(tank.gyro.angle))
+    #my_tank.turn_degrees(10,90)
+    Navigation.gyro_check(tank, 10, 90)
+    init.debug_print("Turned degrees to turn to drop blue" + str(tank.gyro.angle))
+    #Navigation.distance_to_object(tank, 36, "Backward", 10)
+    tank.on_for_rotations(-30, -30, 47/25.6353961)
+    #Turn to Blue Circle
+    tank.turn_degrees(10, 90, True, 1)
+    Navigation.distance_to_object(tank, 10, "Backward")
+    Navigation.distance_to_object(tank, 10, "Forward")
+    tank.turn_degrees(10, 90, True, 1)
+    Navigation.gyro_check(tank, 10, 270)
+    init.debug_print("Dropping blue turn" + str(tank.gyro.angle))
+    Navigation.distance_to_object(tank, 8, "Backward")
+    sleep(0.5)
+    lift.reset()
+    lift.on_for_rotations(49, 1.7)
+    sleep(0.5)
+    claw.claw_open(100)
+    sleep(0.5)
+    lift.on_for_rotations(49, -1.7)
+    Navigation.distance_to_object(tank, 15, "Backward")
+    Navigation.gyro_check(tank, 10, 270)
+    init.debug_print("Final turn " + str(tank.gyro.angle))
+    tank.gyro.reset()
+    init.debug_print("TIME: "+str(time.time()-start_time))
+    return
+
+
+
+
+def going_to_green(tank, lift, claw, slot=3, row=1):
+    #start of code
+    start_time2 = time.time()
+    lift.reset()
+    if slot == 3:
+        x = 0
+        lift.on_for_rotations(10, -0.3)
+        claw.claw_open(100)
+        sleep(1)
+        tank.turn_degrees(10, -135, True, 1)
+        init.debug_print("Going to green" + str(tank.gyro.angle))
+        Navigation.distance_to_object(tank, 10.5, "Forward")
+        tank.turn_degrees(10, -45, True, 1)
+        Navigation.gyro_check(tank, 10, -180)
+
+        init.debug_print("Going to forward to green" + str(tank.gyro.angle))
+        lift.on_for_rotations(49, -2)
+        #Navigation.distance_to_object(tank, 25, "Forward")
+        tank.on_for_rotations(15, 15, 15.5/25.6353961)
+        lift.reset()
+        lift.on_for_rotations(49, 1.7)
+        sleep(1)
+        if claw.claw_close(100):
+            sleep(1)
+            lift.on_for_rotations(49, -2)
+            sleep(0.5)
+        '''else:
+            lift.on_for_rotations(49, -2)
+            claw.claw_open(100)
+            sleep(1)
+
+            Navigation.distance_to_object(tank, 7, "Forward")
+            lift.on_for_rotations(49, 2)
+            sleep(1)
+            claw.claw_close(100)
+            sleep(0.5)
+            lift.on_for_rotations(49, -2)
+            sleep(0.5)
+            Navigation.distance_to_object(tank, 7, "Backward")'''
+        sleep(1)
+        lift.on_for_rotations(49, -2)
+        sleep(0.5)
+        Navigation.distance_to_object(tank, 1, "Backward")
+        init.debug_print("Angle check" + str(tank.gyro.angle))
+        #goes to cargo ship
+        tank.turn_degrees(10, 135, True, 1)
+        tank.on_for_rotations(20, 20, 53/25.6353961)
+        tank.turn_degrees(10, 45, True, 1)
+        Navigation.distance_to_object(tank, 5, "Forward")
+        #drops block on cargo ship
+        lift.on_for_rotations(49, 0.3)
+        claw.claw_open(100)
+        Navigation.distance_to_object(tank, 5, "Backward")
+        #lift.on_for_rotations(49, 1.1)
+        #sleep(0.5)
+        #Navigation.distance_to_object(tank, 18, "Forward")
+        #tank.on_for_rotations(20, 20, 18/25.6353961)
+        #sleep(0.5)
+        #Navigation.distance_to_object(tank, 15, "Backward")
+        #tank.on_for_rotations(-20, -20, 15/25.6353961)
+        #sleep(0.5)
+        #Navigation.gyro_check(tank, 10, -90)
         init.debug_print("TIME: "+str(time.time()-start_time2))
         tank.gyro.reset()
 
@@ -398,7 +540,7 @@ def end_game(tank, lift, claw):
     init.debug_print("TIME: "+str(time.time()-start_time))
 
 def completeRun (tank, lift, claw):
-    truck.Innovate1(tank, lift, claw)
+    truck.Innovate2(tank, lift, claw)
     blue_two_slot_one(tank, lift, claw)
     going_to_green(tank, lift, claw)
     end_game(tank, lift, claw)
