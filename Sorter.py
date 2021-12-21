@@ -543,7 +543,7 @@ def completeRun (tank, lift, claw):
     truck.Innovate2(tank, lift, claw)
     blue_two_slot_one(tank, lift, claw)
     going_to_green(tank, lift, claw)
-    end_game(tank, lift, claw)
+    #end_game(tank, lift, claw)
 
 
 
