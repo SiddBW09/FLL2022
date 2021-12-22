@@ -102,6 +102,7 @@ def blue_two_slot_one2(tank, lift, claw):
     #Goes down to pick up blue container
     lift.on_for_rotations(10, 1)
     #MyClaw.claw.reset()
+    Navigation.gyro_check(tank, 5, 90)
     if claw.claw_close(100):
         init.debug_print("Found blue brick")
         lift.on_for_rotations(49, -0.5)
@@ -164,7 +165,7 @@ def going_to_green2(tank, lift, claw, slot=3, row=1):
         init.debug_print("Going to forward to green" + str(tank.gyro.angle))
         lift.on_for_rotations(49, -2)
         #Navigation.distance_to_object(tank, 25, "Forward")
-        tank.on_for_rotations(15, 15, 15.5/25.6353961)
+        tank.on_for_rotations(15, 15, 15/25.6353961)
         lift.reset()
         lift.on_for_rotations(49, 1.7)
         sleep(1)
@@ -327,12 +328,13 @@ def going_to_green(tank, lift, claw, slot=3, row=1):
         Navigation.distance_to_object(tank, 1, "Backward")
         init.debug_print("Angle check" + str(tank.gyro.angle))
         #goes to cargo ship
-        tank.turn_degrees(10, 135, True, 1)
+        tank.turn_degrees(10, 125, True, 1)
         tank.on_for_rotations(20, 20, 53/25.6353961)
-        tank.turn_degrees(10, 45, True, 1)
+        tank.turn_degrees(10, 55, True, 1)
         Navigation.distance_to_object(tank, 5, "Forward")
         #drops block on cargo ship
-        lift.on_for_rotations(49, 0.3)
+        lift.on_for_rotations(49, 1.1)
+        sleep(1)
         claw.claw_open(100)
         Navigation.distance_to_object(tank, 5, "Backward")
         #lift.on_for_rotations(49, 1.1)
@@ -347,24 +349,29 @@ def going_to_green(tank, lift, claw, slot=3, row=1):
         init.debug_print("TIME: "+str(time.time()-start_time2))
         tank.gyro.reset()
 
+def lift_check (tank, lift):
+    lift.on_for_rotations(20, 6)
+    lift.on_for_rotations(0, -6)
+
 def going_to_green_other_side(tank, lift, claw, slot=3, row=1):
     #start of code
     start_time2 = time.time()
     lift.on_for_rotations(49, 2)
+
     lift.reset()
     if slot == 3:
         x = 0
         lift.on_for_rotations(49, -0.2)
         tank.turn_degrees(10, 135, True, 1)
         init.debug_print("Going to green" + str(tank.gyro.angle))
-        Navigation.distance_to_object(tank, 18.5, "Forward")
+        Navigation.distance_to_object(tank, 17, "Forward")
         tank.turn_degrees(10, 45, True, 1)
         Navigation.gyro_check(tank, 10, 180)
 
         init.debug_print("Going to forward to green" + str(tank.gyro.angle))
         lift.on_for_rotations(49, -2)
         #Navigation.distance_to_object(tank, 25, "Forward")
-        Navigation.distance_to_object(tank, 20, "Forward")
+        Navigation.distance_to_object(tank, 19, "Forward")
         lift.reset()
         Navigation.gyro_check(tank, 10, 180)
         lift.on_for_rotations(49, 1.7)
@@ -375,7 +382,10 @@ def going_to_green_other_side(tank, lift, claw, slot=3, row=1):
             sleep(0.5)
             Navigation.distance_to_object(tank, 5, "Backward")
             init.debug_print("Angle check" + str(tank.gyro.angle))
-            tank.turn_degrees(10, 90, True, 1)
+            tank.turn_degrees(10, 30, True, 1)
+            lift.on_for_rotations(49, 6)
+            claw.claw_open(100)
+            return
             lift.on_for_rotations(49, 1.1)
             sleep(0.5)
             #Navigation.distance_to_object(tank, 18, "Forward")
@@ -548,10 +558,10 @@ def completeRun (tank, lift, claw):
 
 
 if __name__ == "__main__":
-
-    completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    #going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    lift_check(Navigation.tank_init(), MediumMotor(OUTPUT_D))
+    going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #end_game(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #test_claw(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #SlotToCircle(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
