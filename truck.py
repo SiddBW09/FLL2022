@@ -323,7 +323,7 @@ def truck_to_bridge (tank, lift):
 
     Navigation.distance_to_object(tank, 40, "Backward")
     tank.turn_degrees(20, -190, True, 1)
-    tank.on_for_rotations(10, 10, 0.55)
+    tank.on_for_rotations(10, 10, 0.58)
     turn_right(tank, 0)
     tank.on_for_rotations(10, 10, 0.4)
     tank.turn_degrees(20, 60, True, 1)
@@ -409,12 +409,162 @@ def truck_3(tank, lift, Claw): #Working, final version.
     init.debug_print("TIME: "+str(endtime))
 
     return
+def Innovate2(tank, lift, Claw):
+
+    start_time = time.time()
+
+    import claw
+
+
+    #tank = Navigation.tank_init()
+    #lift = MediumMotor(OUTPUT_D)
+    #Claw = claw.Claw()
+    tank.gyro.reset()
+
+    #claw.claw_close(100)
+    #sleep(1)
+    #lift.on_for_rotations(30, -4)
+    #sleep(5)
+    #return
+
+
+    lift.reset()
+    Claw.claw_close(100)
+    sleep(0.5)
+    lift.on_for_rotations(35, -0.9)
+    #Navigation.distance_to_object(tank, 92, "Backward", 10)
+    Navigation.new_move_incm(tank, -25, 92)
+
+    #Do bridge mission
+    tank.turn_degrees(10, 180, True, 1)
+    Navigation.gyro_check(tank, 10, 180)
+    #tank.turn_degrees(10, -100, True, 1)
+
+    init.debug_print("The amount turned before check: " + str(tank.gyro.angle))
+    Navigation.gyro_check(tank, 10, 180)
+    Navigation.distance_to_object(tank, 28, "Forward", 15)
+
+    tank.turn_degrees(10, -90, True, 1)
+    Navigation.gyro_check(tank, 10, 90)
+    #(Curr angle should be -90)
+    tank.on_for_rotations(15, 15, -1)
+    Navigation.distance_to_object(tank, 33, "Forward", 15)
+
+
+    tank.turn_degrees(10, -90, True, 1)
+    Navigation.gyro_check(tank, 5, 0)
+    Navigation.distance_to_object(tank, 16.5, "Backward")
+    tank.turn_degrees(10, 10, True, 1)
+    Claw.claw.reset()
+    sleep(0.5)
+    Claw.claw_open(120)
+    sleep(0.5)
+    tank.turn_degrees(10, -10, True, 1)
+    Navigation.gyro_check(tank, 5, 0)
+    Navigation.distance_to_object(tank, 11, "Backward")
+    tank.turn_degrees(10, -180, True, 1)
+    init.debug_print("Finishing angle before check "+str(tank.gyro.angle))
+    Navigation.gyro_check(tank, 5, -180)
+    init.debug_print("Finishing angle after check "+str(tank.gyro.angle))
+    Claw.claw_close(120)
+    lift.on_for_rotations(20, 1)
+    lift.reset()
+    Navigation.gyro_check(tank, 5, -180)
+
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
+
+    """tank.turn_degrees(10, 47, True, 1)
+    Navigation.gyro_check(tank, 5, 47)
+    Navigation.distance_to_object(tank, 45, "Backward", 10)
+    Navigation.gyro_check(tank, 5, 48)
+    tank.turn_degrees(10, -60, True, 1)
+    tank.turn_degrees(10, 60, True, 1)"""
+    #lift.on_for_rotations(30, 2)
+    #tank.turn_degrees(10, 90, True, 1)
+    #Navigation.gyro_check(tank, 25, 90)
+    #Navigation.distance_to_object(tank, 89.5, "Backward", 10)
+
+def Innovate3(tank, lift, Claw):
+
+    start_time = time.time()
+
+    import claw
+
+
+    #tank = Navigation.tank_init()
+    #lift = MediumMotor(OUTPUT_D)
+    #Claw = claw.Claw()
+    tank.gyro.reset()
+
+    #claw.claw_close(100)
+    #sleep(1)
+    #lift.on_for_rotations(30, -4)
+    #sleep(5)
+    #return
+
+
+    lift.reset()
+    Claw.claw_close(100)
+    sleep(0.5)
+    lift.on_for_rotations(35, -0.9)
+    #Navigation.distance_to_object(tank, 92, "Backward", 10)
+    Navigation.new_move_incm(tank, -25, 92)
+
+    #Do bridge mission
+    tank.turn_degrees(10, 180, True, 1)
+    Navigation.gyro_check(tank, 10, 180)
+    #tank.turn_degrees(10, -100, True, 1)
+
+    init.debug_print("The amount turned before check: " + str(tank.gyro.angle))
+    Navigation.gyro_check(tank, 10, 180)
+    Navigation.distance_to_object(tank, 28, "Forward", 15)
+
+    tank.turn_degrees(10, -90, True, 1)
+    Navigation.gyro_check(tank, 10, 90)
+    #(Curr angle should be -90)
+    tank.on_for_rotations(15, 15, -1)
+    Navigation.distance_to_object(tank, 34, "Forward", 15)
+
+
+    tank.turn_degrees(10, -90, True, 1)
+    Navigation.gyro_check(tank, 5, 0)
+    Navigation.distance_to_object(tank, 16.5, "Backward")
+    tank.turn_degrees(10, 10, True, 1)
+    Claw.claw.reset()
+    sleep(0.5)
+    Claw.claw_open(100)
+    sleep(0.5)
+    tank.turn_degrees(10, -10, True, 1)
+    Navigation.gyro_check(tank, 5, 0)
+    Navigation.distance_to_object(tank, 11, "Backward")
+    tank.turn_degrees(10, -90, True, 1)
+    init.debug_print("Finishing angle before check "+str(tank.gyro.angle))
+    Navigation.gyro_check(tank, 5, -90)
+    init.debug_print("Finishing angle after check "+str(tank.gyro.angle))
+    Claw.claw_close(120)
+    '''lift.on_for_rotations(20, 1)'''
+    lift.reset()
+
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
+
+    """tank.turn_degrees(10, 47, True, 1)
+    Navigation.gyro_check(tank, 5, 47)
+    Navigation.distance_to_object(tank, 45, "Backward", 10)
+    Navigation.gyro_check(tank, 5, 48)
+    tank.turn_degrees(10, -60, True, 1)
+    tank.turn_degrees(10, 60, True, 1)"""
+    #lift.on_for_rotations(30, 2)
+    #tank.turn_degrees(10, 90, True, 1)
+    #Navigation.gyro_check(tank, 25, 90)
+    #Navigation.distance_to_object(tank, 89.5, "Backward", 10)
 
 
 
 if __name__ == "__main__":
-    #Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    truck_3(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    Innovate2(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #truck_3(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 
 '''The code below is our old code, in case we need it:
 Navigation.distance_to_object(tank, 50, "Backward") #Going forward from home. [This and the code below is all of the old code:]
