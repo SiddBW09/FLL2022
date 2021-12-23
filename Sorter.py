@@ -222,12 +222,15 @@ def blue_two_slot_one(tank, lift, claw):
     start_time = time.time()
     #start of code
     lift.on_for_rotations(30, -1.5)
-    tank.on_for_rotations(10, 10, 0.6)
+    sleep(1)
+    tank.on_for_rotations(10, 10, 0.7)
     sleep(0.5)
     lift.on_for_rotations(10, 0.6)
-    tank.on_for_rotations(15, 15, -0.6)
+    sleep(1)
+    tank.on_for_rotations(15, 15, -0.7)
     sleep(0.5)
     lift.on_for_rotations(10, -0.3)
+    sleep(1)
     claw.claw_open(100)
     sleep(2)
     #claw.claw.reset()
@@ -633,10 +636,10 @@ def completeRun (tank, lift, claw):
 
 
 if __name__ == "__main__":
-    #completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #lift_check(Navigation.tank_init(), MediumMotor(OUTPUT_D))
-    going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #end_game(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #test_claw(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #SlotToCircle(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
