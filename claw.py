@@ -62,6 +62,7 @@ class Claw():
             return True
 
         else:
+            init.debug_print("Has Nothing")
             return False
 
 
