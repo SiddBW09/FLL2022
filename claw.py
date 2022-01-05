@@ -13,7 +13,7 @@ class Claw():
 
     def claw_open(self, percent):
         self.claw.reset()
-        self.claw.on_for_rotations(-30, 0.15)
+        self.claw.on_for_rotations(30, 0.3)
         self.claw.reset()
 
 
@@ -38,6 +38,32 @@ class Claw():
 
         else:
             return False
+
+    def claw_close_5(self):
+        i = 0
+        self.claw.reset()
+        while True:
+
+            self.claw.on_for_rotations(-10, 0.02, brake = False)
+
+            if 'stalled' in self.claw.state:
+                init.debug_print(self.claw.state)
+                break
+
+            i += 1
+        init.debug_print(i)
+        self.claw.on_for_rotations(10, 0.02, brake = True)
+
+        if i <= 10:
+            init.debug_print("blocked")
+            return 'blocked'
+        elif i <= 13:
+            init.debug_print("caught brick")
+            return True
+
+        else:
+            return False
+
 
         return
 
