@@ -419,9 +419,9 @@ def Innovate2(tank, lift, Claw):
     #lift = MediumMotor(OUTPUT_D)
     #Claw = claw.Claw()
     tank.gyro.reset()
-    Motor = LargeMotor(OUTPUT_A)
 
-    #Navigation.follow_gyro_angle(tank, Motor, 15, 50)
+
+    #Navigation.distance_goer(tank, 15, 50)
 
     #claw.claw_close(100)
     #sleep(1)
@@ -435,7 +435,7 @@ def Innovate2(tank, lift, Claw):
     sleep(0.5)
     lift.on_for_rotations(35, -0.9)
     #Navigation.distance_to_object(tank, 92, "Backward", 10)
-    Navigation.follow_gyro_angle(tank, Motor, 92, -25, 0)
+    Navigation.distance_goer(tank, 92, -25, 0)
     #Navigation.gyro_check(tank, 10, 0)
     Navigation.gyro_check(tank, 10, 0)
 
@@ -446,14 +446,14 @@ def Innovate2(tank, lift, Claw):
 
     init.debug_print("The amount turned before check: " + str(tank.gyro.angle))
     Navigation.gyro_check(tank, 10, 180)
-    Navigation.follow_gyro_angle(tank, Motor, 28, 15, 180)
+    Navigation.distance_goer(tank, 28, 15, 180)
 
     tank.turn_degrees(10, -90, True, 1)
     Navigation.gyro_check(tank, 10, 90)
     #(Curr angle should be -90)
     #tank.on_for_rotations(15, 15, -1)
     #Navigation.distance_to_object(tank, 33, "Forward", 15)
-    Navigation.follow_gyro_angle(tank, Motor, 12, 15, 270)
+    Navigation.distance_goer(tank, 12, 15, 270)
 
     tank.turn_degrees(10, -90, True, 1)
     Navigation.gyro_check(tank, 5, 0)
@@ -513,7 +513,7 @@ def Innovate3(tank, lift, Claw):
     sleep(0.5)
     lift.on_for_rotations(35, -0.9)
     #Navigation.distance_to_object(tank, 92, "Backward", 10)
-    Navigation.new_move_incm(tank, -25, 92)
+    Navigation.distance_goer(tank, 92, -15, 0)
 
     #Do bridge mission
     tank.turn_degrees(10, 180, True, 1)

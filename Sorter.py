@@ -628,7 +628,7 @@ def end_game(tank, lift, claw):
     init.debug_print("TIME: "+str(time.time()-start_time))
 
 def completeRun (tank, lift, claw):
-    truck.Innovate2(tank, lift, claw)
+    truck.Innovate3(tank, lift, claw)
     blue_two_slot_one(tank, lift, claw)
     going_to_green(tank, lift, claw)
     #end_game(tank, lift, claw)
