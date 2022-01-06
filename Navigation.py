@@ -175,11 +175,11 @@ def follow_forever(tank, cm, lm):
     return True
 
 
-def follow_gyro_angle(tank, motor, distance):
+def follow_gyro_angle(tank, motor, distance, speed, angle):
     tank.follow_gyro_angle(
         kp=11.3, ki=0.05, kd=3.2,
-        speed=SpeedPercent(50),
-        target_angle=0,
+        speed=SpeedPercent(speed),
+        target_angle=angle,
         sleep_time=0.01,
         follow_for=follow_forever,
         cm=distance, lm=motor)
