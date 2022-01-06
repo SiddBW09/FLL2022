@@ -15,7 +15,6 @@ import init
 
 def tank_init():
     my_tank = MoveTank(OUTPUT_A, OUTPUT_B)
-    lift = MediumMotor(OUTPUT_D)
 
      # Init Color Sensors
     #colorRight = ColorSensor(INPUT_2)
@@ -167,21 +166,22 @@ def new_move_incm(tank, speed, distance):
     number_of_wheel_rotations = distance / 25.6353961
     tank.on_for_rotations(speed, speed, distance / 25.6353961)
 
-def follow_forever(tank, cm, lm):
+def follow_forever(tank, cm):
+    lm = LargeMotor(OUTPUT_A)
     rotations_needed = cm/0.0712094336
-    if (lm.position > rotations_needed):
+    if (lm.position >= rotations_needed):
         return False
 
     return True
 
 
-def follow_gyro_angle(tank, motor, distance, speed, angle):
+def distance_goer(tank, distance, speed, angle):
     tank.follow_gyro_angle(
         kp=11.3, ki=0.05, kd=3.2,
         speed=SpeedPercent(speed),
         target_angle=angle,
         sleep_time=0.01,
         follow_for=follow_forever,
-        cm=distance, lm=motor)
+        cm=distance)
 
 

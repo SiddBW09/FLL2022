@@ -30,30 +30,6 @@ def show_sensor_values():
     print(' Color R: ' + str(colorRight.reflected_light_intensity))
 
 
-def init_and_create_movetank():
-
-    #set the large motor outputs
-    #left_motor = LargeMotor(OUTPUT_D)
-    #right_motor = LargeMotor(OUTPUT_A)
-
-    #init the gyro
-    #gyro = GyroSensor(INPUT_1)
-    #gyro.mode='GYRO-ANG'
-
-    # init all other ports
-    #colorRight = ColorSensor(INPUT_2)
-    #colorLeft = ColorSensor(INPUT_3)
-
-    tank = MoveTank(OUTPUT_D, OUTPUT_A)
-    tank.gyro = GyroSensor(INPUT_1)
-    #tank.gyro.mode='GYRO-ANG'
-    tank.gyro.calibrate()
-    #tank.cs = ColorSensor()
-
-    # not sure if we need to init the tank.colorSensor
-    # tank.colorRight = ColorSensor()
-
-    return tank
 
 # state constants
 ON = True
