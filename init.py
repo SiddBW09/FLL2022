@@ -46,9 +46,9 @@ def init_and_create_movetank():
 
     tank = MoveTank(OUTPUT_D, OUTPUT_A)
     tank.gyro = GyroSensor(INPUT_1)
-    tank.gyro.mode='GYRO-ANG'
+    #tank.gyro.mode='GYRO-ANG'
     tank.gyro.calibrate()
-    tank.cs = ColorSensor()
+    #tank.cs = ColorSensor()
 
     # not sure if we need to init the tank.colorSensor
     # tank.colorRight = ColorSensor()

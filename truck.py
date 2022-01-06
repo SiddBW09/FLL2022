@@ -525,8 +525,7 @@ def Innovate3(tank, lift, Claw):
     tank.turn_degrees(10, -90, True, 1)
     Navigation.gyro_check(tank, 10, 90)
     #(Curr angle should be -90)
-    tank.on_for_rotations(15, 15, -1)
-    Navigation.distance_to_object(tank, 34, "Forward", 15)
+    Navigation.distance_to_object(tank, 12, "Forward", 15)
 
 
     tank.turn_degrees(10, -90, True, 1)
