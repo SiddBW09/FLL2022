@@ -509,11 +509,14 @@ def Innovate3(tank, lift, Claw):
 
 
     lift.reset()
-    Claw.claw_close(100)
+    Claw.claw_close_5()
     sleep(0.5)
     lift.on_for_rotations(35, -0.9)
     #Navigation.distance_to_object(tank, 92, "Backward", 10)
-    Navigation.distance_goer(tank, 92, -15, 0)
+    sleep(1)
+    Navigation.distance_goer(tank, 22, -15, 0)
+    return
+    sleep(1)
 
     #Do bridge mission
     tank.turn_degrees(10, 180, True, 1)
@@ -522,17 +525,17 @@ def Innovate3(tank, lift, Claw):
 
     init.debug_print("The amount turned before check: " + str(tank.gyro.angle))
     Navigation.gyro_check(tank, 10, 180)
-    Navigation.distance_to_object(tank, 28, "Forward", 15)
+    Navigation.distance_goer(tank, 28, 15, 180)
 
     tank.turn_degrees(10, -90, True, 1)
     Navigation.gyro_check(tank, 10, 90)
     #(Curr angle should be -90)
-    Navigation.distance_to_object(tank, 12, "Forward", 15)
+    Navigation.distance_goer(tank, 12, 15, 90)
 
 
     tank.turn_degrees(10, -90, True, 1)
     Navigation.gyro_check(tank, 5, 0)
-    Navigation.distance_to_object(tank, 16.5, "Backward")
+    Navigation.distance_goer(tank, 16.5, -15, 0)
     tank.turn_degrees(10, 10, True, 1)
     Claw.claw.reset()
     sleep(0.5)
@@ -540,12 +543,12 @@ def Innovate3(tank, lift, Claw):
     sleep(0.5)
     tank.turn_degrees(10, -10, True, 1)
     Navigation.gyro_check(tank, 5, 0)
-    Navigation.distance_to_object(tank, 11, "Backward")
+    Navigation.distance_goer(tank, 11, -15, 0)
     tank.turn_degrees(10, -90, True, 1)
     init.debug_print("Finishing angle before check "+str(tank.gyro.angle))
     Navigation.gyro_check(tank, 5, -90)
     init.debug_print("Finishing angle after check "+str(tank.gyro.angle))
-    Claw.claw_close(120)
+    Claw.claw_close_5()
     '''lift.on_for_rotations(20, 1)'''
     lift.reset()
 

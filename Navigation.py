@@ -169,7 +169,12 @@ def new_move_incm(tank, speed, distance):
 def follow_forever(tank, cm):
     lm = LargeMotor(OUTPUT_A)
     rotations_needed = cm/0.0712094336
-    if (lm.position >= rotations_needed):
+    motorPos=lm.position
+
+    if (motorPos<0):
+        motorPos = motorPos*-1
+    init.debug_print(motorPos)
+    if (motorPos >= rotations_needed):
         return False
 
     return True
