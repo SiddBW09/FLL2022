@@ -52,7 +52,7 @@ class Claw():
 
             i += 1
         init.debug_print(i)
-        self.claw.on_for_rotations(10, 0.02, brake = True)
+        self.claw.on_for_rotations(-10, 0.02, brake = True)
 
         if i <= 10:
             init.debug_print("blocked")
