@@ -650,46 +650,63 @@ def GoingtoSorter(tank, lift, Claw):
     lift.reset()
     Claw.claw_close_5()
     sleep(1)
-    lift.on_for_rotations(35, -0.8)
+    lift.on_for_rotations(35, -0.25)
     #Navigation.distance_to_object(tank, 92, "Backward", 10)
-    Navigation.new_move_incm(tank, -10, 92)
+    #Navigation.new_move_incm(tank, -30, 92)
+    Navigation.distance_goer(tank, 100, -50, 0)
 
+
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
+    return
     #Do bridge mission
     tank.turn_degrees(10, 180, True, 1)
     Navigation.gyro_check(tank, 10, 180)
-    #tank.turn_degrees(10, -100, True, 1)
 
     init.debug_print("The amount turned before check: " + str(tank.gyro.angle))
     Navigation.gyro_check(tank, 10, 180)
     #Navigation.distance_to_object(tank, 28, "Forward", 15)
-    Navigation.new_move_incm(tank, 25, 28)
+    #Navigation.new_move_incm(tank, 25, 28)
+    Navigation.distance_goer(tank, 25, 28, 180)
+    Navigation.gyro_check(tank, 10, 180)
 
-    tank.turn_degrees(10, -90, True, 1)
-    Navigation.gyro_check(tank, 10, 90)
-    #(Curr angle should be -90)
-    Navigation.distance_to_object(tank, 5, "Forward", 15)
-
+    return
+    #(Curr angle should be 90)
+    #Navigation.distance_to_object(tank, 5, "Forward", 15)
+    Navigation.distance_goer(tank, 5, 15, 90)
 
     tank.turn_degrees(10, -42, True, 1)
     tank.turn_degrees(10, 42, True, 1)
-    Navigation.distance_to_object(tank, 1, "Forward", 15)
+    #Navigation.distance_to_object(tank, 1, "Forward", 15)
+    Navigation.distance_goer(tank, 1, 15, 42)
     #Dropping innovation piece.
     lift.on_for_rotations(30, 2)
     sleep(0.5)
     Claw.claw_open(100)
     sleep(0.5)
     lift.on_for_rotations(30, -3)
-    Navigation.distance_to_object(tank, 1, "Backward", 15)
+    #Navigation.distance_to_object(tank, 1, "Backward", 15)
+    Navigation.distance_goer(tank, 1, -15, 90)
     tank.turn_degrees(10, 40, True, 1)
-    Navigation.distance_to_object(tank, 9, "Forward", 15)
-    tank.turn_degrees(10, 50, True, 1)
-    Navigation.gyro_check(tank, 15, 180)
-    Navigation.distance_to_object(tank, 10, "Forward", 15)
 
-    Navigation.gyro_check(tank, 15, 180)
+    #Going Forward after supply drop
+    #Navigation.distance_to_object(tank, 15, "Forward", 15)
+    Navigation.distance_goer(tank, 15, speed, angle)
+
+    tank.turn_degrees(10, 60, True, 1)
+    Navigation.gyro_check(tank, 5, 180)
+
+
+    #Navigation.distance_to_object(tank, 18, "Forward", 15)
+    Navigation.distance_goer(tank, 18, 15, 180)
+
+    Navigation.gyro_check(tank, 5, 180)
 
     init.debug_print("Final angle is:" + str(tank.gyro.angle))
     #this is where we are, sid can continue tomorrow
+
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
     return
 
 
@@ -699,8 +716,7 @@ def GoingtoSorter(tank, lift, Claw):
     lift.on_for_rotations(20,4)
     lift.reset()
 
-    endtime = time.time()-start_time
-    init.debug_print("TIME: "+str(endtime))
+
 
     """tank.turn_degrees(10, 47, True, 1)
     Navigation.gyro_check(tank, 5, 47)
@@ -713,10 +729,65 @@ def GoingtoSorter(tank, lift, Claw):
     #Navigation.gyro_check(tank, 25, 90)
     #Navigation.distance_to_object(tank, 89.5, "Backward", 10)
 
+def NewIdea(tank, lift, Claw):
+
+    start_time = time.time()
+    import claw
+    tank.gyro.reset()
+    lift.reset()
+
+    #Going to Cargo Connect Circle
+    Navigation.distance_goer(tank, 100, -40, 0)
+    sleep(0.5)
+    lift.on_for_rotations(30, -1)
+    sleep(0.5)
+    Navigation.distance_goer(tank, 20, -10, 0)
+    Navigation.gyro_check(tank, 5, 0)
+
+
+
+    #Turn and Drop Cargo and Innovation Model, and go back
+    tank.turn_degrees(10, -70, True, 1)
+    Navigation.gyro_check(tank, 5, -75)
+    Navigation.distance_goer(tank, 15, -15, -75)
+    sleep(0.5)
+    Navigation.distance_goer(tank, 10, 5, -75)
+    tank.turn_degrees(10, 85, True, 1)
+    lift.on_for_rotations(30, 0.8)
+    init.debug_print("Turned degrees" + str(tank.gyro.angle))
+    Navigation.distance_goer(tank, 10, 15, 15)
+
+
+    return
+
+
+    lift.on_for_rotations(30, -1)
+    Navigation.distance_goer(tank, 11, 5, -70)
+    tank.turn_degrees(10, 70, True, 1)
+    Navigation.gyro_check(tank, 5, 0)
+    sleep(1)
+    #Go and position for bridge mission
+    Navigation.distance_goer(tank, 18, 40, 0)
+    sleep(1)
+    Navigation.gyro_check(tank, 5, 0)
+
+    tank.turn_degrees(10, 60, True, 1)
+    lift.on_for_rotations(10, -0.5)
+    tank.turn_degrees(10, 45, True, 1)
+    lift.on_for_rotations(10, 0.5)
+    tank.turn_degrees(10, -45, True, 1)
+
+
+
+
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
+
 
 if __name__ == "__main__":
     #truck.Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    GoingtoSorter(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #GoingtoSorter(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    NewIdea(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #lift_check(Navigation.tank_init(), MediumMotor(OUTPUT_D))

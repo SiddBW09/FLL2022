@@ -170,10 +170,9 @@ def follow_forever(tank, cm):
     lm = LargeMotor(OUTPUT_A)
     rotations_needed = cm/0.0712094336
     motorPos=lm.position
-
+    init.debug_print(str(rotations_needed) + str(":") + str(motorPos))
     if (motorPos<0):
         motorPos = motorPos*-1
-    init.debug_print(motorPos)
     if (motorPos >= rotations_needed):
         return False
 
@@ -188,5 +187,7 @@ def distance_goer(tank, distance, speed, angle):
         sleep_time=0.01,
         follow_for=follow_forever,
         cm=distance)
+
+    tank.reset()
 
 
