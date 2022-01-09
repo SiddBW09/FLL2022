@@ -487,9 +487,16 @@ def going_to_green_other_side(tank, lift, claw, slot=3, row=1):
 
 
 def test_claw(tank, lift, claw):
+    x = 0
+    for i in range(10):
 
-    claw.claw_close_5()
-    lift.on_for_rotations(30, -3)
+
+        Navigation.distance_goer(tank, 50, -30, 0)
+        sleep(0.5)
+        Navigation.distance_goer(tank, 50, 39, 0)
+        sleep(.5)
+    x += 1
+    print(x)
 
 
 
@@ -737,25 +744,43 @@ def NewIdea(tank, lift, Claw):
     lift.reset()
 
     #Going to Cargo Connect Circle
-    Navigation.distance_goer(tank, 100, -40, 0)
+    #first bridge
+    Navigation.distance_goer(tank, 99, -25, 0)
     sleep(0.5)
     lift.on_for_rotations(30, -1)
-    sleep(0.5)
-    Navigation.distance_goer(tank, 20, -10, 0)
+    #second bridge
+    Navigation.distance_goer(tank, 19, -10, 0)
     Navigation.gyro_check(tank, 5, 0)
+    lift.on_for_rotations(30, 1.5)
+    Navigation.distance_goer(tank, 8, 10, 0)
+    lift.on_for_rotations(30, -1.5)
+    #innovation project in circle
+    Navigation.distance_goer(tank, 7, -5, 0)
+    tank.turn_degrees(15, -75)
+    Navigation.distance_goer(tank, 8, -10, -75)
+
+    Navigation.distance_goer(tank, 5, 10, -75)
+    tank.turn_degrees(5, -15)
+
+    Navigation.distance_goer(tank, 1, 15, -95)
+    tank.turn_degrees(10, -125)
+
+
+
+
+    init.debug_print("Last angle turned" + str(tank.gyro.angle))
+    init.debug_print("TIME: "+str(time.time()-start_time))
+
+
+
+
+
 
 
 
     #Turn and Drop Cargo and Innovation Model, and go back
-    tank.turn_degrees(10, -70, True, 1)
-    Navigation.gyro_check(tank, 5, -75)
-    Navigation.distance_goer(tank, 15, -15, -75)
-    sleep(0.5)
-    Navigation.distance_goer(tank, 10, 5, -75)
-    tank.turn_degrees(10, 85, True, 1)
-    lift.on_for_rotations(30, 0.8)
-    init.debug_print("Turned degrees" + str(tank.gyro.angle))
-    Navigation.distance_goer(tank, 10, 15, 15)
+
+
 
 
     return
