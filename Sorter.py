@@ -360,7 +360,7 @@ def blue_two_slot_one3(tank, lift, claw):
     #my_tank = tank
     #MyClaw = claw
     els = False
-
+    #Starting: brickrun --directory="/home/robot/FLL2021" "/home/robot/FLL2021/main.py"
     claw.claw.reset()
     lift.reset()
     tank.reset()
@@ -746,12 +746,12 @@ def NewIdea(tank, lift, Claw):
     #Going to Cargo Connect Circle
     #first bridge
     Navigation.distance_goer(tank, 99, -25, 0)
-    sleep(0.5)
+    sleep(0)
     lift.on_for_rotations(30, -1)
     #second bridge
     Navigation.distance_goer(tank, 19, -10, 0)
     Navigation.gyro_check(tank, 5, 0)
-    lift.on_for_rotations(30, 1.5)
+    lift.on_for_rotations(30, 1)
     Navigation.distance_goer(tank, 8, 10, 0)
     lift.on_for_rotations(30, -1.5)
     #innovation project in circle
@@ -761,10 +761,19 @@ def NewIdea(tank, lift, Claw):
 
     Navigation.distance_goer(tank, 5, 10, -75)
     tank.turn_degrees(5, -15)
-
+    #working perfectly until now
     Navigation.distance_goer(tank, 1, 15, -95)
-    tank.turn_degrees(10, -125)
-
+    tank.turn_degrees(10, -130)
+    #To Do: go farther before turning
+    Navigation.distance_goer(tank, 20, 15, -225)
+    tank.turn_degrees(10, -180-tank.gyro.angle)
+    Navigation.gyro_check(tank, 5, -180)
+    Navigation.distance_goer(tank, 38, 16, -180)
+    lift.on_for_rotations(30, 0.75)
+    Navigation.distance_goer(tank, 18, -16, -180)
+    tank.turn_degrees(10, 90)
+    Navigation.gyro_check(tank, 10, -90)
+    lift.on_for_rotations(30, -0.75)
 
 
 
