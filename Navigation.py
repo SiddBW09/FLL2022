@@ -166,14 +166,12 @@ def new_move_incm(tank, speed, distance):
     number_of_wheel_rotations = distance / 25.6353961
     tank.on_for_rotations(speed, speed, distance / 25.6353961)
 
-def follow_forever(tank, cm):
-    lm = LargeMotor(OUTPUT_A)
+def follow_forever(tank, cm, lm):
+
     rotations_needed = cm/0.0712094336
     motorPos=lm.position
-
     if (motorPos<0):
         motorPos = motorPos*-1
-    init.debug_print(motorPos)
     if (motorPos >= rotations_needed):
         return False
 
@@ -181,12 +179,17 @@ def follow_forever(tank, cm):
 
 
 def distance_goer(tank, distance, speed, angle):
+    tank.reset()
+    left_motor = LargeMotor(OUTPUT_A)
+    left_motor.reset()
     tank.follow_gyro_angle(
         kp=11.3, ki=0.05, kd=3.2,
         speed=SpeedPercent(speed),
         target_angle=angle,
         sleep_time=0.01,
         follow_for=follow_forever,
-        cm=distance)
+        cm=distance, lm=left_motor)
+
+
 
 

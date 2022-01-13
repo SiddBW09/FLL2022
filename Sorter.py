@@ -360,7 +360,7 @@ def blue_two_slot_one3(tank, lift, claw):
     #my_tank = tank
     #MyClaw = claw
     els = False
-
+    #Starting: brickrun --directory="/home/robot/FLL2021" "/home/robot/FLL2021/main.py"
     claw.claw.reset()
     lift.reset()
     tank.reset()
@@ -487,15 +487,17 @@ def going_to_green_other_side(tank, lift, claw, slot=3, row=1):
 
 
 def test_claw(tank, lift, claw):
+    x = 0
+    for i in range(10):
 
-    claw.claw_open(150)
-    sleep(2)
-    claw.claw.reset()
-    if claw.claw_close(100):
-        init.debug_print("Caught Brick")
-    else:
-        init.debug_print("Not Caught")
-    sleep(10)
+
+        Navigation.distance_goer(tank, 50, -30, 0)
+        sleep(0.5)
+        Navigation.distance_goer(tank, 50, 39, 0)
+        sleep(.5)
+    x += 1
+    print(x)
+
 
 
 
@@ -633,10 +635,186 @@ def completeRun (tank, lift, claw):
     going_to_green(tank, lift, claw)
     #end_game(tank, lift, claw)
 
+def GoingtoSorter(tank, lift, Claw):
+
+    start_time = time.time()
+
+    import claw
+
+
+    #tank = Navigation.tank_init()
+    #lift = MediumMotor(OUTPUT_D)
+    #Claw = claw.Claw()
+    tank.gyro.reset()
+
+    #claw.claw_close(100)
+    #sleep(1)
+    #lift.on_for_rotations(30, -4)
+    #sleep(5)
+    #return
+
+
+    lift.reset()
+    Claw.claw_close_5()
+    sleep(1)
+    lift.on_for_rotations(35, -0.25)
+    #Navigation.distance_to_object(tank, 92, "Backward", 10)
+    #Navigation.new_move_incm(tank, -30, 92)
+    Navigation.distance_goer(tank, 100, -50, 0)
+
+
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
+    return
+    #Do bridge mission
+    tank.turn_degrees(10, 180, True, 1)
+    Navigation.gyro_check(tank, 10, 180)
+
+    init.debug_print("The amount turned before check: " + str(tank.gyro.angle))
+    Navigation.gyro_check(tank, 10, 180)
+    #Navigation.distance_to_object(tank, 28, "Forward", 15)
+    #Navigation.new_move_incm(tank, 25, 28)
+    Navigation.distance_goer(tank, 25, 28, 180)
+    Navigation.gyro_check(tank, 10, 180)
+
+    return
+    #(Curr angle should be 90)
+    #Navigation.distance_to_object(tank, 5, "Forward", 15)
+    Navigation.distance_goer(tank, 5, 15, 90)
+
+    tank.turn_degrees(10, -42, True, 1)
+    tank.turn_degrees(10, 42, True, 1)
+    #Navigation.distance_to_object(tank, 1, "Forward", 15)
+    Navigation.distance_goer(tank, 1, 15, 42)
+    #Dropping innovation piece.
+    lift.on_for_rotations(30, 2)
+    sleep(0.5)
+    Claw.claw_open(100)
+    sleep(0.5)
+    lift.on_for_rotations(30, -3)
+    #Navigation.distance_to_object(tank, 1, "Backward", 15)
+    Navigation.distance_goer(tank, 1, -15, 90)
+    tank.turn_degrees(10, 40, True, 1)
+
+    #Going Forward after supply drop
+    #Navigation.distance_to_object(tank, 15, "Forward", 15)
+    Navigation.distance_goer(tank, 15, speed, angle)
+
+    tank.turn_degrees(10, 60, True, 1)
+    Navigation.gyro_check(tank, 5, 180)
+
+
+    #Navigation.distance_to_object(tank, 18, "Forward", 15)
+    Navigation.distance_goer(tank, 18, 15, 180)
+
+    Navigation.gyro_check(tank, 5, 180)
+
+    init.debug_print("Final angle is:" + str(tank.gyro.angle))
+    #this is where we are, sid can continue tomorrow
+
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
+    return
+
+
+    tank.on_for_rotations(10, 0, 0.75)
+    Navigation.gyro_check(tank, 5, 180)
+    Navigation.distance_to_object(tank, 21.5, "Forward")
+    lift.on_for_rotations(20,4)
+    lift.reset()
+
+
+
+    """tank.turn_degrees(10, 47, True, 1)
+    Navigation.gyro_check(tank, 5, 47)
+    Navigation.distance_to_object(tank, 45, "Backward", 10)
+    Navigation.gyro_check(tank, 5, 48)
+    tank.turn_degrees(10, -60, True, 1)
+    tank.turn_degrees(10, 60, True, 1)"""
+    #lift.on_for_rotations(30, 2)
+    #tank.turn_degrees(10, 90, True, 1)
+    #Navigation.gyro_check(tank, 25, 90)
+    #Navigation.distance_to_object(tank, 89.5, "Backward", 10)
+
+def NewIdea(tank, lift, Claw):
+
+    start_time = time.time()
+    import claw
+    tank.gyro.reset()
+    lift.reset()
+
+    #Going to Cargo Connect Circle
+    #first bridge
+    Navigation.distance_goer(tank, 99, -25, 0)
+    sleep(0)
+    lift.on_for_rotations(30, -1)
+    #second bridge
+    Navigation.distance_goer(tank, 19, -10, 0)
+    Navigation.gyro_check(tank, 5, 0)
+    lift.on_for_rotations(30, 1)
+    Navigation.distance_goer(tank, 8, 10, 0)
+    lift.on_for_rotations(30, -1.5)
+    #innovation project in circle
+    Navigation.distance_goer(tank, 7, -5, 0)
+    tank.turn_degrees(15, -75)
+    Navigation.distance_goer(tank, 8, -10, -75)
+
+    Navigation.distance_goer(tank, 5, 10, -75)
+    tank.turn_degrees(5, -15)
+    #working perfectly until now
+    Navigation.distance_goer(tank, 1, 15, -95)
+    tank.turn_degrees(10, -130)
+    #To Do: go farther before turning
+    Navigation.distance_goer(tank, 20, 15, -225)
+    Navigation.distance_goer(tank, 13, 15, -225)
+
+    #NEW
+    tank.turn_degrees(10, 90, True, 1)
+    Navigation.gyro_check(tank, 5, -135)
+    Navigation.distance_goer(tank, 19, 10, -135)
+
+    tank.turn_degrees(10, -180-tank.gyro.angle)
+    Navigation.gyro_check(tank, 5, -180)
+    Navigation.distance_goer(tank, 14, 5, -180)
+    #Navigation.distance_goer(tank, 38, 16, -180)
+    lift.on_for_rotations(30, 0.75)
+    Navigation.distance_goer(tank, 18, -16, -180)
+    tank.turn_degrees(10, 9, True, 1)
+    Navigation.gyro_check(tank, 10, -90)
+    lift.on_for_rotations(30, -0.75)
+
+
+
+    init.debug_print("Last angle turned" + str(tank.gyro.angle))
+    init.debug_print("TIME: "+str(time.time()-start_time))
+
+    #Navigation.distance_goer(tank, 3, 5, 0)
+
+
+    #Sorter1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+
+def pickupbluebrick(tank, lift, MyClaw):
+
+    start_time = time.time()
+    tank.gyro.reset()
+    lift.reset()
+    #import claw
+    Navigation.distance_goer(tank, 2, 5, 0)
+    MyClaw.claw_open(100)
+    lift.on_for_rotations(30, 2)
+    if ("caught brick" == MyClaw.claw_close_5()):
+        lift.on_for_rotations(30, -1)
+
+
+
 
 
 if __name__ == "__main__":
-    completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #truck.Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #GoingtoSorter(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #NewIdea(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    pickupbluebrick(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #lift_check(Navigation.tank_init(), MediumMotor(OUTPUT_D))
     #going_to_green(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())

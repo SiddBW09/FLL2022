@@ -1,6 +1,6 @@
 # FLL2020 - RePlay
 #
-# This repository was created for FLL team - The Quakers
+# This repository was created for FLL team - The Quackers
 # to learn how to use python to code the EV3 brick to perform
 # various tasks designed for the FLL Robot challenge.
 # Team members work on their assigned python files to complete 
