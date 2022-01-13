@@ -766,12 +766,20 @@ def NewIdea(tank, lift, Claw):
     tank.turn_degrees(10, -130)
     #To Do: go farther before turning
     Navigation.distance_goer(tank, 20, 15, -225)
+    Navigation.distance_goer(tank, 13, 15, -225)
+
+    #NEW
+    tank.turn_degrees(10, 90, True, 1)
+    Navigation.gyro_check(tank, 5, -135)
+    Navigation.distance_goer(tank, 19, 10, -135)
+
     tank.turn_degrees(10, -180-tank.gyro.angle)
     Navigation.gyro_check(tank, 5, -180)
-    Navigation.distance_goer(tank, 38, 16, -180)
+    Navigation.distance_goer(tank, 14, 5, -180)
+    #Navigation.distance_goer(tank, 38, 16, -180)
     lift.on_for_rotations(30, 0.75)
     Navigation.distance_goer(tank, 18, -16, -180)
-    tank.turn_degrees(10, 90)
+    tank.turn_degrees(10, 9, True, 1)
     Navigation.gyro_check(tank, 10, -90)
     lift.on_for_rotations(30, -0.75)
 
@@ -780,48 +788,32 @@ def NewIdea(tank, lift, Claw):
     init.debug_print("Last angle turned" + str(tank.gyro.angle))
     init.debug_print("TIME: "+str(time.time()-start_time))
 
+    #Navigation.distance_goer(tank, 3, 5, 0)
+
+
+    #Sorter1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+
+def pickupbluebrick(tank, lift, MyClaw):
+
+    start_time = time.time()
+    tank.gyro.reset()
+    lift.reset()
+    #import claw
+    Navigation.distance_goer(tank, 2, 5, 0)
+    MyClaw.claw_open(100)
+    lift.on_for_rotations(30, 2)
+    if ("caught brick" == MyClaw.claw_close_5()):
+        lift.on_for_rotations(30, -1)
 
 
 
-
-
-
-
-    #Turn and Drop Cargo and Innovation Model, and go back
-
-
-
-
-    return
-
-
-    lift.on_for_rotations(30, -1)
-    Navigation.distance_goer(tank, 11, 5, -70)
-    tank.turn_degrees(10, 70, True, 1)
-    Navigation.gyro_check(tank, 5, 0)
-    sleep(1)
-    #Go and position for bridge mission
-    Navigation.distance_goer(tank, 18, 40, 0)
-    sleep(1)
-    Navigation.gyro_check(tank, 5, 0)
-
-    tank.turn_degrees(10, 60, True, 1)
-    lift.on_for_rotations(10, -0.5)
-    tank.turn_degrees(10, 45, True, 1)
-    lift.on_for_rotations(10, 0.5)
-    tank.turn_degrees(10, -45, True, 1)
-
-
-
-
-    endtime = time.time()-start_time
-    init.debug_print("TIME: "+str(endtime))
 
 
 if __name__ == "__main__":
     #truck.Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #GoingtoSorter(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    NewIdea(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #NewIdea(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    pickupbluebrick(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #lift_check(Navigation.tank_init(), MediumMotor(OUTPUT_D))

@@ -44,7 +44,7 @@ class Claw():
         self.claw.reset()
         while True:
 
-            self.claw.on_for_rotations(-10, 0.02, brake = False)
+            self.claw.on_for_rotations(-10, 0.01, brake = False)
 
             if 'stalled' in self.claw.state:
                 init.debug_print(self.claw.state)
@@ -54,16 +54,16 @@ class Claw():
         init.debug_print(i)
         self.claw.on_for_rotations(-10, 0.02, brake = True)
 
-        if i <= 10:
+        if i <= 7:
             init.debug_print("blocked")
-            return 'blocked'
-        elif i <= 13:
+            return "blocked"
+        elif i <= 11:
             init.debug_print("caught brick")
-            return True
+            return "caught brick"
 
         else:
             init.debug_print("Has Nothing")
-            return False
+            return "Has Nothing"
 
 
         return

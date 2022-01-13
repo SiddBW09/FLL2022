@@ -170,10 +170,8 @@ def follow_forever(tank, cm, lm):
 
     rotations_needed = cm/0.0712094336
     motorPos=lm.position
-    init.debug_print(str(rotations_needed) + str(":") + str(motorPos))
     if (motorPos<0):
         motorPos = motorPos*-1
-    init.debug_print(str(rotations_needed) + str(":") + str(motorPos))
     if (motorPos >= rotations_needed):
         return False
 
