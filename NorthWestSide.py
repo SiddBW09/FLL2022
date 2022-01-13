@@ -113,7 +113,7 @@ def PraticeCode():
     return
 
 
-def Coachie_Code(tank, lift, Claw):
+def Coach_Code(tank, lift, Claw):
     #tank = Navigation.tank_init()
     #lift = MediumMotor(OUTPUT_D)
     #Claw = claw.Claw()
@@ -153,7 +153,8 @@ def Coachie_Code(tank, lift, Claw):
 
 
     #Go back to home
-    Navigation.new_move_incm(tank, -30, 37)
+    #OG val=- -30, 37
+    Navigation.new_move_incm(tank, -30, 39)
     Navigation.gyro_check(tank, 5, 40)
 
     #Turn to 0
@@ -173,9 +174,11 @@ def Coachie_Code(tank, lift, Claw):
     lift.on_for_rotations(60, -8)
 
     #Do green cargo mission
-    #OG val 3
-    Navigation.distance_to_object(tank, 2, "Forward")
-    tank.on_for_rotations(10, 0, .35)
+    #OG val 3, then 2
+    Navigation.distance_to_object(tank, 1.4, "Forward")
+
+    #Og val=.35
+    tank.on_for_rotations(10, 0, .225)
 
     #Go forward and grab grey cargo
     Navigation.distance_to_object(tank, 10, "Forward")
@@ -187,8 +190,13 @@ def Coachie_Code(tank, lift, Claw):
     #Navigation.new_move_incm(tank, -25, 10)
     lift.on_for_rotations(60, -8)
     #Navigation.distance_to_object(tank, 10, "Backward")
+
+    endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))
+
+    return
     Navigation.new_move_incm(tank, -100, 40)
-    tank.turn_degrees(10, -45, True, 1)
+    tank.turn_degrees(10, -30, True, 1)
 
     #init.debug_print(int(time.time()-start_time))
     endtime = time.time()-start_time
@@ -202,5 +210,5 @@ def Coachie_Code(tank, lift, Claw):
 
 #Execute Northide Missions
 if __name__ == "__main__":
-    #Coachie_Code(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    PraticeCode()
+    Coach_Code(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #PraticeCode()
