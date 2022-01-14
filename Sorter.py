@@ -871,34 +871,52 @@ def blue1(tank, lift, MyClaw, column=2):
 
 
 def bluebrick_chopper(tank, lift, MyClaw):
+    start_time = time.time()
+    lift.reset()
+
+
+    #Drop Blue Brick from Middle Collum
     tank.gyro.reset()
     tank.turn_degrees(10, -180, True, 1)
     Navigation.distance_goer(tank, 29, 15, -180)
-    lift.on_for_rotations(49, 1.5)
+    Navigation.gyro_check(tank, 5, -180)
+    lift.on_for_rotations(30, 2)
     MyClaw.claw_open(100)
-    lift.on_for_rotations(49, -1.5)
-    tank.turn_degrees(10, -100, True, 1)
+
+    #Turn and do Chopper
+    lift.on_for_rotations(30, -4, brake =True)
+    tank.turn_degrees(10, -110, True, 1)
+    Navigation.gyro_check(tank, 5, -290)
     init.debug_print("Angle2Helicopter: " + str(tank.gyro.angle))
-    Navigation.distance_goer(tank, 10, -15, -280)
-    Navigation.distance_goer(tank, 5, 15, -280)
+    Navigation.distance_goer(tank, 10, -15, -290)
+    Navigation.distance_goer(tank, 5, 10, -290)
+
+    tank.reset()
+
+
+    #Go and do Cargo Ship
     tank.turn_degrees(10, -5, True, 1)
-    Navigation.distance_goer(tank, 25, 15, -285)
-    tank.turn_degrees(10, 15)
+    Navigation.distance_goer(tank, 22, 15, -295)
+    tank.turn_degrees(20, 15)
     Navigation.gyro_check(tank, 5, -270)
-    Navigation.distance_goer(tank, 8, 15, -270)
-    lift.on_for_rotations(30, 2)
-    Navigation.distance_goer(tank, 10, -15, -270)
-    init.debug_print("Last Angle Turned: " + str(tank.gyro.angle))
+    Navigation.distance_goer(tank, 15, 20, -270)
+    Navigation.gyro_check(tank, 5, -270)
+    lift.on_for_rotations(30, 4)
+    sleep(1)
+    Navigation.distance_goer(tank, 14, -20, -270)
+    lift.on_for_rotations(30, -4)
+
+    #Go to Speed Bump
+    Navigation.distance_goer(tank, 45, 20, -270)
+    tank.turn_degrees(10, 45, True, 1)
+    Navigation.distance_goer(tank, 30, 10, -225)
+    tank.turn_degrees(5, 5)
+
+
+
+    init.debug_print(tank.gyro.angle)
     #last lefo of
-
-
-    return
-    Navigation.distance_goer(tank, 17, 15, -323)
-    tank.turn_degrees(10, 40, True, 1)
-    init.debug_print("Last Angle Turned: " + str(tank.gyro.angle))
-    Navigation.distance_goer(tank, 18, 15, -283)
-    lift.on_for_rotations(30, 2)
-    Navigation.distance_goer(tank, 12, -15, -283)
+    init.debug_print("TIME: "+str(time.time()-start_time))
 
 
 
