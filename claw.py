@@ -17,6 +17,7 @@ class Claw():
         self.claw.reset()
 
 
+
     def claw_close(self, percent):
         i = 0
         self.claw.reset()
