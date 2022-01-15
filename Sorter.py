@@ -827,47 +827,56 @@ def pickupgreen(tank, lift, MyClaw):
         MyClaw.claw_open(100)
         sleep(0.5)
         lift.on_for_rotations(30, -1)
-        #Navigation.distance_goer(tank, 4, -5, 90)
+        Navigation.distance_goer(tank, 11, -5, 90)
         tank.turn_degrees(10, -90, True, 1)
-        MyClaw.claw_close_5()
+        lift.on_for_rotations(30, -4)
+        Navigation.gyro_check(tank, 5, 0)
+        sleep(1)
+
+        blue1(tank, lift, MyClaw)
 
 
 
 
 
 
-def blue1(tank, lift, MyClaw, column=2):
+def blue1(tank, lift, MyClaw, column=1):
     start_time = time.time()
     tank.gyro.reset()
     lift.reset()
-
-    Navigation.distance_goer(tank, 7, 5, 0)
+    lift.on_for_rotations(10, -3)
     MyClaw.claw_open(100)
-    lift.on_for_rotations(30, 2)
-    if True:
-    #if ("caught brick" == MyClaw.claw_close_5()):
-        MyClaw.claw_close_5()
-        lift.on_for_rotations(30, -1.5)
-        Navigation.distance_goer(tank, 25, -15, 0)
-        return
-        tank.turn_degrees(10, -165, True, 1)
-        Navigation.distance_goer(tank, 24, 15, -165)
-        lift.on_for_rotations(49, 1.5)
-        MyClaw.claw_open(100)
-        lift.on_for_rotations(49, -1.5)
-        tank.turn_degrees(10, -115, True, 1)
-        init.debug_print("Angle2Helicopter: " + str(tank.gyro.angle))
 
-        Navigation.distance_goer(tank, 10, -15, -280)
-        Navigation.distance_goer(tank, 5, 15, -280)
-        tank.turn_degrees(10, -28)
-        Navigation.distance_goer(tank, 17, 15, -308)
-        tank.turn_degrees(10, 40, True, 1)
-        init.debug_print("Last Angle Turned: " + str(tank.gyro.angle))
-        Navigation.distance_goer(tank, 18, 15, -270)
-        lift.on_for_rotations(30, 2)
-        Navigation.distance_goer(tank, 12, -15, -270)
-        init.debug_print("TIME: "+str(time.time()-start_time))
+    #Go to brick
+    tank.turn_degrees(10, 90, True, 1)
+    Navigation.distance_goer(tank, 10, 10, 90)
+    tank.turn_degrees(10, -90, True, 1)
+    Navigation.gyro_check(tank, 5, 0)
+    Navigation.distance_goer(tank, 8, 10, 0)
+    Navigation.gyro_check(tank, 5, 0)
+    lift.on_for_rotations(30, 2.2)
+    sleep(1)
+
+    if MyClaw.claw_close_5():
+        init.debug_print("Caught Blue Brick!")
+        lift.on_for_rotations(30, -3)
+
+        Navigation.distance_goer(tank, 8, -10, 0)
+        tank.turn_degrees(10, 90, True, 1)
+        Navigation.gyro_check(tank, 5, 90)
+        Navigation.distance_goer(tank, 10, -10, 90)
+        tank.turn_degrees(10, -90, True, 1)
+        Navigation.gyro_check(tank, 5, 0)
+        Navigation.distance_goer(tank, 7, -20, 0)
+
+        bluebrick_chopper(tank, lift, MyClaw)
+
+
+
+
+    else:
+        init.debug_print("Don't have blue brick!")
+
 
 
 def bluebrick_chopper(tank, lift, MyClaw):
@@ -884,7 +893,7 @@ def bluebrick_chopper(tank, lift, MyClaw):
     MyClaw.claw_open(100)
 
     #Turn and do Chopper
-    lift.on_for_rotations(30, -4, brake =True)
+    lift.on_for_rotations(30, -3, brake =True)
     tank.turn_degrees(10, -110, True, 1)
     Navigation.gyro_check(tank, 5, -290)
     init.debug_print("Angle2Helicopter: " + str(tank.gyro.angle))
@@ -896,27 +905,34 @@ def bluebrick_chopper(tank, lift, MyClaw):
 
     #Go and do Cargo Ship
     tank.turn_degrees(10, -5, True, 1)
-    Navigation.distance_goer(tank, 22, 15, -295)
+    Navigation.distance_goer(tank, 18, 15, -295)
     tank.turn_degrees(20, 15)
     Navigation.gyro_check(tank, 5, -270)
     Navigation.distance_goer(tank, 15, 20, -270)
     Navigation.gyro_check(tank, 5, -270)
     lift.on_for_rotations(30, 4)
-    sleep(1)
-    Navigation.distance_goer(tank, 14, -20, -270)
-    lift.on_for_rotations(30, -4)
+    sleep(2)
+    Navigation.distance_goer(tank, 13, -20, -270)
+    Navigation.distance_goer(tank, 3, 10, -270)
+    lift.on_for_rotations(30, -2)
+
 
     #Go to Speed Bump
-    Navigation.distance_goer(tank, 45, 20, -270)
+    Navigation.distance_goer(tank, 42, 20, -270)
     tank.turn_degrees(10, 45, True, 1)
-    Navigation.distance_goer(tank, 30, 10, -225)
+    Navigation.distance_goer(tank, 32, 10, -225)
     tank.turn_degrees(5, 5)
+    lift.on_for_rotations(30, 0.7)
+    tank.turn_degrees(3, -70)
+
 
 
 
     init.debug_print(tank.gyro.angle)
     #last lefo of
     init.debug_print("TIME: "+str(time.time()-start_time))
+
+
 
 
 
@@ -939,6 +955,7 @@ if __name__ == "__main__":
     #end_game(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #test_claw(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #SlotToCircle(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    bluebrick_chopper(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    pickupgreen(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #blue1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 
 
