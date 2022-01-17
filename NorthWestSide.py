@@ -190,11 +190,12 @@ def Coach_Code(tank, lift, Claw):
     #Navigation.new_move_incm(tank, -25, 10)
     lift.on_for_rotations(60, -8)
     #Navigation.distance_to_object(tank, 10, "Backward")
+    sleep(0.5)
 
     endtime = time.time()-start_time
     init.debug_print("TIME: "+str(endtime))
 
-    return
+    #return
     Navigation.new_move_incm(tank, -100, 40)
     tank.turn_degrees(10, -30, True, 1)
 
