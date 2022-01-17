@@ -396,7 +396,7 @@ def truck_3(tank, lift, Claw): #Working, final version.
     tank.turn_degrees(10, -30, True, 1)
     distance_to_home = 40/25.6353961
     tank.on_for_rotations(40, 40, distance_to_home)
-
+    return
     Claw.claw_open(100)
 
     '''
@@ -461,13 +461,10 @@ if __name__ == "__main__":
     #Innovate(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     truck_3(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 
-    return
 
 
 
-if __name__ == "__main__":
-    Innovate(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    #truck_3(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+
 
 '''The code below is our old code, in case we need it:
 Navigation.distance_to_object(tank, 50, "Backward") #Going forward from home. [This and the code below is all of the old code:]
