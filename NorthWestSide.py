@@ -181,12 +181,12 @@ def Coach_Code(tank, lift, Claw):
     tank.on_for_rotations(10, 0, .225)
 
     #Go forward and grab grey cargo
-    Navigation.distance_to_object(tank, 10, "Forward")
+    Navigation.distance_to_object(tank, 11, "Forward")
     lift.on_for_rotations(60, 8)
 
     #Go back to put grey cargo in grey circle
 
-    Navigation.distance_to_object(tank, 10, "Backward")
+    Navigation.distance_to_object(tank, 11, "Backward")
     #Navigation.new_move_incm(tank, -25, 10)
     lift.on_for_rotations(60, -8)
     #Navigation.distance_to_object(tank, 10, "Backward")
@@ -196,7 +196,7 @@ def Coach_Code(tank, lift, Claw):
     init.debug_print("TIME: "+str(endtime))
 
     #return
-    Navigation.new_move_incm(tank, -100, 40)
+    Navigation.new_move_incm(tank, -100, 33)
     tank.turn_degrees(10, -30, True, 1)
 
     #init.debug_print(int(time.time()-start_time))
