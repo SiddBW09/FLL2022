@@ -55,7 +55,8 @@ class Claw():
         init.debug_print(i)
         self.claw.on_for_rotations(-10, 0.02, brake = True)
 
-
+        if i <= 0:
+            return "Has Nothing"
         if i <= 11:
             init.debug_print("caught brick")
             return "caught brick"

@@ -195,6 +195,7 @@ def distance_goer(tank, distance, speed, angle):
         follow_for=follow_forever,
         cm=distance, lm=left_motor)
 
+    gyro_check(tank, 5, angle)
 
 
 
