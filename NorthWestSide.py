@@ -15,104 +15,6 @@ import Navigation
 import init
 import claw
 
-def PraticeCode():
-    tank = Navigation.tank_init()
-    lift = MediumMotor(OUTPUT_D)
-    Claw = claw.Claw()
-    tank.gyro.reset()
-    start_time = time.time()
-
-    lift.on_for_rotations(10, 1)
-    tank.turn_degrees(50, 30, True, 1)
-    return
-
-    lift.on_for_rotations(10, -1)
-    tank.turn_degrees(10, 20, True, 1)
-
-    return
-
-    #Lift up at start
-    lift.on_for_rotations(10, 3)
-    lift.reset()
-
-
-    #Go to blue mission thing
-    Navigation.new_move_incm(tank, 32, 30)
-    tank.on_for_rotations(0, 30, 0.8)
-    tank.on_for_rotations(0, -30, 0.8)
-    Navigation.gyro_check(tank, 5, 0)
-
-
-    #Go forward more
-    Navigation.new_move_incm(tank, 34, 28)
-
-
-    #Turn and Go to SwitchE
-    tank.turn_degrees(10, 40, True, 1)
-    Navigation.gyro_check(tank, 5, 40)
-
-    Navigation.new_move_incm(tank, 30, 15)
-    Navigation.gyro_check(tank, 5, 40)
-    lift.on_for_rotations(10, -1)
-    tank.turn_degrees(10, 10, True, 1)
-
-    return
-    Navigation.distance_to_object(tank, 12, "Forward")
-
-
-    Navigation.distance_to_object(tank, 6.5, "Forward", 10)
-    Navigation.gyro_check(tank, 10, 50)
-
-    lift.on_for_rotations(-70, 5)
-
-
-
-    #Go back to home
-    Navigation.new_move_incm(tank, -30, 37)
-    Navigation.gyro_check(tank, 5, 40)
-
-    #Turn to 0
-    tank.turn_degrees(10, -20, True, 1)
-    sleep(1)
-    #Navigation.gyro_check(tank, 5, 7)
-
-
-    lift.reset()
-    lift.on_for_rotations(60, 8)
-    lift.reset()
-    lift.on_for_rotations(-60, 0.6)
-    lift.reset()
-
-    lift.on_for_rotations(60, 8)
-    lift.reset()
-    lift.on_for_rotations(60, -8)
-
-    #Do green cargo mission
-    #OG val 3
-    Navigation.distance_to_object(tank, 2, "Forward")
-    tank.on_for_rotations(10, 0, .35)
-
-    #Go forward and grab grey cargo
-    Navigation.distance_to_object(tank, 10, "Forward")
-    lift.on_for_rotations(60, 8)
-
-    #Go back to put grey cargo in grey circle
-
-    Navigation.distance_to_object(tank, 10, "Backward")
-    #Navigation.new_move_incm(tank, -25, 10)
-    lift.on_for_rotations(60, -8)
-    #Navigation.distance_to_object(tank, 10, "Backward")
-    Navigation.new_move_incm(tank, -100, 40)
-    tank.turn_degrees(10, -45, True, 1)
-
-    #init.debug_print(int(time.time()-start_time))
-    endtime = time.time()-start_time
-    init.debug_print("TIME: "+str(endtime))
-    lift.reset()
-    Claw.claw.reset()
-    return
-
-
 def Coach_Code(tank, lift, Claw):
     #tank = Navigation.tank_init()
     #lift = MediumMotor(OUTPUT_D)
@@ -126,23 +28,26 @@ def Coach_Code(tank, lift, Claw):
 
 
     #Go to blue mission thing
-    Navigation.new_move_incm(tank, 32, 30)
+    Navigation.distance_goer(tank, 30, 32, 0)
     tank.on_for_rotations(0, 30, 0.8)
     tank.on_for_rotations(0, -30, 0.8)
     Navigation.gyro_check(tank, 5, 0)
 
 
     #Go forward more
-    Navigation.new_move_incm(tank, 34, 28)
+    
+    Navigation.distance_goer(tank, 28, 34, 0)
 
 
     #Turn and Go to SwitchE
     tank.turn_degrees(10, 40, True, 1)
     Navigation.gyro_check(tank, 5, 40)
 
-    Navigation.new_move_incm(tank, 30, 15)
+
+    Navigation.distance_goer(tank, 15, 30, 40)
     Navigation.gyro_check(tank, 5, 40)
     Navigation.distance_to_object(tank, 12, "Forward")
+    
 
 
     Navigation.distance_to_object(tank, 6.5, "Forward", 10)
@@ -160,8 +65,6 @@ def Coach_Code(tank, lift, Claw):
     #Turn to 0
     tank.turn_degrees(10, -20, True, 1)
     sleep(1)
-    #Navigation.gyro_check(tank, 5, 7)
-
 
     lift.reset()
     lift.on_for_rotations(60, 8)
@@ -174,29 +77,26 @@ def Coach_Code(tank, lift, Claw):
     lift.on_for_rotations(60, -8)
 
     #Do green cargo mission
-    #OG val 3, then 2
+    #OG val 3, then 2 then 1.4
     Navigation.distance_to_object(tank, 1.4, "Forward")
 
-    #Og val=.35
-    tank.on_for_rotations(10, 0, .225)
+    #Og val= .35 then .225
+    tank.on_for_rotations(10, 0, .2)
 
     #Go forward and grab grey cargo
     Navigation.distance_to_object(tank, 11, "Forward")
     lift.on_for_rotations(60, 8)
 
     #Go back to put grey cargo in grey circle
-
     Navigation.distance_to_object(tank, 11, "Backward")
-    #Navigation.new_move_incm(tank, -25, 10)
     lift.on_for_rotations(60, -8)
-    #Navigation.distance_to_object(tank, 10, "Backward")
     sleep(0.5)
 
-    endtime = time.time()-start_time
-    init.debug_print("TIME: "+str(endtime))
+    '''endtime = time.time()-start_time
+    init.debug_print("TIME: "+str(endtime))'''
 
     #return
-    Navigation.new_move_incm(tank, -100, 33)
+    Navigation.distance_goer(tank, 33, -25, 40)
     tank.turn_degrees(10, -30, True, 1)
 
     #init.debug_print(int(time.time()-start_time))
@@ -212,4 +112,3 @@ def Coach_Code(tank, lift, Claw):
 #Execute Northide Missions
 if __name__ == "__main__":
     Coach_Code(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    #PraticeCode()
