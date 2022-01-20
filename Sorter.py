@@ -748,42 +748,39 @@ def NewIdea(tank, lift, Claw):
     Navigation.distance_goer(tank, 8, -10, -75)
 
     Navigation.distance_goer(tank, 5, 10, -75)
-    tank.turn_degrees(5, -15)
+    tank.turn_degrees(5, -7.5)
     #working perfectly until now
     Navigation.distance_goer(tank, 1, 15, -95)
-    tank.turn_degrees(10, -130)
+    tank.turn_degrees(10, -137.5)
     #To Do: go farther before turning
     Navigation.distance_goer(tank, 20, 15, -225)
     Navigation.distance_goer(tank, 13, 15, -225)
 
+
     #NEW
     tank.turn_degrees(10, 90, True, 1)
     Navigation.gyro_check(tank, 5, -135)
-    Navigation.distance_goer(tank, 19, 10, -135)
-
+    Navigation.distance_goer(tank, 16.64, 10, -135)
     tank.turn_degrees(10, -180-tank.gyro.angle)
     Navigation.gyro_check(tank, 5, -180)
-    Navigation.distance_goer(tank, 14, 5, -180)
+    Navigation.distance_goer(tank, 14, 10, -180)
     #Navigation.distance_goer(tank, 38, 16, -180)
     lift.on_for_rotations(30, 0.75)
-    Navigation.distance_goer(tank, 18, -16, -180)
+    Navigation.distance_goer(tank, 15.6, -20, -180)
     tank.turn_degrees(10, 9, True, 1)
-    Navigation.gyro_check(tank, 10, -90)
+    Navigation.gyro_check(tank, 10.9, -90)
     lift.on_for_rotations(30, -0.75)
 
-    Navigation.distance_goer(tank, 2.5, -5, -90)
+    Navigation.distance_goer(tank, 4.5, -10, -90)
 
     Navigation.gyro_check(tank, 10, -90)
-
-
 
 
     init.debug_print("Last angle turned" + str(tank.gyro.angle))
     init.debug_print("TIME: "+str(time.time()-start_time))
 
 
-    pickupgreen(tank, lift, Claw, start_time, 2)
-
+    #pickupgreen(tank, lift, Claw, start_time, 2)
     #Navigation.distance_goer(tank, 3, 5, 0)
 
 
