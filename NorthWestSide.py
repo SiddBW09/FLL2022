@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 '''
 Imports:
 '''
@@ -15,6 +16,8 @@ import Navigation
 import init
 import claw
 
+
+
 def Coach_Code(tank, lift, Claw):
     #tank = Navigation.tank_init()
     #lift = MediumMotor(OUTPUT_D)
@@ -22,9 +25,13 @@ def Coach_Code(tank, lift, Claw):
     tank.gyro.reset()
     start_time = time.time()
 
+
+
     #Lift up at start
     lift.on_for_rotations(10, 3)
     lift.reset()
+
+
 
 
     #Go to blue mission thing
@@ -34,9 +41,13 @@ def Coach_Code(tank, lift, Claw):
     Navigation.gyro_check(tank, 5, 0)
 
 
+
+
     #Go forward more
-    
+
     Navigation.distance_goer(tank, 28, 34, 0)
+
+
 
 
     #Turn and Go to SwitchE
@@ -44,16 +55,23 @@ def Coach_Code(tank, lift, Claw):
     Navigation.gyro_check(tank, 5, 40)
 
 
+
+
     Navigation.distance_goer(tank, 15, 30, 40)
     Navigation.gyro_check(tank, 5, 40)
     Navigation.distance_to_object(tank, 12, "Forward")
-    
+
+
 
 
     Navigation.distance_to_object(tank, 6.5, "Forward", 10)
     Navigation.gyro_check(tank, 10, 50)
 
+
+
     lift.on_for_rotations(-70, 5)
+
+
 
 
 
@@ -62,9 +80,13 @@ def Coach_Code(tank, lift, Claw):
     Navigation.new_move_incm(tank, -30, 39)
     Navigation.gyro_check(tank, 5, 40)
 
+
+
     #Turn to 0
     tank.turn_degrees(10, -20, True, 1)
     sleep(1)
+
+
 
     lift.reset()
     lift.on_for_rotations(60, 8)
@@ -72,32 +94,48 @@ def Coach_Code(tank, lift, Claw):
     lift.on_for_rotations(-60, 0.6)
     lift.reset()
 
+
+
     lift.on_for_rotations(60, 8)
     lift.reset()
     lift.on_for_rotations(60, -8)
+
+
 
     #Do green cargo mission
     #OG val 3, then 2 then 1.4
     Navigation.distance_to_object(tank, 1.4, "Forward")
 
+
+
     #Og val= .35 then .225
     tank.on_for_rotations(10, 0, .2)
+
+
 
     #Go forward and grab grey cargo
     Navigation.distance_to_object(tank, 11, "Forward")
     lift.on_for_rotations(60, 8)
+
+
 
     #Go back to put grey cargo in grey circle
     Navigation.distance_to_object(tank, 11, "Backward")
     lift.on_for_rotations(60, -8)
     sleep(0.5)
 
+
+
     '''endtime = time.time()-start_time
     init.debug_print("TIME: "+str(endtime))'''
+
+
 
     #return
     Navigation.distance_goer(tank, 33, -25, 40)
     tank.turn_degrees(10, -30, True, 1)
+
+
 
     #init.debug_print(int(time.time()-start_time))
     endtime = time.time()-start_time
@@ -109,6 +147,9 @@ def Coach_Code(tank, lift, Claw):
 
 
 
+
+
 #Execute Northide Missions
 if __name__ == "__main__":
     Coach_Code(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+
