@@ -734,47 +734,51 @@ def NewIdea(tank, lift, Claw):
     #Going to Cargo Connect Circle
     #first bridge
     Navigation.distance_goer(tank, 99, -40, 0)
-    init.debug_print("TIME: "+str(time.time()-start_time))
 
-    return
     sleep(0)
     lift.on_for_rotations(30, -1)
     #second bridge
-    Navigation.distance_goer(tank, 19, -10, 0)
+    Navigation.distance_goer(tank, 19, -20, 0)
     Navigation.gyro_check(tank, 5, 0)
     lift.on_for_rotations(30, 1)
-    Navigation.distance_goer(tank, 8, 10, 0)
+    Navigation.distance_goer(tank, 8, 20, 0)
     lift.on_for_rotations(30, -1.5)
     #innovation project in circle
-    Navigation.distance_goer(tank, 7, -5, 0)
+    Navigation.distance_goer(tank, 7, -20, 0)
     tank.turn_degrees(15, -75)
     Navigation.distance_goer(tank, 8, -10, -75)
 
     Navigation.distance_goer(tank, 5, 10, -75)
-    tank.turn_degrees(5, -7.5)
+    tank.turn_degrees(5, -12.5)
     #working perfectly until now
     Navigation.distance_goer(tank, 1, 15, -95)
-    tank.turn_degrees(10, -137.5)
+    tank.turn_degrees(10, -131.5)
+    Navigation.distance_to_object(tank, 10, "Forward")
+    tank.turn_degrees(5, 15)
+    return
+
+    init.debug_print("The angle turned[Supposed to be 139 or 140]: " + str(tank.gyro.angle))
     #To Do: go farther before turning
-    Navigation.distance_goer(tank, 20, 15, -225)
-    Navigation.distance_goer(tank, 13, 15, -225)
+    Navigation.distance_goer(tank, 33, 15, -218)
+    #
+    #Navigation.distance_goer(tank, 13, 15, -225)
 
 
     #NEW
     tank.turn_degrees(10, 90, True, 1)
-    Navigation.gyro_check(tank, 5, -135)
-    Navigation.distance_goer(tank, 16.64, 10, -135)
+    Navigation.gyro_check(tank, 5, -145)
+    Navigation.distance_goer(tank, 12, 20, -145)
     tank.turn_degrees(10, -180-tank.gyro.angle)
     Navigation.gyro_check(tank, 5, -180)
     Navigation.distance_goer(tank, 14, 10, -180)
     #Navigation.distance_goer(tank, 38, 16, -180)
     lift.on_for_rotations(30, 0.75)
-    Navigation.distance_goer(tank, 15.6, -20, -180)
+    Navigation.distance_goer(tank, 13.6, -20, -180)
     tank.turn_degrees(10, 9, True, 1)
     Navigation.gyro_check(tank, 10.9, -90)
     lift.on_for_rotations(30, -0.75)
 
-    Navigation.distance_goer(tank, 4.5, -10, -90)
+    Navigation.distance_goer(tank, 3.5, -15, -90)
 
     Navigation.gyro_check(tank, 10, -90)
 
