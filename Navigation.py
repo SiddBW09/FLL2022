@@ -187,11 +187,18 @@ def distance_goer(tank, distance, speed, angle):
     tank.reset()
     left_motor = LargeMotor(OUTPUT_A)
     left_motor.reset()
+    sleep = 0.01
+
+    if abs(speed) >= 30:
+        sleep = 0.005
+    init.debug_print(sleep)
+
+
     tank.follow_gyro_angle(
         kp=11.3, ki=0.05, kd=3.2,
         speed=SpeedPercent(speed),
         target_angle=angle,
-        sleep_time=0.01,
+        sleep_time=sleep,
         follow_for=follow_forever,
         cm=distance, lm=left_motor)
 
