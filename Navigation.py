@@ -191,7 +191,7 @@ def distance_goer(tank, distance, speed, angle):
 
     if abs(speed) >= 30:
         sleep = 0.005
-    init.debug_print(sleep)
+
 
 
     tank.follow_gyro_angle(
