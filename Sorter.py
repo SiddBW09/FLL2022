@@ -997,7 +997,7 @@ def bluebrick_chopper(tank, lift, MyClaw, last_time):
 
     #Go and do Cargo Ship
     Navigation.gyro_check(tank, speed, -295)
-    Navigation.distance_goer(tank, 5, 20, -295)
+    Navigation.distance_goer(tank, 6.5, 20, -295)
     Navigation.gyro_check(tank, speed, -270)
     Navigation.distance_goer(tank, 24, 20, -270)
     Navigation.gyro_check(tank, speed, -270)
@@ -1005,16 +1005,16 @@ def bluebrick_chopper(tank, lift, MyClaw, last_time):
     Navigation.gyro_check(tank, speed, -270)
     motor_check(50, 4, lift)
     sleep(2)
-    Navigation.distance_goer(tank, 12, -20, -270)
-    Navigation.distance_goer(tank, 3, 20, -270)
+    Navigation.distance_goer(tank, 12, -16, -270)
+    Navigation.distance_goer(tank, 6, 16, -270)
     motor_check(50, -2, lift)
 
 
     #Go to Speed Bump
-    Navigation.distance_goer(tank, 38.5, 20, -270)
+    Navigation.distance_goer(tank, 41, 20, -270)
     Navigation.gyro_check(tank, speed, -225)
-    Navigation.distance_goer(tank, 35, 20, -225)
-    Navigation.gyro_check(tank, speed, -220)
+    Navigation.distance_goer(tank, 26, 20, -225)
+    Navigation.gyro_check(tank, speed, -210)
     motor_check(30, 0.8, lift)
     Navigation.gyro_check(tank, speed, -290)
     #everything works except for the speed bump and we have to do combo 3
