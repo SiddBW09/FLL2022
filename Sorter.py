@@ -1012,9 +1012,9 @@ def bluebrick_chopper(tank, lift, MyClaw, last_time):
 
 
     #Go to Speed Bump
-    Navigation.distance_goer(tank, 32, 20, -270)
+    Navigation.distance_goer(tank, 32, 30, -270)
     Navigation.gyro_check(tank, speed, -225)
-    Navigation.distance_goer(tank, 26, 20, -225)
+    Navigation.distance_goer(tank, 28, 30, -225)
     Navigation.gyro_check(tank, speed, -210)
     motor_check(30, 0.8, lift)
     Navigation.gyro_check(tank, speed, -290)
