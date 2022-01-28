@@ -752,7 +752,7 @@ def NewIdea(tank, lift, Claw):
     tank.turn_degrees(5, -12.5)
     #working perfectly until now
     Navigation.distance_goer(tank, 1, 15, -95)
-    tank.turn_degrees(10, -131.5)
+    tank.turn_degrees(10, -134)
 
     Navigation.distance_goer(tank, 12, 25, -225)
     Navigation.gyro_check(tank, 5, -210)
@@ -771,7 +771,7 @@ def NewIdea(tank, lift, Claw):
     Navigation.gyro_check(tank, 10.9, -90)
     lift.on_for_rotations(30, -0.75)
 
-    Navigation.distance_goer(tank, 4, -15, -90)
+    Navigation.distance_goer(tank, 4, -19.5, -90)
     sleep(1)
     Navigation.gyro_check(tank, 5, -90)
 
@@ -862,7 +862,7 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
             motor_check(50, -1, lift)
 
             #Go back to home
-            Navigation.distance_goer(tank, 7, -20, 90)
+            Navigation.distance_goer(tank, 9, -20, 90)
             #tank.turn_degrees(10, 90, True, 1)
             Navigation.gyro_check(tank, speed, 0)
 
@@ -1005,13 +1005,14 @@ def bluebrick_chopper(tank, lift, MyClaw, last_time):
     Navigation.gyro_check(tank, speed, -270)
     motor_check(50, 4, lift)
     sleep(2)
-    Navigation.distance_goer(tank, 12, -16, -270)
-    Navigation.distance_goer(tank, 6, 16, -270)
+    Navigation.distance_goer(tank, 14, -16, -270)
+    Navigation.distance_goer(tank, 12.5, 16, -270)
     motor_check(50, -2, lift)
 
 
+
     #Go to Speed Bump
-    Navigation.distance_goer(tank, 41, 20, -270)
+    Navigation.distance_goer(tank, 32, 20, -270)
     Navigation.gyro_check(tank, speed, -225)
     Navigation.distance_goer(tank, 26, 20, -225)
     Navigation.gyro_check(tank, speed, -210)

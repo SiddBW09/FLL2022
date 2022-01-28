@@ -15,6 +15,7 @@ from ev3dev2.motor import OUTPUT_B, MediumMotor
 import Navigation
 import init
 import claw
+import Sorter
 
 
 
@@ -28,8 +29,7 @@ def Coach_Code(tank, lift, Claw):
 
 
     #Lift up at start
-    lift.on_for_rotations(10, 3)
-    lift.reset()
+    Sorter.motor_check(60, 3, lift)
 
 
 
@@ -45,7 +45,7 @@ def Coach_Code(tank, lift, Claw):
 
     #Go forward more
 
-    Navigation.distance_goer(tank, 28, 34, 0)
+    Navigation.distance_goer(tank, 28, 40, 0)
 
 
 
@@ -58,13 +58,13 @@ def Coach_Code(tank, lift, Claw):
 
 
     Navigation.distance_goer(tank, 15, 30, 40)
+
     Navigation.gyro_check(tank, 5, 40)
-    Navigation.distance_to_object(tank, 12, "Forward")
+    Navigation.distance_goer(tank, 12, 20, 40)
 
 
 
-
-    Navigation.distance_to_object(tank, 6.5, "Forward", 10)
+    Navigation.distance_goer(tank, 6.5, 10, 40)
     Navigation.gyro_check(tank, 10, 50)
 
 
@@ -77,15 +77,9 @@ def Coach_Code(tank, lift, Claw):
 
     #Go back to home
     #OG val=- -30, 37
-    Navigation.new_move_incm(tank, -30, 39)
-    Navigation.gyro_check(tank, 5, 40)
-
-
-
-    #Turn to 0
-    tank.turn_degrees(10, -20, True, 1)
-    sleep(1)
-
+    Navigation.gyro_check(tank, 10, 60)
+    Navigation.distance_goer(tank, 41, -40, 60)
+    Navigation.gyro_check(tank, 10, 25)
 
 
     lift.reset()
@@ -102,25 +96,20 @@ def Coach_Code(tank, lift, Claw):
 
 
 
-    #Do green cargo mission
-    #OG val 3, then 2 then 1.4
-    Navigation.distance_to_object(tank, 1.4, "Forward")
-
-
-
-    #Og val= .35 then .225
-    tank.on_for_rotations(10, 0, .2)
+    #Do gray cargo mission
+    Navigation.gyro_check(tank, 10, 45)
 
 
 
     #Go forward and grab grey cargo
-    Navigation.distance_to_object(tank, 11, "Forward")
-    lift.on_for_rotations(60, 8)
+    Navigation.distance_goer(tank, 15, 20, 45)
+    sleep(1)
+    Sorter.motor_check(60, 8, lift)
 
 
 
     #Go back to put grey cargo in grey circle
-    Navigation.distance_to_object(tank, 11, "Backward")
+    Navigation.distance_goer(tank, 9, -20, 45)
     lift.on_for_rotations(60, -8)
     sleep(0.5)
 
@@ -132,7 +121,7 @@ def Coach_Code(tank, lift, Claw):
 
 
     #return
-    Navigation.distance_goer(tank, 33, -25, 40)
+    Navigation.distance_goer(tank, 40, -25, 40)
     tank.turn_degrees(10, -30, True, 1)
 
 
@@ -142,7 +131,7 @@ def Coach_Code(tank, lift, Claw):
     init.debug_print("TIME: "+str(endtime))
     lift.reset()
     Claw.claw.reset()
-    return
+
 
 
 
