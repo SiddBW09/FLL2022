@@ -28,90 +28,71 @@ def Coach_Code(tank, lift, Claw):
 
 
 
-    #Lift up at start
+    #Lift down at start
     Sorter.motor_check(60, 3, lift)
+    lift.reset()
 
 
 
 
     #Go to blue mission thing
-    Navigation.distance_goer(tank, 30, 32, 0)
-    tank.on_for_rotations(0, 30, 0.8)
-    tank.on_for_rotations(0, -30, 0.8)
-    Navigation.gyro_check(tank, 5, 0)
+    Navigation.distance_goer(tank, 30, 35, 0)
+    tank.on_for_rotations(0, 40, 0.8)
+    tank.on_for_rotations(0, -40, 0.8)
+    Navigation.gyro_check(tank, 8, 0)
 
 
 
 
     #Go forward more
-
-    Navigation.distance_goer(tank, 28, 40, 0)
+    Navigation.distance_goer(tank, 30, 35, 0)
 
 
 
 
     #Turn and Go to SwitchE
-    tank.turn_degrees(10, 40, True, 1)
     Navigation.gyro_check(tank, 5, 40)
 
-
-
-
-    Navigation.distance_goer(tank, 15, 30, 40)
-
-    Navigation.gyro_check(tank, 5, 40)
-    Navigation.distance_goer(tank, 12, 20, 40)
-
-
-
-    Navigation.distance_goer(tank, 6.5, 10, 40)
-    Navigation.gyro_check(tank, 10, 50)
-
-
-
+    Navigation.distance_goer(tank, 28, 35, 40)
+    sleep(0.1)
+    Navigation.gyro_check(tank, 5, 50)
     lift.on_for_rotations(-70, 5)
-
-
-
+    sleep(0.1)
 
 
     #Go back to home
-    #OG val=- -30, 37
-    Navigation.gyro_check(tank, 10, 60)
-    Navigation.distance_goer(tank, 41, -40, 60)
-    Navigation.gyro_check(tank, 10, 25)
+    Navigation.gyro_check(tank, 5, 60)
+    Navigation.distance_goer(tank, 39, -35, 60)
+    sleep(0.4)
+    Navigation.gyro_check(tank, 5, 25)
+    init.debug_print(tank.gyro.angle)
+
 
 
     lift.reset()
-    lift.on_for_rotations(60, 8)
+    lift.on_for_rotations(80, 8)
     lift.reset()
-    lift.on_for_rotations(-60, 0.6)
+    lift.on_for_rotations(-80, 8)
     lift.reset()
 
-
-
-    lift.on_for_rotations(60, 8)
-    lift.reset()
-    lift.on_for_rotations(60, -8)
 
 
 
     #Do gray cargo mission
-    Navigation.gyro_check(tank, 10, 45)
+    Navigation.gyro_check(tank, 8, 45)
 
 
 
     #Go forward and grab grey cargo
-    Navigation.distance_goer(tank, 15, 20, 45)
-    sleep(1)
+    Navigation.distance_goer(tank, 18, 35, 45)
     Sorter.motor_check(60, 8, lift)
 
 
 
     #Go back to put grey cargo in grey circle
-    Navigation.distance_goer(tank, 9, -20, 45)
+    Navigation.distance_goer(tank, 10, -15, 45)
     lift.on_for_rotations(60, -8)
-    sleep(0.5)
+    sleep(0.2)
 
 
 
@@ -121,8 +102,9 @@ def Coach_Code(tank, lift, Claw):
 
 
     #return
-    Navigation.distance_goer(tank, 40, -25, 40)
-    tank.turn_degrees(10, -30, True, 1)
+    # Navigation.distance_goer(tank, 40, -40, 40)
+    tank.on_for_rotations(-50, -50, 1.2)
+    tank.on_for_rotations(0, 30, 0.3)
 
 
 

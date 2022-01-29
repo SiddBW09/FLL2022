@@ -190,7 +190,7 @@ def distance_goer(tank, distance, speed, angle):
     sleep = 0.01
 
     if abs(speed) >= 30:
-        sleep = 0.005
+        sleep = 0.004
 
 
 

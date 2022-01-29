@@ -57,7 +57,7 @@ class Claw():
 
         if i <= 5:
             return "Has Nothing"
-        if i <= 12:
+        if i <= 13:
             init.debug_print("caught brick")
             return "caught brick"
 
