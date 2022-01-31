@@ -475,17 +475,11 @@ def going_to_green_other_side(tank, lift, claw, slot=3, row=1):
             init.debug_print("TIME: "+str(time.time()-start_time2))
             tank.gyro.reset()
 
-def test_claw(tank, lift, claw):
-    x = 0
-    for i in range(10):
-
-
-        Navigation.distance_goer(tank, 50, -30, 0)
-        sleep(0.5)
-        Navigation.distance_goer(tank, 50, 39, 0)
-        sleep(.5)
-    x += 1
-    print(x)
+def test_claw(tank, lift, MyClaw):
+    Navigation.distance_goer(tank, 100, 30, 0)
+    """MyClaw.claw_open(100)
+    sleep(1)
+    MyClaw.claw_close_5()"""
 
 def train(tank, Lift, claw):
     #init stuff
@@ -760,7 +754,7 @@ def NewIdea(tank, lift, Claw):
     #Go to train
     Navigation.distance_goer(tank, 10, 20, -210)
     Navigation.gyro_check(tank, 5, -180)
-    Navigation.distance_goer(tank, 31, 40, -180)
+    Navigation.distance_goer(tank, 31, 20, -180)
     sleep(1)
 
 
@@ -945,14 +939,14 @@ def blue1(tank, lift, MyClaw, last_time, slot):
         motor_check(50, 2, lift)
 
         if MyClaw.claw_close_5() == "caught brick":
-            sleep(1.5)
+            sleep(0.5)
             init.debug_print("Caught Blue Brick!")
             motor_check(50, -3, lift)
             sleep(0.5)
             Navigation.gyro_check(tank, speed, 0)
             Navigation.distance_goer(tank, 8, -10, 0)
             Navigation.gyro_check(tank, speed, -90)
-            Navigation.distance_goer(tank, 9, -20, -90)
+            Navigation.distance_goer(tank, 8.5, -10, -90)
             Navigation.gyro_check(tank, speed, -90)
 
 
@@ -1016,8 +1010,8 @@ def bluebrick_chopper(tank, lift, MyClaw, last_time):
     Navigation.gyro_check(tank, speed, -225)
     Navigation.distance_goer(tank, 28, 30, -225)
     Navigation.gyro_check(tank, speed, -210)
-    motor_check(30, 0.8, lift)
-    Navigation.gyro_check(tank, speed, -290)
+    motor_check(30, 1, lift)
+    Navigation.gyro_check(tank, speed, -270)
     #everything works except for the speed bump and we have to do combo 3
 
 
