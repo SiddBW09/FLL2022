@@ -746,10 +746,10 @@ def NewIdea(tank, lift, Claw):
     tank.turn_degrees(5, -12.5)
     #working perfectly until now
     Navigation.distance_goer(tank, 1, 15, -95)
-    tank.turn_degrees(10, -134)
+    tank.turn_degrees(10, -138)
 
-    Navigation.distance_goer(tank, 12, 25, -225)
-    Navigation.gyro_check(tank, 5, -210)
+    Navigation.distance_goer(tank, 12, 25, -229)
+    Navigation.gyro_check(tank, 5, -214)
 
     #Go to train
     Navigation.distance_goer(tank, 10, 20, -210)
@@ -765,7 +765,6 @@ def NewIdea(tank, lift, Claw):
     Navigation.gyro_check(tank, 10.9, -90)
     lift.on_for_rotations(30, -0.75)
 
-    Navigation.distance_goer(tank, 4, -19.5, -90)
     sleep(1)
     Navigation.gyro_check(tank, 5, -90)
 
@@ -895,8 +894,9 @@ def blue1(tank, lift, MyClaw, last_time, slot):
             Navigation.gyro_check(tank, speed, 0)
             Navigation.distance_goer(tank, 8, -10, 0)
             Navigation.gyro_check(tank, speed, 90)
-            Navigation.distance_goer(tank, 11, -20, 90)
+            Navigation.distance_goer(tank, 8, -20, 90)
             Navigation.gyro_check(tank, speed, 90)
+
 
         else:
             motor_check(50, -3, lift)
@@ -957,7 +957,6 @@ def blue1(tank, lift, MyClaw, last_time, slot):
     Navigation.gyro_check(tank, speed, 0)
     Navigation.distance_goer(tank, 7, -10, 0)
     Navigation.gyro_check(tank, speed, 0)
-
     sleep(1)
     Navigation.gyro_check(tank, speed, 0)
     init.debug_print("BluePickUp: "+str(time.time()-start_time))
@@ -984,8 +983,8 @@ def bluebrick_chopper(tank, lift, MyClaw, last_time):
     #Turn and do Chopper
     motor_check(50, -3.5, lift)
     Navigation.gyro_check(tank, speed, -295)
-    Navigation.distance_goer(tank, 10, -20, -295)
-    Navigation.distance_goer(tank, 10, 20, -295)
+    Navigation.distance_goer(tank, 10, -15, -295)
+    Navigation.distance_goer(tank, 10, 25, -295)
 
     tank.reset()
 
