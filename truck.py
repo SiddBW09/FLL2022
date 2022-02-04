@@ -446,7 +446,7 @@ def truck_4(tank, lift, Claw): #Working, final version.
     tank.turn_degrees(10, -30, True, 1)
     distance_to_home = 40/25.6353961
     tank.on_for_rotations(59, 59, distance_to_home)
-    Claw.claw_open(100)
+    #Claw.claw_open(100)
     '''
     endtime1 = int(time.time()-start_time)
     init.debug_print(endtime1)

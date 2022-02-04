@@ -25,11 +25,12 @@ def main():
     btn = Button()
 
     #PUT THE FUNCTION IN THE ELSE STATEMENT
+    #Latest version of executing the latest functions (yeah I know, it's repetitive)
     def left(state):
         if state:
             pass
         else:
-            NorthWestSide.Coachie_Code(tank,lift,Claw)
+            NorthWestSide.Coach_Code(tank,lift,Claw)
             tank.gyro.reset()
             lift.reset()
     def right(state):
