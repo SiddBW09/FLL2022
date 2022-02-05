@@ -451,7 +451,7 @@ def truck_4(tank, lift, Claw): #Working, final version.
     endtime1 = int(time.time()-start_time)
     init.debug_print(endtime1)
     '''
-    lift.on_for_rotations(49, 3)
+    lift.on_for_rotations(-49, 0.2)
     lift.reset()
     endtime = time.time()-start_time
     #init.debug_print("TIME: "+str(endtime))
