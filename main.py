@@ -37,7 +37,7 @@ def main():
         if state:
             pass
         else:
-            truck.truck_3(tank, lift, Claw)
+            truck.truck_4(tank, lift, Claw)
 
     def up(state):
         if state:
