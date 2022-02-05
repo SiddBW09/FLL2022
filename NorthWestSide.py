@@ -73,7 +73,6 @@ def Coach_Code(tank, lift, Claw):
     Sorter.motor_check(80, 8, lift)
     lift.reset()
     Sorter.motor_check(-80, 8, lift)
-    lift.reset()
 
 
 

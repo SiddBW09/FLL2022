@@ -944,8 +944,18 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
                 Navigation.gyro_check(tank, 5, 0)
                 blue1(tank, lift, MyClaw, start_time, 1)
         else:
-            motor_check(50, -3, lift)
-            pickupgreen(tank, lift, MyClaw, start_time, 1)
+            sleep(1)
+            motor_check(30, -1, lift)
+            #tank.turn_degrees(15, 90, True, 1)
+            Navigation.gyro_check(tank, speed, 90)
+            Navigation.distance_goer(tank, 10, 20, 90)
+            motor_check(50, 1, lift)
+            MyClaw.claw_open(100)
+            motor_check(60, -4, lift)
+            Navigation.gyro_check(tank, speed, 0)
+            sleep(0.5)
+            Navigation.gyro_check(tank, 5, 0)
+            blue1(tank, lift, MyClaw, start_time, 1)
 
     if slot == 1:
         MyClaw.claw_open(100)
