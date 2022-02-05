@@ -147,19 +147,19 @@ def turn_degrees(tank, degrees, direction, speed):
 
 def gyro_check (tank, speed, angle):
     angle_now = tank.gyro.angle
-    init.debug_print("cuur angle: " + str(tank.gyro.angle))
+    #init.debug_print("cuur angle: " + str(tank.gyro.angle))
     if angle_now > angle:
         #Turn angle-90 to the left
         offset1 = angle_now-angle
         #if (offset1 > 1):
         tank.turn_degrees(speed, -1*(offset1), True, .1)
-        init.debug_print("Final angle turned: " + str(tank.gyro.angle))
+        #init.debug_print("Final angle turned: " + str(tank.gyro.angle))
     elif angle_now < angle:
         #Turn 90-angle to the right
         offset1 = angle-angle_now
         #if (offset1 > 1):
         tank.turn_degrees(speed, offset1, True, .1)
-        init.debug_print("Final angle turned: " + str(tank.gyro.angle))
+        #init.debug_print("Final angle turned: " + str(tank.gyro.angle))
 
 
     # while tank.gyro.angle != angle:

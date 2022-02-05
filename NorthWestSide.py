@@ -65,14 +65,14 @@ def Coach_Code(tank, lift, Claw):
     Navigation.distance_goer(tank, 39, -35, 60)
     sleep(0.4)
     Navigation.gyro_check(tank, 5, 25)
-    init.debug_print(tank.gyro.angle)
+    #init.debug_print(tank.gyro.angle)
 
 
 
     lift.reset()
-    lift.on_for_rotations(80, 8)
+    Sorter.motor_check(80, 8, lift)
     lift.reset()
-    lift.on_for_rotations(-80, 8)
+    Sorter.motor_check(-80, 8, lift)
     lift.reset()
 
 
@@ -85,14 +85,16 @@ def Coach_Code(tank, lift, Claw):
 
     #Go forward and grab grey cargo
     Navigation.distance_goer(tank, 18, 35, 45)
+    sleep(0.2)
     Sorter.motor_check(60, 8, lift)
+    sleep(0.2)
 
 
 
     #Go back to put grey cargo in grey circle
     Navigation.distance_goer(tank, 10, -15, 45)
-    lift.on_for_rotations(60, -8)
-    sleep(0.2)
+    lift.on_for_rotations(-60, 8)
+    sleep(0.5)
 
 
 
@@ -110,13 +112,17 @@ def Coach_Code(tank, lift, Claw):
 
     #init.debug_print(int(time.time()-start_time))
     endtime = time.time()-start_time
-    init.debug_print("TIME: "+str(endtime))
+    #init.debug_print("TIME: "+str(endtime))
     lift.reset()
     Claw.claw.reset()
 
-
-
-
+    #Testing:
+    #1 S
+    #2 CP didn't work
+    #3 S
+    #4
+    #5
+    #6
 
 
 

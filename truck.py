@@ -426,17 +426,17 @@ def truck_4(tank, lift, Claw): #Working, final version.
     #tank.on_for_rotations(-10, -10, forward_distance_to_trucks)
     Navigation.distance_goer(tank, 29.7, -20, 0)
     gyro_check(tank, 0)
-    init.debug_print("Angle after going forward from home: " + str(tank.gyro.angle))
+    #init.debug_print("Angle after going forward from home: " + str(tank.gyro.angle))
     #Turn to trucks.
     tank.turn_degrees(10, 90, True, 1)
     gyro_check(tank, 90)
-    init.debug_print("90 degrees turn is: " + str(tank.gyro.angle))
+    #init.debug_print("90 degrees turn is: " + str(tank.gyro.angle))
     #Push and back out of trucks.
     #Navigation.distance_to_object(tank, 11, "Backward")
     #forward_distance = 26/25.6353961
     #tank.on_for_rotations(-10, -10, forward_distance)
     Navigation.distance_goer(tank, 26, -20, 90)
-    init.debug_print("The gyro angle after forward part 1: " + str(tank.gyro.angle))
+    #init.debug_print("The gyro angle after forward part 1: " + str(tank.gyro.angle))
     sleep(0.5)
     gyro_check(tank, 90)
     Navigation.distance_goer(tank, 25, -25, 90)
@@ -454,12 +454,12 @@ def truck_4(tank, lift, Claw): #Working, final version.
     lift.on_for_rotations(49, 3)
     lift.reset()
     endtime = time.time()-start_time
-    init.debug_print("TIME: "+str(endtime))
+    #init.debug_print("TIME: "+str(endtime))
     return
 
 if __name__ == "__main__":
     #Innovate(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
-    truck_3(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    truck_4(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 
 
 

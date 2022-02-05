@@ -52,7 +52,7 @@ class Claw():
             self.claw.on_for_rotations(-10, 0.01, brake = False)
 
             if 'stalled' in self.claw.state:
-                init.debug_print(self.claw.state)
+                #init.debug_print(self.claw.state)
                 break
 
             i += 1
@@ -62,11 +62,11 @@ class Claw():
         if i <= 15:
             return "Has Nothing"
         if i <= 23:
-            init.debug_print("caught brick")
+            #init.debug_print("caught brick")
             return "caught brick"
 
         else:
-            init.debug_print("Has Nothing")
+            #init.debug_print("Has Nothing")
             return "Has Nothing"
 
 

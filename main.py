@@ -37,47 +37,25 @@ def main():
         if state:
             pass
         else:
-            Sorter.completeRun(tank, lift, Claw)
+            truck.truck_3(tank, lift, Claw)
 
     def up(state):
         if state:
             pass
         else:
-            truck.truck_3(tank, lift, Claw)
+            Sorter.NewerIdea(tank, lift, Claw, 1)
     def down(state):
         if state:
             pass
         else:
-            tank.gyro.reset()
-            tank.turn_degrees(10,90)
-            print(tank.gyro.angle)
-            sleep(2)
-            tank.turn_degrees(10,90)
-            print(tank.gyro.angle)
-            sleep(2)
-            tank.turn_degrees(10,90)
-            print(tank.gyro.angle)
-            sleep(2)
-            tank.turn_degrees(10,90)
-            print(tank.gyro.angle)
-            sleep(2)
+            Sorter.NewerIdea(tank, lift, Claw, 3)
+
 
     def enter(state):
         if state:
             pass
         else:
-            for i in range(3):
-                tank.on_for_rotations(15, 15, 1)
-                tank.on_for_rotations(15, 15, -1)
-            for i in range(3):
-                lift.on_for_rotations(-20,4)
-                lift.on_for_rotations(20,4)
-            for i in range(3):
-                Claw.claw_close(100)
-                Claw.claw_open(100)
-            tank.reset()
-            lift.reset()
-            Claw.claw.reset()
+            Sorter.NewerIdea(tank, lift, Claw, 2)
 
     # Menu items
     #list = init.main_menu
@@ -93,6 +71,21 @@ def main():
     # This loop checks button states continuously (every 0.01s).
     # If the new state differs from the old state then the appropriate
     # button event handlers are called.
+    '''
+            tank.gyro.reset()
+            tank.turn_degrees(10,90)
+            print(tank.gyro.angle)
+            sleep(2)
+            tank.turn_degrees(10,90)
+            print(tank.gyro.angle)
+            sleep(2)
+            tank.turn_degrees(10,90)
+            print(tank.gyro.angle)
+            sleep(2)
+            tank.turn_degrees(10,90)
+            print(tank.gyro.angle)
+            sleep(2)
+            '''
     while True:
         btn.process()
         sleep(0.01)

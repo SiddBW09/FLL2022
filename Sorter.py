@@ -855,7 +855,7 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
 
     speed = 10
 
-    if slot == 2:
+    if (slot == 2) or (slot ==3):
         #import claw
         MyClaw.claw_open(100)
         motor_check(30, 1.9, lift)
@@ -872,14 +872,17 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
             # sleep(0.5)
             # motor_check(50, -1, lift)
             # Navigation.distance_goer(tank, 11, -20, 90)
+            Navigation.distance_goer(tank, 5, -20, 90)
             Navigation.gyro_check(tank, speed, 0)
             sleep(0.5)
             Navigation.gyro_check(tank, 5, 0)
 
 
             init.debug_print("PickUpGreen: "+str(time.time()-start_time))
-
-            blue1(tank, lift, MyClaw, start_time, 1)
+            if (slot == 3):
+                blue1(tank, lift, MyClaw, start_time, 3)
+            else:
+                blue1(tank, lift, MyClaw, start_time, 1)
         else:
             motor_check(50, -3, lift)
             pickupgreen(tank, lift, MyClaw, start_time, 1)
@@ -893,14 +896,14 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
         Navigation.distance_goer(tank, 11, 20, 90)
         sleep(0.5)
         Navigation.gyro_check(tank, speed, 0)
-        init.debug_print("Angle Before Going and Picking Green Brick: "+str(tank.gyro.angle))
+        #init.debug_print("Angle Before Going and Picking Green Brick: "+str(tank.gyro.angle))
 
         #Pick up
         motor_check(50, 1.9, lift)
 
         if MyClaw.claw_close_5() == "caught brick" :
             sleep(1)
-            init.debug_print("Got a Green brick")
+            #init.debug_print("Got a Green brick")
             motor_check(30, -1, lift)
 
             #Drop at circle
@@ -917,7 +920,7 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
             Navigation.gyro_check(tank, speed, 0)
 
             blue1(tank, lift, MyClaw, start_time, 2)
-            init.debug_print("PickUpGreen: "+str(time.time()-start_time))
+            #init.debug_print("PickUpGreen: "+str(time.time()-start_time))
 
 
 
@@ -945,7 +948,7 @@ def blue1(tank, lift, MyClaw, last_time, slot):
 
         if MyClaw.claw_close_5() == "caught brick":
             sleep(1)
-            init.debug_print("Caught Blue Brick!")
+            #init.debug_print("Caught Blue Brick!")
             motor_check(50, -3, lift)
             sleep(0.5)
             Navigation.gyro_check(tank, speed, 0)
@@ -955,7 +958,7 @@ def blue1(tank, lift, MyClaw, last_time, slot):
             Navigation.gyro_check(tank, speed, -180)
             #Navigation.distance_goer(tank, 6, 10, -180)
             bluebrick_chopper(tank, lift, MyClaw, last_time)
-            init.debug_print("The time after blue chopper:" + str(time.time()))
+            #init.debug_print("The time after blue chopper:" + str(time.time()))
 
 
         else:
@@ -986,7 +989,7 @@ def blue1(tank, lift, MyClaw, last_time, slot):
             Navigation.gyro_check(tank, speed, -180)
             sleep(0.5)
             Navigation.gyro_check(tank, speed, -180)
-            init.debug_print("BluePickUp: "+str(time.time()-start_time))
+            #init.debug_print("BluePickUp: "+str(time.time()-start_time))
             bluebrick_chopper(tank, lift, MyClaw, start_time)
         else:
             #sleep(1)
@@ -995,42 +998,43 @@ def blue1(tank, lift, MyClaw, last_time, slot):
             blue1(tank, lift, MyClaw, start_time, 3)
 
     if slot == 3:
-        init.debug_print("Goin to slot 3!")
+        #init.debug_print("Goin to slot 3!")
 
         #Go to brick
         Navigation.gyro_check(tank, speed, -90)
-        Navigation.distance_goer(tank, 9, 20, -90)
+        Navigation.distance_goer(tank, 14, 20, -90) #OG distance was 9
         Navigation.gyro_check(tank, speed, 0)
-        Navigation.distance_goer(tank, 8, 10, 0)
+        Navigation.distance_goer(tank, 10, 10, 0)
         Navigation.gyro_check(tank, speed, 0)
         sleep(0.5)
-        Navigation.gyro_check(tank, speed, 0)
+        #Navigation.gyro_check(tank, speed, 0)
         motor_check(50, 2, lift)
+
 
         if MyClaw.claw_close_5() == "caught brick":
             #This is noob coach loser idea.
             sleep(0.5)
-            init.debug_print("Caught Blue Brick!")
+            #init.debug_print("Caught Blue Brick!")
             motor_check(50, -3, lift)
             sleep(0.5)
             Navigation.gyro_check(tank, speed, 0)
-            Navigation.distance_goer(tank, 8, -10, 0)
+            Navigation.distance_goer(tank, 10, -10, 0)
             Navigation.gyro_check(tank, speed, -90)
-            Navigation.distance_goer(tank, 8.5, -10, -90)
+            Navigation.distance_goer(tank, 10, -10, -90)
             Navigation.gyro_check(tank, speed, -90)
 
 
 
 
 
-        #Going into posistion for next function
-        Navigation.gyro_check(tank, speed, -180)
-        Navigation.distance_goer(tank, 8, -10, -180)
-        Navigation.gyro_check(tank, speed, -180)
-        sleep(0.5)
-        Navigation.gyro_check(tank, speed, -180)
-        init.debug_print("BluePickUp: "+str(time.time()-start_time))
-        bluebrick_chopper(tank, lift, MyClaw, start_time)
+            #Going into posistion for next function
+            Navigation.gyro_check(tank, speed, -180)
+            Navigation.distance_goer(tank, 13, 12, -180)
+            Navigation.gyro_check(tank, 5, -180)
+            sleep(0.5)
+            Navigation.gyro_check(tank, 5, -180)
+            #init.debug_print("BluePickUp: "+str(time.time()-start_time))
+            bluebrick_chopper(tank, lift, MyClaw, start_time)
 
 
 
@@ -1103,7 +1107,7 @@ if __name__ == "__main__":
     #truck.Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #GoingtoSorter(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 
-    NewerIdea(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw(), 1)
+    NewerIdea(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw(), 2)
     #pickupbluebrick(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
