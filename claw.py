@@ -16,7 +16,7 @@ class Claw():
         while True:
             self.claw.on_for_rotations(10, 0.02, brake = False)
             if 'stalled' in self.claw.state:
-                init.debug_print(self.claw.state)
+                #init.debug_print(self.claw.state)
                 break
 
 
@@ -30,11 +30,11 @@ class Claw():
             self.claw.on_for_rotations(10, 0.02, brake = False)
 
             if 'stalled' in self.claw.state:
-                init.debug_print(self.claw.state)
+                #init.debug_print(self.claw.state)
                 break
 
             i += 1
-        init.debug_print(i)
+        #init.debug_print(i)
         self.claw.on_for_rotations(10, 0.02, brake = True)
 
         if i <= 5:

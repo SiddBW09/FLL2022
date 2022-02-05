@@ -645,7 +645,7 @@ def GoingtoSorter(tank, lift, Claw):
     tank.turn_degrees(10, 180, True, 1)
     Navigation.gyro_check(tank, 10, 180)
 
-    init.debug_print("The amount turned before check: " + str(tank.gyro.angle))
+    #init.debug_print("The amount turned before check: " + str(tank.gyro.angle))
     Navigation.gyro_check(tank, 10, 180)
     #Navigation.distance_to_object(tank, 28, "Forward", 15)
     #Navigation.new_move_incm(tank, 25, 28)
@@ -684,11 +684,11 @@ def GoingtoSorter(tank, lift, Claw):
 
     Navigation.gyro_check(tank, 5, 180)
 
-    init.debug_print("Final angle is:" + str(tank.gyro.angle))
+    #init.debug_print("Final angle is:" + str(tank.gyro.angle))
     #this is where we are, sid can continue tomorrow
 
     endtime = time.time()-start_time
-    init.debug_print("TIME: "+str(endtime))
+    #init.debug_print("TIME: "+str(endtime))
     return
 
 
@@ -761,7 +761,7 @@ def NewIdea(tank, lift, Claw):
 
     lift.on_for_rotations(30, 0.75)
     Navigation.distance_goer(tank, 16, -20, -180)
-    init.debug_print("Angle 1 "+str(tank.gyro.angle))
+    #init.debug_print("Angle 1 "+str(tank.gyro.angle))
     #tank.turn_degrees(10, 9, True, 1) WTF is that??? -Coach
     #Navigation.gyro_check(tank, 10.9, -90) Why the duck did you use such a number?? -Coach/Wordsmithed by Sunny S
     Navigation.gyro_check(tank, 5, -90)
@@ -769,11 +769,11 @@ def NewIdea(tank, lift, Claw):
 
     sleep(1)
     Navigation.gyro_check(tank, 5, -90)
-    init.debug_print("Angel"+str(tank.gyro.angle))
+    #init.debug_print("Angel"+str(tank.gyro.angle))
     #Navigation.gyro_check(tank, 5, -90)
 
 
-    init.debug_print("New Idea Time: "+str(time.time()-start_time))
+    #init.debug_print("New Idea Time: "+str(time.time()-start_time))
     #Navigation.gyro_check(tank, 10, -90)
     return
     pickupgreen(tank, lift, Claw, start_time, 2)
@@ -827,7 +827,7 @@ def NewerIdea(tank, lift, Claw, Initial_Slot=2):
 
         pickupgreen(tank, lift, Claw, start_time, Initial_Slot)
     else:
-        init.debug_print("HailMARY!")
+        #init.debug_print("HailMARY!")
         Navigation.gyro_check(tank, 5, -270)
         hailmary(tank, lift, Claw, start_time)
 
@@ -878,9 +878,9 @@ def hailmary(tank, lift, MyClaw, start_time):
     #everything works except for the speed bump and we have to do combo 3
     Navigation.gyro_check(tank, 5, -90)
 
-    init.debug_print(tank.gyro.angle)
+    #init.debug_print(tank.gyro.angle)
     #last lefo of
-    init.debug_print("Total Time: "+str(time.time()-start_time))
+    #init.debug_print("Total Time: "+str(time.time()-start_time))
 
 
 
@@ -916,7 +916,7 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
         MyClaw.claw_open(100)
         motor_check(30, 2, lift)
 
-        if MyClaw.claw_close_5() == "caught brick":
+        if MyClaw.claw_close_5():
             sleep(1)
             motor_check(30, -1, lift)
             #tank.turn_degrees(15, 90, True, 1)
@@ -931,7 +931,7 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
 
 
 
-            init.debug_print("PickUpGreen: "+str(time.time()-start_time))
+            #init.debug_print("PickUpGreen: "+str(time.time()-start_time))
             if (slot == 3):
                 Navigation.distance_goer(tank, 5, -20, 90)
                 Navigation.gyro_check(tank, speed, 0)
@@ -984,7 +984,7 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
         #Pick up
         motor_check(50, 1.9, lift)
 
-        if MyClaw.claw_close_5() == "caught brick" :
+        if MyClaw.claw_close_5():
             sleep(1)
             #init.debug_print("Got a Green brick")
             motor_check(30, -1, lift)
@@ -1029,7 +1029,8 @@ def blue1(tank, lift, MyClaw, last_time, slot):
         #Navigation.gyro_check(tank, speed, 0)
         motor_check(50, 2, lift)
 
-        if MyClaw.claw_close_5() == "caught brick":
+        #if MyClaw.claw_close_5() == "caught brick":
+        if (MyClaw.claw_close_5()):
             sleep(1)
             #init.debug_print("Caught Blue Brick!")
             motor_check(50, -3, lift)
@@ -1094,7 +1095,7 @@ def blue1(tank, lift, MyClaw, last_time, slot):
         motor_check(50, 2, lift)
 
 
-        if MyClaw.claw_close_5() == "caught brick":
+        if MyClaw.claw_close_5():
             #This is noob coach loser idea.
             sleep(0.5)
             #init.debug_print("Caught Blue Brick!")
