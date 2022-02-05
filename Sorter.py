@@ -829,52 +829,57 @@ def NewerIdea(tank, lift, Claw, Initial_Slot=2):
 
 
         pickupgreen(tank, lift, Claw, start_time, Initial_Slot)
-    elif Initial_Slot == 4:
+    else:
+        init.debug_print("HailMARY!")
         Navigation.gyro_check(tank, 5, -270)
         hailmary(tank, lift, Claw, start_time)
 
 
-def hailmary(tank, lift, MyClaw, time):
+def hailmary(tank, lift, MyClaw, start_time):
+    tank.gyro.reset()
 
-    Navigation.distance_goer(tank, 27, 15, -270)
-    Navigation.gyro_check(tank, 5, -270)
+    Navigation.distance_goer(tank, 20, 30, 0)
+    Navigation.gyro_check(tank, 5, 0)
 
     #Turn and do Chopper
     motor_check(50, -3.5, lift)
+    MyClaw.claw_open(100)
     sleep(0.9)
-    Navigation.gyro_check(tank, speed, -293)
-    Navigation.distance_to_object(tank, 12, "Backward", 15)
-    Navigation.gyro_check(tank, speed, -293)
-    Navigation.distance_to_object(tank, 19, "Forward", 15)
-
+    Navigation.gyro_check(tank, 5, -103)
+    Navigation.distance_to_object(tank, 10, "Backward", 15)
+    Navigation.gyro_check(tank, 5, -103)
+    Navigation.distance_to_object(tank, 3, "Forward", 15)
+    Navigation.gyro_check(tank, 5, -120)
+    Navigation.distance_to_object(tank, 16.5, "Forward", 15)
 
     tank.reset()
 
     #Go and do Cargo Ship
-    Navigation.gyro_check(tank, speed, -270)
+    Navigation.gyro_check(tank, 5, -90)
     sleep(0.5)
-    Navigation.gyro_check(tank, speed, -270)
-    Navigation.distance_goer(tank, 24, 20, -270)
+    Navigation.gyro_check(tank, 5, -90)
+    Navigation.distance_goer(tank, 24, 20, -90)
     motor_check(50, 3, lift)
     sleep(0.5)
-    Navigation.distance_goer(tank, 15.5, -30, -270)
+    Navigation.distance_goer(tank, 15.5, -30, -90)
     motor_check(50, -2, lift)
-    Navigation.distance_goer(tank, 14, 30, -270)
+    Navigation.distance_goer(tank, 14, 30, -90)
     sleep(0.5)
-    Navigation.gyro_check(tank, 5, -270)
+    Navigation.gyro_check(tank, 5, -90)
+
 
 
 
     #Go to Speed Bump
-    Navigation.distance_goer(tank, 30 , 35, -270)
-    Navigation.gyro_check(tank, 5, -225)
-    Navigation.distance_goer(tank, 31, 30, -225)
-    Navigation.gyro_check(tank, 5, -225)
+    Navigation.distance_goer(tank, 30 , 35, -90)
+    Navigation.gyro_check(tank, 5, -45)
+    Navigation.distance_goer(tank, 31, 30, -45)
+    Navigation.gyro_check(tank, 5, -45)
     motor_check(30, 0.8, lift)
     sleep(0.5)
-    Navigation.gyro_check(tank, 5, -290)
+    Navigation.gyro_check(tank, 5, -120)
     #everything works except for the speed bump and we have to do combo 3
-
+    Navigation.gyro_check(tank, 5, -90)
 
     init.debug_print(tank.gyro.angle)
     #last lefo of
@@ -1157,6 +1162,40 @@ def bluebrick_chopper(tank, lift, MyClaw, last_time):
     #last lefo of
     init.debug_print("Total Time: "+str(time.time()-start_time))
 
+def HariMary():
+    start_time = time.time()
+    import claw
+    tank.gyro.reset()
+    lift.reset()
+
+    #Going to first bridge
+    Navigation.distance_goer(tank, 99, -40, 0)
+
+    lift.on_for_rotations(30, -1)
+    sleep(0.25)
+
+    #second bridge
+    Navigation.distance_goer(tank, 18.4, -20, 0) #OG val 19
+    sleep(0.5)
+    Navigation.gyro_check(tank, 5, 0)
+    lift.on_for_rotations(30, 1)
+    Navigation.distance_goer(tank, 8, 20, 0)
+    lift.on_for_rotations(30, -1.5)
+    #innovation project in circle
+    Navigation.distance_goer(tank, 7, -20, 0)
+    sleep(0.5)
+    Navigation.gyro_check(tank, 5, -75)
+    Navigation.distance_goer(tank, 8, -10, -75)
+    Navigation.distance_goer(tank, 5, 10, -75)
+    sleep(0.5)
+    Navigation.gyro_check(tank, 5, -95)
+
+    Navigation.distance_goer(tank, 5, 15, -95)
+    sleep(0.7)
+    Navigation.gyro_check(tank, 5, -230)
+
+
+    Navigation.distance_goer(tank, 50, 25, -230)
 
 
 
