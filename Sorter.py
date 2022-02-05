@@ -823,9 +823,6 @@ def NewerIdea(tank, lift, Claw, Initial_Slot=2):
         #Go to sorty
         Navigation.distance_goer(tank, 20.5, 25, -90)
         Navigation.gyro_check(tank, 5, -90)
-        sleep(1)
-        Navigation.gyro_check(tank, 2, 0)
-        Navigation.gyro_check(tank, 2, 0)
 
 
         pickupgreen(tank, lift, Claw, start_time, Initial_Slot)
@@ -1214,6 +1211,6 @@ if __name__ == "__main__":
     #test_claw(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #SlotToCircle(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #pickupgreen(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw(), time.time(), slot = 2)
-    #blue1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
+    #blue1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw()
 
 
