@@ -11,7 +11,11 @@ from ev3dev2.motor import OUTPUT_B, MediumMotor
 import init
 import claw
 
+tank = Navigation.tank_init()
 
+Navigation.distance_goer(tank, 50, 35, 0)
+
+'''
 
 init.debug_print(tank.gyro.angle)
 tank.turn_degrees(5, 90-tank.gyro.angle, True, 0.25)
@@ -31,3 +35,5 @@ tank.turn_degrees(15, -22)
 init.debug_print(tank.gyro.angle)
 tank.turn_degrees(5, -22-tank.gyro.angle, True, 0.25)
 init.debug_print(tank.gyro.angle)
+'''
+

@@ -56,7 +56,7 @@ class Claw():
                 break
 
             i += 1
-        init.debug_print(i)
+        #init.debug_print(i)
         self.claw.on_for_rotations(-10, 0.02, brake = True)
 
         if i <= 15:

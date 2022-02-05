@@ -816,17 +816,71 @@ def NewerIdea(tank, lift, Claw, Initial_Slot=2):
 
 
     Navigation.distance_goer(tank, 50, 25, -230)
-    Navigation.gyro_check(tank, 5, -90)
 
-    #Go to sorty
-    Navigation.distance_goer(tank, 20.5, 25, -90)
-    Navigation.gyro_check(tank, 5, -90)
-    sleep(1)
-    Navigation.gyro_check(tank, 2, -90)
-    Navigation.gyro_check(tank, 2, -90)
+    if  Initial_Slot != 4:
+        Navigation.gyro_check(tank, 5, -90)
+
+        #Go to sorty
+        Navigation.distance_goer(tank, 20.5, 25, -90)
+        Navigation.gyro_check(tank, 5, -90)
+        sleep(1)
+        Navigation.gyro_check(tank, 2, 0)
+        Navigation.gyro_check(tank, 2, 0)
 
 
-    pickupgreen(tank, lift, Claw, start_time, Initial_Slot)
+        pickupgreen(tank, lift, Claw, start_time, Initial_Slot)
+    elif Initial_Slot == 4:
+        Navigation.gyro_check(tank, 5, -270)
+        hailmary(tank, lift, Claw, start_time)
+
+
+def hailmary(tank, lift, MyClaw, time):
+
+    Navigation.distance_goer(tank, 27, 15, -270)
+    Navigation.gyro_check(tank, 5, -270)
+
+    #Turn and do Chopper
+    motor_check(50, -3.5, lift)
+    sleep(0.9)
+    Navigation.gyro_check(tank, speed, -293)
+    Navigation.distance_to_object(tank, 12, "Backward", 15)
+    Navigation.gyro_check(tank, speed, -293)
+    Navigation.distance_to_object(tank, 19, "Forward", 15)
+
+
+    tank.reset()
+
+    #Go and do Cargo Ship
+    Navigation.gyro_check(tank, speed, -270)
+    sleep(0.5)
+    Navigation.gyro_check(tank, speed, -270)
+    Navigation.distance_goer(tank, 24, 20, -270)
+    motor_check(50, 3, lift)
+    sleep(0.5)
+    Navigation.distance_goer(tank, 15.5, -30, -270)
+    motor_check(50, -2, lift)
+    Navigation.distance_goer(tank, 14, 30, -270)
+    sleep(0.5)
+    Navigation.gyro_check(tank, 5, -270)
+
+
+
+    #Go to Speed Bump
+    Navigation.distance_goer(tank, 30 , 35, -270)
+    Navigation.gyro_check(tank, 5, -225)
+    Navigation.distance_goer(tank, 31, 30, -225)
+    Navigation.gyro_check(tank, 5, -225)
+    motor_check(30, 0.8, lift)
+    sleep(0.5)
+    Navigation.gyro_check(tank, 5, -290)
+    #everything works except for the speed bump and we have to do combo 3
+
+
+    init.debug_print(tank.gyro.angle)
+    #last lefo of
+    init.debug_print("Total Time: "+str(time.time()-start_time))
+
+
 
 
 
@@ -858,7 +912,7 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
     if (slot == 2) or (slot ==3):
         #import claw
         MyClaw.claw_open(100)
-        motor_check(30, 1.9, lift)
+        motor_check(30, 2, lift)
 
         if MyClaw.claw_close_5() == "caught brick":
             sleep(1)
@@ -872,16 +926,20 @@ def pickupgreen(tank, lift, MyClaw, last_time, slot):
             # sleep(0.5)
             # motor_check(50, -1, lift)
             # Navigation.distance_goer(tank, 11, -20, 90)
-            Navigation.distance_goer(tank, 5, -20, 90)
-            Navigation.gyro_check(tank, speed, 0)
-            sleep(0.5)
-            Navigation.gyro_check(tank, 5, 0)
+
 
 
             init.debug_print("PickUpGreen: "+str(time.time()-start_time))
             if (slot == 3):
+                Navigation.distance_goer(tank, 5, -20, 90)
+                Navigation.gyro_check(tank, speed, 0)
+                sleep(0.5)
+                Navigation.gyro_check(tank, 5, 0)
                 blue1(tank, lift, MyClaw, start_time, 3)
             else:
+                Navigation.gyro_check(tank, speed, 0)
+                sleep(0.5)
+                Navigation.gyro_check(tank, 5, 0)
                 blue1(tank, lift, MyClaw, start_time, 1)
         else:
             motor_check(50, -3, lift)
@@ -1078,14 +1136,14 @@ def bluebrick_chopper(tank, lift, MyClaw, last_time):
     sleep(0.5)
     Navigation.distance_goer(tank, 15.5, -30, -270)
     motor_check(50, -2, lift)
-    Navigation.distance_goer(tank, 14, 20, -270)
+    Navigation.distance_goer(tank, 14, 30, -270)
     sleep(0.5)
     Navigation.gyro_check(tank, 5, -270)
 
 
 
     #Go to Speed Bump
-    Navigation.distance_goer(tank, 30 , 28, -270)
+    Navigation.distance_goer(tank, 30 , 35, -270)
     Navigation.gyro_check(tank, 5, -225)
     Navigation.distance_goer(tank, 31, 30, -225)
     Navigation.gyro_check(tank, 5, -225)
@@ -1107,7 +1165,7 @@ if __name__ == "__main__":
     #truck.Innovate1(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #GoingtoSorter(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
 
-    NewerIdea(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw(), 2)
+    NewerIdea(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw(), 4)
     #pickupbluebrick(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #completeRun(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
     #blue_two_slot_one(Navigation.tank_init(), MediumMotor(OUTPUT_D), claw.Claw())
