@@ -19,9 +19,6 @@ import Sorter
 def main():
 
     tank = Navigation.tank_init()
-    lift = MediumMotor(OUTPUT_D)
-    #import claw
-    Claw = claw.Claw()
     btn = Button()
 
     #PUT THE FUNCTION IN THE ELSE STATEMENT
@@ -30,38 +27,30 @@ def main():
         if state:
             pass
         else:
-            NorthWestSide.Coach_Code(tank,lift,Claw)
             tank.gyro.reset()
-            lift.reset()
     def right(state):
         if state:
             pass
         else:
-            truck.truck_4(tank, lift, Claw)
+            pass
 
     def up(state):
         if state:
             pass
         else:
-            Sorter.NewerIdea(tank, lift, Claw, 1)
+            pass
     def down(state):
         if state:
             pass
         else:
-            Sorter.NewerIdea(tank, lift, Claw, 3)
-
+            pass
 
     def enter(state):
         if state:
             pass
         else:
-            Sorter.NewerIdea(tank, lift, Claw, 2)
-
-    # Menu items
-    #list = init.main_menu
-
-    # Load the main menu on the console
-    #message.display_menu(list)
+            pass
+        
     btn.on_left = left
     btn.on_right = right
     btn.on_up = up
