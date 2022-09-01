@@ -4,15 +4,10 @@ import ev3dev.ev3
 from ev3dev2.motor import MoveTank, OUTPUT_B, OUTPUT_C, OUTPUT_D, OUTPUT_A, SpeedPercent, follow_for_ms, SpeedRPM, LargeMotor, MoveSteering, MediumMotor
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor
-import init
 from ev3dev2.button import Button
 from ev3dev2.sound import Sound
 from time import sleep
-import claw
-import NorthWestSide
-import truck
 import Navigation
-import Sorter
 
 
 # Main program
@@ -50,7 +45,7 @@ def main():
             pass
         else:
             pass
-        
+
     btn.on_left = left
     btn.on_right = right
     btn.on_up = up

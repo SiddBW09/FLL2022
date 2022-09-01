@@ -11,7 +11,6 @@ from ev3dev2.button import Button
 from ev3dev2.motor import MediumMotor
 from time import sleep
 from ev3dev2.sound import Sound
-import init
 
 def tank_init():
     my_tank = MoveTank(OUTPUT_A, OUTPUT_B)

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 from ev3dev2.button import Button
 from ev3dev2.sound import Sound
-import init
 from time import sleep
 import NorthWestSide
 import truck
@@ -16,7 +15,7 @@ def left(state):
     else:
         truck.truck_3(Navigation.tank_init())
 
-def right(state):  
+def right(state):
     if state:
         pass
     else:
@@ -33,7 +32,7 @@ def down(state):
         pass
     else:
         pass
-    
+
 def enter(state):
     if state:
         pass
@@ -49,15 +48,15 @@ def run():
     btn.on_down = down
     btn.on_enter = enter
 
-    # This loop checks button states continuously (every 0.01s). 
+    # This loop checks button states continuously (every 0.01s).
     # If the new state differs from the old state then the appropriate
     # button event handlers are called.
     while True:
         btn.process()
         sleep(0.01)
 
-        
-        
+
+
 
 
 #Execute Northide Missions
