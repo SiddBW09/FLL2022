@@ -9,7 +9,7 @@ import time
 from time import sleep
 from ev3dev2.motor import OUTPUT_B, MediumMotor
 import init
-1
+
 tank = Navigation.tank_init()
 
 # Navigation.distance_goer(tank, 50, 35, 0)
