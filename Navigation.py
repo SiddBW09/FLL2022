@@ -49,6 +49,10 @@ def gyro_check (tank, speed, angle):
     # while tank.gyro.angle != angle:
     #     tank.turn_degrees(5, angle-tank.gyro.angle, True, 0.25)
 
+def goer_no_gyro(tank, cm, speed):
+    rotations_needed = cm/26
+
+    tank.on_for_rotations(speed, speed, rotations_needed)
 
 def follow_forever(tank, cm, lm):
 

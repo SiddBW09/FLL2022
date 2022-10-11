@@ -16,20 +16,25 @@ def North():
     # ex: Navigation.distance_goer(tank, 30, 30, 7) #move better(tank, distancecm, speed, angle currently at)
     # ex: Navigation.gyro_check(tank, 1, 7) #ACCURATE TURNING(tank, speed, degrees)
 
-    Navigation.distance_goer(tank, 22, -30, 0)
-    Navigation.gyro_check(tank,5,22)
-    Navigation.distance_goer(tank,19,-30, 22)
-    Navigation.gyro_check(tank, 5, 0)
-    Navigation.distance_goer(tank, 15,-10,0)
+    #Navigation.distance_goer(tank, 22, -20, 0)
+    #Navigation.gyro_check(tank,5,22)
+    #Navigation.distance_goer(tank, 15,-20, 22)
+    # Navigation.gyro_check(tank, 5, 0)
+    # Navigation.distance_goer(tank, 17,-10,0)
+    # sleep(.5)
+    # Navigation.gyro_check(tank,5,0)
+    Navigation.goer_no_gyro(tank, 5, -10)
 
     for x in range(3):
-        Navigation.distance_goer(tank, 3,-10,0)
         flipper.on_for_rotations(-5,0.15)
-        Navigation.gyro_check(tank, 5, 0)
         sleep(0.5)
         flipper.on_for_rotations(5,0.15)
-        Navigation.gyro_check(tank, 5, 0)
-        Navigation.distance_goer(tank,2,10,0)
+
+   # Navigation.distance_goer(tank,5,20,0)
+    #Navigation.gyro_check(tank,5,22)
+    #Navigation.distance_goer(tank,5,20,22)
+    #Navigation.gyro_check(tank,5,-22)
+    #flipper.on_for_rotation(-5,0.15)
 
 
 
