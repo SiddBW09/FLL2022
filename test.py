@@ -17,8 +17,9 @@ import init
 
 def test():
     tank = MoveTank(OUTPUT_B, OUTPUT_C)
+    flipper=LargeMotor(OUTPUT_C)
 
-    tank.on_for_rotations(30, 30, 3)
+    flipper.on_for_rotations(-5, 0.15)
     #tank.on_for_rotations(-30, -30, 1)
     # init.debug_print(tank.gyro.angle)
     # tank.turn_degrees(5, -90, True, .1)
