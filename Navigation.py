@@ -70,10 +70,10 @@ def distance_goer(tank, distance, speed, angle):
     tank.reset()
     left_motor = LargeMotor(OUTPUT_A)
     left_motor.reset()
-    sleep = 0.01
+    sleep = 0.02
 
     if abs(speed) >= 30:
-        sleep = 0.004
+        sleep = 0.005
 
 
 
