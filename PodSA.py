@@ -47,17 +47,17 @@ def pushdownThingy():
     tank.gyro = GyroSensor(INPUT_1)
     tank.gyro.reset()
     home_to_plant_backwards(tank, fork)
-    return
     fork.on_for_rotations(10, 0.45)
     fork.reset()
     #Navigation.gyro_check(tank, 5, 0)
     tank.on_for_rotations(-10, -10, 0.155, brake=True,
                           block=True)  # forward to mission
     fork.on_for_rotations(-50, 0.3)  # lift big bar
+    fork.on_for_rotations(5, 0.08)
     #Navigation.gyro_check(tank, 5, 0)
     tank.on_for_rotations(-5, -5, 0.35, brake=True, block=True)
     sleep(0.5)
-    tank.on_for_rotations(5, 5, 0.2)
+    tank.on_for_rotations(5, 5, 0.3)
     fork.on_for_rotations(10, 0.27)  # hit smaller bar
     fork.on_for_rotations(-10, 0.2)
     sleep(0.3)
@@ -79,9 +79,9 @@ def home_to_plant(tank, fork):
 def home_to_plant_backwards(tank, fork):
     Navigation.distance_goer(tank, 45, 25, 0)
     Navigation.gyro_check (tank, 15, 45)
-    Navigation.distance_goer(tank, 40, 25, 45)
+    Navigation.distance_goer(tank, 39, 25, 45)
     Navigation.gyro_check (tank, 10, 90)
-    Navigation.distance_goer(tank, 3.5, -15, 90)
+    Navigation.distance_goer(tank, 8, -10, 90)
     #Navigation.distance_goer(tank, 50, -25, 25)
     #Navigation.gyro_check (tank, 15, -35)
     #Navigation.distance_goer(tank, 5, 30, -35)
