@@ -100,7 +100,7 @@ def toystory3():
     colorful_flipper.on_for_rotations(5, -0.125)
 
     tank.turn_degrees(5, 90)
-    Navigation.goer_no_gyro(tank, 65, 40)
+    Navigation.goer_no_gyro(tank, 65, 75)
     #tank.turn_degrees(10, 180)
 
     #tank.on_for_rotations(10, 10, 0.3)
