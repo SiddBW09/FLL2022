@@ -74,35 +74,34 @@ def windmill():
     #Push windmill OG val -15, 0.4 rotations
     time1 = time()
     for x in range(3):
-        tank.on_for_rotations(-7, -7, 0.25)
-        tank.on_for_rotations(7, 7, 0.22)
-    quit()
+        tank.on_for_rotations(-10, -10, 0.27)
+        tank.on_for_rotations(7, 7, 0.24)
 def toystory3():
 
     colorful_flipper = LargeMotor(OUTPUT_C)
     tank = Navigation.tank_init()
 
-    Navigation.goer_no_gyro(tank, 5.5, 20)
+   # Navigation.goer_no_gyro(tank, 5.5, 20)
 
     #Lift colorful flipper Og val 5, -0.25
-    sleep(1)
-    colorful_flipper.on_for_rotations(5, -0.27)
-    '''
-    colorful_flipper.on_for_rotations(20, -0.15)
-    #sleep(0.25)
-    colorful_flipper.on_for_rotations(10, -0.075)
-    #sleep(0.25)
-    colorful_flipper.on_for_rotations(5, -0.06)
-    #sleep(0.25) OG--0.035
-    '''
-    #Stops shaking
-    sleep(1)
+    Navigation.gyro_check(tank, 5, -20)
+    colorful_flipper.on_for_rotations(7, -0.35)
 
-    #Move forward
-    #tank.on_for_rotations(-20, -20, 0.32)
+    sleep(1)
+    Navigation.gyro_check(tank, 5, -165)
+    Navigation.goer_no_gyro(tank, 3, 20)
 
     #Rotate 90 degrees clockwise
-    tank.turn_degrees(10, 180)
+    #Navigation.goer_no_gyro(tank, -245, -15)
+
+    colorful_flipper.on_for_rotations(5, 0.125)
+    init.debug_print(tank.gyro.angle)
+    sleep(1)
+    colorful_flipper.on_for_rotations(5, -0.125)
+
+    tank.turn_degrees(5, 90)
+    Navigation.goer_no_gyro(tank, 65, 75)
+    #tank.turn_degrees(10, 180)
 
     #tank.on_for_rotations(10, 10, 0.3)
     #tank.turn_degrees(10, 65)
@@ -110,7 +109,6 @@ def toystory3():
     #tank.on_for_rotations(10, 10, 0.1)
     #tank.turn_degrees(10, 4)
 
-    init.debug_print(tank.gyro.angle)
 
 
     #Move forward tiny bit OG val 0.1, then 0.3 DUMP THINGY INTO TOY STORY
@@ -122,11 +120,11 @@ def toystory3():
 
     #Move it down Og val 25, 0.125
     #colorful_flipper.on_for_rotations(15, 0.125)
-    Navigation.goer_no_gyro(tank, 22, -15)
+    #Navigation.goer_no_gyro(tank, 22, -15)
 
     sleep(1)
 
-    colorful_flipper.on_for_rotations(25, 0.125)
+
     sleep(1)
     return
 
