@@ -21,7 +21,7 @@ def Run():
     time2 = time()
     init.debug_print(time2-time1)
 
-def WateryThingy(tank, flipper):
+def WateryThingyOld(tank, flipper):
     tank.gyro.reset()
     flipper.on_for_rotations(30, 0.3)
     Navigation.distance_goer(tank, 33, -25, 0)
@@ -33,6 +33,19 @@ def WateryThingy(tank, flipper):
     sleep(0.1)
     Navigation.gyro_check(tank, 4, -44)
     flipper.on_for_rotations(30, 0.45)
+
+def WateryThingy(tank, flipper):
+    tank.gyro.reset()
+    #flipper.on_for_rotations(30, 0.3)
+    Navigation.distance_goer(tank, 35, -25, 0)
+    Navigation.gyro_check(tank, 5, 5)
+    flipper.on_for_rotations(30, 0.3)
+    Navigation.goer_no_gyro(tank, 8, 20)
+    sleep(0.1)
+    Navigation.gyro_check(tank, 4, -4)
+    sleep(0.1)
+    Navigation.gyro_check(tank, 4, -44)
+    flipper.on_for_rotations(30, 0.1)
 
 def FlameThingy(tank, flipper):
     tank.gyro.reset()
@@ -84,7 +97,7 @@ def MoveyThingy(tank, flipper):
 def HighFiveyThingy(tank, flipper):
     tank.gyro.reset()
     Navigation.gyro_check(tank, 5, 25)
-    Navigation.distance_goer(tank, 44, -25, 25)
+    Navigation.distance_goer(tank, 43, -25, 25)
     Navigation.gyro_check(tank, 5, -90)
     flipper.on_for_rotations(5, 0.2)
     Navigation.goer_no_gyro(tank, 12, 25)
@@ -98,11 +111,12 @@ def CaryThingy(tank, flipper):
     tank.gyro.reset()
     Navigation.gyro_check(tank, 10, 45)
     flipper.on_for_rotations(70, 0.2)
-    Navigation.goer_no_gyro(tank,15, -5)
-    Navigation.gyro_check(tank,10, 0)
-    Navigation.gyro_check(tank,10, 0)
+    Navigation.goer_no_gyro(tank, 10, -5)
+    Navigation.gyro_check(tank,10, 2)
+    Navigation.gyro_check(tank,10, 2)
     Navigation.goer_no_gyro(tank, 5, -5)
-    flipper.on_for_rotations(-70,0.3)
+    Navigation.gyro_check(tank, 5, 5)
+    flipper.on_for_rotations(-30, 0.3)
 
 if __name__ == "__main__":
     Run()
