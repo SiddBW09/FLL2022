@@ -24,6 +24,8 @@ def tv():
 
     #Turn left OG val -45
     Navigation.gyro_check(tank, 5, -42)
+
+    init.debug_print(tank.gyro.angle)
     #tank.turn_degrees(10, -30, True, 0.1)
 
     #Lift flippy
@@ -183,5 +185,6 @@ if __name__ == "__main__":
     tv()
     windmill()
     toystory3()
+
     time2 = time()
     init.debug_print(time2-time1)
