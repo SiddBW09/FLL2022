@@ -46,15 +46,25 @@ def pushdownThingy():
     fork = LargeMotor(OUTPUT_C)
     tank.gyro = GyroSensor(INPUT_1)
     tank.gyro.reset()
+    fork.reset()
+    fork.on_for_rotations(-60, 0.2)
+    return
+    #tank.turn_degrees(5, 90, True, 0.05)
     home_to_plant_backwards(tank, fork)
+    sleep(1)
     fork.on_for_rotations(10, 0.45)
     fork.reset()
+    fork.on_for_rotations(-5, 0.1)
+    Navigation.distance_goer(tank, 9.25, -5, 90) #forward to mission build (tank, distance, speed, angle)
     #Navigation.gyro_check(tank, 5, 0)
-    tank.on_for_rotations(-10, -10, 0.155, brake=True,
-                          block=True)  # forward to mission
-    fork.on_for_rotations(-50, 0.3)  # lift big bar
+    #tank.on_for_rotations(-10, -10, 0.13, brake=True,
+                          #block=True)  # forward to mission
+
+    fork.on_for_rotations(-60, 0.3)  # lift big bar
     fork.on_for_rotations(5, 0.08)
+    #return
     #Navigation.gyro_check(tank, 5, 0)
+    #forward 5 go back 3
     tank.on_for_rotations(-5, -5, 0.35, brake=True, block=True)
     sleep(0.5)
     tank.on_for_rotations(5, 5, 0.3)
@@ -68,7 +78,6 @@ def pushdownThingy():
     tank.on_for_rotations(30, 30, 1.8, brake=True,
                           block=True)  # Back to hydrogen plant
 
-
 def home_to_plant(tank, fork):
     Navigation.distance_goer(tank, 45, -30, 0)
     Navigation.gyro_check (tank, 15, 25)
@@ -77,20 +86,32 @@ def home_to_plant(tank, fork):
     Navigation.distance_goer(tank, 5, 30, -35)
 
 def home_to_plant_backwards(tank, fork):
-    Navigation.distance_goer(tank, 45, 25, 0)
-    Navigation.gyro_check (tank, 15, 45)
-    Navigation.distance_goer(tank, 39, 25, 45)
-    Navigation.gyro_check (tank, 10, 90)
-    Navigation.distance_goer(tank, 8, -10, 90)
+    originalAngle = tank.gyro.angle
+    Navigation.distance_goer(tank, 45, 25, 0) #going left towards toy factory
+    #Navigation.gyro_check (tank, 15, 45)
+    turnDegree = 45-originalAngle
+    tank.turn_degrees(10, turnDegree, True, 0.05)
+    sleep(0.5)
+    Navigation.distance_goer(tank, 36, 25, 45) #backwards towards innovation circle area
+    sleep(0.5)
+    #Navigation.gyro_check (tank, 10, 90)
+    originalAngle = tank.gyro.angle
+    init.debug_print(originalAngle)
+    turnDegree = 90-originalAngle
+    init.debug_print(turnDegree)
+    tank.turn_degrees(5, turnDegree, True, 0.05)
+    init.debug_print(tank.gyro.angle)
     #Navigation.distance_goer(tank, 50, -25, 25)
     #Navigation.gyro_check (tank, 15, -35)
     #Navigation.distance_goer(tank, 5, 30, -35)
 #goToMission(tank, fork)
+
 if __name__ == "__main__":
     time1 = time()
     pushdownThingy()
     time2 = time()
     init.debug_print(time2-time1)
+
 
 
 # ON_FOR_ROTATIONS PARAMETERS: speed (+ goes backward), speed, rotations, brake=True, block=True
