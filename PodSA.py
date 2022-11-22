@@ -40,6 +40,14 @@ def goToMission(tank, fork):
     sleep(0.5)
     tank.on_for_rotations(3, 20, 0.7)  # turn parallel to hydrodam
 
+def goToMission2(tank, fork):
+    Navigation.distance_goer(tank, 37, 25, 0)
+    Navigation.gyro_check(tank, 5, 45)
+    #Navigation.distance_goer(tank, 78, 10, 45)
+    Navigation.distance_goer(tank, 46.5, 25, 45)
+    Navigation.gyro_check(tank, 5, 90)
+    Navigation.distance_goer(tank, 12, -25, 90)
+
 def operateMission(tank, fork):
     tank.gyro.reset()
     fork.reset()
@@ -127,7 +135,9 @@ if __name__ == "__main__":
     fork = LargeMotor(OUTPUT_C)
     tank.gyro = GyroSensor(INPUT_1)
     time1 = time()
-    operateMission(tank,fork)
+    tank.gyro.reset()
+    goToMission2(tank, fork)
+    #operateMission(tank,fork)
     #pushdownThingy(tank, fork)
     time2 = time()
     init.debug_print(time2-time1)
