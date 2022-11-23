@@ -7,6 +7,7 @@ from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 from ev3dev2.button import Button
 from ev3dev2.sound import Sound
 from time import sleep
+import Run1
 import Navigation
 
 
@@ -15,6 +16,7 @@ def main():
 
     tank = Navigation.tank_init()
     btn = Button()#hi
+    flipper = LargeMotor(OUTPUT_C)
 
     #PUT THE FUNCTION IN THE ELSE STATEMENT
     #Latest version of executing the latest functions (yeah I know, it's repetitive)
@@ -22,17 +24,20 @@ def main():
         if state:
             pass
         else:
-            tank.gyro.reset()
+
+
     def right(state):
         if state:
             pass
         else:
+            Run1.DinoRun(tank, flipper)
             pass
 
     def up(state):
         if state:
             pass
         else:
+            Run1.PlatformRun(tank, flipper)
             pass
     def down(state):
         if state:
