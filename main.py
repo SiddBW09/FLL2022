@@ -8,6 +8,7 @@ from ev3dev2.button import Button
 from ev3dev2.sound import Sound
 from time import sleep
 import Run1
+import tvrun
 import Navigation
 
 
@@ -43,6 +44,9 @@ def main():
         if state:
             pass
         else:
+            tvrun.tv()
+            tvrun.windmill()
+            tvrun.toystory3()
             pass
 
     def enter(state):
