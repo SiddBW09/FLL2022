@@ -47,6 +47,7 @@ def InnovMission(tank, fork):
 
 
 def goToMission2(tank, fork):
+    tank.gyro.reset()
     Navigation.distance_goer(tank, 37, 25, 0)
     fork.on_for_rotations(-20, 0.2)
     Navigation.gyro_check(tank, 5, 45)

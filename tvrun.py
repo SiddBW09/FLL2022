@@ -53,11 +53,6 @@ def tv():
     #Turns all the way OG used to not be commented: 👇
     #4tank.turn_degrees(5, 2, True, 0.1)
     #tank.turn_degrees(20, 1)
-    init.debug_print(tank.gyro.angle)
-
-
-    time2 = time()
-    init.debug_print(time2-time1)
     #Put colorful flipper down
 
     return
@@ -96,90 +91,15 @@ def toystory3():
     #Rotate 90 degrees clockwise
     #Navigation.goer_no_gyro(tank, -245, -15)
 
-    colorful_flipper.on_for_rotations(5, 0.125)
+    colorful_flipper.on_for_rotations(8, 0.125)
     init.debug_print(tank.gyro.angle)
     sleep(1)
     colorful_flipper.on_for_rotations(5, -0.125)
 
     tank.turn_degrees(5, 90)
-    Navigation.goer_no_gyro(tank, 65, 75)
-    #tank.turn_degrees(10, 180)
-
-    #tank.on_for_rotations(10, 10, 0.3)
-    #tank.turn_degrees(10, 65)
-
-    #tank.on_for_rotations(10, 10, 0.1)
-    #tank.turn_degrees(10, 4)
+    Navigation.goer_no_gyro(tank, 65, 40)
 
 
-
-    #Move forward tiny bit OG val 0.1, then 0.3 DUMP THINGY INTO TOY STORY
-    #tank.on_for_rotations(-20, -20, 0.3)
-
-#NEW NEW NEW NEW
-    #NEW code turn to right a little bit
-    #tank.turn_degrees(10, 14)
-
-    #Move it down Og val 25, 0.125
-    #colorful_flipper.on_for_rotations(15, 0.125)
-    #Navigation.goer_no_gyro(tank, 22, -15)
-
-    sleep(1)
-
-
-    sleep(1)
-    return
-
-    #Launch the energy unit
-    tank.turn_degrees(70, -6)
-
-    #tank.on_for_rotations(15, 15, 0.5) This is OG val
-
-    return
-
-    #Turn and go back
-    tank.on_for_rotations(-20, 20, 0.6)
-    tank.on_for_rotations(-20, -20, 2.5)
-
-    time2 = time()
-    init.debug_print(time2-time1)
-    return
-
-    #Move forward
-    tank.on_for_rotations(10, 10, 0.25)
-    return
-
-    #Go back
-
-    #Activate mm
-    colorful_flipper.on_for_rotations(50, 0.02)
-    sleep(0.5)
-    #Go towards windmill
-
-    for i in range(3):
-        tank.on_for_rotations(-10, -10, 0.41)
-        tank.on_for_rotations(10, 10, 0.41)
-
-    return
-
-
-
-    #Navigation.distance_goer(tank, 29, 30, 0)
-'''
-    Navigation.distance_goer(tank, 40, 30, 0)
-    sleep(1)
-    Navigation.distance_goer(tank, 5, -30, 0)
-    sleep(1)
-    Navigation.gyro_check(tank, 5, -45)
-    Navigation.distance_goer(tank, 40, 30, -45)
-    Navigation.gyro_check(tank, 5, 50)
-    Navigation.distance_goer(tank, 10, 30, 50)
-    for x in range(3):
-        Navigation.distance_goer(tank, 30, 30, 50)
-        sleep(1)
-        Navigation.distance_goer(tank, 15, -30, 50)
-        Navigation.gyro_check(tank, 5, 50)
-'''
 if __name__ == "__main__":
     time1 = time()
     tv()

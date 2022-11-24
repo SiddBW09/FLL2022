@@ -10,6 +10,7 @@ from time import sleep
 import Run1
 import Navigation
 import PodSA
+import tvrun
 
 
 # Main program
@@ -25,13 +26,18 @@ def main():
         if state:
             pass
         else:
-            pass
+            tvrun.tv()
+            tvrun.windmill()
+            tvrun.toystory3()
+            flipper.reset()
+
 
     def right(state):
         if state:
             pass
         else:
             Run1.DinoRun(tank, flipper)
+            flipper.reset()
             pass
 
     def up(state):
@@ -39,12 +45,14 @@ def main():
             pass
         else:
             Run1.PlatformRun(tank, flipper)
+            flipper.reset()
             pass
     def down(state):
         if state:
             pass
         else:
             PodSA.InnovMission(tank,flipper)
+            flipper.reset()
             pass
 
     def enter(state):
