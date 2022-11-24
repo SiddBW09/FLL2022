@@ -11,7 +11,10 @@ def Run():
     tank = Navigation.tank_init()
     flipper=LargeMotor(OUTPUT_C)
     time1 = time()
+    tank.gyro.reset()
+    init.debug_print(tank.gyro.angle)
     AnotherWateryThingy(tank, flipper)
+    return
     #WateryThingy(tank, flipper)
     FlameThingy(tank, flipper)
     Boxythingy(tank, flipper)
