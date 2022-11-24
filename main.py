@@ -25,7 +25,7 @@ def main():
         if state:
             pass
         else:
-
+            pass
 
     def right(state):
         if state:
