@@ -9,6 +9,7 @@ from ev3dev2.sound import Sound
 from time import sleep
 import Run1
 import Navigation
+import PodSA
 
 
 # Main program
@@ -43,6 +44,7 @@ def main():
         if state:
             pass
         else:
+            PodSA.InnovMission(tank,flipper)
             pass
 
     def enter(state):
