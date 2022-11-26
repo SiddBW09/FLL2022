@@ -8,6 +8,7 @@ from ev3dev2.button import Button
 from ev3dev2.sound import Sound
 from time import sleep
 import Run1
+import tvrun
 import Navigation
 import PodSA
 import tvrun
