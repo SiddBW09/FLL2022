@@ -8,10 +8,11 @@ import Navigation
 import init
 
 def PlatformRun(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
     tank.gyro.reset()
     #tank = Navigation.tank_init()
     #flipper=LargeMotor(OUTPUT_C)
-    time1 = time()
+
     #flipper.on_for_rotations(-10, 0.6)
     flipper.reset()
 
@@ -21,46 +22,26 @@ def PlatformRun(tank, flipper):
     #WateryThingy(tank, flipper)
     FlameThingy(tank, flipper)
     Boxythingy(tank, flipper)
-    MoveyThingy(tank, flipper)
+    #MoveyThingy(tank, flipper)
+    NewyCody(tank, flipper)
     HighFiveyThingy(tank, flipper)
     CaryThingy(tank, flipper)
-    time2 = time()
-    init.debug_print(time2-time1)
+
+
 
 def NewyCody(tank, flipper):
-    flip_flop=MediumMotor(OUTPUT_D)
-    #time1 = time()
+    flip_flop = MediumMotor(OUTPUT_D)
 
     #Go and sweep nrg units
     Navigation.gyro_check(tank, 10, 45)
-    sleep(1)
     Navigation.distance_goer(tank, 20, -10, 45)
-    sleep(1)
     Navigation.gyro_check(tank, 10, 90)
     flip_flop.on_for_rotations(20, -0.35)
-    #Og speed -20
     Navigation.distance_goer(tank, 24, -50, 90)
-
-    #Turn and sweep OG val 145
-    Navigation.gyro_check(tank, 10, 145)
-    Navigation.distance_goer(tank, 15, -20, 145)
-    tank.turn_degrees(35, 35)
-    #time2=time()
-    #init.debug_print(time2-time1)
-    #Navigation.gyro_check(tank, 20, 180)
-
-    return
-
-    #Code for going to orange high five
+    Navigation.gyro_check(tank, 10, 135)
     flip_flop.on_for_rotations(20, 0.35)
-    Navigation.gyro_check(tank, 10, 80)
-    Navigation.distance_goer(tank, 11, -20, 80)
-    Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank, 4.5, -20, 0)
-    return
-    Navigation.gyro_check(tank, 30, 225)
-    time2=time()
-    init.debug_print(time2-time1)
+    Navigation.distance_goer(tank, 32.5, -20, 135)
+    Navigation.gyro_check(tank, 5, 0)
 
 def AnotherWateryThingy(tank, flipper):
     flipper.on_for_rotations(30, 0.3)
@@ -123,13 +104,11 @@ def Boxythingy(tank, flipper):
     Navigation.goer_no_gyro(tank, 7, 10)
     flipper.on_for_rotations(-80, 0.4)
     Navigation.gyro_check(tank, 5, 0)
-    Navigation.gyro_check(tank, 5, 0)
 
 
 
 def MoveyThingy(tank, flipper):
     tank.gyro.reset()
-    Navigation.gyro_check(tank, 10, 35)
     Navigation.gyro_check(tank, 10, 35)
     flipper.on_for_rotations(10, 0.4)
     Navigation.distance_goer(tank, 19, -25, 35)
@@ -140,18 +119,16 @@ def MoveyThingy(tank, flipper):
     flipper.on_for_rotations(-10, 0.14)
     Navigation.gyro_check(tank, 5, 90)
 
+
 def HighFiveyThingy(tank, flipper):
     tank.gyro.reset()
-    Navigation.gyro_check(tank, 5, 25)
-    Navigation.distance_goer(tank, 40, -25, 30)
-    Navigation.gyro_check(tank, 5, -90)
-    Navigation.distance_goer(tank, 1, -5, -90)
-    flipper.on_for_rotations(5, 0.16)
-    Navigation.goer_no_gyro(tank, 7, 25)
-    flipper.on_for_rotations(-10, 0.175)
-    Navigation.gyro_check(tank, 5, -90)
+    flipper.on_for_rotations(10, 0.2)
+    Navigation.goer_no_gyro(tank, -11, 10)
+    flipper.on_for_rotations(10, 0.2)
+    Navigation.goer_no_gyro(tank, 4.5, 10)
+    Navigation.gyro_check(tank, 5, 0)
     flipper.on_for_rotations(-30, 0.4)
-    Navigation.gyro_check(tank, 5, -90)
+    Navigation.gyro_check(tank, 5, 0)
 
 def CaryThingy(tank, flipper):
     tank.gyro.reset()
@@ -160,12 +137,12 @@ def CaryThingy(tank, flipper):
     Navigation.distance_goer(tank, 35, -25, 90)
     init.debug_print(tank.gyro.angle)
     Navigation.gyro_check(tank, 5, -50)
-    flipper.on_for_rotations(30, 0.6)
+    flipper.on_for_rotations(15, 0.45)
     Navigation.gyro_check(tank, 5, -43)
     Navigation.goer_no_gyro(tank, 6, -10)
-    Navigation.gyro_check(tank, 5, -35)
-    flipper.on_for_rotations(30, -0.4)
-    Navigation.gyro_check(tank, 5, -42)
+    Navigation.gyro_check(tank, 5, -36)
+    flipper.on_for_rotations(15, -0.4)
+    Navigation.gyro_check(tank, 5, -50)
     Navigation.goer_no_gyro(tank, 84, 50)
 
 def DinoRun(tank, flipper):
@@ -176,4 +153,6 @@ def DinoRun(tank, flipper):
 if __name__ == "__main__":
     tank = Navigation.tank_init()
     flipper = LargeMotor(OUTPUT_C)
+    time1 = time()
     PlatformRun(tank, flipper)
+    init.debug_print(time()-time1)
