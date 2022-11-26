@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from ev3dev2.motor import LargeMotor, MoveSteering, MoveTank, OUTPUT_A, OUTPUT_D, OUTPUT_B, OUTPUT_C, SpeedPercent
+from ev3dev2.motor import LargeMotor, MediumMotor, MoveSteering, MoveTank, OUTPUT_A, OUTPUT_D, OUTPUT_B, OUTPUT_C, SpeedPercent
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor, UltrasonicSensor
 from time import sleep, time
@@ -15,6 +15,13 @@ def PlatformRun(tank, flipper):
     #flipper.on_for_rotations(-10, 0.6)
     flipper.reset()
     #DinoRun(tank,flipper)
+    time1 = time()
+    NewyCody(tank, flipper)
+    #HighFiveyThingy(tank, flipper)
+    time2=time()
+    init.debug_print(time2-time1)
+    return
+
     AnotherWateryThingy(tank, flipper)
 
     #WateryThingy(tank, flipper)
@@ -25,6 +32,42 @@ def PlatformRun(tank, flipper):
     CaryThingy(tank, flipper)
     time2 = time()
     init.debug_print(time2-time1)
+
+def NewyCody(tank, flipper):
+    flip_flop=MediumMotor(OUTPUT_D)
+    #time1 = time()
+
+    #Go and sweep nrg units
+    Navigation.gyro_check(tank, 10, 45)
+    sleep(1)
+    Navigation.distance_goer(tank, 20, -10, 45)
+    sleep(1)
+    Navigation.gyro_check(tank, 10, 90)
+    flip_flop.on_for_rotations(20, -0.35)
+    #Og speed -20
+    Navigation.distance_goer(tank, 24, -50, 90)
+
+    #Turn and sweep OG val 145
+    Navigation.gyro_check(tank, 10, 145)
+    Navigation.distance_goer(tank, 15, -20, 145)
+    tank.turn_degrees(35, 35)
+    #time2=time()
+    #init.debug_print(time2-time1)
+    #Navigation.gyro_check(tank, 20, 180)
+
+    return
+
+    #Code for going to orange high five
+    flip_flop.on_for_rotations(20, 0.35)
+    Navigation.gyro_check(tank, 10, 80)
+    Navigation.distance_goer(tank, 11, -20, 80)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank, 4.5, -20, 0)
+    return
+    Navigation.gyro_check(tank, 30, 225)
+    time2=time()
+    init.debug_print(time2-time1)
+
 def AnotherWateryThingy(tank, flipper):
     flipper.on_for_rotations(30, 0.3)
     Navigation.distance_goer(tank, 44, -20, 0)
@@ -67,8 +110,8 @@ def FlameThingy(tank, flipper):
     Navigation.gyro_check(tank, 5, 0)
 
     for x in range(3):
-        flipper.on_for_rotations(-10, 0.120)
-        flipper.on_for_rotations(10, 0.1205)
+        flipper.on_for_rotations(-20, 0.120)
+        flipper.on_for_rotations(20, 0.1205)
 
     Navigation.goer_no_gyro(tank, 4.5, 15)
     Navigation.gyro_check(tank, 5,22)
@@ -92,15 +135,15 @@ def Boxythingy(tank, flipper):
 
 def MoveyThingy(tank, flipper):
     tank.gyro.reset()
-    Navigation.gyro_check(tank, 5, 35)
-    Navigation.gyro_check(tank, 5, 35)
-    flipper.on_for_rotations(5, 0.4)
-    Navigation.distance_goer(tank, 19, -20, 35)
-    flipper.on_for_rotations(-5, 0.14)
+    Navigation.gyro_check(tank, 10, 35)
+    Navigation.gyro_check(tank, 10, 35)
+    flipper.on_for_rotations(10, 0.4)
+    Navigation.distance_goer(tank, 19, -25, 35)
+    flipper.on_for_rotations(-10, 0.14)
     Navigation.gyro_check(tank, 5, 70)
-    flipper.on_for_rotations(5, 0.14)
-    Navigation.distance_goer(tank, 19, -25, 70)
-    flipper.on_for_rotations(-5, 0.14)
+    flipper.on_for_rotations(10, 0.14)
+    Navigation.distance_goer(tank, 19, -30, 70)
+    flipper.on_for_rotations(-10, 0.14)
     Navigation.gyro_check(tank, 5, 90)
 
 def HighFiveyThingy(tank, flipper):
@@ -118,9 +161,9 @@ def HighFiveyThingy(tank, flipper):
 
 def CaryThingy(tank, flipper):
     tank.gyro.reset()
-    Navigation.distance_goer(tank, 3, -10, 0)
+    Navigation.distance_goer(tank, 3, -15, 0)
     Navigation.gyro_check(tank, 10, 90)
-    Navigation.distance_goer(tank, 35, -10, 90)
+    Navigation.distance_goer(tank, 35, -25, 90)
     init.debug_print(tank.gyro.angle)
     Navigation.gyro_check(tank, 5, -50)
     flipper.on_for_rotations(30, 0.6)
@@ -137,4 +180,6 @@ def DinoRun(tank, flipper):
     Navigation.distance_goer(tank, 163, -60, 0)
 
 if __name__ == "__main__":
-    Run()
+    tank = Navigation.tank_init()
+    flipper = LargeMotor(OUTPUT_C)
+    PlatformRun(tank, flipper)
