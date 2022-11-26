@@ -14,13 +14,7 @@ def PlatformRun(tank, flipper):
     time1 = time()
     #flipper.on_for_rotations(-10, 0.6)
     flipper.reset()
-    #DinoRun(tank,flipper)
-    time1 = time()
-    NewyCody(tank, flipper)
-    #HighFiveyThingy(tank, flipper)
-    time2=time()
-    init.debug_print(time2-time1)
-    return
+
 
     AnotherWateryThingy(tank, flipper)
 
