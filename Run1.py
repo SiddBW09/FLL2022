@@ -8,6 +8,7 @@ import Navigation
 import init
 
 def PlatformRun(tank, flipper):
+    tank.gyro.reset()
     #tank = Navigation.tank_init()
     #flipper=LargeMotor(OUTPUT_C)
     time1 = time()
@@ -15,6 +16,7 @@ def PlatformRun(tank, flipper):
     flipper.reset()
     #DinoRun(tank,flipper)
     AnotherWateryThingy(tank, flipper)
+
     #WateryThingy(tank, flipper)
     FlameThingy(tank, flipper)
     Boxythingy(tank, flipper)

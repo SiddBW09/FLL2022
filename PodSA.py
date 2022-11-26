@@ -40,26 +40,39 @@ def goToMission(tank, fork):
     sleep(0.5)
     tank.on_for_rotations(3, 20, 0.7)  # turn parallel to hydrodam
 
+def InnovMission(tank, fork):
+    goToMission2(tank, fork)
+    operateMission(tank, fork)
+
+
+
 def goToMission2(tank, fork):
+    tank.gyro.reset()
     Navigation.distance_goer(tank, 37, 25, 0)
+    fork.on_for_rotations(-20, 0.2)
     Navigation.gyro_check(tank, 5, 45)
     #Navigation.distance_goer(tank, 78, 10, 45)
-    Navigation.distance_goer(tank, 46.5, 25, 45)
+    Navigation.distance_goer(tank, 5, 25, 45)
+    fork.on_for_rotations(20, 0.2)
+    Navigation.distance_goer(tank, 41.5, 25, 45)
     Navigation.gyro_check(tank, 5, 90)
-    Navigation.distance_goer(tank, 12, -25, 90)
+    Navigation.distance_goer(tank, 10, -25, 90)
 
 def operateMission(tank, fork):
     tank.gyro.reset()
     fork.reset()
-    Navigation.distance_goer(tank, 8, -5, 0)
+    Navigation.distance_goer(tank, 7, -5, 0)
     fork.on_for_rotations(-60, 0.15)  # lift big bar
     #fork.on_for_rotations(5, 0.08)
     sleep(0.3)
+    #OG val 5, -10
     Navigation.goer_no_gyro(tank, 5, -10)
     Navigation.goer_no_gyro(tank, 1, 5)
     #tank.on_for_rotations(-10, -10, 0.16, brake=True, block=True)
     sleep(0.3)
+    #OG vaal 0.18
     fork.on_for_rotations(10, 0.18)
+    Navigation.distance_goer(tank, 40, 35, -5)
     return
     Navigation.distance_goer(tank, 10, 20, 0)
     Navigation.distance_goer(tank, 40, 20, -10)
@@ -137,7 +150,8 @@ if __name__ == "__main__":
     time1 = time()
     tank.gyro.reset()
     goToMission2(tank, fork)
-    #operateMission(tank,fork)
+    operateMission(tank,fork)
+
     #pushdownThingy(tank, fork)
     time2 = time()
     init.debug_print(time2-time1)
