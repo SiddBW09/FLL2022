@@ -27,7 +27,7 @@ def PlatformRun(tank, flipper):
     NewyCody(tank, flipper)
 
     HighFiveyThingy(tank, flipper)
-    CaryThingy(tank, flipper)
+    # # CaryThingy(tank, flipper)
 
 def AnotherWateryThingy(tank, flipper):
     flipper.on_for_rotations(30, 0.3)
@@ -81,16 +81,15 @@ def FlameThingy(tank, flipper):
 
 
 def Boxythingy(tank, flipper):
-    tank.gyro.reset()
     flipper.on_for_rotations(-5, 0.085)
     Navigation.goer_no_gyro(tank, 13, -15)
     Navigation.gyro_check(tank, 5, 5)
     flipper.on_for_rotations(30, 0.089)
     Navigation.goer_no_gyro(tank, 7, 10)
-    flipper.on_for_rotations(-80, 0.4)
+    flipper.on_for_rotations(-80, 0.45)
     Navigation.goer_no_gyro(tank, 8, -10)
     Navigation.gyro_check(tank, 5, 90)
-    flipper.on_for_rotations(10, 0.2)
+
 
 def MoveyThingy(tank, flipper):
     tank.gyro.reset()
@@ -101,14 +100,15 @@ def MoveyThingy(tank, flipper):
     Navigation.gyro_check(tank, 5, 70)
     flipper.on_for_rotations(10, 0.14)
     Navigation.distance_goer(tank, 19, -30, 70)
-    flipper.on_for_rotations(-10, 0.14)
     Navigation.gyro_check(tank, 5, 90)
 
 def NewyCody(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
 
     #Go and sweep nrg units
-    Navigation.goer_no_gyro(tank, -17, 5)
+    Navigation.goer_no_gyro(tank, -17, 20)
+    Navigation.gyro_check(tank, 5, 90)
+
 
 
 
@@ -117,7 +117,10 @@ def NewyCody(tank, flipper):
     Navigation.gyro_check(tank, 5, 135)
     flip_flop.on_for_rotations(20, 0.35)
     Navigation.distance_goer(tank, 32.5, -20, 135)
+    init.debug_print(tank.gyro.angle)
     Navigation.gyro_check(tank, 5, 0)
+    init.debug_print(tank.gyro.angle)
+
 def HighFiveyThingy(tank, flipper):
     tank.gyro.reset()
     Navigation.goer_no_gyro(tank, -15, 10)
@@ -134,13 +137,14 @@ def CaryThingy(tank, flipper):
     Navigation.distance_goer(tank, 35, -25, 90)
     init.debug_print(tank.gyro.angle)
     Navigation.gyro_check(tank, 5, -50)
-    flipper.on_for_rotations(15, 0.45)
-    Navigation.gyro_check(tank, 5, -43)
-    Navigation.goer_no_gyro(tank, 6, -10)
-    Navigation.gyro_check(tank, 5, -36)
-    flipper.on_for_rotations(15, -0.4)
-    Navigation.gyro_check(tank, 5, -50)
-    Navigation.goer_no_gyro(tank, 84, 50)
+    flipper.on_for_rotations(15, 0.65)
+
+    # Navigation.gyro_check(tank, 5, -43)
+    # Navigation.goer_no_gyro(tank, 6, -10)
+    # Navigation.gyro_check(tank, 5, -36)
+    # flipper.on_for_rotations(15, -0.4)
+    # Navigation.gyro_check(tank, 5, -50)
+    # Navigation.goer_no_gyro(tank, 84, 50)
 
 def DinoRun(tank, flipper):
     flipper.on_for_rotations(-10, 0.05)
