@@ -22,11 +22,10 @@ def PlatformRun(tank, flipper):
     #WateryThingy(tank, flipper)
     FlameThingy(tank, flipper)
     Boxythingy(tank, flipper)
-
-    #MoveyThingy(tank, flipper)
     NewyCody(tank, flipper)
-
     HighFiveyThingy(tank, flipper)
+    #MoveyThingy(tank, flipper)
+
     # # CaryThingy(tank, flipper)
 
 def AnotherWateryThingy(tank, flipper):
@@ -87,6 +86,7 @@ def Boxythingy(tank, flipper):
     flipper.on_for_rotations(30, 0.089)
     Navigation.goer_no_gyro(tank, 7, 10)
     flipper.on_for_rotations(-80, 0.45)
+    Navigation.gyro_check(tank, 5, 45)
     Navigation.goer_no_gyro(tank, 8, -10)
     Navigation.gyro_check(tank, 5, 90)
 
@@ -113,18 +113,18 @@ def NewyCody(tank, flipper):
 
 
     flip_flop.on_for_rotations(20, -0.35)
-    Navigation.distance_goer(tank, 26, -50, 90)
+    Navigation.distance_goer(tank, 23, -50, 90)
     Navigation.gyro_check(tank, 5, 135)
     flip_flop.on_for_rotations(20, 0.35)
     Navigation.distance_goer(tank, 32.5, -20, 135)
     init.debug_print(tank.gyro.angle)
-    Navigation.gyro_check(tank, 5, 0)
+    Navigation.gyro_check(tank, 10, 3)
     init.debug_print(tank.gyro.angle)
 
 def HighFiveyThingy(tank, flipper):
     tank.gyro.reset()
     Navigation.goer_no_gyro(tank, -15, 10)
-    flipper.on_for_rotations(10, 0.2)
+    flipper.on_for_rotations(10, 0.5)
     Navigation.goer_no_gyro(tank, 4.5, 10)
     Navigation.gyro_check(tank, 5, 0)
     flipper.on_for_rotations(-30, 0.4)
