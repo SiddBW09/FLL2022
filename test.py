@@ -16,10 +16,19 @@ import init
 
 
 def test():
-    tank = MoveTank(OUTPUT_B, OUTPUT_C)
-    flipper=LargeMotor(OUTPUT_C)
+    tank = Navigation.tank_init()
+    # Navigation.distance_goer(tank, 50, 30, 0)
 
-    flipper.on_for_rotations(-5, 0.15)
+
+    for x in range(1):
+        Navigation.distance_goer(tank, 50, 30, 0)
+        sleep(2)
+
+        Navigation.distance_goer(tank, 50, -30, 0)
+
+
+
+
     #tank.on_for_rotations(-30, -30, 1)
     # init.debug_print(tank.gyro.angle)
     # tank.turn_degrees(5, -90, True, .1)
