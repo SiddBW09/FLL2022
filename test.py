@@ -22,9 +22,12 @@ def test():
 
     for x in range(1):
         Navigation.distance_goer(tank, 50, 30, 0)
-        sleep(2)
+        sleep(1)
+        init.debug_print(tank.gyro.angle)
+        Navigation.distance_goer(tank, 50, -20, 0)
+        init.debug_print(tank.gyro.angle)
+        sleep(1)
 
-        Navigation.distance_goer(tank, 50, -30, 0)
 
 
 
