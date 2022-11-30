@@ -3,10 +3,11 @@
 import ev3dev.ev3
 from ev3dev2.motor import MoveTank, OUTPUT_B, OUTPUT_C, OUTPUT_D, OUTPUT_A, SpeedPercent, follow_for_ms, SpeedRPM, LargeMotor, MoveSteering, MediumMotor
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
-from ev3dev2.sensor.lego import ColorSensor, GyroSensor
+from ev3dev2.sensor.lego import GyroSensor
 from ev3dev2.button import Button
 from ev3dev2.sound import Sound
 from time import sleep
+import os
 import Run1
 import tvrun
 import Navigation
@@ -16,10 +17,13 @@ import tvrun
 
 # Main program
 def main():
-
+    sound = Sound()
     tank = Navigation.tank_init()
+    tank.gyro.reset()
+    sound.play_tone(1500,0.3) #gyro is working!
     btn = Button()#hi
     flipper = LargeMotor(OUTPUT_C)
+    os.system('setfont Lat15-TerminusBold32x16')
 
     #PUT THE FUNCTION IN THE ELSE STATEMENT
     #Latest version of executing the latest functions (yeah I know, it's repetitive)
@@ -86,7 +90,10 @@ def main():
             print(tank.gyro.angle)
             sleep(2)
             '''
+    sound.play_tone(2500,0.1)
+    sound.play_tone(2000,0.1) #everythig is working fine now
     while True:
+        print(tank.gyro.angle)
         btn.process()
         sleep(0.01)
 
