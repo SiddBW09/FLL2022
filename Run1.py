@@ -11,25 +11,27 @@ def PlatformRun(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
     tank.gyro.reset()
     flipper.reset()
+
     AnotherWateryThingy(tank, flipper)
 
     #WateryThingy(tank, flipper)
     FlameThingy(tank, flipper)
 
     Boxythingy(tank, flipper)
-    return
 
     NewyCody(tank, flipper)
+
+
     HighFiveyThingy(tank, flipper)
     #MoveyThingy(tank, flipper)
 
-    # # CaryThingy(tank, flipper)
+    CaryThingy(tank, flipper)
 
 def AnotherWateryThingy(tank, flipper):
     flipper.on_for_rotations(30, 0.3)
     Navigation.distance_goer(tank, 44, -30, 0)
     Navigation.gyro_check(tank, 5, 50)
-    #init.debug_print("before flip", tank.gyro.angle)
+    init.debug_print("before flip", tank.gyro.angle)
     flipper.on_for_rotations(-30, 0.2)
     #Navigation.goer_no_gyro(tank, 10, 10)
     Navigation.gyro_check(tank, 5, 0)
@@ -48,7 +50,7 @@ def AnotherWateryThingy(tank, flipper):
     Navigation.gyro_check(tank, 4, -44)
     flipper.on_for_rotations(30, 0.45)'''
 
-def WateryThingy(tank, flipper):
+'''def WateryThingy(tank, flipper):
     tank.gyro.reset()
     flipper.on_for_rotations(30, 0.3)
     Navigation.distance_goer(tank, 35, -25, 0)
@@ -60,13 +62,15 @@ def WateryThingy(tank, flipper):
     sleep(0.1)
     Navigation.gyro_check(tank, 4, -45)
     flipper.on_for_rotations(30, 0.1)
+    '''
 
 def FlameThingy(tank, flipper):
     #tank.gyro.reset()
 
     Navigation.distance_goer(tank, 9.5, -20, 0)
-    #init.debug_print("before plat ",tank.gyro.angle)
     #Navigation.gyro_check(tank, 5, 0)
+
+    init.debug_print("Angle Before Oil: ",tank.gyro.angle)
 
     for x in range(2):
         flipper.on_for_rotations(-15, 0.12)
@@ -74,26 +78,30 @@ def FlameThingy(tank, flipper):
     flipper.on_for_rotations(-20, 0.12)
 
     Navigation.distance_goer(tank, 4.5, 15, 0)
-    #init.debug_print("first move: ",tank.gyro.angle)
+    init.debug_print("first move: ",tank.gyro.angle)
     Navigation.gyro_check(tank, 10, 22)
-    #init.debug_print("After first gyro check: ",tank.gyro.angle)
+    init.debug_print("After first gyro check: ",tank.gyro.angle)
     Navigation.distance_goer(tank, 14, -15,22)
-    #init.debug_print("second move: ",tank.gyro.angle)
+    init.debug_print("second move: ",tank.gyro.angle)
     Navigation.gyro_check(tank, 5, 0)
-    #init.debug_print("After second gyro check: ",tank.gyro.angle)
+    init.debug_print("After second gyro check: ",tank.gyro.angle)
 
 
 
 def Boxythingy(tank, flipper):
     #flipper.on_for_rotations(-5, 0.085)
-    Navigation.goer_no_gyro(tank, 12, -15)
-    #Navigation.gyro_check(tank, 5, 5)
+    Navigation.distance_goer(tank, 12, -15, 0)
+    #Navigation.gyro_check(tank, 2, 5)
     flipper.on_for_rotations(30, 0.12)
-    Navigation.goer_no_gyro(tank, 7, 10)
+    Navigation.distance_goer(tank, 7, 10, 0)
+    sleep(0.2)
     flipper.on_for_rotations(-80, 0.45)
     Navigation.gyro_check(tank, 10, 45)
-    Navigation.goer_no_gyro(tank, 8, -10)
+
+    #Go at 45 near sweepy place thing
+    Navigation.distance_goer(tank, 17, -10, 45)
     Navigation.gyro_check(tank, 10, 90)
+    init.debug_print("After boxy: ", tank.gyro.angle)
 
 
 def MoveyThingy(tank, flipper):
@@ -111,38 +119,61 @@ def NewyCody(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
 
     #Go and sweep nrg units
-    Navigation.goer_no_gyro(tank, -17, 20)
     Navigation.gyro_check(tank, 5, 90)
-
-
-
-
     flip_flop.on_for_rotations(20, -0.35)
-    Navigation.distance_goer(tank, 23, -50, 90)
+    Navigation.distance_goer(tank, 36, -30, 90)
+
+    #flipper up
+    flip_flop.on_for_rotations(7, 0.35)
+
     Navigation.gyro_check(tank, 5, 135)
-    flip_flop.on_for_rotations(20, 0.35)
-    Navigation.distance_goer(tank, 32.5, -20, 135)
+
+    #OG val 32.5
+    Navigation.distance_goer(tank, 23, -20, 135)
     init.debug_print(tank.gyro.angle)
-    Navigation.gyro_check(tank, 10, 3)
-    init.debug_print(tank.gyro.angle)
+    Navigation.gyro_check(tank, 10, 0)
+    init.debug_print("Angle before highfive: ", tank.gyro.angle)
+
+
 
 def HighFiveyThingy(tank, flipper):
-    tank.gyro.reset()
-    Navigation.goer_no_gyro(tank, -15, 10)
-    flipper.on_for_rotations(10, 0.5)
+    flipper.on_for_rotations(20, 0.3)
+
+    #Go towards orange high five
+    Navigation.distance_goer(tank, 10, -10, 0)
+
+    #Navigation.goer_no_gyro(tank, -15, 10)
+    flipper.on_for_rotations(10, 0.1)
+    sleep(0.2)
+    Navigation.distance_goer(tank, 7, 15, 0)
+    sleep(0.2)
+    flipper.on_for_rotations(-20, 0.4)
+    Navigation.goer_no_gyro(tank, 5, -10)
+    Navigation.gyro_check(tank, 5, -90)
+    init.debug_print("After high5 ", tank.gyro.angle)
+    return
     Navigation.goer_no_gyro(tank, 4.5, 10)
     Navigation.gyro_check(tank, 5, 0)
     flipper.on_for_rotations(-30, 0.4)
     Navigation.gyro_check(tank, 5, 0)
 
 def CaryThingy(tank, flipper):
-    tank.gyro.reset()
-    Navigation.distance_goer(tank, 3, -15, 0)
-    Navigation.gyro_check(tank, 10, 90)
-    Navigation.distance_goer(tank, 35, -25, 90)
-    init.debug_print(tank.gyro.angle)
+    #tank.gyro.reset()
+    Navigation.distance_goer(tank, 36, 20 , -90)
     Navigation.gyro_check(tank, 5, -50)
-    flipper.on_for_rotations(15, 0.65)
+    flipper.on_for_rotations(15, 0.45)
+    Navigation.distance_goer(tank, 4, -5, -50)
+    Navigation.gyro_check(tank, 5, -40)
+    #roll the car out
+    flipper.on_for_rotations(-10, 0.45)
+    init.debug_print(tank.gyro.angle)
+    #lower to escape the bar
+    flipper.on_for_rotations(20, 0.45)
+    Navigation.distance_goer(tank, 79, 35, -42)
+    flipper.on_for_rotations(-30, 0.45)
+    #Navigation.gyro_check(tank, 15, -50)
+    return
+
 
     # Navigation.gyro_check(tank, 5, -43)
     # Navigation.goer_no_gyro(tank, 6, -10)
