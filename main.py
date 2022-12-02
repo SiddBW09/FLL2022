@@ -37,6 +37,7 @@ def main():
             flipper.reset()
 
 
+
     def right(state):
         if state:
             pass
@@ -49,9 +50,12 @@ def main():
         if state:
             pass
         else:
-            Run1.PlatformRun(tank, flipper)
-            flipper.reset()
-            pass
+            try:
+                Run1.PlatformRun(tank, flipper)
+                flipper.reset()
+            except (RuntimeError, TypeError, NameError):
+                pass
+
     def down(state):
         if state:
             pass

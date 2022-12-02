@@ -17,16 +17,17 @@ import init
 
 def test():
     tank = Navigation.tank_init()
-    # Navigation.distance_goer(tank, 50, 30, 0)
+    #tank.on_for_rotations(50, 50, 4)
+    tank.gyro.reset()
+    Navigation.distance_goer(tank, 50, -30, 0)
 
-
-    for x in range(1):
-        Navigation.distance_goer(tank, 50, 30, 0)
-        sleep(1)
-        init.debug_print(tank.gyro.angle)
-        Navigation.distance_goer(tank, 50, -20, 0)
-        init.debug_print(tank.gyro.angle)
-        sleep(1)
+    # for x in range(1):
+    #     Navigation.distance_goer(tank, 50, 30, 0)
+    #     sleep(1)
+    #     init.debug_print(tank.gyro.angle)
+    #     Navigation.distance_goer(tank, 50, -20, 0)
+    #     init.debug_print(tank.gyro.angle)
+    #     sleep(1)
 
 
 

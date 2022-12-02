@@ -4,8 +4,20 @@ from ev3dev2.motor import LargeMotor, MediumMotor, MoveSteering, MoveTank, OUTPU
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor, UltrasonicSensor
 from time import sleep, time
-import Navigation
-import init
+import Navigation, init
+from threading import Thread
+from ev3dev2.sound import Sound
+
+
+def timer(startTime, timelimit):
+    while True:
+        if time() - startTime >= timelimit:
+            sound = Sound()
+            sound.play_tone(2500,0.1)
+            sound.play_tone(2000,0.1) #everythig is working fine now
+            break
+
+
 
 def PlatformRun(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
@@ -163,13 +175,18 @@ def CaryThingy(tank, flipper):
     Navigation.gyro_check(tank, 5, -50)
     flipper.on_for_rotations(15, 0.45)
     Navigation.distance_goer(tank, 4, -5, -50)
+
+    #Turn parallel to car
     Navigation.gyro_check(tank, 5, -40)
+
     #roll the car out
-    flipper.on_for_rotations(-10, 0.45)
+    flipper.on_for_rotations(-5, 0.45)
     init.debug_print(tank.gyro.angle)
     #lower to escape the bar
     flipper.on_for_rotations(20, 0.45)
-    Navigation.distance_goer(tank, 79, 35, -42)
+
+    #GO HOME OG speed 35 and 79cm
+    Navigation.distance_goer(tank, 85, 40, -42)
     flipper.on_for_rotations(-30, 0.45)
     #Navigation.gyro_check(tank, 15, -50)
     return
@@ -191,5 +208,7 @@ if __name__ == "__main__":
     tank = Navigation.tank_init()
     flipper = LargeMotor(OUTPUT_C)
     time1 = time()
+    # timeThread = Thread(target=timer, args=(time(), 5,))
+    # timeThread.start()
     PlatformRun(tank, flipper)
     init.debug_print(time()-time1)

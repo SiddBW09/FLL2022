@@ -9,8 +9,9 @@ from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 from ev3dev2.button import Button
 from ev3dev2.motor import MediumMotor
-from time import sleep
+from time import sleep, time
 from ev3dev2.sound import Sound
+import main, init
 
 def tank_init():
     my_tank = MoveTank(OUTPUT_A, OUTPUT_B)
@@ -54,14 +55,23 @@ def goer_no_gyro(tank, cm, speed):
 
     tank.on_for_rotations(speed, speed, rotations_needed)
 
-def follow_forever(tank, cm, lm):
+def follow_forever(tank, cm, lm, startTime):
+
 
     rotations_needed = cm/0.0712094336
     motorPos=lm.position
+
     if (motorPos<0):
         motorPos = motorPos*-1
     if (motorPos >= rotations_needed):
         return False
+
+
+    if time()-startTime > 12:
+        init.debug_print("Exception")
+        return True, sound.play_tone(2500,0.5)
+
+
 
     return True
 
@@ -83,7 +93,7 @@ def distance_goer(tank, distance, speed, angle):
         target_angle=angle,
         sleep_time=sleep,
         follow_for=follow_forever,
-        cm=distance, lm=left_motor)
+        cm=distance, lm=left_motor, startTime=time())
 
     gyro_check(tank, 5, angle)
 
