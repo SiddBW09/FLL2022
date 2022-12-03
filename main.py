@@ -31,10 +31,16 @@ def main():
         if state:
             pass
         else:
-            tvrun.tv()
-            tvrun.windmill()
-            tvrun.toystory3()
-            flipper.reset()
+            try:
+                print("TV Run")
+                tvrun.tv()
+                tvrun.windmill()
+                tvrun.toystory3()
+            except (RuntimeError, TypeError, NameError, SyntaxError):
+                tank.rest()
+                tank.gyro.rest()
+                flipper.reset()
+                pass
 
 
 
@@ -42,15 +48,22 @@ def main():
         if state:
             pass
         else:
-            Run1.DinoRun(tank, flipper)
-            flipper.reset()
-            pass
+            try:
+                print("Dino Run")
+                Run1.DinoRun(tank, flipper)
+                flipper.reset()
+            except (RuntimeError, TypeError, NameError, SyntaxError):
+                tank.reset()
+                tank.gyro.reset()
+                flipper.reset()
+                pass
 
     def up(state):
         if state:
             pass
         else:
             try:
+                print("Platform")
                 Run1.PlatformRun(tank, flipper)
                 flipper.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
@@ -63,9 +76,14 @@ def main():
         if state:
             pass
         else:
-            PodSA.InnovMission(tank,flipper)
-            flipper.reset()
-            pass
+            try:
+                print("Innov Run")
+                PodSA.InnovMission(tank,flipper)
+            except:
+                tank.reset()
+                tank.gyro.reset()
+                flipper.reset()
+                pass
 
     def enter(state):
         if state:
