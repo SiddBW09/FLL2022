@@ -24,8 +24,8 @@ def tv():
 
     #Turn left OG val -45
     Navigation.gyro_check(tank, 5, -42)
+    init.debug_print("Should be -42:", tank.gyro.angle)
 
-    init.debug_print(tank.gyro.angle)
     #tank.turn_degrees(10, -30, True, 0.1)
 
     #Lift flippy
@@ -39,6 +39,7 @@ def tv():
 
     #Turn almost all the way
     Navigation.gyro_check(tank, 5, 40)
+    init.debug_print("Should be 40:", tank.gyro.angle)
 
     #Go forward from
     Navigation.goer_no_gyro(tank, 2, -15)
@@ -82,17 +83,18 @@ def toystory3():
 
     #Lift colorful flipper Og val 5, -0.25
     Navigation.gyro_check(tank, 5, -20)
+    init.debug_print("Should be -20:", tank.gyro.angle)
     colorful_flipper.on_for_rotations(7, -0.35)
 
     sleep(1)
     Navigation.gyro_check(tank, 5, -165)
+    init.debug_print("Should be -165:", tank.gyro.angle)
     Navigation.goer_no_gyro(tank, 3, 20)
 
     #Rotate 90 degrees clockwise
     #Navigation.goer_no_gyro(tank, -245, -15)
 
     colorful_flipper.on_for_rotations(8, 0.125)
-    init.debug_print(tank.gyro.angle)
     sleep(1)
     colorful_flipper.on_for_rotations(5, -0.125)
 

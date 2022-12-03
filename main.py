@@ -37,6 +37,7 @@ def main():
                 tvrun.windmill()
                 tvrun.toystory3()
                 flipper.reset()
+                tank.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.rest()
                 tank.gyro.rest()
@@ -53,6 +54,7 @@ def main():
                 print("Dino Run")
                 Run1.DinoRun(tank, flipper)
                 flipper.reset()
+                tank.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
@@ -67,6 +69,7 @@ def main():
                 print("Platform")
                 Run1.PlatformRun(tank, flipper)
                 flipper.reset()
+                tank.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
@@ -81,6 +84,7 @@ def main():
                 print("Innov Run")
                 PodSA.InnovMission(tank,flipper)
                 flipper.reset()
+                tank.reset()
             except:
                 tank.reset()
                 tank.gyro.reset()

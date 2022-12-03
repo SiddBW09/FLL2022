@@ -155,7 +155,7 @@ def HighFiveyThingy(tank, flipper):
     Navigation.distance_goer(tank, 10, -10, 0)
 
     #Navigation.goer_no_gyro(tank, -15, 10)
-    flipper.on_for_rotations(10, 0.1)
+    flipper.on_for_rotations(10, 0.15)
     sleep(0.2)
     Navigation.distance_goer(tank, 7, 15, 0)
     sleep(0.2)
