@@ -53,7 +53,10 @@ def main():
             try:
                 Run1.PlatformRun(tank, flipper)
                 flipper.reset()
-            except (RuntimeError, TypeError, NameError):
+            except (RuntimeError, TypeError, NameError, SyntaxError):
+                tank.reset()
+                tank.gyro.reset()
+                flipper.reset()
                 pass
 
     def down(state):

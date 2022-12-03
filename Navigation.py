@@ -67,9 +67,9 @@ def follow_forever(tank, cm, lm, startTime):
         return False
 
 
-    if time()-startTime > 12:
+    if time()-startTime > 8:
         init.debug_print("Exception")
-        return True, sound.play_tone(2500,0.5)
+        hdaskljfh
 
 
 
@@ -96,6 +96,8 @@ def distance_goer(tank, distance, speed, angle):
         cm=distance, lm=left_motor, startTime=time())
 
     gyro_check(tank, 5, angle)
+
+
 
 
 
