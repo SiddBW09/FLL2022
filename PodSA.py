@@ -54,14 +54,14 @@ def goToMission2(tank, fork):
     #Navigation.distance_goer(tank, 78, 10, 45)
     Navigation.distance_goer(tank, 5, 25, 45)
     fork.on_for_rotations(20, 0.2)
-    Navigation.distance_goer(tank, 41.5, 25, 45)
+    Navigation.distance_goer(tank, 42, 25, 45)
     Navigation.gyro_check(tank, 5, 90)
     Navigation.distance_goer(tank, 10, -25, 90)
 
 def operateMission(tank, fork):
     tank.gyro.reset()
     fork.reset()
-    Navigation.distance_goer(tank, 7, -5, 0)
+    Navigation.distance_goer(tank, 6, -5, 0)
     fork.on_for_rotations(-60, 0.15)  # lift big bar
     #fork.on_for_rotations(5, 0.08)
     sleep(0.3)

@@ -16,7 +16,7 @@ def tv():
 
     #Tv run 1.3
     #OG distance = 14
-    Navigation.goer_no_gyro(tank, 12, -30)
+    Navigation.goer_no_gyro(tank, 12.25, -30)
     #tank.on_for_rotations(-20, -20, 1)
 
     #Lift flipper
@@ -86,7 +86,7 @@ def toystory3():
     init.debug_print("Should be -20:", tank.gyro.angle)
     colorful_flipper.on_for_rotations(7, -0.35)
 
-    sleep(1)
+    sleep(0.25)
     Navigation.gyro_check(tank, 5, -165)
     init.debug_print("Should be -165:", tank.gyro.angle)
     Navigation.goer_no_gyro(tank, 3, 20)
@@ -95,8 +95,11 @@ def toystory3():
     #Navigation.goer_no_gyro(tank, -245, -15)
 
     colorful_flipper.on_for_rotations(8, 0.125)
-    sleep(1)
-    colorful_flipper.on_for_rotations(5, -0.125)
+
+    sleep(0.5)
+    colorful_flipper.on_for_rotations(5, -0.2)
+
+
 
     tank.turn_degrees(5, 90)
     Navigation.goer_no_gyro(tank, 65, 40)
