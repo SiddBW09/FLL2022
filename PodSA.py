@@ -66,7 +66,7 @@ def operateMission(tank, fork):
     #fork.on_for_rotations(5, 0.08)
     sleep(0.3)
     #OG val 5, -10
-    Navigation.goer_no_gyro(tank, 5, -10)
+    Navigation.goer_no_gyro(tank, 6, -10)
     Navigation.goer_no_gyro(tank, 1, 5)
     #tank.on_for_rotations(-10, -10, 0.16, brake=True, block=True)
     sleep(0.3)
