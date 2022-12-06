@@ -61,18 +61,23 @@ def goToMission2(tank, fork):
 def operateMission(tank, fork):
     tank.gyro.reset()
     fork.reset()
-    Navigation.distance_goer(tank, 6, -5, 0)
-    fork.on_for_rotations(-60, 0.15)  # lift big bar
+    #Navigation.distance_goer(tank, 6, -5, 0) #OG distance was 6
+    Navigation.distance_goer(tank, 6.45, -5, 0)
+    fork.on_for_rotations(-60, 0.15)  #lift big bar
     #fork.on_for_rotations(5, 0.08)
     sleep(0.3)
     #OG val 5, -10
-    Navigation.goer_no_gyro(tank, 6, -10)
+    Navigation.goer_no_gyro(tank, 8, -10)
     Navigation.goer_no_gyro(tank, 1, 5)
     #tank.on_for_rotations(-10, -10, 0.16, brake=True, block=True)
     sleep(0.3)
     #OG vaal 0.18
-    fork.on_for_rotations(10, 0.18)
-    Navigation.distance_goer(tank, 40, 35, -5)
+    #NEW CODE TO TEST
+    #Navigation.gyro_check(tank, 10, 3)
+    fork.on_for_rotations(10, 0.18) #put thing down
+    Navigation.distance_goer(tank, 40.45, 35, -5) #OG dist 40
+
+    Navigation.gyro_check(tank, 10, 15)
     return
     Navigation.distance_goer(tank, 10, 20, 0)
     Navigation.distance_goer(tank, 40, 20, -10)
