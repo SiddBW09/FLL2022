@@ -67,15 +67,17 @@ def operateMission(tank, fork):
     #fork.on_for_rotations(5, 0.08)
     sleep(0.3)
     #OG val 5, -10
-    Navigation.goer_no_gyro(tank, 8, -10)
-    Navigation.goer_no_gyro(tank, 2.5, 5)
+    Navigation.goer_no_gyro(tank, 6.5, -10)
+    #Navigation.goer_no_gyro(tank, 2.5, 5)
     #tank.on_for_rotations(-10, -10, 0.16, brake=True, block=True)
     sleep(0.3)
     #OG vaal 0.18
     #NEW CODE TO TEST
     #Navigation.gyro_check(tank, 10, 3)
     fork.on_for_rotations(10, 0.18) #put thing down
+    #sleep(0.5)
     Navigation.distance_goer(tank, 40.45, 35, -5) #OG dist 40
+    fork.on_for_rotations(-30, 0.2)
 
     Navigation.gyro_check(tank, 10, 15)
     return
