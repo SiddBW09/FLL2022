@@ -184,11 +184,16 @@ def CaryThingy(tank, flipper):
 
 
 def DinoRun(tank, flipper):
-
+    flip_flop = MediumMotor(OUTPUT_D)
+    flip_flop.reset()
+    flip_flop.on_for_degrees(30, 10)
     #Go to right home
     flipper.on_for_rotations(-10, 0.05)
     tank.gyro.reset()
-    Navigation.distance_goer(tank, 163, -60, 0)
+    Navigation.distance_goer(tank, 86, -35, 0)
+    sleep(0.1)
+    flip_flop.on_for_degrees(50, 80)
+    Navigation.distance_goer(tank, 82, -60, 0)
 
 if __name__ == "__main__":
     tank = Navigation.tank_init()
@@ -196,5 +201,5 @@ if __name__ == "__main__":
     time1 = time()
     # timeThread = Thread(target=timer, args=(time(), 5,))
     # timeThread.start()
-    PlatformRun(tank, flipper)
+    DinoRun(tank, flipper)
     init.debug_print(time()-time1)
