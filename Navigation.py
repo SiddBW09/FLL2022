@@ -67,7 +67,7 @@ def follow_forever(tank, cm, lm, startTime):
         return False
 
 
-    if time()-startTime > 6:
+    if time()-startTime > 5:
         init.debug_print("Exception")
         raise NameError("STOP")
 

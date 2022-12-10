@@ -105,7 +105,7 @@ def toystory3():
 
 
 
-    tank.turn_degrees(5, 93)
+    tank.turn_degrees(10, 93)
     # ^ used to be 90
     Navigation.goer_no_gyro(tank, 65, 40)
 

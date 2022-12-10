@@ -61,16 +61,15 @@ def goToMission3(tank, fork):
 
 def goToMission2(tank, fork):
     tank.gyro.reset()
-    Navigation.distance_goer(tank, 37, 25, 0)
+    Navigation.distance_goer(tank, 37, 30, 0)
     fork.on_for_rotations(-20, 0.2)
     Navigation.gyro_check(tank, 5, 45)
     #Navigation.distance_goer(tank, 78, 10, 45)
     Navigation.distance_goer(tank, 8, 25, 45)
     fork.on_for_rotations(20, 0.2)
-    Navigation.distance_goer(tank, 39, 25, 45)
+    Navigation.distance_goer(tank, 39, 30, 45)
     Navigation.gyro_check(tank, 5, 90)
     Navigation.distance_goer(tank, 10, -25, 90)
-
 def operateMission(tank, fork):
     tank.gyro.reset()
     fork.reset()
@@ -96,6 +95,24 @@ def operateMission(tank, fork):
     return
     Navigation.distance_goer(tank, 10, 20, 0)
     Navigation.distance_goer(tank, 40, 20, -10)
+
+def operateMission2(tank, fork):
+    fork.reset()
+    #Navigation.distance_goer(tank, 6, -5, 0) #OG distance was 6
+    #Navigation.distance_goer(tank, 6.45, -5, 0)
+    fork.on_for_rotations(-20, 0.2)  #lift big bar
+    #fork.on_for_rotations(5, 0.08)
+    #OG val 5, -10
+    Navigation.distance_goer(tank, 12.5, -15, 90)
+    fork.on_for_rotations(15, 0.15)
+    sleep(0.3)
+    Navigation.goer_no_gyro(tank, 43, 40)
+    tank.turn_degrees(10, 20)
+    fork.on_for_rotations(-35, 0.25)
+
+
+
+
 
 
 def pushdownThingy(tank, fork):
@@ -169,8 +186,8 @@ if __name__ == "__main__":
     tank.gyro = GyroSensor(INPUT_1)
     time1 = time()
     tank.gyro.reset()
-    goToMission3(tank, fork)
-    #operateMission(tank,fork)
+    goToMission2(tank, fork)
+    operateMission2(tank,fork)
 
     #pushdownThingy(tank, fork)
     time2 = time()
