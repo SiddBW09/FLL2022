@@ -53,8 +53,10 @@ def main():
             try:
                 print("Dino Run")
                 Run1.DinoRun(tank, flipper)
+                flip_flop = MediumMotor(OUTPUT_D)
                 flipper.reset()
                 tank.reset()
+                flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
