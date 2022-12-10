@@ -32,12 +32,15 @@ def main():
             pass
         else:
             try:
+                flip_flop = MediumMotor(OUTPUT_D)
                 print("TV Run")
                 tvrun.tv()
                 tvrun.windmill()
                 tvrun.toystory3()
                 flipper.reset()
                 tank.reset()
+                flip_flop.reset()
+
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.rest()
                 tank.gyro.rest()
