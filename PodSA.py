@@ -44,6 +44,19 @@ def InnovMission(tank, fork):
     goToMission2(tank, fork)
     operateMission(tank, fork)
 
+def goToMission3(tank, fork):
+    tank.gyro.reset()
+    Navigation.distance_goer(tank, 37, 40, 0)
+    fork.on_for_rotations(-20, 0.2)
+    Navigation.gyro_check(tank, 5, 45)
+    #Navigation.distance_goer(tank, 78, 10, 45)
+    Navigation.distance_goer(tank, 8, 25, 45)
+    fork.on_for_rotations(20, 0.2)
+    Navigation.goer_no_gyro(tank, 52, 45)
+    #Navigation.gyro_check(tank, 5, 90)
+    #Navigation.distance_goer(tank, 10, 25, 90)
+    fork.on_for_rotations(20, -0.2)
+
 
 
 def goToMission2(tank, fork):
@@ -156,8 +169,8 @@ if __name__ == "__main__":
     tank.gyro = GyroSensor(INPUT_1)
     time1 = time()
     tank.gyro.reset()
-    goToMission2(tank, fork)
-    operateMission(tank,fork)
+    goToMission3(tank, fork)
+    #operateMission(tank,fork)
 
     #pushdownThingy(tank, fork)
     time2 = time()

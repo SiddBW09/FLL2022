@@ -93,8 +93,13 @@ def main():
 
     def enter(state):
         if state:
-            pass
+            print("Hailmary Run")
+            PodSA.goToMission3(tank,flipper)
+
         else:
+            tank.reset()
+            tank.gyro.reset()
+            flipper.reset()
             pass
 
     btn.on_left = left
