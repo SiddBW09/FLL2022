@@ -38,6 +38,40 @@ def PlatformRun(tank, flipper):
 
     CaryThingy(tank, flipper)
 
+def PlatformRunUpdate(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+    tank.gyro.reset()
+    flipper.reset()
+
+    #AnotherWateryThingy(tank, flipper)
+    flipper.on_for_rotations(30, 0.4)
+    Navigation.distance_goer(tank, 56, -30, 0)
+
+    flip_flop.on_for_rotations(20, 0.2)
+    #Navigation.distance_goer(tank, 6, -20, 0)
+    #sleep(0.1)
+    #flip_flop.on_for_rotations(-20, 0.2)
+
+    #WateryThingy(tank, flipper)
+    #FlameThingy(tank, flipper)
+    for x in range(3):
+        flipper.on_for_rotations(-15, 0.12)
+        flip_flop.on_for_rotations(-20, 0.2)
+        flipper.on_for_rotations(15, 0.12)
+        flip_flop.on_for_rotations(20, 0.2)
+    #flipper.on_for_rotations(-20, 0.12)
+
+    return
+
+    Boxythingy(tank, flipper)
+
+    NewyCody(tank, flipper)
+
+    HighFiveyThingy(tank, flipper)
+
+    CaryThingy(tank, flipper)
+
+
 def AnotherWateryThingy(tank, flipper):
     flipper.on_for_rotations(30, 0.3)
     Navigation.distance_goer(tank, 44, -30, 0)
@@ -201,5 +235,6 @@ if __name__ == "__main__":
     time1 = time()
     # timeThread = Thread(target=timer, args=(time(), 5,))
     # timeThread.start()
-    DinoRun(tank, flipper)
+    #DinoRun(tank, flipper)
+    PlatformRunUpdate(tank, flipper)
     init.debug_print(time()-time1)
