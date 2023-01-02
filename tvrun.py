@@ -40,6 +40,13 @@ def tv():
     #Parallel to windmill go
     Navigation.goer_no_gyro(tank, 53, -30)
 
+    #added for testing
+    colorful_flipper.on_for_rotations(10, 0.4)
+    Navigation.goer_no_gyro(tank, 15, -15)
+    colorful_flipper.on_for_rotations(7, -0.4)
+    Navigation.goer_no_gyro(tank, 15, 15)
+
+
     #Turn almost all the way
     Navigation.gyro_check(tank, 5, 40)
     init.debug_print("Should be 40:", tank.gyro.angle)
@@ -103,11 +110,35 @@ def toystory3():
     sleep(0.5)
     colorful_flipper.on_for_rotations(5, -0.2)
 
+    #Navigation.goer_no_gyro(tank, 2, -15)
+    #used to not be here ^
 
-
+    #needs to be 65 if running vroomycar
     tank.turn_degrees(10, 93)
+    # ^ used to be 93
     # ^ used to be 90
+
+    #Originally not commented(moved into vroomycar)
     Navigation.goer_no_gyro(tank, 65, 40)
+
+def vroomycar():
+
+    colorful_flipper = LargeMotor(OUTPUT_C)
+    tank = Navigation.tank_init()
+
+    colorful_flipper.on_for_rotations(5, 0.35)
+    Navigation.goer_no_gyro(tank, 16, -20)
+    tank.turn_degrees(10, 15)
+    colorful_flipper.on_for_rotations(5, -0.15)
+    colorful_flipper.on_for_rotations(5, 0.15)
+    sleep(0.5)
+    tank.turn_degrees(5, -5)
+
+    #coming back to home
+    Navigation.goer_no_gyro(tank, 75, 35)
+    colorful_flipper.on_for_rotations(10, -0.35)
+
+
 
 
 if __name__ == "__main__":
@@ -115,6 +146,7 @@ if __name__ == "__main__":
     tv()
     windmill()
     toystory3()
+    #vroomycar()
 
     time2 = time()
     init.debug_print(time2-time1)
