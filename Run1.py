@@ -39,37 +39,42 @@ def PlatformRun(tank, flipper):
     CaryThingy(tank, flipper)
 
 def PlatformRunUpdate(tank, flipper):
-    flip_flop = MediumMotor(OUTPUT_D)
     tank.gyro.reset()
     flipper.reset()
 
-    #AnotherWateryThingy(tank, flipper)
-    flipper.on_for_rotations(30, 0.4)
-    Navigation.distance_goer(tank, 56, -30, 0)
+    OilandHydro(tank, flipper)
 
-    flip_flop.on_for_rotations(20, 0.2)
-    #Navigation.distance_goer(tank, 6, -20, 0)
-    #sleep(0.1)
-    #flip_flop.on_for_rotations(-20, 0.2)
+    Sweeper(tank, flipper)
 
-    #WateryThingy(tank, flipper)
-    #FlameThingy(tank, flipper)
-    for x in range(3):
-        flipper.on_for_rotations(-15, 0.12)
-        flip_flop.on_for_rotations(-20, 0.2)
-        flipper.on_for_rotations(15, 0.12)
-        flip_flop.on_for_rotations(20, 0.2)
-    #flipper.on_for_rotations(-20, 0.12)
-
+    GrabNGo(tank, flipper)
     return
-
-    Boxythingy(tank, flipper)
-
-    NewyCody(tank, flipper)
 
     HighFiveyThingy(tank, flipper)
 
     CaryThingy(tank, flipper)
+
+def OilandHydro(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+    #Flip filipper down, and go to Oil platform
+    flipper.on_for_rotations(30, 0.45)
+    Navigation.distance_goer(tank, 54, -30, 0)
+
+    #Do oil platform and hydro dam at once
+    flip_flop.on_for_rotations(20, 0.2)
+
+    for x in range(3):
+        flipper.on_for_rotations(-15, 0.12)
+        flip_flop.on_for_rotations(-15, 0.2)
+        flipper.on_for_rotations(15, 0.12)
+        flip_flop.on_for_rotations(15, 0.2)
+
+    flip_flop.on_for_rotations(-20, 0.2)
+
+    #Turn and go to sweeper
+    Navigation.gyro_check(tank, 5, 45)
+    Navigation.distance_goer(tank, 33, -20, 45)
+    Navigation.gyro_check(tank, 5, 90)
+
 
 
 def AnotherWateryThingy(tank, flipper):
@@ -176,6 +181,25 @@ def NewyCody(tank, flipper):
     #Turn so facing highfive
     Navigation.gyro_check(tank, 10, 0)
 
+def Sweeper(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+
+    Navigation.goer_no_gyro(tank, 4, 5)
+    Navigation.gyro_check(tank, 5, 90)
+
+    flipper.on_for_rotations(-15, 0.3)
+    flip_flop.on_for_rotations(-20, 0.3)
+
+    Navigation.distance_goer(tank, 28, -30, 90)
+    return
+
+def GrabNGo(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+    flip_flop.on_for_rotations(20, 0.16)
+
+    Navigation.gyro_check(tank, 5, 180)
+    Navigation.distance_goer(tank, 26, 10, 180)
+
 
 def HighFiveyThingy(tank, flipper):
     flipper.on_for_rotations(20, 0.3)
@@ -212,10 +236,6 @@ def CaryThingy(tank, flipper):
     #Go to left home
     Navigation.distance_goer(tank, 85, 40, -42)
     flipper.on_for_rotations(-30, 0.45)
-
-
-
-
 
 def DinoRun(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
