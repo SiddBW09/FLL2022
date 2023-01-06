@@ -249,6 +249,34 @@ def DinoRun(tank, flipper):
     flip_flop.on_for_degrees(50, 80)
     Navigation.distance_goer(tank, 82, -60, 0)
 
+def new_dino_run_for_power_plant(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+    flip_flop.reset()
+    #operate mission
+    Navigation.distance_goer(tank, 82, -40, 0)
+    flip_flop.on_for_degrees(40, 90)
+    Navigation.distance_goer(tank, 17, 25, 0)
+    Navigation.gyro_check(tank, 10, -4)
+    flipper.on_for_rotations(10, 0.5)
+    sleep(0.2)
+    Navigation.gyro_check(tank, 10, 0)
+    #go to home
+    Navigation.distance_goer(tank, 35, -35, 0)
+    Navigation.gyro_check(tank, 10, 18)
+    Navigation.distance_goer(tank, 15, -25, 18)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.goer_no_gyro(tank, 60, -50)
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     tank = Navigation.tank_init()
     flipper = LargeMotor(OUTPUT_C)
@@ -256,5 +284,5 @@ if __name__ == "__main__":
     # timeThread = Thread(target=timer, args=(time(), 5,))
     # timeThread.start()
     #DinoRun(tank, flipper)
-    PlatformRunUpdate(tank, flipper)
+    new_dino_run_for_power_plant(tank, flipper)
     init.debug_print(time()-time1)
