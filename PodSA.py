@@ -44,13 +44,13 @@ def InnovMission(tank, fork):
     goToMission2(tank, fork)
     operateMission(tank, fork)
 
-def goToMission3(tank, fork):
+def from_the_left_home(tank, fork):
     tank.gyro.reset()
     Navigation.distance_goer(tank, 37, 40, 0)
     fork.on_for_rotations(-20, 0.2)
-    Navigation.gyro_check(tank, 5, 45)
+    Navigation.gyro_check(tank, 5, -45)
     #Navigation.distance_goer(tank, 78, 10, 45)
-    Navigation.distance_goer(tank, 8, 25, 45)
+    Navigation.distance_goer(tank, 8, 25, -45)
     fork.on_for_rotations(20, 0.2)
     Navigation.goer_no_gyro(tank, 52, 45)
     #Navigation.gyro_check(tank, 5, 90)
@@ -109,10 +109,6 @@ def operateMission2(tank, fork):
     Navigation.goer_no_gyro(tank, 43, 40)
     tank.turn_degrees(10, 20)
     fork.on_for_rotations(-35, 0.25)
-
-
-
-
 
 
 def pushdownThingy(tank, fork):
@@ -180,14 +176,21 @@ def home_to_plant_backwards(tank, fork):
     #Navigation.distance_goer(tank, 5, 30, -35)
 #goToMission(tank, fork)
 
+def water_reservoir_hangonhook(tank, fork):
+    tank.gyro.reset()
+    flip_flop = MediumMotor(OUTPUT_D)
+    Navigation.distance_goer(tank, 20, 25, 0)
+    Navigation.gyro_check(tank, 5, -45)
+    Navigation.distance_goer(tank, 42, 20, -45)
+    flip_flop.on_for_degrees(3, 90)
+
 if __name__ == "__main__":
     tank = MoveTank(OUTPUT_A, OUTPUT_B)
     fork = LargeMotor(OUTPUT_C)
     tank.gyro = GyroSensor(INPUT_1)
     time1 = time()
     tank.gyro.reset()
-    goToMission2(tank, fork)
-    operateMission2(tank,fork)
+    water_reservoir_hangonhook(tank, fork)
 
     #pushdownThingy(tank, fork)
     time2 = time()
