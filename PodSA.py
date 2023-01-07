@@ -179,10 +179,11 @@ def home_to_plant_backwards(tank, fork):
 def water_reservoir_hangonhook(tank, fork):
     tank.gyro.reset()
     flip_flop = MediumMotor(OUTPUT_D)
-    Navigation.distance_goer(tank, 20, 25, 0)
-    Navigation.gyro_check(tank, 5, -45)
-    Navigation.distance_goer(tank, 42, 20, -45)
-    flip_flop.on_for_degrees(3, 90)
+    Navigation.distance_goer(tank, 31, 25, 0) #Backwards, old was 20cm
+    Navigation.gyro_check(tank, 5, -35)
+    Navigation.distance_goer(tank, 32, 20, -45) #Old 42
+    flip_flop.on_for_degrees(1, 90) #Hang units on hooks in water reservoir
+    return
 
     #Innovation Transport
     flip_flop.on_for_degrees(3, -90)

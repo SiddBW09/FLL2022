@@ -68,11 +68,13 @@ def OilandHydro(tank, flipper):
         flipper.on_for_rotations(15, 0.12)
         flip_flop.on_for_rotations(15, 0.2)
 
-    flip_flop.on_for_rotations(-20, 0.2)
+    flip_flop.on_for_rotations(-20, 0.1)
 
     #Turn and go to sweeper
     Navigation.gyro_check(tank, 5, 45)
-    Navigation.distance_goer(tank, 33, -20, 45)
+
+    Navigation.distance_goer(tank, 38, -20, 45)
+    Navigation.gyro_check(tank, 5, 90)
     Navigation.gyro_check(tank, 5, 90)
 
 
@@ -184,21 +186,43 @@ def NewyCody(tank, flipper):
 def Sweeper(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
 
-    Navigation.goer_no_gyro(tank, 4, 5)
+    Navigation.gyro_check(tank, 5, 90)
+    Navigation.distance_goer(tank, 8, 5, 90)
     Navigation.gyro_check(tank, 5, 90)
 
-    flipper.on_for_rotations(-15, 0.3)
-    flip_flop.on_for_rotations(-20, 0.3)
+    flipper.on_for_rotations(-15, 0.35)
 
-    Navigation.distance_goer(tank, 28, -30, 90)
+    #Lower flip to sweep
+    flip_flop.on_for_rotations(-15, 0.5)
+
+    #SWEEEEEP is here OG speed -20
+    Navigation.distance_goer(tank, 29, -30, 90)
     return
 
 def GrabNGo(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
-    flip_flop.on_for_rotations(20, 0.16)
+
+    #Raise Flip
+    flip_flop.on_for_rotations(20, 0.35)
+
 
     Navigation.gyro_check(tank, 5, 180)
-    Navigation.distance_goer(tank, 26, 10, 180)
+    flip_flop.on_for_rotations(10, -0.1)
+    Navigation.gyro_check(tank, 5, 180)
+    # flip_flop.on_for_rotations(-20, 0.15)
+    Navigation.distance_goer(tank, 26, 15, 180)
+
+    flipper.on_for_rotations(20, 0.375) #og VAL 0.35
+    #flipper.reset()
+
+    Navigation.gyro_check(tank, 5, 180)
+
+    #Grab Hydro Units, Turn, and go to Left Home
+    Navigation.distance_goer(tank, 19, -15, 185)
+    Navigation.gyro_check(tank, 5, 165)
+    Navigation.distance_goer(tank, 52, -20, 165)
+    Navigation.gyro_check(tank, 5, 255)
+    Navigation.goer_no_gyro(tank, 70, -60)
 
 
 def HighFiveyThingy(tank, flipper):
@@ -284,5 +308,6 @@ if __name__ == "__main__":
     # timeThread = Thread(target=timer, args=(time(), 5,))
     # timeThread.start()
     #DinoRun(tank, flipper)
-    new_dino_run_for_power_plant(tank, flipper)
+    #new_dino_run_for_power_plant(tank, flipper)
+    PlatformRunUpdate(tank, flipper)
     init.debug_print(time()-time1)
