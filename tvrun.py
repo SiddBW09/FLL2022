@@ -38,7 +38,9 @@ def tv():
     #sleep(2)
 
     #Parallel to windmill go
-    Navigation.goer_no_gyro(tank, 53, -30)
+    #Navigation.goer_no_gyro(tank, 53, -35)
+    Navigation.distance_goer(tank, 53, -30, -47)
+    init.debug_print(tank.gyro.angle)
 
     #added for testing
     colorful_flipper.on_for_rotations(10, 0.4)
@@ -48,7 +50,7 @@ def tv():
 
 
     #Turn almost all the way
-    Navigation.gyro_check(tank, 5, 40)
+    Navigation.gyro_check(tank, 10, 40)
     init.debug_print("Should be 40:", tank.gyro.angle)
 
     #Go forward from
@@ -89,15 +91,16 @@ def toystory3():
     colorful_flipper = LargeMotor(OUTPUT_C)
     tank = Navigation.tank_init()
 
+
    # Navigation.goer_no_gyro(tank, 5.5, 20)
 
     #Lift colorful flipper Og val 5, -0.25
-    Navigation.gyro_check(tank, 5, -20)
+    Navigation.gyro_check(tank, 10, -20)
     init.debug_print("Should be -20:", tank.gyro.angle)
     colorful_flipper.on_for_rotations(7, -0.35)
 
     sleep(0.25)
-    Navigation.gyro_check(tank, 5, -162)
+    Navigation.gyro_check(tank, 10, -164)
     # ^ used to be -165
     init.debug_print("Should be -165:", tank.gyro.angle)
     Navigation.goer_no_gyro(tank, 3, 20)
@@ -121,6 +124,7 @@ def toystory3():
     #Originally not commented(moved into vroomycar)
     Navigation.goer_no_gyro(tank, 65, 40)
 
+'''
 def vroomycar():
 
     colorful_flipper = LargeMotor(OUTPUT_C)
@@ -138,7 +142,7 @@ def vroomycar():
     Navigation.goer_no_gyro(tank, 75, 35)
     colorful_flipper.on_for_rotations(10, -0.35)
 
-
+'''
 
 
 if __name__ == "__main__":
