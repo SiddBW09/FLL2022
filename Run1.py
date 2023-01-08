@@ -276,12 +276,55 @@ def DinoRun(tank, flipper):
 def new_dino_run_for_power_plant(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
     flip_flop.reset()
+
+    #Navigation.goer_no_gyro(tank, 30, -25)
+
     #operate mission
     Navigation.distance_goer(tank, 82, -40, 0)
+    init.debug_print("After boxy: ", tank.gyro.angle)
     flip_flop.on_for_degrees(40, 90)
     Navigation.distance_goer(tank, 17, 25, 0)
-    Navigation.gyro_check(tank, 10, -4)
+    #Navigation.gyro_check(tank, 10, -4)
+
+    #Flip thingy up
     flipper.on_for_rotations(10, 0.5)
+
+    sleep(0.2)
+    Navigation.gyro_check(tank, 10, 0)
+    #go to home
+    Navigation.distance_goer(tank, 35, -35, 0)
+    Navigation.gyro_check(tank, 10, 18)
+    Navigation.distance_goer(tank, 15, -25, 18)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.goer_no_gyro(tank, 60, -50)
+
+def newnew_dino_powerplant(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+    flip_flop.reset()
+
+    #Navigation.goer_no_gyro(tank, 30, -25)
+
+    #operate mission
+    Navigation.distance_goer(tank, 82, -40, 0)
+    init.debug_print("After boxy: ", tank.gyro.angle)
+
+    #Flip this up
+    flip_flop.on_for_degrees(40, 90)
+
+    #Go back from power plant and turn left and go forward in line for the Great Flick
+    Navigation.distance_goer(tank, 30, 25, 0)
+    Navigation.gyro_check(tank, 10, -35)
+    Navigation.distance_goer(tank, 13, -25, -35)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank, 3, -10, 0)
+    #Navigation.distance_goer(tank, 5, -25, 0)
+
+    #Navigation.gyro_check(tank, 10, -4)
+
+    #Flip down down
+    flipper.on_for_rotations(10, 0.5)
+    return
+
     sleep(0.2)
     Navigation.gyro_check(tank, 10, 0)
     #go to home
@@ -292,15 +335,6 @@ def new_dino_run_for_power_plant(tank, flipper):
     Navigation.goer_no_gyro(tank, 60, -50)
 
 
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     tank = Navigation.tank_init()
     flipper = LargeMotor(OUTPUT_C)
@@ -309,5 +343,6 @@ if __name__ == "__main__":
     # timeThread.start()
     #DinoRun(tank, flipper)
     #new_dino_run_for_power_plant(tank, flipper)
-    PlatformRunUpdate(tank, flipper)
+    newnew_dino_powerplant(tank, flipper)
+    #PlatformRunUpdate(tank, flipper)
     init.debug_print(time()-time1)
