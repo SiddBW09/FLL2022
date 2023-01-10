@@ -193,13 +193,60 @@ def water_reservoir_hangonhook(tank, fork):
 def dino_flick_collect_3(tank, fork):
     fork.on_for_rotations(35, -0.3)
 
+def newnew_dino_powerplant(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+    flip_flop.reset()
+
+    #Navigation.goer_no_gyro(tank, 30, -25)
+
+    #operate mission
+    Navigation.distance_goer(tank, 82, -40, 0)
+    init.debug_print("After boxy: ", tank.gyro.angle)
+
+    #Flip this up
+    flip_flop.on_for_degrees(40, 90)
+
+    #Go back from power plant and turn left and go forward in line for the Great Flick
+    Navigation.distance_goer(tank, 30, 25, 0)
+    #mstuff
+
+    #Turn away from power plant and go at angle -35
+    Navigation.gyro_check(tank, 10, -35)
+    Navigation.distance_goer(tank, 13, -25, -35)
+
+    #Go back to be parallel
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank, 3, -10, 0)
+
+    #Flip this down energy unit
+    flipper.on_for_rotations(20, 0.5)
+
+    #Go away from power plant because sahana is a bozo
+    Navigation.distance_goer(tank, 10, 25, 0)
+
+    #Turn at  angle 30 and go, then turn back to 0 so Evie is parallel to Power Plant
+    Navigation.gyro_check(tank, 10, 30)
+    Navigation.distance_goer(tank, 20, -25, 30)
+    Navigation.gyro_check(tank, 10, 0)
+
+    #Go forward and turn to hydro dam and sweep it away
+    Navigation.distance_goer(tank, 46, -25, 0)
+
+        #lift flippy up, turn, and put it down to catch hydro dam nrg unit
+    flipper.on_for_rotations(20, -0.5)
+    Navigation.gyro_check(tank, 10, 14)
+    flipper.on_for_rotations(20, 0.5)
+    return
+
 if __name__ == "__main__":
     tank = MoveTank(OUTPUT_A, OUTPUT_B)
     fork = LargeMotor(OUTPUT_C)
+    flipper = LargeMotor(OUTPUT_C)
     tank.gyro = GyroSensor(INPUT_1)
     time1 = time()
     tank.gyro.reset()
-    water_reservoir_hangonhook(tank, fork)
+    #water_reservoir_hangonhook(tank, fork)
+    newnew_dino_powerplant(tank, flipper)
     #dino_flick_collect_3(tank, fork)
 
     #pushdownThingy(tank, fork)

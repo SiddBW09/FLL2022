@@ -365,6 +365,47 @@ def Dump_3(tank, flipper):
     #Move forward
     Navigation.distance_goer(tank, 5, -20, 0)
 
+    #Turn and go forward
+    Navigation.gyro_check(tank, 5, 22)
+    Navigation.distance_goer(tank, 12, -15, 22)
+
+    #Straight for Boxy
+    Navigation.gyro_check(tank, 5, 0)
+
+    #Go to boxy thingy
+    Navigation.distance_goer(tank, 63, -35, 0)
+    flipper.on_for_rotations(10, 0.15)
+
+    #Move back
+    Navigation.distance_goer(tank, 27, 20, 0)
+
+    #Lower flip
+    flipper.on_for_rotations(10, 0.24)
+
+    Navigation.gyro_check(tank, 5, 55)
+    Navigation.distance_goer(tank, 38, 25, 55)
+    Navigation.gyro_check(tank, 5, 0)
+    Navigation.distance_goer(tank, 5, -5, 0)
+    Navigation.gyro_check(tank, 20, -115)
+    Navigation.distance_goer(tank, 15, -20, -115)
+    return
+    #flipper.on_for_rotations(-10, 0.1)
+    Navigation.gyro_check(tank, 10, 180)
+
+    return
+    Navigation.distance_goer(tank, 40, 20, 0)
+    Navigation.gyro_check(tank, 5, 0)
+
+    return
+    #Turn
+    Navigation.gyro_check(tank, 5, 60)
+
+    #Move back
+    Navigation.distance_goer(tank, 11, 20, 45)
+
+    #Move Oil Platform
+    Navigation.gyro_check(tank, 10, -130)
+
 if __name__ == "__main__":
     tank = Navigation.tank_init()
     flipper = LargeMotor(OUTPUT_C)
