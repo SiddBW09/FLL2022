@@ -219,23 +219,28 @@ def newnew_dino_powerplant(tank, flipper):
     Navigation.distance_goer(tank, 3, -10, 0)
 
     #Flip this down energy unit
-    flipper.on_for_rotations(20, 0.5)
+    flipper.on_for_rotations(30, 0.5)
 
     #Go away from power plant because sahana is a bozo
     Navigation.distance_goer(tank, 10, 25, 0)
 
     #Turn at  angle 30 and go, then turn back to 0 so Evie is parallel to Power Plant
+
     Navigation.gyro_check(tank, 10, 30)
-    Navigation.distance_goer(tank, 20, -25, 30)
+
+    #(This code determines how close you are parallel to hydro dam) OG val 20cm
+    Navigation.distance_goer(tank, 15, -25, 30)
     Navigation.gyro_check(tank, 10, 0)
 
-    #Go forward and turn to hydro dam and sweep it away
-    Navigation.distance_goer(tank, 46, -25, 0)
+    #Go forward and turn to hydro dam and sweep it away OG dist 46
+    Navigation.distance_goer(tank, 45, -25, 0)
 
-        #lift flippy up, turn, and put it down to catch hydro dam nrg unit
+        #lift flippy up, turn, go forward a little bit, and put it down to catch hydro dam nrg unit
     flipper.on_for_rotations(20, -0.5)
-    Navigation.gyro_check(tank, 10, 14)
+    Navigation.gyro_check(tank, 10, 18)
+    Navigation.distance_goer(tank, 5, -25, 15)
     flipper.on_for_rotations(20, 0.5)
+    Navigation.gyro_check(tank, 10, 0)
     return
 
 if __name__ == "__main__":
