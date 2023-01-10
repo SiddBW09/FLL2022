@@ -190,6 +190,9 @@ def water_reservoir_hangonhook(tank, fork):
     Navigation.distance_goer(tank, 30, 20, -45)
     fork.on_for_rotations(20, 0.3)
 
+def dino_flick_collect_3(tank, fork):
+    fork.on_for_rotations(35, -0.3)
+
 if __name__ == "__main__":
     tank = MoveTank(OUTPUT_A, OUTPUT_B)
     fork = LargeMotor(OUTPUT_C)
@@ -197,6 +200,7 @@ if __name__ == "__main__":
     time1 = time()
     tank.gyro.reset()
     water_reservoir_hangonhook(tank, fork)
+    #dino_flick_collect_3(tank, fork)
 
     #pushdownThingy(tank, fork)
     time2 = time()

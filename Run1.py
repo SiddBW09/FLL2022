@@ -276,12 +276,82 @@ def DinoRun(tank, flipper):
 def new_dino_run_for_power_plant(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
     flip_flop.reset()
+
+    #Navigation.goer_no_gyro(tank, 30, -25)
+
     #operate mission
     Navigation.distance_goer(tank, 82, -40, 0)
+    init.debug_print("After boxy: ", tank.gyro.angle)
     flip_flop.on_for_degrees(40, 90)
     Navigation.distance_goer(tank, 17, 25, 0)
-    Navigation.gyro_check(tank, 10, -4)
+    #Navigation.gyro_check(tank, 10, -4)
+
+    #Flip thingy up
     flipper.on_for_rotations(10, 0.5)
+
+    sleep(0.2)
+    Navigation.gyro_check(tank, 10, 0)
+    #go to home
+    Navigation.distance_goer(tank, 35, -35, 0)
+    Navigation.gyro_check(tank, 10, 18)
+    Navigation.distance_goer(tank, 15, -25, 18)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.goer_no_gyro(tank, 60, -50)
+
+def newnew_dino_powerplant(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+    flip_flop.reset()
+
+    #Navigation.goer_no_gyro(tank, 30, -25)
+
+    #operate mission
+    Navigation.distance_goer(tank, 82, -40, 0)
+    init.debug_print("After boxy: ", tank.gyro.angle)
+
+    #Flip this up
+    flip_flop.on_for_degrees(40, 90)
+
+    #Go back from power plant and turn left and go forward in line for the Great Flick
+    Navigation.distance_goer(tank, 30, 25, 0)
+    #mstuff
+
+    #Turn away from power plant and go at angle -35
+    Navigation.gyro_check(tank, 10, -35)
+    Navigation.distance_goer(tank, 13, -25, -35)
+
+    #Go back to be parallel
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank, 3, -10, 0)
+
+    #Flip this down energy unit
+    flipper.on_for_rotations(20, 0.5)
+
+    #Go away from power plant because sahana is a bozo
+    Navigation.distance_goer(tank, 10, 25, 0)
+
+    #Turn at  angle 30 and go, then turn back to 0 so Evie is parallel to Power Plant
+    Navigation.gyro_check(tank, 10, 30)
+    Navigation.distance_goer(tank, 20, -25, 30)
+    Navigation.gyro_check(tank, 10, 0)
+
+    #Go forward and turn to hydro dam and sweep it away
+    Navigation.distance_goer(tank, 46, -25, 0)
+
+        #lift flippy up, turn, and put it down to catch hydro dam nrg unit
+    flipper.on_for_rotations(20, -0.5)
+    Navigation.gyro_check(tank, 10, 14)
+    flipper.on_for_rotations(20, 0.5)
+    return
+
+    Navigation.distance_goer(tank, 60, -60, 13.5)
+    #Navigation.distance_goer(tank, 5, -25, 0)
+
+    #Navigation.gyro_check(tank, 10, -4)
+
+    #Flip down down
+    #flipper.on_for_rotations(10, 0.5)
+    return
+
     sleep(0.2)
     Navigation.gyro_check(tank, 10, 0)
     #go to home
@@ -295,47 +365,6 @@ def Dump_3(tank, flipper):
     #Move forward
     Navigation.distance_goer(tank, 5, -20, 0)
 
-    #Turn and go forward
-    Navigation.gyro_check(tank, 5, 22)
-    Navigation.distance_goer(tank, 12, -15, 22)
-
-    #Straight for Boxy
-    Navigation.gyro_check(tank, 5, 0)
-
-    #Go to boxy thingy
-    Navigation.distance_goer(tank, 63, -35, 0)
-    flipper.on_for_rotations(10, 0.15)
-
-    #Move back
-    Navigation.distance_goer(tank, 27, 20, 0)
-
-    #Lower flip
-    flipper.on_for_rotations(10, 0.24)
-
-    Navigation.gyro_check(tank, 5, 55)
-    Navigation.distance_goer(tank, 38, 25, 55)
-    Navigation.gyro_check(tank, 5, 0)
-    Navigation.distance_goer(tank, 5, -5, 0)
-    Navigation.gyro_check(tank, 20, -115)
-    Navigation.distance_goer(tank, 15, -20, -115)
-    return
-    #flipper.on_for_rotations(-10, 0.1)
-    Navigation.gyro_check(tank, 10, 180)
-
-    return
-    Navigation.distance_goer(tank, 40, 20, 0)
-    Navigation.gyro_check(tank, 5, 0)
-
-    return
-    #Turn
-    Navigation.gyro_check(tank, 5, 60)
-
-    #Move back
-    Navigation.distance_goer(tank, 11, 20, 45)
-
-    #Move Oil Platform
-    Navigation.gyro_check(tank, 10, -130)
-
 if __name__ == "__main__":
     tank = Navigation.tank_init()
     flipper = LargeMotor(OUTPUT_C)
@@ -344,6 +373,6 @@ if __name__ == "__main__":
     # timeThread.start()
     #DinoRun(tank, flipper)
     #new_dino_run_for_power_plant(tank, flipper)
+    newnew_dino_powerplant(tank, flipper)
     #PlatformRunUpdate(tank, flipper)
-    Dump_3(tank, flipper)
     init.debug_print(time()-time1)
