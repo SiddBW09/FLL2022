@@ -364,31 +364,40 @@ def newnew_dino_powerplant(tank, flipper):
 def Dump_3(tank, flipper):
     #Move forward
     Navigation.distance_goer(tank, 5, -20, 0)
+    Navigation.gyro_check(tank, 5, 0)
 
     #Turn and go forward
     Navigation.gyro_check(tank, 5, 22)
-    Navigation.distance_goer(tank, 12, -15, 22)
+    Navigation.distance_goer(tank, 10, -20, 22)
+    Navigation.gyro_check(tank, 5, 22)
 
     #Straight for Boxy
-    Navigation.gyro_check(tank, 5, 0)
+    Navigation.gyro_check(tank, 10, 0)
 
     #Go to boxy thingy
-    Navigation.distance_goer(tank, 63, -35, 0)
-    flipper.on_for_rotations(10, 0.15)
+    Navigation.distance_goer(tank, 63, -25, 0)
+    Navigation.gyro_check(tank, 10, 0)
+    flipper.on_for_rotations(20, 0.15)
 
     #Move back
     Navigation.distance_goer(tank, 27, 20, 0)
 
     #Lower flip
-    flipper.on_for_rotations(10, 0.24)
+    flipper.on_for_rotations(15, 0.24)
 
-    Navigation.gyro_check(tank, 5, 55)
-    Navigation.distance_goer(tank, 38, 25, 55)
-    Navigation.gyro_check(tank, 5, 0)
-    Navigation.distance_goer(tank, 5, -5, 0)
+    Navigation.gyro_check(tank, 10, 54)
+    Navigation.distance_goer(tank, 38, 25, 54)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank,6, -15, 0,)
+    Navigation.gyro_check(tank, 10, -10)
+    tank.on_for_rotations(30, 35, 2)
+    #  Navigation.distance_goer(tank, 30, 40, -22)
+
+    return
     Navigation.gyro_check(tank, 20, -115)
     Navigation.distance_goer(tank, 15, -20, -115)
     return
+
     #flipper.on_for_rotations(-10, 0.1)
     Navigation.gyro_check(tank, 10, 180)
 
@@ -414,6 +423,7 @@ if __name__ == "__main__":
     # timeThread.start()
     #DinoRun(tank, flipper)
     #new_dino_run_for_power_plant(tank, flipper)
-    newnew_dino_powerplant(tank, flipper)
+    #newnew_dino_powerplant(tank, flipper)
     #PlatformRunUpdate(tank, flipper)
+    Dump_3(tank, flipper)
     init.debug_print(time()-time1)
