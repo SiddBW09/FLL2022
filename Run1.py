@@ -363,7 +363,7 @@ def newnew_dino_powerplant(tank, flipper):
 
 def Dump_3(tank, flipper):
     #Move forward
-    Navigation.distance_goer(tank, 5, -20, 0)
+    Navigation.distance_goer(tank, 5, -15, 0)
     Navigation.gyro_check(tank, 5, 0)
 
     #Turn and go forward
@@ -372,10 +372,12 @@ def Dump_3(tank, flipper):
     Navigation.gyro_check(tank, 5, 22)
 
     #Straight for Boxy
-    Navigation.gyro_check(tank, 10, 0)
+    Navigation.gyro_check(tank, 5, 0)
 
     #Go to boxy thingy
-    Navigation.distance_goer(tank, 63, -25, 0)
+    Navigation.distance_goer(tank, 13, -15, 0)
+    Navigation.distance_goer(tank, 25, -25, 0)
+    Navigation.distance_goer(tank, 25, -35, 0)
     Navigation.gyro_check(tank, 10, 0)
     flipper.on_for_rotations(20, 0.15)
 
@@ -389,7 +391,7 @@ def Dump_3(tank, flipper):
     Navigation.distance_goer(tank, 38, 25, 54)
     Navigation.gyro_check(tank, 10, 0)
     Navigation.distance_goer(tank,6, -15, 0,)
-    Navigation.gyro_check(tank, 10, -10)
+    Navigation.gyro_check(tank, 5, -12)
     tank.on_for_rotations(30, 35, 2)
     #  Navigation.distance_goer(tank, 30, 40, -22)
 
