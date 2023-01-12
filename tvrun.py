@@ -7,9 +7,8 @@ from time import sleep, time
 import Navigation
 import threading
 import init
-def tv():
-    colorful_flipper=LargeMotor(OUTPUT_C)
-    tank = Navigation.tank_init()
+def tv(tank, colorful_flipper):
+
 
     #Lower flipper
     colorful_flipper.on_for_rotations(10, 0.4)
@@ -20,22 +19,15 @@ def tv():
     # ^ speed used to be 30
     # ^ distance used to be 12.25
     sleep(0.5)
-    #tank.on_for_rotations(-20, -20, 1)
 
     #Lift flipper
     colorful_flipper.on_for_rotations(-10, 0.4)
 
     #Turn left OG val -45
     Navigation.gyro_check(tank, 5, -42)
-    init.debug_print("Should be -42:", tank.gyro.angle)
+    #init.debug_print("Should be -42:", tank.gyro.angle)
 
-    #tank.turn_degrees(10, -30, True, 0.1)
 
-    #Lift flippy
-    #colorful_flipper.on_for_rotations(10, -0.25)
-
-    #Pause
-    #sleep(2)
 
     #Parallel to windmill go
     #Navigation.goer_no_gyro(tank, 53, -35)
@@ -51,14 +43,9 @@ def tv():
 
     #Turn almost all the way
     Navigation.gyro_check(tank, 10, 40)
-    init.debug_print("Should be 40:", tank.gyro.angle)
+    #init.debug_print("Should be 40:", tank.gyro.angle)
 
     #Go forward from
-    #Navigation.goer_no_gyro(tank, 2, -15)
-
-    #NEW code go back
-    #Navigation.goer_no_gyro(tank, 2, 20)
-
     #Lower flipper
     colorful_flipper.on_for_rotations(5, 0.4)
 
@@ -76,33 +63,27 @@ def tv():
     #Turn colorful flipper into place
     tank.turn_degrees(10, 45, True, 0.1)
     quit()
-def windmill():
-
-    colorful_flipper=LargeMotor(OUTPUT_C)
-    tank = Navigation.tank_init()
-
+def windmill(tank, colorful_flipper):
     #Push windmill OG val -15, 0.4 rotations
     time1 = time()
     for x in range(3):
         tank.on_for_rotations(-10, -10, 0.27)
         tank.on_for_rotations(7, 7, 0.24)
-def toystory3():
 
-    colorful_flipper = LargeMotor(OUTPUT_C)
-    tank = Navigation.tank_init()
+def toystory3(tank, colorful_flipper):
 
 
    # Navigation.goer_no_gyro(tank, 5.5, 20)
 
     #Lift colorful flipper Og val 5, -0.25
     Navigation.gyro_check(tank, 10, -20)
-    init.debug_print("Should be -20:", tank.gyro.angle)
+    #init.debug_print("Should be -20:", tank.gyro.angle)
     colorful_flipper.on_for_rotations(7, -0.35)
 
     sleep(0.25)
     Navigation.gyro_check(tank, 10, -164)
     # ^ used to be -165
-    init.debug_print("Should be -165:", tank.gyro.angle)
+    #init.debug_print("Should be -165:", tank.gyro.angle)
     Navigation.goer_no_gyro(tank, 3, 20)
 
     #Rotate 90 degrees clockwise
@@ -147,9 +128,12 @@ def vroomycar():
 
 if __name__ == "__main__":
     time1 = time()
-    tv()
-    windmill()
-    toystory3()
+    colorful_flipper=LargeMotor(OUTPUT_C)
+    tank = Navigation.tank_init()
+
+    tv(tank, colorful_flipper)
+    windmill(tank, colorful_flipper)
+    toystory3(tank, colorful_flipper)
     #vroomycar()
 
     time2 = time()
