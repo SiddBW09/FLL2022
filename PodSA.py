@@ -193,15 +193,23 @@ def water_reservoir_hangonhook(tank, fork):
 def dino_flick_collect_3(tank, fork):
     fork.on_for_rotations(35, -0.3)
 
+'''
+Description: This function moves the dino and flips the powerplant. This is the
+current working version. Takes 20.37
+Authors: Jeffrey, Sahana
+'''
+
 def newnew_dino_powerplant(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
     flip_flop.reset()
+    tank.gyro.reset()
 
     #Navigation.goer_no_gyro(tank, 30, -25)
 
     #operate mission
-    Navigation.distance_goer(tank, 82, -40, 0)
-    init.debug_print("After boxy: ", tank.gyro.angle)
+    init.debug_print("initial gyro: ", tank.gyro.angle)
+    Navigation.distance_goer(tank, 84.5, -40, 0)
+    init.debug_print("Gyro after turn: ", tank.gyro.angle)
 
     #Flip this up
     flip_flop.on_for_degrees(40, 90)
@@ -210,37 +218,38 @@ def newnew_dino_powerplant(tank, flipper):
     Navigation.distance_goer(tank, 30, 25, 0)
     #mstuff
 
-    #Turn away from power plant and go at angle -35
-    Navigation.gyro_check(tank, 10, -35)
-    Navigation.distance_goer(tank, 13, -25, -35)
+    #Turn away from power plant and go at angle -35 OG val 13cm
+    Navigation.gyro_check(tank, 12, -35)
+    Navigation.distance_goer(tank, 12, -25, -35)
 
     #Go back to be parallel
     Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank, 3, -10, 0)
+    Navigation.distance_goer(tank, 2, -10, 0) #3cm
 
-    #Flip this down energy unit
-    flipper.on_for_rotations(30, 0.5)
+    #Flip this down to collect energy unit
+    flipper.on_for_rotations(30, 0.25)
 
-    #Go away from power plant because sahana is a bozo
+    #Go away from power plant
     Navigation.distance_goer(tank, 10, 25, 0)
 
     #Turn at  angle 30 and go, then turn back to 0 so Evie is parallel to Power Plant
 
     Navigation.gyro_check(tank, 10, 30)
 
-    #(This code determines how close you are parallel to hydro dam) OG val 20cm
-    Navigation.distance_goer(tank, 15, -25, 30)
+    #(This code determines how close you are close u r to hydro dam) OG val 20cm, then 15
+    Navigation.distance_goer(tank, 13, -25, 30)
     Navigation.gyro_check(tank, 10, 0)
 
     #Go forward and turn to hydro dam and sweep it away OG dist 46
     Navigation.distance_goer(tank, 45, -25, 0)
 
-        #lift flippy up, turn, go forward a little bit, and put it down to catch hydro dam nrg unit
-    flipper.on_for_rotations(20, -0.5)
+        #lift flippy up, turn, go forward a little bit, and put it down to catch hydro dam nrg unit then GO HOME
+    flipper.on_for_rotations(20, -0.25)
     Navigation.gyro_check(tank, 10, 18)
     Navigation.distance_goer(tank, 5, -25, 15)
-    flipper.on_for_rotations(20, 0.5)
-    Navigation.gyro_check(tank, 10, 0)
+    flipper.on_for_rotations(20, 0.25)
+    Navigation.gyro_check(tank, 10, -5)
+    Navigation.distance_goer(tank, 38, -80, -5) #Homerun
     return
 
 if __name__ == "__main__":
@@ -249,7 +258,6 @@ if __name__ == "__main__":
     flipper = LargeMotor(OUTPUT_C)
     tank.gyro = GyroSensor(INPUT_1)
     time1 = time()
-    tank.gyro.reset()
     #water_reservoir_hangonhook(tank, fork)
     newnew_dino_powerplant(tank, flipper)
     #dino_flick_collect_3(tank, fork)
