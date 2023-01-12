@@ -374,23 +374,45 @@ def Dump_3(tank, flipper):
     #Straight for Boxy
     Navigation.gyro_check(tank, 5, 0)
 
-    #Go to boxy thingy
-    Navigation.distance_goer(tank, 13, -15, 0)
-    Navigation.distance_goer(tank, 25, -25, 0)
-    Navigation.distance_goer(tank, 25, -35, 0)
+    #Go to boxy thingy and flip units to box
+    Navigation.distance_goer(tank, 64, -35, 0)
     Navigation.gyro_check(tank, 10, 0)
-    flipper.on_for_rotations(20, 0.15)
+    flipper.on_for_rotations(15, 0.15)
+    sleep(0.1)
 
     #Move back
-    Navigation.distance_goer(tank, 27, 20, 0)
+    Navigation.distance_goer(tank, 7, 5, 0)
 
     #Lower flip
-    flipper.on_for_rotations(15, 0.24)
+    flipper.on_for_rotations(20, 0.25)
+
+    #Move back and turn
+    Navigation.distance_goer(tank, 66, 40, 0)
+    tank.turn_degrees(40, -95)
+    flipper.on_for_rotations(-20, 0.4)
+
+    #Turn to truck
+    Navigation.gyro_check(tank, 15, -35)
+    flipper.on_for_rotations(20, 0.39)
+    Navigation.distance_goer(tank, 35, -25, -35)
+    tank.on_for_rotations(10, 45, 1.5)
+    tank.on_for_rotations(-34, -35, 0.5)
+    return
+    Navigation.gyro_check(tank, 5, -40)
+    tank.on_for_rotations(30, 45, 2)
+
+    return
+    #Move back
+    Navigation.distance_goer(tank, 35, 35, 0)
+    Navigation.gyro_check(tank, 5, 22)
+    Navigation.distance_goer(tank, 45, 40, 22)
+    flipper.on_for_rotations(-25, 0.21)
+    return
 
     Navigation.gyro_check(tank, 10, 54)
     Navigation.distance_goer(tank, 38, 25, 54)
     Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank,6, -15, 0,)
+    Navigation.distance_goer(tank, 5, -15, 0,)
     Navigation.gyro_check(tank, 5, -12)
     tank.on_for_rotations(30, 35, 2)
     #  Navigation.distance_goer(tank, 30, 40, -22)
