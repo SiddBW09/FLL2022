@@ -179,21 +179,23 @@ def home_to_plant_backwards(tank, fork):
 def water_reservoir_hangonhook(tank, fork):
     tank.gyro.reset()
     flip_flop = MediumMotor(OUTPUT_D)
-    Navigation.distance_goer(tank, 27, 30, 0) #Backwards, old was 20cm
+    Navigation.distance_goer(tank, 28, 40, 0) #Backwards, old was 20cm
     Navigation.gyro_check(tank, 5, -40)
-    Navigation.distance_goer(tank, 26, 20, -40) #Old 42
-    flip_flop.on_for_degrees(5, 80) #Hang units on hooks in water reservoir
+    Navigation.distance_goer(tank, 32, 20, -40) #Old 42
+    flip_flop.on_for_degrees(5 , 85 ) #Hang units on hooks in water reservoir
     sleep(0.1)
     #Innovation Transport
     flip_flop.on_for_degrees(3, -90)
+
     Navigation.distance_goer(tank, 45, 40, -40)
     fork.on_for_rotations(-20, 0.15) #releasing innovation
-    Navigation.distance_goer(tank, 23.5, 30, -40)
+    Navigation.distance_goer(tank, 22.5, 30, -40)
     Navigation.gyro_check(tank, 5, 40) #turning next to toy factorty
-    Navigation.distance_goer(tank, 30, 30, 40)
+    Navigation.distance_goer(tank, 27, 30, 40)
     Navigation.gyro_check(tank, 15, 130) #turning to finish truck mission
-    Navigation.distance_goer(tank, 15, -20, 120) # going in finishing truck mission
-    Navigation.gyro_check(tank, 15, 95) #turning to complete truck
+    Navigation.distance_goer(tank, 20, -20, 130) # going in finishing truck mission
+    Navigation.gyro_check(tank, 15, 70) #turning to complete truck
+    Navigation.distance_goer(tank, 7, -20, 70)
     #Navigation.distance_goer(tank, 30, 20, -45)
 
 
