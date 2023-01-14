@@ -55,7 +55,7 @@ def main():
         else:
             try:
                 print("Dino Run")
-                Run1.DinoRun(tank, flipper)
+                PodSA.dino_and_powerplant(tank, flipper)
                 flip_flop = MediumMotor(OUTPUT_D)
                 flipper.reset()
                 tank.reset()

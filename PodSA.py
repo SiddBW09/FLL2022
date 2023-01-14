@@ -206,7 +206,7 @@ current working version. Takes 20.37
 Authors: Jeffrey, Sahana
 '''
 
-def newnew_dino_powerplant(tank, flipper):
+def dino_and_powerplant(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
     flip_flop.reset()
     tank.gyro.reset()
@@ -227,24 +227,24 @@ def newnew_dino_powerplant(tank, flipper):
 
     #Turn away from power plant and go at angle -35 OG val 13cm
     Navigation.gyro_check(tank, 12, -35)
-    Navigation.distance_goer(tank, 12, -25, -35)
+    Navigation.distance_goer(tank, 10, -25, -35)
 
     #Go back to be parallel
     Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank, 2, -10, 0) #3cm
+    Navigation.distance_goer(tank, 5, -10, 0) #3cm
 
     #Flip this down to collect energy unit
-    flipper.on_for_rotations(30, 0.25)
-
+    flipper.on_for_rotations(20, 0.27)
     #Go away from power plant
     Navigation.distance_goer(tank, 10, 25, 0)
 
+
     #Turn at  angle 30 and go, then turn back to 0 so Evie is parallel to Power Plant
 
-    Navigation.gyro_check(tank, 10, 30)
+    Navigation.gyro_check(tank, 10, 40)
 
     #(This code determines how close you are close u r to hydro dam) OG val 20cm, then 15
-    Navigation.distance_goer(tank, 13, -25, 30)
+    Navigation.distance_goer(tank, 13, -25, 40)
     Navigation.gyro_check(tank, 10, 0)
 
     #Go forward and turn to hydro dam and sweep it away OG dist 46
@@ -266,9 +266,9 @@ if __name__ == "__main__":
     tank.gyro = GyroSensor(INPUT_1)
     time1 = time()
     #water_reservoir_hangonhook(tank, fork)
-    water_reservoir_hangonhook(tank, flipper)
+    #water_reservoir_hangonhook(tank, flipper)
     #dino_flick_collect_3(tank, fork)
-
+    dino_and_powerplant(tank, flipper)
     #pushdownThingy(tank, fork)
     time2 = time()
     init.debug_print(time2-time1)
