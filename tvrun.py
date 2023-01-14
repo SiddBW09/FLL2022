@@ -44,7 +44,7 @@ def tv(tank, colorful_flipper):
 
 
     #Turn almost all the way
-    Navigation.gyro_check(tank, 10, 40)
+    Navigation.gyro_check(tank, 5, 40)
     #init.debug_print("Should be 40:", tank.gyro.angle)
 
     #Go forward from
@@ -63,7 +63,7 @@ def tv(tank, colorful_flipper):
     Navigation.goer_no_gyro(tank, 1, -10)
 
     #Turn colorful flipper into place
-    tank.turn_degrees(10, 45, True, 0.1)
+    tank.turn_degrees(10, 45, 0.1, True)
     quit()
 def windmill(tank, colorful_flipper):
     #Push windmill OG val -15, 0.4 rotations
@@ -78,12 +78,12 @@ def toystory3(tank, colorful_flipper):
    # Navigation.goer_no_gyro(tank, 5.5, 20)
 
     #Lift colorful flipper Og val 5, -0.25
-    Navigation.gyro_check(tank, 10, -20)
+    Navigation.gyro_check(tank, 5, 20)
     #init.debug_print("Should be -20:", tank.gyro.angle)
     colorful_flipper.on_for_rotations(7, -0.35)
 
     sleep(0.25)
-    Navigation.gyro_check(tank, 10, -164)
+    Navigation.gyro_check(tank, 5, -120)
     # ^ used to be -165
     #init.debug_print("Should be -165:", tank.gyro.angle)
     Navigation.goer_no_gyro(tank, 3, 20)
