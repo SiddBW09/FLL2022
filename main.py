@@ -7,6 +7,7 @@ from ev3dev2.sensor.lego import GyroSensor
 from ev3dev2.button import Button
 from ev3dev2.sound import Sound
 from time import sleep
+import time, init
 import os
 import Run1
 import tvrun
@@ -54,8 +55,10 @@ def main():
             pass
         else:
             try:
+                starttime = time.time()
                 print("Dino Run")
-                Run1.DinoRun(tank, flipper)
+                PodSA.dino_and_powerplant(tank, flipper)
+                init.debug_print(time.time()-starttime)
                 flip_flop = MediumMotor(OUTPUT_D)
                 flipper.reset()
                 tank.reset()
