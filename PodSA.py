@@ -176,18 +176,17 @@ def home_to_plant_backwards(tank, fork):
     #Navigation.distance_goer(tank, 5, 30, -35)
 #goToMission(tank, fork)
 
-def water_reservoir_hangonhook(tank, fork):
+def finalwater_reservoir_hangonhook(tank, fork):
     tank.gyro.reset()
     flip_flop = MediumMotor(OUTPUT_D)
 
-
-    Navigation.distance_goer(tank, 31, 40, 0) #Backwards, old was 20cm
+    Navigation.distance_goer(tank, 30.5, 40, 0) #Backwards, old was 20cm
     Navigation.gyro_check(tank, 5, -42)
     Navigation.distance_goer(tank, 30, 20, -42) #Old 42
     flip_flop.on_for_degrees(5, 60)
     Navigation.distance_goer(tank, 7, -3, -42)
-    flip_flop.on_for_degrees(10, 40)
-    Navigation.distance_goer(tank, 5, 10, -42)
+    flip_flop.on_for_degrees(7, 40)
+    Navigation.distance_goer(tank, 3.5, 10, -42)
     # flip_flop.on_for_degrees(5 , 60) #Hang units on hooks in water reservoir
     # sleep(0.5)
     # Navigation.goer_no_gyro(tank, 7, -5)
@@ -197,18 +196,20 @@ def water_reservoir_hangonhook(tank, fork):
     # return
     #sleep(1)
     #Innovation Transport
-    sleep(0.1)
-    flip_flop.on_for_degrees(3, -90)
-
+    sleep(0.3)
+    flip_flop.on_for_degrees(5, -90)
     Navigation.distance_goer(tank, 45, 45, -42)
     fork.on_for_rotations(-20, 0.15) #releasing innovation
-    Navigation.distance_goer(tank, 21.5, 45, -42)
+    Navigation.distance_goer(tank, 22.5, 45, -42)
     tank.turn_degrees(15, 80) #turning next to toy factorty
     Navigation.distance_goer(tank, 27, 45, 42)
-    tank.turn_degrees(20, 50) #turning to finish truck mission
-    Navigation.distance_goer(tank, 20, -45, 130) # going in finishing truck mission
-    tank.turn_degrees(20, -50) #turning to complete truck
-    Navigation.goer_no_gyro(tank, 7, -45)
+    tank.turn_degrees(20, 60) #turning to finish truck mission
+    Navigation.goer_no_gyro(tank, 6, 20)
+    Navigation.goer_no_gyro(tank, 40, -45) # going in finishing truck mission
+    tank.turn_degrees(20, -40) #turning to complete truck
+    fork.on_for_rotations(-20, 0.15)
+
+    #Navigation.goer_no_gyro(tank, 1.5, -40)
     #Navigation.distance_goer(tank, 30, 20, -45)
 
 
@@ -283,7 +284,7 @@ if __name__ == "__main__":
     tank.gyro = GyroSensor(INPUT_1)
     time1 = time()
     #water_reservoir_hangonhook(tank, fork)
-    water_reservoir_hangonhook(tank, flipper)
+    finalwater_reservoir_hangonhook(tank, flipper)
     #dino_flick_collect_3(tank, fork)
     #dino_and_powerplant(tank, flipper)
     #pushdownThingy(tank, fork)
