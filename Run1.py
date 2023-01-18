@@ -57,24 +57,27 @@ def OilandHydro(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
     #Flip filipper down, and go to Oil platform
     flipper.on_for_rotations(30, 0.45)
-    Navigation.distance_goer(tank, 54, -30, 0)
+    Navigation.distance_goer(tank, 54, -35, 0)
+    #speed used to be 30
 
     #Do oil platform and hydro dam at once
-    flip_flop.on_for_rotations(20, 0.2)
+    flip_flop.on_for_rotations(25, 0.2)
 
     for x in range(3):
         flipper.on_for_rotations(-15, 0.12)
         flip_flop.on_for_rotations(-15, 0.2)
         flipper.on_for_rotations(15, 0.12)
-        flip_flop.on_for_rotations(15, 0.2)
+        flip_flop.on_for_rotations(25, 0.2)
 
     flip_flop.on_for_rotations(-20, 0.1)
 
     #Turn and go to sweeper
     Navigation.gyro_check(tank, 5, 45)
 
-    Navigation.distance_goer(tank, 38, -20, 45)
-    Navigation.gyro_check(tank, 5, 90)
+    Navigation.distance_goer(tank, 38, -35, 45)
+    #speed used to be 20
+    Navigation.gyro_check(tank, 10, 90)
+    #speed used to be 5
     Navigation.gyro_check(tank, 5, 90)
 
 
@@ -186,17 +189,18 @@ def NewyCody(tank, flipper):
 def Sweeper(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
 
-    Navigation.gyro_check(tank, 5, 90)
-    Navigation.distance_goer(tank, 8, 5, 90)
-    Navigation.gyro_check(tank, 5, 90)
+    Navigation.gyro_check(tank, 10, 90)
+    Navigation.distance_goer(tank, 8, 25, 90)
+    #speed used to be 5
+    Navigation.gyro_check(tank, 10, 90)
 
-    flipper.on_for_rotations(-15, 0.35)
+    flipper.on_for_rotations(-20, 0.35)
 
     #Lower flip to sweep
-    flip_flop.on_for_rotations(-15, 0.5)
+    flip_flop.on_for_rotations(-20, 0.5)
 
     #SWEEEEEP is here OG speed -20
-    Navigation.distance_goer(tank, 29, -30, 90)
+    Navigation.distance_goer(tank, 29, -35, 90)
     return
 
 def GrabNGo(tank, flipper):
@@ -206,11 +210,14 @@ def GrabNGo(tank, flipper):
     flip_flop.on_for_rotations(20, 0.35)
 
 
+    Navigation.gyro_check(tank, 10, 180)
+    flip_flop.on_for_rotations(15, -0.1)
     Navigation.gyro_check(tank, 5, 180)
-    flip_flop.on_for_rotations(10, -0.1)
-    Navigation.gyro_check(tank, 5, 180)
+
     # flip_flop.on_for_rotations(-20, 0.15)
-    Navigation.distance_goer(tank, 26, 15, 180)
+    Navigation.distance_goer(tank, 26, 25, 180)
+    #speed used to be 20
+    return
 
     flipper.on_for_rotations(20, 0.375) #og VAL 0.35
     #flipper.reset()
@@ -306,14 +313,16 @@ def Dump_3(tank, flipper):
 
     #Turn and go forward
     Navigation.gyro_check(tank, 5, 22)
-    Navigation.distance_goer(tank, 10, -20, 22)
+    Navigation.distance_goer(tank, 14, -20, 22)
+    #distance used to be 10 ^
     Navigation.gyro_check(tank, 5, 22)
 
     #Straight for Boxy
     Navigation.gyro_check(tank, 5, 0)
 
     #Go to boxy thingy and flip units to box
-    Navigation.distance_goer(tank, 64, -35, 0)
+    Navigation.distance_goer(tank, 61, -35, 0)
+    #distance used to be 64
     Navigation.gyro_check(tank, 10, 0)
     flipper.on_for_rotations(15, 0.15)
     sleep(0.1)
@@ -331,10 +340,16 @@ def Dump_3(tank, flipper):
 
     #Turn to truck
     Navigation.gyro_check(tank, 15, -35)
-    flipper.on_for_rotations(20, 0.39)
-    Navigation.distance_goer(tank, 35, -25, -35)
+    flipper.on_for_rotations(20, 0.41)
+    #rotations used to be 0.39 ^
+    Navigation.distance_goer(tank, 38, -25, -35)
+    #distance used to be 35 ^
     tank.on_for_rotations(10, 45, 1.5)
     tank.on_for_rotations(-34, -35, 0.5)
+
+    #Just to make sure robot is in home area
+    Navigation.goer_no_gyro(tank, 4, -30)
+
     return
     Navigation.gyro_check(tank, 5, -40)
     tank.on_for_rotations(30, 45, 2)
@@ -385,7 +400,7 @@ if __name__ == "__main__":
     # timeThread.start()
     #DinoRun(tank, flipper)
     #new_dino_run_for_power_plant(tank, flipper)
-    newnew_dino_powerplant(tank, flipper)
+    #newnew_dino_powerplant(tank, flipper)
     #PlatformRunUpdate(tank, flipper)
-    #Dump_3(tank, flipper)
-    init.print(time()-time1)
+    Dump_3(tank, flipper)
+    init.debug_print(time()-time1)
