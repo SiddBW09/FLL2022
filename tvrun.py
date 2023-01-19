@@ -43,6 +43,7 @@ def tv(tank, colorful_flipper):
     Navigation.goer_no_gyro(tank, 15, 15)
 
 
+
     #Turn almost all the way
     Navigation.gyro_check(tank, 5, 40)
     #init.debug_print("Should be 40:", tank.gyro.angle)
@@ -83,10 +84,12 @@ def toystory3(tank, colorful_flipper):
     colorful_flipper.on_for_rotations(7, -0.35)
 
     sleep(0.25)
-    Navigation.gyro_check(tank, 5, -120)
+    Navigation.gyro_check(tank, 5, -100)
+    Navigation.goer_no_gyro(tank, 3, 20)
+    Navigation.gyro_check(tank, 5, -125)
     # ^ used to be -165
     #init.debug_print("Should be -165:", tank.gyro.angle)
-    Navigation.goer_no_gyro(tank, 3, 20)
+    #Navigation.goer_no_gyro(tank, 3, 20)
 
     #Rotate 90 degrees clockwise
     #Navigation.goer_no_gyro(tank, -245, -15)

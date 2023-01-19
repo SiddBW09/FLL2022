@@ -251,6 +251,7 @@ def dino_and_powerplant(tank, flipper):
 
     #Flip this down to collect energy unit
     flipper.on_for_rotations(20, 0.27)
+    #rotations for no one way trapdoor and truck holder is 0.27
 
     #Go away from power plant
     Navigation.distance_goer(tank, 10, 25, 0)
@@ -277,14 +278,30 @@ def dino_and_powerplant(tank, flipper):
     Navigation.distance_goer(tank, 38, -30, -5) #Homerun
     return
 
+def WaterReservoir(tank, flip_flop):
+    #tank.turn_degrees(5, 5)
+    flip_flop.on_for_degrees(5, 40)
+    sleep(10)
+    Navigation.distance_goer(tank, 5, -5, 0)
+    sleep(1)
+    flip_flop.on_for_degrees(10, 20)
+    sleep(1)
+    Navigation.distance_goer(tank, 10, 5, 0)
+    #tank.on_for_rotation
+    #sleep(100)
+
+
 if __name__ == "__main__":
     tank = MoveTank(OUTPUT_A, OUTPUT_B)
     fork = LargeMotor(OUTPUT_C)
     flipper = LargeMotor(OUTPUT_C)
+    flip_flop = MediumMotor(OUTPUT_D)
     tank.gyro = GyroSensor(INPUT_1)
+    tank.gyro.reset()
     time1 = time()
     #water_reservoir_hangonhook(tank, fork)
-    finalwater_reservoir_hangonhook(tank, flipper)
+    #finalwater_reservoir_hangonhook(tank, flipper)
+    WaterReservoir(tank, flip_flop)
     #dino_flick_collect_3(tank, fork)
     #dino_and_powerplant(tank, flipper)
     #pushdownThingy(tank, fork)
