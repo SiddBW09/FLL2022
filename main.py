@@ -23,6 +23,7 @@ def main():
     tank = Navigation.tank_init()
     btn = Button()#hi
     flipper = LargeMotor(OUTPUT_C)
+    colorful_flipper = flipper
     flip_flop = MediumMotor(OUTPUT_D)
 
     #Reset
@@ -43,9 +44,10 @@ def main():
         else:
             try:
                 print("TV Run")
-                tvrun.tv()
-                tvrun.windmill()
-                tvrun.toystory3()
+                tank.gyro.reset
+                tvrun.tv(tank, colorful_flipper)
+                tvrun.windmill(tank, colorful_flipper)
+                tvrun.toystory3(tank, colorful_flipper)
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
@@ -67,11 +69,7 @@ def main():
             try:
                 starttime = time.time()
                 print("Dino Run")
-<<<<<<< HEAD
                 PodSA.update_dino_and_powerplant(tank, flipper)
-=======
-                # PodSA.update_dino_and_powerplant(tank, flipper)
->>>>>>> 6e0e4e4a2e27dcf4d94fb750f56a0c32691f7a4e
                 init.debug_print(time.time()-starttime)
                 tank.reset()
                 tank.gyro.reset()
