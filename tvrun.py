@@ -58,14 +58,7 @@ def tv(tank, colorful_flipper):
     #tank.turn_degrees(20, 1)
     #Put colorful flipper down
 
-    return
 
-    #Go forward a little
-    Navigation.goer_no_gyro(tank, 1, -10)
-
-    #Turn colorful flipper into place
-    tank.turn_degrees(10, 45, 0.1, True)
-    quit()
 def windmill(tank, colorful_flipper):
     #Push windmill OG val -15, 0.4 rotations
     time1 = time()

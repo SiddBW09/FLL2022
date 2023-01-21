@@ -57,7 +57,7 @@ def main():
             try:
                 starttime = time.time()
                 print("Dino Run")
-                PodSA.dino_and_powerplant(tank, flipper)
+                PodSA.update_dino_and_powerplant(tank, flipper)
                 init.debug_print(time.time()-starttime)
                 flip_flop = MediumMotor(OUTPUT_D)
                 flipper.reset()
