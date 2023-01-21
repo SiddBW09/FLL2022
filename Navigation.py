@@ -82,8 +82,8 @@ def distance_goer(tank, distance, speed, angle):
     left_motor.reset()
     sleep = 0.02
 
-    if abs(speed) >= 30:
-        sleep = 0.005
+    # if abs(speed) >= 30:
+    #     sleep = 0.005
 
 
 
