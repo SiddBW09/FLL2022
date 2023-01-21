@@ -67,11 +67,7 @@ def main():
             try:
                 starttime = time.time()
                 print("Dino Run")
-<<<<<<< HEAD
                 PodSA.update_dino_and_powerplant(tank, flipper)
-=======
-                # PodSA.update_dino_and_powerplant(tank, flipper)
->>>>>>> 6e0e4e4a2e27dcf4d94fb750f56a0c32691f7a4e
                 init.debug_print(time.time()-starttime)
                 tank.reset()
                 tank.gyro.reset()
@@ -108,7 +104,7 @@ def main():
         else:
             try:
                 print("Innov Run")
-                PodSA.InnovMission(tank,flipper)
+                PodSA.finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()

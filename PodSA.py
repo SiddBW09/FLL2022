@@ -302,8 +302,9 @@ if __name__ == "__main__":
     #(tank, fork, flip_flop)
     #dino_flick_collect_3(tank, fork)
     #dino_and_powerplant(tank, flipper)
-    update_dino_and_powerplant(tank, flipper)
+    #update_dino_and_powerplant(tank, flipper)
     #pushdownThingy(tank, fork)
+    finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
     time2 = time()
     init.debug_print(time2-time1)
 
