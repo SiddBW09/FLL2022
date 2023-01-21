@@ -18,13 +18,22 @@ import tvrun
 
 # Main program
 def main():
+    #Set Up
     sound = Sound()
     tank = Navigation.tank_init()
-    tank.gyro.reset()
-    sound.play_tone(1500,0.3) #gyro is working!
     btn = Button()#hi
     flipper = LargeMotor(OUTPUT_C)
+    flip_flop = MediumMotor(OUTPUT_D)
+
+    #Reset
+    tank.reset()
+    tank.gyro.reset()
+    flipper.reset()
+    flip_flop.reset()
+
     os.system('setfont Lat15-TerminusBold32x16')
+    sound.play_tone(1500,0.3) #gyro is working!
+
 
     #PUT THE FUNCTION IN THE ELSE STATEMENT
     #Latest version of executing the latest functions (yeah I know, it's repetitive)
@@ -33,19 +42,20 @@ def main():
             pass
         else:
             try:
-                flip_flop = MediumMotor(OUTPUT_D)
                 print("TV Run")
                 tvrun.tv()
                 tvrun.windmill()
                 tvrun.toystory3()
-                flipper.reset()
                 tank.reset()
+                tank.gyro.reset()
+                flipper.reset()
                 flip_flop.reset()
 
             except (RuntimeError, TypeError, NameError, SyntaxError):
-                tank.rest()
-                tank.gyro.rest()
+                tank.reset()
+                tank.gyro.reset()
                 flipper.reset()
+                flip_flop.reset()
                 pass
 
 
@@ -57,16 +67,17 @@ def main():
             try:
                 starttime = time.time()
                 print("Dino Run")
-                PodSA.dino_and_powerplant(tank, flipper)
+                # PodSA.update_dino_and_powerplant(tank, flipper)
                 init.debug_print(time.time()-starttime)
-                flip_flop = MediumMotor(OUTPUT_D)
-                flipper.reset()
                 tank.reset()
+                tank.gyro.reset()
+                flipper.reset()
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
+                flip_flop.reset()
                 pass
 
     def up(state):
@@ -75,13 +86,16 @@ def main():
         else:
             try:
                 print("Platform")
-                Run1.PlatformRun(tank, flipper)
-                flipper.reset()
+                Run1.PlatformRunUpdate(tank, flipper)
                 tank.reset()
+                tank.gyro.reset()
+                flipper.reset()
+                flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
+                flip_flop.reset()
                 pass
 
     def down(state):
@@ -91,12 +105,15 @@ def main():
             try:
                 print("Innov Run")
                 PodSA.InnovMission(tank,flipper)
-                flipper.reset()
                 tank.reset()
+                tank.gyro.reset()
+                flipper.reset()
+                flip_flop.reset()
             except:
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
+                flip_flop.reset()
                 pass
 
     def enter(state):
@@ -107,13 +124,15 @@ def main():
             try:
                 print("Energy Storage")
                 Run1.Dump_3(tank, flipper)
-                flipper.reset()
                 tank.reset()
                 tank.gyro.reset()
+                flipper.reset()
+                flip_flop.reset()
             except:
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
+                flip_flop.reset()
                 pass
 
     btn.on_left = left
