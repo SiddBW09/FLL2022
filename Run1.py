@@ -189,10 +189,11 @@ def NewyCody(tank, flipper):
 def Sweeper(tank, flipper):
     flip_flop = MediumMotor(OUTPUT_D)
 
+    #Move back to get back unit
     Navigation.gyro_check(tank, 10, 90)
-    Navigation.distance_goer(tank, 8, 25, 90)
+    Navigation.distance_goer(tank, 10, 25, 90)
     #speed used to be 5
-    Navigation.gyro_check(tank, 10, 90)
+    Navigation.gyro_check(tank, 5, 90)
 
     flipper.on_for_rotations(-20, 0.35)
 
@@ -212,24 +213,22 @@ def GrabNGo(tank, flipper):
 
     Navigation.gyro_check(tank, 10, 180)
     flip_flop.on_for_rotations(15, -0.1)
-    Navigation.gyro_check(tank, 5, 180)
+    Navigation.gyro_check(tank, 10, 180)
 
-    # flip_flop.on_for_rotations(-20, 0.15)
     Navigation.distance_goer(tank, 26, 25, 180)
-    #speed used to be 20
-    return
 
-    flipper.on_for_rotations(20, 0.375) #og VAL 0.35
-    #flipper.reset()
+    flipper.on_for_rotations(20, 0.38)
 
-    Navigation.gyro_check(tank, 5, 180)
+    Navigation.gyro_check(tank, 10, 180)
 
     #Grab Hydro Units, Turn, and go to Left Home
-    Navigation.distance_goer(tank, 19, -15, 185)
-    Navigation.gyro_check(tank, 5, 165)
-    Navigation.distance_goer(tank, 52, -20, 165)
-    Navigation.gyro_check(tank, 5, 255)
-    Navigation.goer_no_gyro(tank, 70, -60)
+    Navigation.distance_goer(tank, 19, -25, 185)
+    tank.turn_degrees(15, -25)
+    Navigation.gyro_check(tank, 10, 160)
+    Navigation.distance_goer(tank, 52, -30, 160)
+    Navigation.gyro_check(tank, 10, 255)
+
+    Navigation.goer_no_gyro(tank, 75,-50)
 
 
 def HighFiveyThingy(tank, flipper):
@@ -398,9 +397,6 @@ if __name__ == "__main__":
     time1 = time()
     # timeThread = Thread(target=timer, args=(time(), 5,))
     # timeThread.start()
-    #DinoRun(tank, flipper)
-    #new_dino_run_for_power_plant(tank, flipper)
-    #newnew_dino_powerplant(tank, flipper)
-    #PlatformRunUpdate(tank, flipper)
-    Dump_3(tank, flipper)
+    PlatformRunUpdate(tank, flipper)
+    #Dump_3(tank, flipper)
     init.debug_print(time()-time1)
