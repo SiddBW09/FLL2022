@@ -67,7 +67,7 @@ def main():
             try:
                 starttime = time.time()
                 print("Dino Run")
-                PodSA.update_dino_and_powerplant(tank, flipper)
+                PodSA.update_dino_and_powerplant(tank, flipper, flip_flop)
                 init.debug_print(time.time()-starttime)
                 tank.reset()
                 tank.gyro.reset()
@@ -89,7 +89,7 @@ def main():
                 Run1.PlatformRunUpdate(tank, flipper)
                 tank.reset()
                 tank.gyro.reset()
-                flipper.reset()
+                flipper.stop('coast')
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
@@ -109,7 +109,7 @@ def main():
                 tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
-            except:
+            except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
@@ -128,7 +128,7 @@ def main():
                 tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
-            except:
+            except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
