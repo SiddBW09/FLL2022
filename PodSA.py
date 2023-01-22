@@ -204,13 +204,18 @@ def finalwater_reservoir_hangonhook(tank, fork, flip_flop):
     tank.turn_degrees(15, 80) #turning next to toy factorty
     Navigation.distance_goer(tank, 27, 45, 42)
     tank.turn_degrees(20, 60) #turning to finish truck mission
+<<<<<<< HEAD
     Navigation.goer_no_gyro(tank, 5, 20)
     #Navigation.goer_no_gyro(tank, 29, -8) # going in finishing truck mission
     #tank.turn_degrees(20, -40) #turning to complete truck
+=======
+    '''Navigation.goer_no_gyro(tank, 5, 20)
+    Navigation.goer_no_gyro(tank, 29, -8) # going in finishing truck mission
+    tank.turn_degrees(20, -40) #turning to complete truck
+>>>>>>> 3cc6bf3a2ca99c94a3c56051ca5f32b7d6a6258b
 
     #Navigation.goer_no_gyro(tank, 1.5, -40)
-    #Navigation.distance_goer(tank, 30, 20, -45)
-
+    #Navigation.distance_goer(tank, 30, 20, -45)'''
 
 '''
 Description: This function moves the dino and flips the powerplant. This is the
