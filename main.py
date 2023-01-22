@@ -60,8 +60,6 @@ def main():
                 flip_flop.reset()
                 pass
 
-
-
     def right(state):
         if state:
             pass

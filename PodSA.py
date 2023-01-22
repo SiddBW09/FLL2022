@@ -205,8 +205,8 @@ def finalwater_reservoir_hangonhook(tank, fork, flip_flop):
     Navigation.distance_goer(tank, 27, 45, 42)
     tank.turn_degrees(20, 60) #turning to finish truck mission
     Navigation.goer_no_gyro(tank, 5, 20)
-    Navigation.goer_no_gyro(tank, 29, -8) # going in finishing truck mission
-    tank.turn_degrees(20, -40) #turning to complete truck
+    #Navigation.goer_no_gyro(tank, 29, -8) # going in finishing truck mission
+    #tank.turn_degrees(20, -40) #turning to complete truck
 
     #Navigation.goer_no_gyro(tank, 1.5, -40)
     #Navigation.distance_goer(tank, 30, 20, -45)
@@ -240,11 +240,12 @@ def update_dino_and_powerplant(tank, flipper):
 
     #Turn away from power plant and go at angle -35 OG val 13cm
     Navigation.gyro_check(tank, 10, -35)
-    Navigation.distance_goer(tank, 13, -25, -35)
+    Navigation.distance_goer(tank, 12.25, -25, -35) #distance used to be 13
 
     #Go back to be parallel
     Navigation.gyro_check(tank, 10, 0)
     Navigation.distance_goer(tank, 3, -10, 0) #3cm #2.5
+    init.debug_print(tank.gyro.angle)
 
     #Flip this down to collect energy unit
     #flipper.on_for_rotations(20, 0.25)
