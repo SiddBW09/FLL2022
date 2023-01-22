@@ -44,7 +44,7 @@ def main():
         else:
             try:
                 print("TV Run")
-                tank.gyro.reset
+                tank.gyro.reset()
                 tvrun.tv(tank, colorful_flipper)
                 tvrun.windmill(tank, colorful_flipper)
                 tvrun.toystory3(tank, colorful_flipper)
