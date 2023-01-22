@@ -244,7 +244,7 @@ def update_dino_and_powerplant(tank, flipper):
 
     #Go back to be parallel
     Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank, 2.5, -10, 0) #3cm
+    Navigation.distance_goer(tank, 3, -10, 0) #3cm #2.5
 
     #Flip this down to collect energy unit
     #flipper.on_for_rotations(20, 0.25)
@@ -302,9 +302,9 @@ if __name__ == "__main__":
     #(tank, fork, flip_flop)
     #dino_flick_collect_3(tank, fork)
     #dino_and_powerplant(tank, flipper)
-    #update_dino_and_powerplant(tank, flipper)
+    update_dino_and_powerplant(tank, flipper)
     #pushdownThingy(tank, fork)
-    finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
+    #finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
     time2 = time()
     init.debug_print(time2-time1)
 
