@@ -332,22 +332,22 @@ def Dump_3(tank, flipper):
     #Lower flip
     flipper.on_for_rotations(20, 0.25)
 
-    #Move back and turn
+    # #Move back and turn
     Navigation.distance_goer(tank, 66, 40, 0)
     tank.turn_degrees(40, -95)
     flipper.on_for_rotations(-20, 0.4)
 
-    #Turn to truck
-    Navigation.gyro_check(tank, 15, -35)
-    flipper.on_for_rotations(20, 0.41)
-    #rotations used to be 0.39 ^
-    Navigation.distance_goer(tank, 38, -25, -35)
-    #distance used to be 35 ^
-    tank.on_for_rotations(10, 45, 1.5)
-    tank.on_for_rotations(-34, -35, 0.5)
+    # #Turn to truck
+    # Navigation.gyro_check(tank, 15, -35)
+    # flipper.on_for_rotations(20, 0.41)
+    # #rotations used to be 0.39 ^
+    # Navigation.distance_goer(tank, 38, -25, -35)
+    # #distance used to be 35 ^
+    # tank.on_for_rotations(10, 45, 1.5)
+    # tank.on_for_rotations(-34, -35, 0.5)
 
-    #Just to make sure robot is in home area
-    Navigation.goer_no_gyro(tank, 4, -30)
+    # #Just to make sure robot is in home area
+    # Navigation.goer_no_gyro(tank, 4, -30)
 
     return
     Navigation.gyro_check(tank, 5, -40)
