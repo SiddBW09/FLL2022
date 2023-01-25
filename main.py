@@ -49,7 +49,6 @@ def main():
                 tvrun.windmill(tank, colorful_flipper)
                 tvrun.toystory3(tank, colorful_flipper)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
 
@@ -71,7 +70,6 @@ def main():
                 PodSA.update_dino_and_powerplant(tank, flipper, flip_flop)
                 init.debug_print(time.time()-starttime)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
@@ -90,7 +88,6 @@ def main():
                 tank.gyro.reset()
                 Run1.PlatformRunUpdate(tank, flipper)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.stop('coast')
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
@@ -109,7 +106,6 @@ def main():
                 tank.gyro.reset()
                 PodSA.finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
@@ -129,7 +125,6 @@ def main():
                 tank.gyro.reset()
                 Run1.Dump_3(tank, flipper)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):

@@ -201,7 +201,7 @@ def Sweeper(tank, flipper):
     flip_flop.on_for_rotations(-20, 0.5)
 
     #SWEEEEEP is here OG speed -20
-    Navigation.distance_goer(tank, 29, -35, 90)
+    Navigation.distance_goer(tank, 27, -35, 90)
     return
 
 def GrabNGo(tank, flipper):
@@ -211,7 +211,7 @@ def GrabNGo(tank, flipper):
     flip_flop.on_for_rotations(20, 0.35)
 
 
-    Navigation.gyro_check(tank, 10, 180)
+    Navigation.gyro_check(tank, 8, 180)
     flip_flop.on_for_rotations(15, -0.1)
     Navigation.gyro_check(tank, 10, 180)
 
@@ -229,7 +229,8 @@ def GrabNGo(tank, flipper):
     Navigation.gyro_check(tank, 10, 255)
 
     Navigation.goer_no_gyro(tank, 75,-50)
-    #flipper.on_for_rotations(-40, 0.95)
+    flipper.on_for_rotations(-40, 0.95)
+    Navigation.goer_no_gyro(tank, 15, 40)
 
 def HighFiveyThingy(tank, flipper):
     flipper.on_for_rotations(20, 0.3)
@@ -329,7 +330,7 @@ def Dump_3(tank, flipper):
     sleep(0.1)
 
     #Move back
-    Navigation.distance_goer(tank, 7, 5, 0)
+    Navigation.distance_goer(tank, 10, 5, 0)
 
     #Lower flip
     flipper.on_for_degrees(25,83)
@@ -338,6 +339,7 @@ def Dump_3(tank, flipper):
     #Move back and turn
     Navigation.distance_goer(tank, 66, 60, 3)
     tank.turn_degrees(40, -85)
+    Navigation.goer_no_gyro(tank, 10, -40)
     #flipper.on_for_rotations(-20, 0.4)
     return
     #Turn to truck
