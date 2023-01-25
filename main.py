@@ -67,6 +67,7 @@ def main():
             try:
                 starttime = time.time()
                 print("Dino Run")
+                tank.gyro.reset()
                 PodSA.update_dino_and_powerplant(tank, flipper, flip_flop)
                 init.debug_print(time.time()-starttime)
                 tank.reset()
@@ -86,6 +87,7 @@ def main():
         else:
             try:
                 print("Platform")
+                tank.gyro.reset()
                 Run1.PlatformRunUpdate(tank, flipper)
                 tank.reset()
                 tank.gyro.reset()
@@ -104,6 +106,7 @@ def main():
         else:
             try:
                 print("Innov Run")
+                tank.gyro.reset()
                 PodSA.finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
                 tank.reset()
                 tank.gyro.reset()
@@ -123,6 +126,7 @@ def main():
         else:
             try:
                 print("Energy Storage")
+                tank.gyro.reset()
                 Run1.Dump_3(tank, flipper)
                 tank.reset()
                 tank.gyro.reset()
