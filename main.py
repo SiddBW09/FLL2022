@@ -49,7 +49,6 @@ def main():
                 tvrun.windmill(tank, colorful_flipper)
                 tvrun.toystory3(tank, colorful_flipper)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
 
@@ -60,8 +59,6 @@ def main():
                 flip_flop.reset()
                 pass
 
-
-
     def right(state):
         if state:
             pass
@@ -69,10 +66,10 @@ def main():
             try:
                 starttime = time.time()
                 print("Dino Run")
-                PodSA.update_dino_and_powerplant(tank, flipper)
+                tank.gyro.reset()
+                PodSA.update_dino_and_powerplant(tank, flipper, flip_flop)
                 init.debug_print(time.time()-starttime)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
@@ -88,10 +85,10 @@ def main():
         else:
             try:
                 print("Platform")
+                tank.gyro.reset()
                 Run1.PlatformRunUpdate(tank, flipper)
                 tank.reset()
-                tank.gyro.reset()
-                flipper.reset()
+                flipper.stop('coast')
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
@@ -106,12 +103,12 @@ def main():
         else:
             try:
                 print("Innov Run")
+                tank.gyro.reset()
                 PodSA.finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
-            except:
+            except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
@@ -125,12 +122,12 @@ def main():
         else:
             try:
                 print("Energy Storage")
+                tank.gyro.reset()
                 Run1.Dump_3(tank, flipper)
                 tank.reset()
-                tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
-            except:
+            except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()

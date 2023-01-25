@@ -74,7 +74,7 @@ def OilandHydro(tank, flipper):
     #Turn and go to sweeper
     Navigation.gyro_check(tank, 5, 45)
 
-    Navigation.distance_goer(tank, 38, -35, 45)
+    Navigation.distance_goer(tank, 35, -35, 45)
     #speed used to be 20
     Navigation.gyro_check(tank, 10, 90)
     #speed used to be 5
@@ -191,7 +191,7 @@ def Sweeper(tank, flipper):
 
     #Move back to get back unit
     Navigation.gyro_check(tank, 10, 90)
-    Navigation.distance_goer(tank, 10, 25, 90)
+    Navigation.distance_goer(tank, 8, 25, 90)
     #speed used to be 5
     Navigation.gyro_check(tank, 5, 90)
 
@@ -228,7 +228,10 @@ def GrabNGo(tank, flipper):
     Navigation.distance_goer(tank, 52, -30, 160)
     Navigation.gyro_check(tank, 10, 255)
 
-    Navigation.goer_no_gyro(tank, 75,-50)
+    Navigation.goer_no_gyro(tank, 30,-20)
+    Navigation.goer_no_gyro(tank, 55,-50)
+    flipper.on_for_rotations(-30, 0.4)
+    Navigation.goer_no_gyro(tank, 15, -50)
 
 
 def HighFiveyThingy(tank, flipper):
@@ -327,15 +330,16 @@ def Dump_3(tank, flipper):
     sleep(0.1)
 
     #Move back
-    Navigation.distance_goer(tank, 7, 5, 0)
+    Navigation.distance_goer(tank, 9, 5, 0)
 
     #Lower flip
-    flipper.on_for_rotations(20, 0.25)
+    flipper.on_for_rotations(30, 0.25)
 
     # #Move back and turn
     Navigation.distance_goer(tank, 66, 40, 0)
     tank.turn_degrees(40, -95)
     flipper.on_for_rotations(-20, 0.4)
+    Navigation.goer_no_gyro(tank, 10, -40)
 
     # #Turn to truck
     # Navigation.gyro_check(tank, 15, -35)
