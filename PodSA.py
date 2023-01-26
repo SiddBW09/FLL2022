@@ -278,6 +278,9 @@ def update_dino_and_powerplant(tank, flipper, flip_flop):
 
 def new_update_dino_and_powerplant(tank, flipper, flip_flop):
 
+    #putting flip flop down
+    flip_flop.on_for_degrees(40, -85)
+
     #flip_flop.reset()
     #tank.gyro.reset()
 
@@ -285,7 +288,7 @@ def new_update_dino_and_powerplant(tank, flipper, flip_flop):
 
     #operate mission
     #init.debug_print("initial gyro: ", tank.gyro.angle)
-    Navigation.distance_goer(tank, 89.75, -35, 0)
+    Navigation.distance_goer(tank, 89.75, -35, 0) #used to be 89.75
     #init.debug_print("Gyro after turn: ", tank.gyro.angle)
 
     #Flip this up
@@ -307,12 +310,14 @@ def new_update_dino_and_powerplant(tank, flipper, flip_flop):
 
     #Flip this down to collect energy unit
     #flipper.on_for_rotations(20, 0.25)
-    flipper.on_for_degrees(100, 90)
-    return
+    flipper.on_for_degrees(70, 155)
+
     #rotations for no one way trapdoor and truck holder is 0.27
 
     #Go away from power plant
     Navigation.distance_goer(tank, 10, 25, 0)
+
+
 
     #Turn at  angle 30 and go, then turn back to 0 so Evie is parallel to Power Plant
 
@@ -324,6 +329,119 @@ def new_update_dino_and_powerplant(tank, flipper, flip_flop):
 
     #Go forward and turn to hydro dam and sweep it away OG dist 46
     Navigation.distance_goer(tank, 50, -30, 0)
+
+    return
+
+    #lift flippy up, turn, go forward a little bit, and put it down to catch hydro dam nrg unit then GO HOME
+    flipper.on_for_rotations(20, -0.25)
+    Navigation.gyro_check(tank, 10, 15)
+
+    #sleep(0.1)
+    #Navigation.distance_goer(tank, 5, -25, 15)
+    flipper.on_for_rotations(20, 0.25)
+    #Navigation.gyro_check(tank, 10, -5)
+    #Navigation.goer_no_gyro(tank,45,-55)
+    Navigation.distance_goer(tank, 50, -45, -15) #Homerun
+
+def newest_dino_powerplant(tank, flipper, flip_flop):
+
+    #putting flip flop down
+    flip_flop.on_for_degrees(40, -85)
+
+    #flip_flop.reset()
+    #tank.gyro.reset()
+
+    #Navigation.goer_no_gyro(tank, 30, -25)
+
+    #operate mission
+    #init.debug_print("initial gyro: ", tank.gyro.angle)
+    Navigation.distance_goer(tank, 89, -40, 0) #used to be 89.75
+    #init.debug_print("Gyro after turn: ", tank.gyro.angle)
+
+    #Flip this up
+    flip_flop.on_for_degrees(40, 90)
+
+    #Go back from power plant and turn left and go forward in line for the Great Flick
+    Navigation.distance_goer(tank, 32, 30, 0)
+    #mstuff
+
+    #Turn away from power plant and go at angle -35 OG val 13cm
+    #Navigation.gyro_check(tank, 10, -35)
+    Navigation.gyro_check(tank, 10, -55)
+    Navigation.distance_goer(tank, 12.25, -25, -55) #distance used to be 13
+
+    #Go back to be parallel
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank, 4, -10, 0) #3cm #2.5
+    init.debug_print(tank.gyro.angle)
+
+    #Flip this down to collect energy unit og deg 155
+    #flipper.on_for_rotations(20, 0.25)
+    flipper.on_for_degrees(20, 160)
+
+    #rotations for no one way trapdoor and truck holder is 0.27
+
+    #Go away from power plant
+    Navigation.distance_goer(tank, 10, 25, 0)
+
+
+
+    #Turn at  angle 30 and go, then turn back to 0 so Evie is parallel to Power Plant
+
+    Navigation.gyro_check(tank, 10, 40)
+
+    #(This code determines how close you are close u r to hydro dam) OG val 20cm, then 15, then 25
+
+    Navigation.distance_goer(tank, 15, -25, 40)
+
+    Navigation.gyro_check(tank, 10, 0)
+
+    #The straight code
+    Navigation.distance_goer(tank, 70, -35, 0)
+    Navigation.gyro_check(tank, 10, -5)
+    return
+    flip_flop.on_for_degrees(40, 105)
+    Navigation.distance_goer(tank, 33, -25, 0)
+    return
+
+    Navigation.distance_goer(tank, 20, -25, 0)
+
+    #This code determines how far away ull be from hydro dam
+    Navigation.gyro_check(tank, 10, -20)
+    Navigation.distance_goer(tank, 12, -25, -20)
+
+
+    #Turn to 0 then go home
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank, 40, -40, 0)
+    return
+    Navigation.distance_goer(tank, 74, -40, 0)
+
+    '''
+    Navigation.distance_goer(tank, 64, -25, 0)
+
+    flip_flop.on_for_degrees(40, 105)
+
+    Navigation.distance_goer(tank, 33, -25, 0)
+    '''
+
+    return
+
+    Navigation.distance_goer(tank, 20, -25, 0)
+    Navigation.gyro_check(tank, 10, -20)
+    Navigation.distance_goer(tank, 5, -25, -20)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank, 74, -40, 0)
+
+    return
+
+    #Go forward and turn to hydro dam and sweep it away OG dist 46
+    Navigation.distance_goer(tank, 60, -30, -15)
+    flip_flop.on_for_degrees(20, 105)
+    Navigation.distance_goer(tank, 20, -30, -15)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.goer_no_gyro(tank, 15, -80)
+    return
 
     #lift flippy up, turn, go forward a little bit, and put it down to catch hydro dam nrg unit then GO HOME
     flipper.on_for_rotations(20, -0.25)
@@ -366,7 +484,8 @@ if __name__ == "__main__":
     #(tank, fork, flip_flop)
     #dino_flick_collect_3(tank, fork)
     #dino_and_powerplant(tank, flipper)
-    new_update_dino_and_powerplant(tank, flipper, flip_flop)
+    #new_update_dino_and_powerplant(tank, flipper, flip_flop)
+    newest_dino_powerplant(tank, flipper, flip_flop)
     #pushdownThingy(tank, fork)
     #finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
     time2 = time()
