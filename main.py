@@ -88,6 +88,7 @@ def main():
                 tank.gyro.reset()
                 Run1.PlatformRunUpdate(tank, flipper)
                 tank.reset()
+                tank.gyro.reset()
                 flipper.stop('coast')
                 flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):

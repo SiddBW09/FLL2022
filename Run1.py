@@ -228,11 +228,8 @@ def GrabNGo(tank, flipper):
     Navigation.distance_goer(tank, 52, -30, 160)
     Navigation.gyro_check(tank, 10, 255)
 
-    Navigation.goer_no_gyro(tank, 30,-20)
-    Navigation.goer_no_gyro(tank, 55,-50)
-    flipper.on_for_rotations(-30, 0.4)
-    Navigation.goer_no_gyro(tank, 15, -50)
-
+    Navigation.goer_no_gyro(tank, 75,-50)
+    #flipper.on_for_rotations(-40, 0.95)
 
 def HighFiveyThingy(tank, flipper):
     flipper.on_for_rotations(20, 0.3)
@@ -310,23 +307,25 @@ def new_dino_run_for_power_plant(tank, flipper):
 
 def Dump_3(tank, flipper):
     #Move forward
-    Navigation.distance_goer(tank, 5, -15, 0)
-    Navigation.gyro_check(tank, 5, 0)
-
+    tank.gyro.reset()
+    init.debug_print(tank.gyro.angle)
+    #Navigation.gyro_check(tank, 5, 0)
+    Navigation.distance_goer(tank, 5, -20, 0)
     #Turn and go forward
     Navigation.gyro_check(tank, 5, 22)
     Navigation.distance_goer(tank, 14, -20, 22)
     #distance used to be 10 ^
-    Navigation.gyro_check(tank, 5, 22)
+    #Navigation.gyro_check(tank, 5, 22)
 
     #Straight for Boxy
     Navigation.gyro_check(tank, 5, 0)
 
     #Go to boxy thingy and flip units to box
-    Navigation.distance_goer(tank, 61, -35, 0)
+    Navigation.distance_goer(tank, 62, -35, 0)
     #distance used to be 64
     Navigation.gyro_check(tank, 10, 0)
-    flipper.on_for_rotations(15, 0.15)
+    flipper.on_for_degrees(25,60)
+    #flipper.on_for_rotations(15, 0.15)
     sleep(0.1)
 
     #Move back
