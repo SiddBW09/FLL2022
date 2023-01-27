@@ -23,9 +23,11 @@ def PlatformRun(tank, flipper, sweeper):
 def OilandHydro(tank, flipper, sweeper):
 
     #Flip flipper down, and go to Oil platform
-    flipper.reset()
+    Navigation.gyro_check(tank, 7, 45)
+    Navigation.distance_goer(tank, 8, -20, 45)
+    Navigation.gyro_check(tank, 7, 0)
     flipper.on_for_rotations(30, 0.45)
-    Navigation.distance_goer(tank, 54, -35, 0)
+    Navigation.distance_goer(tank, 43, -30, 0)
 
     #Do oil platform and hydro dam at once
     sweeper.on_for_rotations(25, 0.2)
@@ -76,17 +78,24 @@ def GrabNGo(tank, flipper, sweeper):
     tank.turn_degrees(20, -25)
     Navigation.gyro_check(tank, 5, 160)
     Navigation.distance_goer(tank, 50, -30, 160)
-    Navigation.gyro_check(tank, 10, 245)
+    Navigation.gyro_check(tank, 10, 255)
     Navigation.goer_no_gyro(tank, 40,-20)
     Navigation.goer_no_gyro(tank, 40,-50)
 
     #Prepare for next run
-    flipper.on_for_rotations(-40, 0.95, holding=False)
-    sweeper.on_for_rotations(15, 0.135)
+    flipper.on_for_rotations(-40, 0.95)
+    sweeper.on_for_rotations(15, 0.145)
 
 '''Dumps energy units into Energy Storage, grabs tray, and grabs Oil Platform truck'''
 def EnergyStorage(tank, flipper, sweeper):
 
+    #Testing
+    Navigation.gyro_check(tank, 10, 45)
+    Navigation.distance_goer(tank, 13, -20, 45)
+    Navigation.gyro_check(tank, 10, 0)
+    Navigation.distance_goer(tank, 65, -30, 0)
+
+    '''
     #Align the robot to the Energy Storage
     Navigation.distance_goer(tank, 5, -20, 0)
     Navigation.gyro_check(tank, 5, 22)
@@ -95,6 +104,7 @@ def EnergyStorage(tank, flipper, sweeper):
 
     #Go to Energy Storage and flip energy units in to the storage bin
     Navigation.distance_goer(tank, 60, -35, 0)
+    '''
     flipper.reset()
     flipper.on_for_degrees(25, 60)
     flipper.reset()
@@ -107,7 +117,7 @@ def EnergyStorage(tank, flipper, sweeper):
     Navigation.distance_goer(tank, 66, 60, 3)
     tank.turn_degrees(40, -85)
     Navigation.goer_no_gyro(tank, 10, -40)
-    flipper.on_for_rotations(-40, 0.95, holding=False)
+    flipper.on_for_rotations(-40, 0.95)
 
     return
 
