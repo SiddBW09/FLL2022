@@ -205,11 +205,12 @@ def finalwater_reservoir_hangonhook(tank, fork, flip_flop):
     Navigation.distance_goer(tank, 27, 45, 42)
     tank.turn_degrees(20, 60) #turning to finish truck mission
     Navigation.goer_no_gyro(tank, 5, 20)
-    #Navigation.goer_no_gyro(tank, 29, -8) # going in finishing truck mission
-    #tank.turn_degrees(20, -40) #turning to complete truck
+    Navigation.goer_no_gyro(tank, 29, -8) # going in finishing truck mission
+    tank.turn_degrees(20, -40) #turning to complete truck
 
     #Navigation.goer_no_gyro(tank, 1.5, -40)
-    #Navigation.distance_goer(tank, 30, 20, -45)'''
+    #Navigation.distance_goer(tank, 30, 20, -45)
+
 
 '''
 Description: This function moves the dino and flips the powerplant. This is the
@@ -218,17 +219,17 @@ Authors: Jeffrey, Sahana
 '''
 '''Edited Version 1/19/2023, made distance after turning to get parallel to power plant longer as it was too far from the mission model'''
 
-def update_dino_and_powerplant(tank, flipper, flip_flop):
-
-    #flip_flop.reset()
-    #tank.gyro.reset()
+def update_dino_and_powerplant(tank, flipper):
+    flip_flop = MediumMotor(OUTPUT_D)
+    flip_flop.reset()
+    tank.gyro.reset()
 
     #Navigation.goer_no_gyro(tank, 30, -25)
 
     #operate mission
-    #init.debug_print("initial gyro: ", tank.gyro.angle)
-    Navigation.distance_goer(tank, 89.75, -35, 0)
-    #init.debug_print("Gyro after turn: ", tank.gyro.angle)
+    init.debug_print("initial gyro: ", tank.gyro.angle)
+    Navigation.distance_goer(tank, 84.5, -40, 0)
+    init.debug_print("Gyro after turn: ", tank.gyro.angle)
 
     #Flip this up
     flip_flop.on_for_degrees(40, 90)
@@ -239,12 +240,11 @@ def update_dino_and_powerplant(tank, flipper, flip_flop):
 
     #Turn away from power plant and go at angle -35 OG val 13cm
     Navigation.gyro_check(tank, 10, -35)
-    Navigation.distance_goer(tank, 12.25, -25, -35) #distance used to be 13
+    Navigation.distance_goer(tank, 13, -25, -35)
 
     #Go back to be parallel
     Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank, 3, -10, 0) #3cm #2.5
-    init.debug_print(tank.gyro.angle)
+    Navigation.distance_goer(tank, 2.5, -10, 0) #3cm
 
     #Flip this down to collect energy unit
     #flipper.on_for_rotations(20, 0.25)
@@ -263,13 +263,13 @@ def update_dino_and_powerplant(tank, flipper, flip_flop):
     Navigation.gyro_check(tank, 10, 0)
 
     #Go forward and turn to hydro dam and sweep it away OG dist 46
-    Navigation.distance_goer(tank, 50, -30, 0)
+    Navigation.distance_goer(tank, 49, -35, 0)
 
     #lift flippy up, turn, go forward a little bit, and put it down to catch hydro dam nrg unit then GO HOME
     flipper.on_for_rotations(20, -0.25)
-    Navigation.gyro_check(tank, 10, 15)
+    Navigation.gyro_check(tank, 10, 18)
 
-    #sleep(0.1)
+    sleep(0.5)
     #Navigation.distance_goer(tank, 5, -25, 15)
     flipper.on_for_rotations(20, 0.25)
     #Navigation.gyro_check(tank, 10, -5)
@@ -436,10 +436,10 @@ if __name__ == "__main__":
     #(tank, fork, flip_flop)
     #dino_flick_collect_3(tank, fork)
     #dino_and_powerplant(tank, flipper)
-    #new_update_dino_and_powerplant(tank, flipper, flip_flop)
+    ##update_dino_and_powerplant(tank, flipper)
     newest_dino_powerplant(tank, flipper, flip_flop)
     #pushdownThingy(tank, fork)
-    #finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
+    finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
     time2 = time()
     init.debug_print(time2-time1)
 
