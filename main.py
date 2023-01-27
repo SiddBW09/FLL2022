@@ -86,18 +86,17 @@ def main():
             try:
                 print("Platform")
                 tank.gyro.reset()
-                Run1.PlatformRunUpdate(tank, flipper)
+                starttime = time.time()
+                Run1.PlatformRun(tank, flipper, flip_flop)
+                init.debug_print(time.time()-starttime)
+                print(time.time()-starttime)
                 tank.reset()
-                tank.gyro.reset()
-                flipper.stop('coast')
-                flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
                 pass
-
     def down(state):
         if state:
             pass
@@ -124,10 +123,11 @@ def main():
             try:
                 print("Energy Storage")
                 tank.gyro.reset()
-                Run1.Dump_3(tank, flipper)
+                starttime = time.time()
+                Run1.EnergyStorage(tank, flipper, flip_flop)
+                init.debug_print(time.time()-starttime)
+                print(time.time()-starttime)
                 tank.reset()
-                flipper.reset()
-                flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
