@@ -67,7 +67,7 @@ def main():
                 starttime = time.time()
                 print("Dino Run")
                 tank.gyro.reset()
-                PodSA.update_dino_and_powerplant(tank, flipper, flip_flop)
+                PodSA.newest_dino_powerplant(tank, flipper, flip_flop)
                 init.debug_print(time.time()-starttime)
                 tank.reset()
                 flipper.reset()
