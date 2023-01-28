@@ -205,8 +205,8 @@ def finalwater_reservoir_hangonhook(tank, fork, flip_flop):
     Navigation.distance_goer(tank, 27, 45, 42)
     tank.turn_degrees(20, 60) #turning to finish truck mission
     Navigation.goer_no_gyro(tank, 5, 20)
-    Navigation.goer_no_gyro(tank, 29, -8) # going in finishing truck mission
-    tank.turn_degrees(20, -40) #turning to complete truck
+    #Navigation.goer_no_gyro(tank, 29, -8) # going in finishing truck mission
+    #tank.turn_degrees(20, -40) #turning to complete truck
 
     #Navigation.goer_no_gyro(tank, 1.5, -40)
     #Navigation.distance_goer(tank, 30, 20, -45)
@@ -437,7 +437,7 @@ if __name__ == "__main__":
     #dino_flick_collect_3(tank, fork)
     #dino_and_powerplant(tank, flipper)
     ##update_dino_and_powerplant(tank, flipper)
-    newest_dino_powerplant(tank, flipper, flip_flop)
+    #newest_dino_powerplant(tank, flipper, flip_flop)
     #pushdownThingy(tank, fork)
     #finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
     time2 = time()
