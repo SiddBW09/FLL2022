@@ -24,32 +24,32 @@ def tv(tank, colorful_flipper):
 
     #Lift flipper
     colorful_flipper.on_for_rotations(-10, 0.4)
-    Navigation.goer_no_gyro(tank, 1, 10)
+    Navigation.goer_no_gyro(tank, 1, 20) #speed used to be 10
     #Pranav says hi
     #Turn left OG val -45
-    Navigation.gyro_check(tank, 7, -42)
+    Navigation.gyro_check(tank, 7, -42) #speed used to be 7
     #init.debug_print("Should be -42:", tank.gyro.angle)
 
 
 
     #Parallel to windmill go
     #Navigation.goer_no_gyro(tank, 53, -35)
-    Navigation.distance_goer(tank, 53, -30, -47)
+    Navigation.distance_goer(tank, 53, -35, -47) #speed used to be -30
 
     #added for testing
-    colorful_flipper.on_for_rotations(10, 0.4)
+    colorful_flipper.on_for_rotations(10, 0.4) #speed used to be 10
     Navigation.goer_no_gyro(tank, 15, -25)
-    colorful_flipper.on_for_rotations(7, -0.4)
+    colorful_flipper.on_for_rotations(10, -0.4) #speed used to be 7
     Navigation.goer_no_gyro(tank, 15, 25)
 
 
     #Turn almost all the way
-    Navigation.gyro_check(tank, 7, 40)
+    Navigation.gyro_check(tank, 7, 40) #speed used to be 7
     #init.debug_print("Should be 40:", tank.gyro.angle)
 
     #Go forward from
     #Lower flipper
-    colorful_flipper.on_for_rotations(5, 0.4)
+    colorful_flipper.on_for_rotations(10, 0.4) #speed used to be 5
 
 
     #Turns all the way OG used to not be commented: 👇
@@ -61,7 +61,7 @@ def tv(tank, colorful_flipper):
 def windmill(tank, colorful_flipper):
     #Push windmill OG val -15, 0.4 rotations
     time1 = time()
-    for x in range(3):
+    for x in range(4):
         tank.on_for_rotations(-10, -10, 0.27)
         tank.on_for_rotations(7, 7, 0.24)
 
@@ -71,14 +71,14 @@ def toystory3(tank, colorful_flipper):
    # Navigation.goer_no_gyro(tank, 5.5, 20)
 
     #Lift colorful flipper Og val 5, -0.25
-    Navigation.gyro_check(tank, 7, 20)
+    Navigation.gyro_check(tank, 10, 20) #speed used to be 7
     #init.debug_print("Should be -20:", tank.gyro.angle)
     colorful_flipper.on_for_rotations(7, -0.35)
 
     sleep(0.25)
-    Navigation.gyro_check(tank, 5, -100)
-    Navigation.goer_no_gyro(tank, 3, 20)
-    Navigation.gyro_check(tank, 5, -125)
+    Navigation.gyro_check(tank, 10, -100) #speed used to be 5
+    Navigation.goer_no_gyro(tank, 3, 25) #speed used to be 20
+    Navigation.gyro_check(tank, 10, -125) #speed used to be 5
     # ^ used to be -165
     #init.debug_print("Should be -165:", tank.gyro.angle)
     #Navigation.goer_no_gyro(tank, 3, 20)

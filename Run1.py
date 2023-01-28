@@ -83,7 +83,7 @@ def GrabNGo(tank, flipper, sweeper):
     Navigation.goer_no_gyro(tank, 40,-50)
 
     #Prepare for next run
-    flipper.on_for_rotations(-40, 0.6)
+    flipper.on_for_rotations(-40, 0.6, brake=False, block=False)
     sweeper.on_for_rotations(15, 0.145)
 
 '''Dumps energy units into Energy Storage, grabs tray, and grabs Oil Platform truck'''
@@ -137,7 +137,7 @@ def EnergyStorage(tank, flipper, sweeper):
     Navigation.distance_goer(tank, 35, 35, 0)
     Navigation.gyro_check(tank, 5, 22)
     Navigation.distance_goer(tank, 45, 40, 22)
-    flipper.on_for_rotations(-25, 0.21)
+    flipper.on_for_rotations(-25, 0.15, brake=False, block=False)
 
 
 if __name__ == "__main__":
