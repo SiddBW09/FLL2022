@@ -43,15 +43,13 @@ def main():
             pass
         else:
             try:
-                print("TV Run")
+                print("Platform")
                 tank.gyro.reset()
-                tvrun.tv(tank, colorful_flipper)
-                tvrun.windmill(tank, colorful_flipper)
-                tvrun.toystory3(tank, colorful_flipper)
+                starttime = time.time()
+                Run1.PlatformRun(tank, flipper, flip_flop)
+                init.debug_print(time.time()-starttime)
+                print(time.time()-starttime)
                 tank.reset()
-                flipper.reset()
-                flip_flop.reset()
-
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
@@ -84,19 +82,22 @@ def main():
             pass
         else:
             try:
-                print("Platform")
+                print("TV Run")
                 tank.gyro.reset()
-                starttime = time.time()
-                Run1.PlatformRun(tank, flipper, flip_flop)
-                init.debug_print(time.time()-starttime)
-                print(time.time()-starttime)
+                tvrun.tv(tank, colorful_flipper)
+                tvrun.windmill(tank, colorful_flipper)
+                tvrun.toystory3(tank, colorful_flipper)
                 tank.reset()
+                flipper.reset()
+                flip_flop.reset()
+
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
                 flipper.reset()
                 flip_flop.reset()
                 pass
+
     def down(state):
         if state:
             pass

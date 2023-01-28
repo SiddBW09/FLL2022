@@ -17,16 +17,17 @@ def tv(tank, colorful_flipper):
 
     #Tv run 1.3
     #OG distance = 14
-    Navigation.goer_no_gyro(tank, 13.25, -20)
+    Navigation.goer_no_gyro(tank, 13.25, -30)
     # ^ speed used to be 30
     # ^ distance used to be 12.25
     sleep(0.5)
 
     #Lift flipper
     colorful_flipper.on_for_rotations(-10, 0.4)
-
+    Navigation.goer_no_gyro(tank, 1, 10)
+    #Pranav says hi
     #Turn left OG val -45
-    Navigation.gyro_check(tank, 5, -42)
+    Navigation.gyro_check(tank, 7, -42)
     #init.debug_print("Should be -42:", tank.gyro.angle)
 
 
@@ -34,18 +35,16 @@ def tv(tank, colorful_flipper):
     #Parallel to windmill go
     #Navigation.goer_no_gyro(tank, 53, -35)
     Navigation.distance_goer(tank, 53, -30, -47)
-    init.debug_print(tank.gyro.angle)
 
     #added for testing
     colorful_flipper.on_for_rotations(10, 0.4)
-    Navigation.goer_no_gyro(tank, 15, -15)
+    Navigation.goer_no_gyro(tank, 15, -25)
     colorful_flipper.on_for_rotations(7, -0.4)
-    Navigation.goer_no_gyro(tank, 15, 15)
-
+    Navigation.goer_no_gyro(tank, 15, 25)
 
 
     #Turn almost all the way
-    Navigation.gyro_check(tank, 5, 40)
+    Navigation.gyro_check(tank, 7, 40)
     #init.debug_print("Should be 40:", tank.gyro.angle)
 
     #Go forward from
@@ -72,7 +71,7 @@ def toystory3(tank, colorful_flipper):
    # Navigation.goer_no_gyro(tank, 5.5, 20)
 
     #Lift colorful flipper Og val 5, -0.25
-    Navigation.gyro_check(tank, 5, 20)
+    Navigation.gyro_check(tank, 7, 20)
     #init.debug_print("Should be -20:", tank.gyro.angle)
     colorful_flipper.on_for_rotations(7, -0.35)
 
