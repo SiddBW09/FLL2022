@@ -117,7 +117,7 @@ def EnergyStorage(tank, flipper, sweeper):
     Navigation.distance_goer(tank, 66, 60, 3)
     tank.turn_degrees(40, -85)
     Navigation.goer_no_gyro(tank, 10, -40)
-    flipper.on_for_rotations(-40, 0.95)
+    flipper.on_for_rotations(-40, 0.95, brake=False, block=False)
 
     return
 
