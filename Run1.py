@@ -11,7 +11,6 @@ from ev3dev2.sound import Sound
 '''Function that calls all the misson code for this run'''
 def PlatformRun(tank, flipper, sweeper):
     tank.gyro.reset()
-    flipper.reset()
 
     OilandHydro(tank, flipper, sweeper)
 
@@ -26,6 +25,7 @@ def OilandHydro(tank, flipper, sweeper):
     Navigation.gyro_check(tank, 7, 45)
     Navigation.distance_goer(tank, 8, -20, 45)
     Navigation.gyro_check(tank, 7, 0)
+    flipper.reset()
     flipper.on_for_rotations(30, 0.45)
     Navigation.distance_goer(tank, 43, -30, 0)
 
@@ -49,7 +49,7 @@ def OilandHydro(tank, flipper, sweeper):
 def Sweeper(tank, flipper, sweeper):
 
     #Move back and move flipper and sweeper down to prepare for sweeping
-    Navigation.distance_goer(tank, 10, 25, 90)
+    Navigation.distance_goer(tank, 8, 25, 90)
     Navigation.gyro_check(tank, 5, 90)
     flipper.on_for_rotations(-20, 0.35)
     sweeper.on_for_rotations(-20, 0.5)
@@ -83,7 +83,7 @@ def GrabNGo(tank, flipper, sweeper):
     Navigation.goer_no_gyro(tank, 40,-50)
 
     #Prepare for next run
-    flipper.on_for_rotations(-40, 0.95)
+    flipper.on_for_rotations(-40, 0.7, holding=False)
     sweeper.on_for_rotations(15, 0.145)
 
 '''Dumps energy units into Energy Storage, grabs tray, and grabs Oil Platform truck'''
@@ -106,7 +106,7 @@ def EnergyStorage(tank, flipper, sweeper):
     Navigation.distance_goer(tank, 60, -35, 0)
     '''
     flipper.reset()
-    flipper.on_for_degrees(25, 60)
+    flipper.on_for_rotations(-40, 0.45)
     flipper.reset()
 
     #Grab onto tray
@@ -117,7 +117,7 @@ def EnergyStorage(tank, flipper, sweeper):
     Navigation.distance_goer(tank, 66, 60, 3)
     tank.turn_degrees(40, -85)
     Navigation.goer_no_gyro(tank, 10, -40)
-    flipper.on_for_rotations(-40, 0.95)
+    flipper.on_for_rotations(-40, 0.95, holding=False)
 
     return
 
@@ -146,7 +146,7 @@ if __name__ == "__main__":
     sweeper = MediumMotor(OUTPUT_D)
     time1 = time()
 
-    #PlatformRun(tank, flipper, sweeper)
-    EnergyStorage(tank, flipper, sweeper)
+    PlatformRun(tank, flipper, sweeper)
+    #EnergyStorage(tank, flipper, sweeper)
 
     init.debug_print(time()-time1)
