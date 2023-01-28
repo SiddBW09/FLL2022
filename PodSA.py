@@ -368,11 +368,11 @@ def newest_dino_powerplant(tank, flipper, flip_flop):
     #Turn away from power plant and go at angle -35 OG val 13cm
     #Navigation.gyro_check(tank, 10, -35)
     Navigation.gyro_check(tank, 10, -45)
-    Navigation.distance_goer(tank, 12.25, -25, -45) #distance used to be 13
+    Navigation.distance_goer(tank, 13, -25, -45) #distance used to be 13 #12.25
 
     #Go back to be parallel
     Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank, 3.5, -10, 0) #3cm #2.5
+    Navigation.distance_goer(tank, 2.5, -10, 0) #3cm #2.5 #3.5
     init.debug_print(tank.gyro.angle)
 
     #Flip this down to collect energy unit og deg 155
@@ -400,11 +400,11 @@ def newest_dino_powerplant(tank, flipper, flip_flop):
     #The straight code
     Navigation.distance_goer(tank, 47, -40, 0)
     flipper.on_for_degrees(-15, 85)
-    tank.turn_degrees(10, 22.5)
+    tank.turn_degrees(10, 15)
     #Navigation.gyro_check(tank, 10, 22.5)
     flipper.on_for_degrees(15, 85)
     Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank, 50, -60, 0)
+    Navigation.distance_goer(tank, 55, -60, 0)
 
 def test(tank, flipper, flip_flop):
     flipper.on_for_degrees(40, 90)
@@ -439,7 +439,7 @@ if __name__ == "__main__":
     ##update_dino_and_powerplant(tank, flipper)
     #newest_dino_powerplant(tank, flipper, flip_flop)
     #pushdownThingy(tank, fork)
-    finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
+    #finalwater_reservoir_hangonhook(tank, flipper, flip_flop)
     time2 = time()
     init.debug_print(time2-time1)
 
