@@ -129,6 +129,7 @@ def main():
                 init.debug_print(time.time()-starttime)
                 print(time.time()-starttime)
                 tank.reset()
+                flipper.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
