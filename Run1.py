@@ -91,7 +91,7 @@ def EnergyStorage(tank, flipper, sweeper):
 
     #Testing
     Navigation.gyro_check(tank, 10, 45)
-    Navigation.distance_goer(tank, 13, -20, 45)
+    Navigation.distance_goer(tank, 17, -20, 45)
     Navigation.gyro_check(tank, 10, 0)
     Navigation.distance_goer(tank, 65, -30, 0)
 
