@@ -101,6 +101,7 @@ def toystory3(tank, colorful_flipper):
 
     #Originally not commented(moved into vroomycar)
     Navigation.goer_no_gyro(tank, 65, 40)
+    tank.turn_degrees(20, -45)
 
 '''
 def vroomycar():
