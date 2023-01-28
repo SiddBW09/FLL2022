@@ -107,7 +107,6 @@ def EnergyStorage(tank, flipper, sweeper):
     '''
     flipper.reset()
     flipper.on_for_rotations(-40, 0.45)
-    flipper.reset()
 
     #Grab onto tray
     Navigation.distance_goer(tank, 10, 10, 0)
