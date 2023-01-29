@@ -71,14 +71,14 @@ def toystory3(tank, colorful_flipper):
    # Navigation.goer_no_gyro(tank, 5.5, 20)
 
     #Lift colorful flipper Og val 5, -0.25
-    Navigation.gyro_check(tank, 10, 20) #speed used to be 7
+    Navigation.gyro_check(tank, 7, 20) #speed used to be 7
     #init.debug_print("Should be -20:", tank.gyro.angle)
     colorful_flipper.on_for_rotations(7, -0.35)
 
     sleep(0.25)
-    Navigation.gyro_check(tank, 10, -100) #speed used to be 5
+    Navigation.gyro_check(tank, 7, -100) #speed used to be 5
     Navigation.goer_no_gyro(tank, 3, 25) #speed used to be 20
-    Navigation.gyro_check(tank, 10, -125) #speed used to be 5
+    Navigation.gyro_check(tank, 7, -125) #speed used to be 5
     # ^ used to be -165
     #init.debug_print("Should be -165:", tank.gyro.angle)
     #Navigation.goer_no_gyro(tank, 3, 20)
@@ -102,6 +102,7 @@ def toystory3(tank, colorful_flipper):
     #Originally not commented(moved into vroomycar)
     Navigation.goer_no_gyro(tank, 65, 40)
     tank.turn_degrees(20, -45)
+    Navigation.goer_no_gyro(tank, 10, 30)
 
 '''
 def vroomycar():

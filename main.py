@@ -50,6 +50,8 @@ def main():
                 init.debug_print(time.time()-starttime)
                 print(time.time()-starttime)
                 tank.reset()
+                flipper.reset()
+                flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()
@@ -57,7 +59,7 @@ def main():
                 flip_flop.reset()
                 pass
 
-    def right(state):
+    def up(state):
         if state:
             pass
         else:
@@ -77,7 +79,7 @@ def main():
                 flip_flop.reset()
                 pass
 
-    def up(state):
+    def right(state):
         if state:
             pass
         else:
@@ -130,6 +132,7 @@ def main():
                 print(time.time()-starttime)
                 tank.reset()
                 flipper.reset()
+                flip_flop.reset()
             except (RuntimeError, TypeError, NameError, SyntaxError):
                 tank.reset()
                 tank.gyro.reset()

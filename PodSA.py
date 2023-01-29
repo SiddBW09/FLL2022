@@ -404,7 +404,7 @@ def newest_dino_powerplant(tank, flipper, flip_flop):
     #Navigation.gyro_check(tank, 10, 22.5)
     flipper.on_for_degrees(15, 85)
     Navigation.gyro_check(tank, 10, 0)
-    Navigation.distance_goer(tank, 55, -60, 0)
+    Navigation.distance_goer(tank, 60, -60, 0)
 
 def test(tank, flipper, flip_flop):
     flipper.on_for_degrees(40, 90)
